@@ -1,10 +1,10 @@
 package main
 
 import (
+	"github.com/Caracal-IT/polaris/config"
+	home "github.com/Caracal-IT/polaris/controllers"
 	"log"
 	"net/http"
-	"polaris/config"
-	"polaris/controllers"
 )
 
 func main() {
