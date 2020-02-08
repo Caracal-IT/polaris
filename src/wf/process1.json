@@ -1,5 +1,5 @@
 {
-    "name" : "Process 1",
+    "name" : "process1",
     "activities": [
         {
         "name": "start",
@@ -7,8 +7,19 @@
         "controls": [
             {"tag": "input", "value": "Input 20"},
             {"tag": "input", "value": "Input 21"},
-            {"tag": "input", "value": "Input 21"}
+            {"tag": "input", "value": "Input 22"},
+            {"tag": "moon-button", "caption": "Next", "next": "details"}
         ]
+        },
+        {
+            "name": "details",
+            "type": "page-activity",
+            "controls": [
+                {"tag": "input"},
+                {"tag": "input", "value": "Input 31"},
+                {"tag": "input", "value": "Input 32"},
+                {"tag": "moon-button", "caption": "Start", "next": "start"}
+            ]
         }
     ]
 }
