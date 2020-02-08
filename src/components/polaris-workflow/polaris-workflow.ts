@@ -9,15 +9,15 @@ export class PolarisWorkflow extends HTMLElement implements Context {
         return ['process'];
     }
 
-    private _controls: Array<any> = [];
+    private _components: Array<any> = [];
 
     page = this;
     http: HttpService = new HttpService();
     wf:WorkflowService = new WorkflowService(this);
     
-    get controls() {return this._controls}
-    set controls(val) { 
-        this._controls = val||[]; 
+    get components() {return this._components}
+    set components(val) { 
+        this._components = val||[]; 
         this.render();
     }
 
@@ -34,10 +34,10 @@ export class PolarisWorkflow extends HTMLElement implements Context {
         for(let i = this.childNodes.length - 1; i >= 0; i--) 
             this.removeChild(this.childNodes[i]);
 
-        this.controls.forEach(this.renderComponent.bind(this));
+        this.components.forEach(this.renderComponent.bind(this, this));
     }
 
-    private renderComponent(config: Component) {
+    private renderComponent(parent: HTMLElement, config: Component) {
         const el = document.createElement(config.tag);
         const options = {
             "wf-Workflow": "",
@@ -46,7 +46,10 @@ export class PolarisWorkflow extends HTMLElement implements Context {
 
         const newEl = Object.assign(el, config, options);
 
-        this.appendChild(newEl);
+        if(config.components)
+            config.components.forEach(this.renderComponent.bind(this, newEl));
+
+        parent.appendChild(newEl);
     }
 }
 

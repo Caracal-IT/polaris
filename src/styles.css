@@ -100,3 +100,20 @@ input:focus {
   outline: none;
   border-color: hotpink;
 }
+
+.moon-panel {
+  border: 1px solid var(--primary-bg-color, purple);
+  padding: 10px;
+  text-align: center;
+}
+
+.moon-panel div:first-of-type{
+  color: var(--primary-bg-color, purple);
+  font-size: 2em;
+  font-weight: bolder;
+}
+
+.moon-panel input {
+  display: inline-block;
+  width: 90%;
+}

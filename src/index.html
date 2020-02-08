@@ -30,7 +30,9 @@
     <header><h1>Polaris Workflow</h1></header>
 
     <main>
-      <polaris-workflow id="wf" process="process1"></polaris-workflow>
+      <polaris-workflow id="wf" process="process1">
+        <h2>Testing</h2>
+      </polaris-workflow>
       <hr/>
       <button id="loadButton">Load Workflow</button>
       <button id="loadButton2">Load Workflow 2</button>
@@ -49,26 +51,56 @@
 
           get caption() { return this.getAttribute("caption"); }
           set caption(val) { this.setAttribute("caption", val); }
-
-          connectedCallback() {             
+          
+          connectedCallback(){
+            if(!this.button) { 
               this.button = document.createElement("button");
+              this.handler = this.clickHandler.bind(this);
               this.button.innerText = this.caption;
               this.appendChild(this.button);
-              this.handler = this.clickHandler.bind(this);          
-              this.button.addEventListener('click', this.handler);
             }
 
-            disconnectedCallback() {         
-              this.button.removeEventListener('click', this.handler);
-            }
+            this.button.addEventListener('click', this.handler);
+          }
 
-            clickHandler() {
-              const next = this.next;  
-              this.ctx.wf.goto(next);         
-            }
+          disconnectedCallback() {         
+            this.button.removeEventListener('click', this.handler);
+          }
+
+          clickHandler() {
+            const next = this.next;  
+            this.ctx.wf.goto(next);         
+          }
         }
 
         customElements.define('moon-button', MoonButton);
+    </script>
+
+    <script type="module">
+      export class MoonPanel extends HTMLElement {
+        static get observedAttributes() { return ['caption']; }
+
+        get caption() { return this.getAttribute("caption"); }
+        set caption(val) { this.setAttribute("caption", val); }
+
+        connectedCallback() {           
+            const panel = document.createElement("div");
+            const header = document.createElement("div");
+
+            panel.setAttribute("class", "moon-panel");
+
+            header.innerText = this.caption;
+            panel.appendChild(header);
+
+            while(this.childNodes.length > 0)
+              panel.appendChild(this.childNodes[0]);
+
+            this.appendChild(panel);
+        }
+
+      }
+
+      customElements.define('moon-panel', MoonPanel);
     </script>
 
     <script>
@@ -80,14 +112,14 @@
       var wf = document.getElementById("wf");
 
       loadButton.addEventListener('click', function() {
-        wf.controls = [
+        wf.components = [
           {"tag": "input", "value": "Input 1"},
           {"tag": "input", "value": "Input 2"}
         ];
       });
 
       loadButton2.addEventListener('click', function() {
-        wf.controls = [
+        wf.components = [
           {"tag": "input"},
           {"tag": "input", "value": "Input 4"},
           {"tag": "input", "value": "Input 5"}
@@ -104,7 +136,7 @@
           {
             "name": "start",
             "type": "page-activity",
-            "controls": [
+            "components": [
               {"tag": "input", "value": "Input 10"},
               {"tag": "input", "value": "Input 11"},
               {"tag": "moon-button", "caption": "Next", "next": "details"}
@@ -113,7 +145,7 @@
           {
             "name": "details",
             "type": "page-activity",
-            "controls": [
+            "components": [
               {"tag": "input", "value": "Input 110"},
               {"tag": "input", "value": "Input 111"},
               {"tag": "moon-button", "caption": "Start", "next": "start"}

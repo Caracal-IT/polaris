@@ -6,11 +6,11 @@ export class PageActivity implements Activity {
     type = "page-activity";
     
     ctx?: Context;
-    controls?: any[];
+    components?: Comment[];
 
     async execute(): Promise<boolean> {
-        if (this.ctx && this.ctx.page && this.ctx.page.controls)
-            this.ctx.page.controls = this.controls || [];
+        if (this.ctx && this.ctx.page && this.ctx.page.components)
+            this.ctx.page.components = this.components || [];
         return true;
     }
 }
