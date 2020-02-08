@@ -29,7 +29,41 @@
   <body>
     <header><h1>Polaris Workflow</h1></header>
 
-    <main><todo-view></todo-view></main>
+    <main>
+      <polaris-workflow id="wf" process="process1"></polaris-workflow>
+      <hr/>
+      <button id="loadButton">Load Workflow</button>
+      <button id="loadButton2">Load Workflow 2</button>
+      <button id="clearButton">Clear</button>
+    </main>
+
     <script nomodule src="./vendor/webcomponents-loader.js"></script>
+
+    <script>
+      var loadButton = document.getElementById("loadButton");
+      var loadButton2 = document.getElementById("loadButton2");
+      var clearButton = document.getElementById("clearButton");
+
+      var wf = document.getElementById("wf");
+
+      loadButton.addEventListener('click', function() {
+        wf.controls = [
+          {"tag": "input", "value": "Input 1"},
+          {"tag": "input", "value": "Input 2"}
+        ];
+      });
+
+      loadButton2.addEventListener('click', function() {
+        wf.controls = [
+          {"tag": "input"},
+          {"tag": "input", "value": "Input 4"},
+          {"tag": "input", "value": "Input 5"}
+        ];
+      });
+
+      clearButton.addEventListener('click', function() {
+        wf.controls = null;
+      });
+    </script>
   </body>
 </html>

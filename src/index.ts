@@ -1,3 +1,3 @@
 import './styles.css';
 
-import './views/todo-view';
+import './components/polaris-workflow/polaris-workflow';

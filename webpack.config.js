@@ -32,6 +32,10 @@ const assets = [
   {
     from: 'src/img',
     to: 'img/'
+  },
+  {
+    from: 'src/wf',
+    to: 'wf/'
   }
 ];
 
@@ -42,9 +46,15 @@ const plugins = [
     filename: 'index.html',
     template: './src/index.html',
     minify: {
-      collapseWhitespace: true,
       minifyCSS: true,
-      minifyJS: true
+      minifyJS: true,
+
+      collapseWhitespace: true,
+      removeComments: true,
+      removeRedundantAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      useShortDoctype: true
     }
   }),
   new CopyWebpackPlugin([...polyfills, ...assets], {
@@ -60,29 +70,15 @@ module.exports = ({ mode, presets }) => {
         filename: '[name].[chunkhash:8].js'
       },
       entry: "./src/index.ts",
+      resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.json']
+      },
       module: {
         rules: [
-            {
-                test: /\.tsx?$/,
-                use: 'babel-loader',
-                exclude: /node_modules/,
-          },
           {
-            test: /\.js$/,
+            test: /\.(js|jsx|tsx|ts)$/,
             exclude: /node_modules/,
-            loader: 'babel-loader',
-            options: {
-              plugins: ['@babel/plugin-syntax-dynamic-import'],
-              presets: [
-                [
-                  '@babel/preset-env',
-                  {
-                    useBuiltIns: 'usage',
-                    targets: '>1%, not dead, not ie 11'
-                  }
-                ]
-              ]
-            }
+            loader: 'ts-loader',
           }
         ]
       },
