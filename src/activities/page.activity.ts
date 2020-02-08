@@ -11,6 +11,7 @@ export class PageActivity implements Activity {
     async execute(): Promise<boolean> {
         if (this.ctx && this.ctx.page && this.ctx.page.components)
             this.ctx.page.components = this.components || [];
+            
         return true;
     }
 }
