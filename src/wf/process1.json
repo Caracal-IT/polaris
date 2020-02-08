@@ -1,0 +1,14 @@
+{
+    "name" : "Process 1",
+    "activities": [
+        {
+        "name": "start",
+        "type": "page-activity",
+        "controls": [
+            {"tag": "input", "value": "Input 20"},
+            {"tag": "input", "value": "Input 21"},
+            {"tag": "input", "value": "Input 21"}
+        ]
+        }
+    ]
+}

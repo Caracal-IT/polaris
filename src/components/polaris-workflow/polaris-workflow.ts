@@ -1,6 +1,8 @@
-import { Context } from "../../model/context.model";
-import { WorkflowService } from "../../services/workflow.service";
 import { Component } from "../../model/component.model";
+
+import { Context } from "../../model/context.model";
+import { HttpService } from "../../services/http.service";
+import { WorkflowService } from "../../services/workflow.service";
 
 export class PolarisWorkflow extends HTMLElement implements Context {
     static get observedAttributes() {
@@ -9,8 +11,9 @@ export class PolarisWorkflow extends HTMLElement implements Context {
 
     private _controls: Array<any> = [];
 
-    wf:WorkflowService = new WorkflowService(this);
     page = this;
+    http: HttpService = new HttpService();
+    wf:WorkflowService = new WorkflowService(this);
     
     get controls() {return this._controls}
     set controls(val) { 

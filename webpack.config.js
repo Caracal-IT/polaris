@@ -35,7 +35,7 @@ const assets = [
   },
   {
     from: 'src/wf',
-    to: 'wf/'
+    to: 'wf/[name]'
   }
 ];
 

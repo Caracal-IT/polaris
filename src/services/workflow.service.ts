@@ -9,8 +9,18 @@ export class WorkflowService {
     constructor(private ctx: Context){}
     
     async setProcess(process: any, next = "start") {
-        this.process = process; 
-        await this.goto(next);
+        try {
+            if(typeof process === "string")
+                process = await this.ctx.http.fetch({url: `/wf/${process}`, method: 'get'});
+
+            console.log(process);
+
+            this.process = process; 
+            await this.goto(next);
+        }
+        catch(ex) {
+            console.error(ex);
+        }
     }
 
     async goto(name: string) {
