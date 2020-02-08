@@ -1,5 +1,6 @@
 import { Context } from "../../model/context.model";
 import { WorkflowService } from "../../services/workflow.service";
+import { Component } from "../../model/component.model";
 
 export class PolarisWorkflow extends HTMLElement implements Context {
     static get observedAttributes() {
@@ -30,15 +31,19 @@ export class PolarisWorkflow extends HTMLElement implements Context {
         for(let i = this.childNodes.length - 1; i >= 0; i--) 
             this.removeChild(this.childNodes[i]);
 
-        this.controls.forEach(c => {
-            const el = document.createElement(c.tag);
-            const options = {
-                "wf-Workflow": ""
-            };
-            const newEl = Object.assign(el, c, options);
+        this.controls.forEach(this.renderComponent.bind(this));
+    }
 
-            this.appendChild(newEl);
-        });
+    private renderComponent(config: Component) {
+        const el = document.createElement(config.tag);
+        const options = {
+            "wf-Workflow": "",
+            "ctx": this
+        };
+
+        const newEl = Object.assign(el, config, options);
+
+        this.appendChild(newEl);
     }
 }
 
