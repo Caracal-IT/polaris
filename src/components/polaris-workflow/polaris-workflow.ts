@@ -49,8 +49,13 @@ export class PolarisWorkflow extends HTMLElement implements Context {
         const newEl = Object.assign(el, config, options);
 
         if(newEl.id && newEl.value !== undefined) {
-            newEl.value = this.model.getValue(newEl.id)||newEl.value||null;
+            const newValue = this.model.getValue(newEl.id);
+            
+            if(newValue !== undefined)
+                newEl.value = newValue;
+            
             this.model.setValue(newEl.id, newEl.value);
+
             newEl.onchange = (event: any) => this.model.setValue(event.target.id, event.target.value);
         }
 
