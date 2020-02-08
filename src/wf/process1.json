@@ -21,10 +21,16 @@
             "name": "details",
             "type": "page-activity",
             "components": [
-                {"tag": "input"},
-                {"tag": "input", "value": "Input 31"},
-                {"tag": "input", "value": "Input 32"},
-                {"tag": "moon-button", "caption": "Start", "next": "start"}
+                {
+                    "tag": "moon-panel",
+                    "caption": "Workflow Tester Page 2",
+                    "components": [
+                        {"tag": "input"},
+                        {"tag": "input", "value": "Input 31"},
+                        {"tag": "input", "value": "Input 32"},
+                        {"tag": "moon-button", "caption": "Start", "next": "start"}
+                    ]
+                }
             ]
         }
     ]
