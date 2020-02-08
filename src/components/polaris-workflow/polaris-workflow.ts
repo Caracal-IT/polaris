@@ -2,6 +2,7 @@ import { Component } from "../../model/component.model";
 
 import { Context } from "../../model/context.model";
 import { HttpService } from "../../services/http.service";
+import { ModelService } from "../../services/model.service";
 import { WorkflowService } from "../../services/workflow.service";
 
 export class PolarisWorkflow extends HTMLElement implements Context {
@@ -13,6 +14,7 @@ export class PolarisWorkflow extends HTMLElement implements Context {
 
     page = this;
     http: HttpService = new HttpService();
+    model: ModelService = new ModelService();
     wf:WorkflowService = new WorkflowService(this);
     
     get components() {return this._components}
@@ -45,6 +47,12 @@ export class PolarisWorkflow extends HTMLElement implements Context {
         };
 
         const newEl = Object.assign(el, config, options);
+
+        if(newEl.id && newEl.value !== undefined) {
+            newEl.value = this.model.getValue(newEl.id)||newEl.value||null;
+            this.model.setValue(newEl.id, newEl.value);
+            newEl.onchange = (event: any) => this.model.setValue(event.target.id, event.target.value);
+        }
 
         if(config.components)
             config.components.forEach(this.renderComponent.bind(this, newEl));
