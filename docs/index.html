@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Polaris Workflow</title><link rel="icon" type="image/png" href="./img/icons/favicon.png"><meta name="theme-color" content="#2A3443"><meta name="description" content="Polaris WF App."><link rel="apple-touch-icon" href="./img/icons/icon-144x144.png"><meta name="mobile-web-app-capable" content="yes"><meta name="mobile-web-app-status-bar-style" content="black"><meta name="mobile-web-app-title" content="TutorialApp"><script>window.customElements||document.write("\x3c!--")</script><script nomodule src="./vendor/custom-elements-es5-adapter.js"></script><link href="main.css" rel="stylesheet"></head><body><header><h1>Polaris Workflow</h1></header><main><polaris-workflow id="wf" process="process1"><h2>Testing</h2></polaris-workflow><hr><button id="loadButton">Load Workflow</button> <button id="loadButton2">Load Workflow 2</button> <button id="clearButton">Clear</button> <button id="processButton">Process</button></main><script nomodule src="./vendor/webcomponents-loader.js"></script><script type="module">export class MoonButton extends HTMLElement {
+          static get observedAttributes() { return ['caption', 'next']; }
+
+          get next() { return this.getAttribute("next"); }
+          set next(val) { this.setAttribute("next", val); }
+
+          get caption() { return this.getAttribute("caption"); }
+          set caption(val) { this.setAttribute("caption", val); }
+
+          connectedCallback(){
+            if(!this.button) { 
+              this.button = document.createElement("button");
+              this.handler = this.clickHandler.bind(this);
+              this.button.innerText = this.caption;
+              this.appendChild(this.button);
+            }
+
+            this.button.addEventListener('click', this.handler);
+          }
+
+          disconnectedCallback() {         
+            this.button.removeEventListener('click', this.handler);
+          }
+
+          clickHandler() {
+            const next = this.next;  
+            this.ctx.wf.goto(next);         
+          }
+        }
+
+        customElements.define('moon-button', MoonButton);</script><script type="module">export class MoonPanel extends HTMLElement {
+        static get observedAttributes() { return ['caption']; }
+
+        get caption() { return this.getAttribute("caption"); }
+        set caption(val) { this.setAttribute("caption", val); }
+
+        connectedCallback() {           
+            const panel = document.createElement("div");
+            const header = document.createElement("div");
+
+            panel.setAttribute("class", "moon-panel");
+
+            header.innerText = this.caption;
+            panel.appendChild(header);
+
+            while(this.childNodes.length > 0)
+              panel.appendChild(this.childNodes[0]);
+
+            this.appendChild(panel);
+        }
+
+      }
+
+      customElements.define('moon-panel', MoonPanel);</script><script>var loadButton=document.getElementById("loadButton"),loadButton2=document.getElementById("loadButton2"),clearButton=document.getElementById("clearButton"),processButton=document.getElementById("processButton"),wf=document.getElementById("wf");loadButton.addEventListener("click",function(){wf.components=[{tag:"input",value:"Input 1"},{tag:"input",value:"Input 2"}]}),loadButton2.addEventListener("click",function(){wf.components=[{tag:"input"},{tag:"input",value:"Input 4"},{tag:"input",value:"Input 5"}]}),clearButton.addEventListener("click",function(){wf.controls=null});var process={name:"Process 1",activities:[{name:"start",type:"page-activity",components:[{tag:"input",value:"Input 10"},{tag:"input",value:"Input 11"},{tag:"moon-button",caption:"Next",next:"details"}]},{name:"details",type:"page-activity",components:[{tag:"input",value:"Input 110"},{tag:"input",value:"Input 111"},{tag:"moon-button",caption:"Start",next:"start"}]}]};processButton.addEventListener("click",function(){wf.load(process)})</script><script src="main.0229f145.js"></script></body></html>

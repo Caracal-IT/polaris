@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    --base-color: #fff;
+    --dark-color: #2a3443;
+    --shade-color: #5e6673;
+    --success-color: #f0f8f1;
+    --warning-color: #fbeeec;
+    --light-background: #f4f5f7;
+    --spacing: 16px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI',
+      Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+      'Segoe UI Symbol';
+    margin: 0;
+    padding: 0;
+    color: var(--dark-color);
+    font-size: 18px;
+    line-height: 1.5rem;
+  }
+  
+  [hidden] {
+    display: none;
+  }
+  
+  a {
+    color: var(--dark-color);
+  }
+  
+  a:visited,
+  a:active {
+    color: var(--shade-color);
+  }
+  
+  header,
+  main,
+  nav {
+    padding: var(--spacing);
+  }
+  
+  nav {
+    height: 3em;
+  }
+  
+  header {
+    background: var(--dark-color);
+    color: var(--base-color);
+  }
+
+  button {
+    cursor: pointer;
+    color: var(--primary-color, white);
+    background-color: var(--primary-bg-color, purple);
+
+    min-width: 9rem;
+    
+    border: 1px solid var(--primary-border-color, #757575);
+    border-radius: 5px;
+    
+    padding: .5rem;
+    margin: 0.25rem .1rem;
+
+    font: inherit;
+    font-size: 1rem;
+}
+
+button:hover {
+    color: var(--primary-alt-color, black);
+    background-color: var(--primary-alt-bg-color, plum);
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, .5);
+}
+
+button:active:hover {
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, .5);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, .5);
+}
+
+input {
+  border: 1px solid var(--primary-border-color, #757575);
+  border-radius: 5px;
+  
+  padding: .5rem;
+  margin: 0.25rem .1rem;
+
+  font: inherit;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: hotpink;
+}
+
+.moon-panel {
+  border: 1px solid var(--primary-bg-color, purple);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.moon-panel div:first-of-type{
+  color: var(--primary-bg-color, purple);
+  font-size: 2em;
+  font-weight: bolder;
+}
+
+.moon-panel input {
+  display: inline-block;
+  width: 90%;
+}
