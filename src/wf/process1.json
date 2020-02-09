@@ -2,7 +2,21 @@
     "name" : "process1",
     "activities": [
         {
-        "name": "start",
+            "name": "start",
+            "type": "api-activity",
+            "next": "landing",
+            "endpoints": [
+                {
+                    "url": "/wf/user",
+                    "method": "GET",
+                    "mappings":[
+                        {"client": "process1.item2", "remote": "name", "direction": "in"}
+                    ]
+                }
+            ]
+        },
+        {
+        "name": "landing",
         "type": "page-activity",
         "components": [
             {
@@ -11,7 +25,7 @@
                 "components": [
                     {"tag": "input", "id": "process1.item1", "value": "Input 20"},
                     {"tag": "input", "id": "process1.item2", "value": "Input 40"},
-                    {"tag": "input", "id": "process1.item3","value": "Input 41"},
+                    {"tag": "input", "id": "process1.item3" },
                     {"tag": "moon-button", "caption": "Next", "next": "details"}
                 ]
             }
@@ -25,9 +39,9 @@
                     "tag": "moon-panel",
                     "caption": "Workflow Tester Page 2",
                     "components": [
-                        {"tag": "input"},
-                        {"tag": "input", "id": "process1.item1", "value": "Input 31"},
+                        {"tag": "input", "id": "process1.item1"},
                         {"tag": "input", "id": "process1.item4", "value": "Input 32"},
+                        {"tag": "input", "id": "process1.item3", "value": "Input 34"},
                         {"tag": "moon-button", "caption": "Start", "next": "start"}
                     ]
                 }

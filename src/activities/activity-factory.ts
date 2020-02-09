@@ -2,11 +2,13 @@ import { Activity } from "./activity";
 import { PageActivity } from "./page.activity";
 import { NullActivity } from "./null.activity";
 import { Context } from "../model/context.model";
+import { ApiActivity } from "./api.activity";
 
 export class ActivityFactory {
     private static activities: Array<Activity> = [
         new NullActivity(),
-        new PageActivity()
+        new PageActivity(),
+        new ApiActivity()
     ];
 
     static create(config: any, ctx: Context): Activity {
