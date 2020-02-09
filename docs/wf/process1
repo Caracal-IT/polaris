@@ -42,7 +42,7 @@
                         {"tag": "input", "id": "process1.item1"},
                         {"tag": "input", "id": "process1.item4", "value": "Input 32"},
                         {"tag": "input", "id": "process1.item3", "value": "Input 34"},
-                        {"tag": "moon-button", "caption": "Start", "next": "start"}
+                        {"tag": "moon-button", "caption": "Start", "next": "landing"}
                     ]
                 }
             ]
