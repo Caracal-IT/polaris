@@ -42,6 +42,11 @@ export class ApiActivity implements Activity {
     }
 
     private async callEndpoint(http: HttpService, endpoint: ApiEndpoint) {
+        if(!this.ctx || !this.ctx.config)
+            return;
+
+        endpoint.url = this.resolveSetting(endpoint.url)||"";
+
         return http.fetch(endpoint)
                    .then(data => this.setModel(endpoint, data));
     }
@@ -79,6 +84,16 @@ export class ApiActivity implements Activity {
         mappings
             .filter(m => m.direction === 'in' || m.direction === 'inout')
             .forEach(m => model.setValue(m.client, model.getValue(m.remote, data)));
+    }
+
+    private resolveSetting(val: string) {
+        const matches = val.match(/\[[\w|_]+\]/g);
+
+        if(!matches || !this.ctx || !this.ctx.config)
+            return;
+
+        const config = this.ctx.config;
+        return matches.reduce((prev, next) => prev.replace(next, config.getSetting(next)), val);
     }
 }
 

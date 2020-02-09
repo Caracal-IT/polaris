@@ -7,7 +7,7 @@
             "next": "landing",
             "endpoints": [
                 {
-                    "url": "/wf/user",
+                    "url": "[WF]/user",
                     "method": "GET",
                     "mappings":[
                         {"client": "process1.item2", "remote": "name", "direction": "in"}

@@ -157,6 +157,25 @@
       processButton.addEventListener('click', function() {
         wf.load(process);
       });
+
+      class ConfigService {
+        constructor(){
+          this.settings = {
+            "WF": "/wf"
+          }
+        }
+        
+        getSetting(setting){
+          const key = setting.substring(1, setting.length - 1);
+          return this.settings[key];
+        }
+      }
+
+      customElements
+        .whenDefined('polaris-workflow')
+        .then(() => {
+          wf.config = new ConfigService();
+        });
     </script>
   </body>
 </html>

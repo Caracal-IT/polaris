@@ -3,6 +3,7 @@ import { Component } from "../../model/component.model";
 import { Context } from "../../model/context.model";
 import { HttpService } from "../../services/http.service";
 import { ModelService } from "../../services/model.service";
+import { ConfigService } from "../../services/config.service";
 import { WorkflowService } from "../../services/workflow.service";
 
 export class PolarisWorkflow extends HTMLElement implements Context {
@@ -15,6 +16,7 @@ export class PolarisWorkflow extends HTMLElement implements Context {
     page = this;
     http: HttpService = new HttpService();
     model: ModelService = new ModelService();
+    config: ConfigService = new ConfigService();
     wf:WorkflowService = new WorkflowService(this);
     
     get components() {return this._components}
