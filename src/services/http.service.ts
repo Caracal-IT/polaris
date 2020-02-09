@@ -1,8 +1,12 @@
 import { Endpoint } from "../model/endpoint.model";
+import { Context } from "../model/context.model";
 
 export class HttpService {
-     async fetch(endpoint: Endpoint) {
-        const response = await fetch(endpoint.url, this.getConfig(endpoint));
+    constructor(private ctx: Context) { }
+
+    async fetch(endpoint: Endpoint) {
+        const response = await fetch(this.resolveSetting(endpoint.url), this.getConfig(endpoint));
+
         return response.json();
     }
 
@@ -15,6 +19,15 @@ export class HttpService {
             referrer: 'no-referrer',
             body: endpoint.body ? JSON.stringify(endpoint.body) : null
         };
+    }
+
+    private resolveSetting(val: string) {
+        const matches = val.match(/\[[\w|_]+\]/g);
+
+        if(!matches)
+            return val;
+
+        return matches.reduce((prev, next) => prev.replace(next, this.ctx.config.getSetting(next)), val);
     }
 }
 

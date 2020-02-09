@@ -14,8 +14,8 @@ export class PolarisWorkflow extends HTMLElement implements Context {
     private _components: Array<any> = [];
 
     page = this;
-    http: HttpService = new HttpService();
     model: ModelService = new ModelService();
+    http: HttpService = new HttpService(this);
     config: ConfigService = new ConfigService();
     wf:WorkflowService = new WorkflowService(this);
     
