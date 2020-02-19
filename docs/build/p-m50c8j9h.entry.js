@@ -1,1 +1,0 @@
-import{r as t,h as o}from"./p-b48df0bd.js";const n=class{constructor(o){t(this,o)}buttonHandler(){var t,o;null===(o=null===(t=this.ctx)||void 0===t?void 0:t.wf)||void 0===o||o.goto(this.next)}render(){return o("button",{onClick:this.buttonHandler.bind(this)},this.caption)}static get style(){return""}};export{n as moon_button};

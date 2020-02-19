@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+:host {
+    display: flex; 
+    flex-direction: column;
+    width: 600px;
+    border: 1px solid black;
+    border-radius: 15px;
+
+    padding: 5px;
+}
+
+input {
+    font-size: 1rem;
+    padding: .8rem .8rem .8rem .4rem;
+    margin: 5px 1px;
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--primary-border-color, #757575);
+}
+  
+input:focus {
+    outline: none;
+    margin: 4px 0;
+    border: 2px solid var(--primary-border-color, purple);
+}
+
+moon-button {
+    align-self: flex-end;
+}
