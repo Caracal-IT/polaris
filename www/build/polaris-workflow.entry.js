@@ -1,4 +1,4 @@
-import { r as registerInstance, c as getElement } from './core-59ffa22c.js';
+import { r as registerInstance, c as getElement } from './core-68ff5f14.js';
 
 class HttpService {
     constructor(ctx) {
@@ -180,10 +180,10 @@ class WorkflowService {
     async goto(name) {
         if (!this.process || !this.process.activities)
             return;
-        const actDef = this.process
+        this.activity = this.process
             .activities
             .find(a => a.name == name);
-        return ActivityFactory.create(actDef, this.ctx)
+        return ActivityFactory.create(this.activity, this.ctx)
             .execute();
     }
 }
@@ -197,6 +197,7 @@ const PolarisWorkflow = class {
         this.config = new ConfigService();
         this.wf = new WorkflowService(this);
         this._components = [];
+        this.ctx = this;
     }
     processChangeHandler() {
         this._render();

@@ -7,6 +7,7 @@ import { HttpService } from "../../services/http.service";
 import { ModelService } from "../../services/model.service";
 import { ConfigService } from "../../services/config.service";
 import { WorkflowService } from "../../services/workflow.service";
+import { isContext } from "vm";
 
 @Component({
     tag: "polaris-workflow",
@@ -22,12 +23,10 @@ import { WorkflowService } from "../../services/workflow.service";
     private _components: Array<any> = [];
     
     @Prop() tag: string;
-    @Prop() ctx: Context;
+    @Prop() ctx: Context = this;
     @Prop() value?: any;  
 
     @Prop() process: string|object;
-    
-
     @Element() el: HTMLElement;
 
     @Watch("process")

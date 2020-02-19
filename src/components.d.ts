@@ -12,6 +12,11 @@ import {
 } from './model/context.model';
 
 export namespace Components {
+  interface MoonButton {
+    'caption': string;
+    'ctx': Context;
+    'next': string;
+  }
   interface MoonPanel {
     'caption': string;
   }
@@ -26,6 +31,12 @@ export namespace Components {
 
 declare global {
 
+
+  interface HTMLMoonButtonElement extends Components.MoonButton, HTMLStencilElement {}
+  var HTMLMoonButtonElement: {
+    prototype: HTMLMoonButtonElement;
+    new (): HTMLMoonButtonElement;
+  };
 
   interface HTMLMoonPanelElement extends Components.MoonPanel, HTMLStencilElement {}
   var HTMLMoonPanelElement: {
@@ -45,6 +56,7 @@ declare global {
     new (): HTMLPolarisWorkflowElement;
   };
   interface HTMLElementTagNameMap {
+    'moon-button': HTMLMoonButtonElement;
     'moon-panel': HTMLMoonPanelElement;
     'polaris-analytics': HTMLPolarisAnalyticsElement;
     'polaris-workflow': HTMLPolarisWorkflowElement;
@@ -52,6 +64,11 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface MoonButton {
+    'caption'?: string;
+    'ctx'?: Context;
+    'next'?: string;
+  }
   interface MoonPanel {
     'caption'?: string;
   }
@@ -64,6 +81,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'moon-button': MoonButton;
     'moon-panel': MoonPanel;
     'polaris-analytics': PolarisAnalytics;
     'polaris-workflow': PolarisWorkflow;
@@ -76,6 +94,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'moon-button': LocalJSX.MoonButton & JSXBase.HTMLAttributes<HTMLMoonButtonElement>;
       'moon-panel': LocalJSX.MoonPanel & JSXBase.HTMLAttributes<HTMLMoonPanelElement>;
       'polaris-analytics': LocalJSX.PolarisAnalytics & JSXBase.HTMLAttributes<HTMLPolarisAnalyticsElement>;
       'polaris-workflow': LocalJSX.PolarisWorkflow & JSXBase.HTMLAttributes<HTMLPolarisWorkflowElement>;

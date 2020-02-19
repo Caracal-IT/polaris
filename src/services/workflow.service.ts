@@ -2,9 +2,11 @@ import { ActivityFactory } from "../activities/activity-factory";
 
 import { Context } from "../model/context.model";
 import { Process } from "../model/process.model";
+import { Activity } from "../activities/activity";
 
 export class WorkflowService {
-    private process?:Process;
+    process?:Process;
+    activity: Activity;
 
     constructor(private ctx: Context){}
     
@@ -25,11 +27,11 @@ export class WorkflowService {
         if(!this.process || !this.process.activities)
             return;
 
-        const actDef = this.process
+        this.activity = this.process
                            .activities
                            .find(a => a.name == name);
 
-        return ActivityFactory.create(actDef, this.ctx)
+        return ActivityFactory.create(this.activity, this.ctx)
                               .execute();
     }
 }

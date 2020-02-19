@@ -19,7 +19,6 @@
         "name": "landing",
         "type": "page-activity",
         "controls": [
-            {"tag": "input", "id": "process1.item1", "value": "Input 20"},
             {
                 "tag": "moon-panel",
                 "caption": "Workflow Tester",
