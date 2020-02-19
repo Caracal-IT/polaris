@@ -1,0 +1,62 @@
+System.register(['./p-82f00b74.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, h, getElement;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                h = module.h;
+                getElement = module.g;
+            }],
+        execute: function () {
+            var PolarisAnalytics = exports('polaris_analytics', /** @class */ (function () {
+                function class_1(hostRef) {
+                    registerInstance(this, hostRef);
+                }
+                class_1.prototype.render = function () {
+                    return h("div", null, "Testing");
+                };
+                return class_1;
+            }()));
+            var PolarisWorkflow = exports('polaris_workflow', /** @class */ (function () {
+                function class_2(hostRef) {
+                    registerInstance(this, hostRef);
+                    this.components = [];
+                }
+                class_2.prototype.processChangeHandler = function () {
+                    console.log("ERROR");
+                    //   this.render2();
+                };
+                //page = this;
+                //model: ModelService = new ModelService();
+                //http: HttpService = new HttpService(this);
+                //config: ConfigService = new ConfigService();
+                //wf:WorkflowService = new WorkflowService(this);
+                class_2.prototype.componentsChangeHandler = function () {
+                    // this.render2();
+                };
+                //load(process: any, next = "start"){
+                //  this.wf.setProcess(process, next);       
+                // }
+                class_2.prototype.render = function () {
+                    return h("div", null, "Testing");
+                };
+                Object.defineProperty(class_2.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(class_2, "watchers", {
+                    get: function () {
+                        return {
+                            "process": ["processChangeHandler"],
+                            "components": ["componentsChangeHandler"]
+                        };
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                return class_2;
+            }()));
+        }
+    };
+});

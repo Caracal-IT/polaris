@@ -1,3 +1,3 @@
 export interface Page {
-    components: any[];
+    controls: any[];
 }

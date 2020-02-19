@@ -1,0 +1,134 @@
+import { h } from "@stencil/core";
+import { HttpService } from "../../services/http.service";
+import { ModelService } from "../../services/model.service";
+import { ConfigService } from "../../services/config.service";
+import { WorkflowService } from "../../services/workflow.service";
+export class PolarisWorkflow {
+    constructor() {
+        this.components = [];
+        this.page = this;
+        this.model = new ModelService();
+        this.http = new HttpService(this);
+        this.config = new ConfigService();
+        this.wf = new WorkflowService(this);
+    }
+    processChangeHandler() {
+        console.log("ERROR");
+        this.render2();
+    }
+    componentsChangeHandler() {
+        this.render2();
+    }
+    load(process, next = "start") {
+        this.wf.setProcess(process, next);
+    }
+    render() {
+        return h("div", null, "Testing");
+    }
+    static get is() { return "polaris-workflow"; }
+    static get properties() {
+        return {
+            "tag": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "attribute": "tag",
+                "reflect": false
+            },
+            "ctx": {
+                "type": "unknown",
+                "mutable": false,
+                "complexType": {
+                    "original": "Context",
+                    "resolved": "Context",
+                    "references": {
+                        "Context": {
+                            "location": "import",
+                            "path": "../../model/context.model"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                }
+            },
+            "value": {
+                "type": "any",
+                "mutable": false,
+                "complexType": {
+                    "original": "any",
+                    "resolved": "any",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "attribute": "value",
+                "reflect": false
+            },
+            "process": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string|object",
+                    "resolved": "object | string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "attribute": "process",
+                "reflect": false
+            },
+            "components": {
+                "type": "unknown",
+                "mutable": false,
+                "complexType": {
+                    "original": "Array<any>",
+                    "resolved": "any[]",
+                    "references": {
+                        "Array": {
+                            "location": "global"
+                        }
+                    }
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "defaultValue": "[]"
+            }
+        };
+    }
+    static get elementRef() { return "el"; }
+    static get watchers() {
+        return [{
+                "propName": "process",
+                "methodName": "processChangeHandler"
+            }, {
+                "propName": "components",
+                "methodName": "componentsChangeHandler"
+            }];
+    }
+}

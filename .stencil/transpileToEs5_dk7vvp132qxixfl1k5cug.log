@@ -1,0 +1,51 @@
+import { r as registerInstance, h, g as getElement } from './core-c1e22b64.js';
+var PolarisAnalytics = /** @class */ (function () {
+    function PolarisAnalytics(hostRef) {
+        registerInstance(this, hostRef);
+    }
+    PolarisAnalytics.prototype.render = function () {
+        return h("div", null, "Testing");
+    };
+    return PolarisAnalytics;
+}());
+var PolarisWorkflow = /** @class */ (function () {
+    function PolarisWorkflow(hostRef) {
+        registerInstance(this, hostRef);
+        this.components = [];
+    }
+    PolarisWorkflow.prototype.processChangeHandler = function () {
+        console.log("ERROR");
+        //   this.render2();
+    };
+    //page = this;
+    //model: ModelService = new ModelService();
+    //http: HttpService = new HttpService(this);
+    //config: ConfigService = new ConfigService();
+    //wf:WorkflowService = new WorkflowService(this);
+    PolarisWorkflow.prototype.componentsChangeHandler = function () {
+        // this.render2();
+    };
+    //load(process: any, next = "start"){
+    //  this.wf.setProcess(process, next);       
+    // }
+    PolarisWorkflow.prototype.render = function () {
+        return h("div", null, "Testing");
+    };
+    Object.defineProperty(PolarisWorkflow.prototype, "el", {
+        get: function () { return getElement(this); },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PolarisWorkflow, "watchers", {
+        get: function () {
+            return {
+                "process": ["processChangeHandler"],
+                "components": ["componentsChangeHandler"]
+            };
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return PolarisWorkflow;
+}());
+export { PolarisAnalytics as polaris_analytics, PolarisWorkflow as polaris_workflow };
