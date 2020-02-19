@@ -7,7 +7,7 @@
             "next": "landing",
             "endpoints": [
                 {
-                    "url": "/polaris/wf/user",
+                    "url": "[WF]/user",
                     "method": "GET",
                     "mappings":[
                         {"client": "process1.item2", "remote": "name", "direction": "in"}
@@ -18,11 +18,11 @@
         {
         "name": "landing",
         "type": "page-activity",
-        "components": [
+        "controls": [
             {
                 "tag": "moon-panel",
                 "caption": "Workflow Tester",
-                "components": [
+                "controls": [
                     {"tag": "input", "id": "process1.item1", "value": "Input 20"},
                     {"tag": "input", "id": "process1.item2", "value": "Input 40"},
                     {"tag": "input", "id": "process1.item3" },
@@ -34,11 +34,11 @@
         {
             "name": "details",
             "type": "page-activity",
-            "components": [
+            "controls": [
                 {
                     "tag": "moon-panel",
                     "caption": "Workflow Tester Page 2",
-                    "components": [
+                    "controls": [
                         {"tag": "input", "id": "process1.item1"},
                         {"tag": "input", "id": "process1.item4", "value": "Input 32"},
                         {"tag": "input", "id": "process1.item3", "value": "Input 34"},

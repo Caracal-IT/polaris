@@ -1,0 +1,1 @@
+import{r as t,g as s}from"./p-b48df0bd.js";const r=class{constructor(s){t(this,s)}render(){const t=document.createElement("h1");this.el.shadowRoot.appendChild(t),t.textContent=this.caption,Array.from(this.el.childNodes).forEach(t=>this.el.shadowRoot.appendChild(t))}get el(){return s(this)}static get style(){return""}};export{r as moon_panel};

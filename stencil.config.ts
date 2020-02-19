@@ -19,7 +19,7 @@ export const config: Config = {
         { src: 'redirect.html', dest: 'redirect.html' },
         { src: 'demo', dest: 'demo' }
       ]
-    }/*
+    }
     ,
     {
       type: 'www',
@@ -27,11 +27,10 @@ export const config: Config = {
       serviceWorker: null,
       copy: [
         { src: '../www', dest: '' },
-        { src: 'workflow', dest: 'wf' },
         { src: 'demo', dest: 'demo' }
       ]
     }
-  */
+
 
   ]
 };
