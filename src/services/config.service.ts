@@ -1,6 +1,6 @@
 export class ConfigService {
     private settings = {
-        "[WF]": "./polaris/wf"
+        "[WF]": "wf"
     }
 
     getSetting(setting: string) {
