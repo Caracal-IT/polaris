@@ -7,7 +7,6 @@ import { HttpService } from "../../services/http.service";
 import { ModelService } from "../../services/model.service";
 import { ConfigService } from "../../services/config.service";
 import { WorkflowService } from "../../services/workflow.service";
-import { isContext } from "vm";
 
 @Component({
     tag: "polaris-workflow",
