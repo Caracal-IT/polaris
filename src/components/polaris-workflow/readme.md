@@ -15,6 +15,19 @@
 | `value`   | `value`   |             | `any`              | `undefined` |
 
 
+## Methods
+
+### `load(process: any, next?: string) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

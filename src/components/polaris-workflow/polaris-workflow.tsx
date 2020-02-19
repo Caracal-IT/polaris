@@ -1,4 +1,4 @@
-import { Component, Prop, Element, Watch } from "@stencil/core";
+import { Component, Prop, Element, Watch, Method } from "@stencil/core";
 
 import { Control } from "../../model/control.model";
 
@@ -37,6 +37,7 @@ import { WorkflowService } from "../../services/workflow.service";
     get controls(){return this._components; }
     set controls(val: any) { this._components = val; this._render(); }
     
+    @Method()
     load(process: any, next = "start"){
         this.wf.setProcess(process, next);       
     }
