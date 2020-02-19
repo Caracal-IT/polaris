@@ -1,6 +1,6 @@
 export class ConfigService {
     private settings = {
-        "[WF]": "/wf"
+        "[WF]": "wf"
     }
 
     getSetting(setting: string) {
