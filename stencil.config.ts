@@ -20,7 +20,7 @@ export const config: Config = {
         { src: 'demo', dest: 'demo' }
       ]
     }
-    ,/*
+    ,
     {
       type: 'www',
       dir: 'docs',
@@ -30,6 +30,6 @@ export const config: Config = {
         { src: 'demo', dest: 'demo' }
       ]
     }
-*/
+
   ]
 };
