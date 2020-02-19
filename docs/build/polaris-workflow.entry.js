@@ -54,7 +54,7 @@ class ModelService {
 class ConfigService {
     constructor() {
         this.settings = {
-            "[WF]": "wf"
+            "[WF]": "polaris/wf"
         };
     }
     getSetting(setting) {
