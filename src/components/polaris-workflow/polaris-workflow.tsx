@@ -89,9 +89,11 @@ import { ValidatorService } from "../../services/validator.service";
         newEl.oninput = this.onInput.bind(this, newEl);
     }
 
-    onInput(newEl: Control) {
+    onInput(newEl: HTMLElement & Control) {
         this.model.setValue(newEl.id, newEl.value);
-        this.validator.validate();
+
+        if(newEl.hasAttribute('error'))
+            this.validator.validate();
     }
 
     addErrorLabel(newEl: HTMLElement & Control) {

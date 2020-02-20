@@ -308,7 +308,8 @@ const PolarisWorkflow = class {
     }
     onInput(newEl) {
         this.model.setValue(newEl.id, newEl.value);
-        this.validator.validate();
+        if (newEl.hasAttribute('error'))
+            this.validator.validate();
     }
     addErrorLabel(newEl) {
         if (!newEl.validators)
