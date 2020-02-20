@@ -21,7 +21,7 @@
         "controls": [
             {
                 "tag": "moon-panel",
-                "caption": "Workflow Tester",
+                "caption": "Workflow Tester Process 2",
                 "controls": [
                     {"tag": "input", "id": "process1.item1", "value": "Input 20"},
                     {"tag": "input", "id": "process1.item2", "value": "Input 40"},

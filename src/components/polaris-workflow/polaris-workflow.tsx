@@ -1,4 +1,4 @@
-import { Component, Prop, Element, Watch } from "@stencil/core";
+import { Component, Prop, Element, Watch, Method } from "@stencil/core";
 
 import { Control } from "../../model/control.model";
 
@@ -25,12 +25,10 @@ import { ValidatorService } from "../../services/validator.service";
     private _components: Array<any> = [];
     
     @Prop() tag: string;
-    @Prop() ctx: Context;
+    @Prop() ctx: Context = this;
     @Prop() value?: any;  
 
     @Prop() process: string|object;
-    
-
     @Element() el: HTMLElement;
 
     @Watch("process")
@@ -44,6 +42,7 @@ import { ValidatorService } from "../../services/validator.service";
         this._render(); 
     }
     
+    @Method()
     load(process: any, next = "start"){
         this.wf.setProcess(process, next);       
     }

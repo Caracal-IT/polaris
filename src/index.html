@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Polaris Workflow</title>
 
-    <link rel="icon" type="image/png" href="./img/icons/favicon.png" />
-
+    <link rel="stylesheet" href="style.css" />
     <script type="module" src="build/polaris.esm.js"></script>
     <script nomodule src="build/polaris.js"></script>
   </head>
@@ -15,9 +14,34 @@
   <body>
     <header><h1>Polaris Workflow</h1></header>
 
+    <aside>
+      <nav><a href="#page1" class="active" id="process1">Process 1</a></nav>
+      <nav><a href="#page2" id="process2">Process 2</a></nav>
+    </aside>
+
     <main>
       <polaris-analytics></polaris-analytics>
       <polaris-workflow id="wf" process="process1"></polaris-workflow>
     </main>
+
+    <script>
+      const wf = document.getElementById("wf");
+      const process1 = document.getElementById("process1");
+      const process2 = document.getElementById("process2");
+
+      process1.addEventListener('click', (event) => {
+        process1.className =  "active";
+        process2.className =  "";
+
+        wf.load('process1');
+      });
+
+      process2.addEventListener('click', (event) => {
+        process1.className =  "";
+        process2.className =  "active";
+
+        wf.load('process2');
+      });
+    </script>
   </body>
 </html>
