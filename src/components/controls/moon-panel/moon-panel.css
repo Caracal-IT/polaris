@@ -37,3 +37,8 @@ input:focus {
 moon-button {
     align-self: flex-end;
 }
+
+input[error="true"]{
+    background-color: lightpink;
+    border: 2px solid var(--primary-border-color, red);
+}

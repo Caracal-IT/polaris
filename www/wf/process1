@@ -23,7 +23,14 @@
                 "tag": "moon-panel",
                 "caption": "Workflow Tester",
                 "controls": [
-                    {"tag": "input", "id": "process1.item1", "value": "Input 20"},
+                    {
+                        "tag": "input", 
+                        "id": "process1.item1", 
+                        "value": "Input 20",
+                        "validators": [
+                            { "name": "Required", "message": "The field is required" }
+                        ]
+                    },
                     {"tag": "input", "id": "process1.item2", "value": "Input 40"},
                     {"tag": "input", "id": "process1.item3" },
                     {"tag": "moon-button", "caption": "Next", "next": "details"}

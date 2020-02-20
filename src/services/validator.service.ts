@@ -1,17 +1,46 @@
+import { Control } from './../model/control.model';
 import { Validator } from "../validators/validator";
 import { RequiredValidator } from "../validators/required.validator";
 import { Context } from "../model/context.model";
 
 export class ValidatorService {
-    static Validators: Array<Validator> = [
+    private validators: Array<Validator> = [
         new RequiredValidator("Required")
     ];
-
+    
     constructor(private ctx: Context){}  
     
     validate(): boolean {
-        console.dir(this.ctx.page);
+        if(!this.ctx.page || !this.ctx.page.controls)          
+            return true;
         
+        let isValid = true;
+
+        for(const ctrl of this.ctx.page.controls) 
+            isValid = this.validateControl(ctrl) && isValid;
+        
+        return isValid;
+    }  
+    
+    private validateControl(control: Control): boolean {
+        if(!control)
+            return true;
+
+        for(const index in control.controls)
+            return this.validateControl(control.controls[index]);
+
+        if(control.validators && control.validators.length > 0) {
+            for(const config of control.validators) {
+                const validator = this.validators.find(v => v.name === config.name);
+
+                if(!validator)
+                    continue;
+
+                if(!validator.validate(this.ctx, control, config))                   
+                    return false;                
+            }            
+        }
+            
         return true;
     }
 }

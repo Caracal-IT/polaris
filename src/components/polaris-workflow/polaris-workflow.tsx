@@ -43,8 +43,8 @@ import { ValidatorService } from "../../services/validator.service";
     }
     
     @Method()
-    load(process: any, next = "start"){
-        this.wf.setProcess(process, next);       
+    async load(process: any, next = "start"){
+        await this.wf.setProcess(process, next);       
     }
 
     componentWillLoad(){
@@ -59,14 +59,15 @@ import { ValidatorService } from "../../services/validator.service";
         this.controls.forEach(this.renderComponent.bind(this, this.el));
     }
 
-    private renderComponent(parent: HTMLElement, config: Control) {
-        const el = document.createElement(config.tag);
+    private renderComponent(parent: HTMLElement, control: Control) {
+        const el = document.createElement(control.tag);
         const options = {
             "wf-Workflow": "",
-            "ctx": this
+            "ctx": this  
         };
 
-        const newEl = Object.assign(el, config, options);
+        const newEl = Object.assign(el, control, options);
+        control.el = newEl;
         
         if(newEl.id && newEl.value !== undefined) {
             const newValue = this.model.getValue(newEl.id);
@@ -76,11 +77,17 @@ import { ValidatorService } from "../../services/validator.service";
             
             this.model.setValue(newEl.id, newEl.value);
 
-            newEl.onchange = (event: any) => this.model.setValue(event.target.id, event.target.value);
+            newEl.oninput = (event: any) => {
+                this.model.setValue(event.target.id, event.target.value);
+
+                if(control.error !== undefined) {                    
+                    this.validator.validate();
+                }
+            }
         }
 
-        if(config.controls)
-            config.controls.forEach(this.renderComponent.bind(this, newEl));
+        if(control.controls)
+            control.controls.forEach(this.renderComponent.bind(this, newEl));
 
         parent.appendChild(newEl);
     }

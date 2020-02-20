@@ -11,13 +11,21 @@ export class RequiredValidator extends Validator {
     validate(context: Context, control: Control, config: RequiredValidatorConfig): boolean {
         const value = context.model.getValue(control.id);
 
-        if (value == null || value == undefined || (value||'').length === 0) {
+        control.error = false;
+        delete control.errorMessage;
+
+        if (value === null || value === undefined || value.length === 0) {            
             control.error = true;
             control.errorMessage = config.message;
-
-            return false;
         }
-        
-        return true;
+
+        if(control.el) {
+            control.el.setAttribute("error", control.error ? "true" : "false");
+            control.el.setAttribute("errorMessage", control.errorMessage);
+        }
+      
+        console.dir(control);
+
+        return !control.error;
     }
 }
