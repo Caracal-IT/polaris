@@ -25,6 +25,9 @@ export class WorkflowService {
         if(!this.process || !this.process.activities)
             return;
 
+        if(!this.ctx.validator.validate())
+            return;
+
         const actDef = this.process
                            .activities
                            .find(a => a.name == name);

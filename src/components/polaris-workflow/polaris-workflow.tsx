@@ -7,6 +7,7 @@ import { HttpService } from "../../services/http.service";
 import { ModelService } from "../../services/model.service";
 import { ConfigService } from "../../services/config.service";
 import { WorkflowService } from "../../services/workflow.service";
+import { ValidatorService } from "../../services/validator.service";
 
 @Component({
     tag: "polaris-workflow",
@@ -14,10 +15,12 @@ import { WorkflowService } from "../../services/workflow.service";
   })
   export class PolarisWorkflow implements Control {    
     page = this;
+
     model: ModelService = new ModelService();
     http: HttpService = new HttpService(this);
     config: ConfigService = new ConfigService();
     wf:WorkflowService = new WorkflowService(this);
+    validator: ValidatorService = new ValidatorService(this);
 
     private _components: Array<any> = [];
     
@@ -35,9 +38,11 @@ import { WorkflowService } from "../../services/workflow.service";
         this._render();
     }
 
-
     get controls(){return this._components; }
-    set controls(val: any) { this._components = val; this._render(); }
+    set controls(val: any) { 
+        this._components = val; 
+        this._render(); 
+    }
     
     load(process: any, next = "start"){
         this.wf.setProcess(process, next);       

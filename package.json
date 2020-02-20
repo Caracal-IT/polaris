@@ -1,6 +1,5 @@
 {
   "name": "polaris",
-<<<<<<< HEAD
   "version": "0.0.10",
   "description": "Stencil Component Starter",
   "repository": "https://github.com/Caracal-IT/sirius",
@@ -15,28 +14,6 @@
   "files": [
     "dist/",
     "loader/"
-=======
-  "version": "1.0.0",
-  "description": "This is the implementation for the workflow engine.",
-  "main": "index.ts",
-  "scripts": {
-    "test": "jest",
-    "webpack": "webpack",
-    "webpack-dev-server": "webpack-dev-server --history-api-fallback",
-    "prod": "npm run webpack -- --env.mode production",
-    "prod:sw": "npm run webpack -- --env.mode production --env.presets serviceworker",
-    "dev": "npm run webpack-dev-server -- --env.mode development",
-    "dev:sw": "npm run webpack-dev-server -- --env.mode development  --env.presets serviceworker"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Caracal-IT/polaris.git"
-  },
-  "keywords": [
-    "Workflow",
-    "UI",
-    "Generator"
->>>>>>> 2ae9e688303df92e098146780204cee776cf378d
   ],
   "scripts": {
     "build": "stencil build --docs",
@@ -47,7 +24,6 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "@stencil/core": "^1.8.9",
     "@types/jest": "^25.1.2",
     "@types/puppeteer": "^2.0.0",
@@ -57,31 +33,4 @@
     "workbox-build": "^5.0.0"
   },
   "license": "MIT"
-=======
-    "@babel/core": "^7.8.4",
-    "@types/jest": "^25.1.2",
-    "@types/puppeteer": "^2.0.0",
-    "babel-preset-minify": "^0.5.1",
-    "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^5.1.1",
-    "css-loader": "^3.4.2",
-    "html-webpack-plugin": "^3.2.0",
-    "jest": "^25.1.0",
-    "jest-puppeteer": "^4.4.0",
-    "mini-css-extract-plugin": "^0.9.0",
-    "puppeteer": "^2.1.1",
-    "style-loader": "^1.1.3",
-    "ts-loader": "^6.2.1",
-    "typescript": "^3.7.5",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.3",
-    "webpack-merge": "^4.2.2",
-    "workbox-webpack-plugin": "^5.0.0"
-  },
-  "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.4.1",
-    "ts-jest": "^25.2.0"
-  }
->>>>>>> 2ae9e688303df92e098146780204cee776cf378d
 }

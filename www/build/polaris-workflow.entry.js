@@ -180,6 +180,8 @@ class WorkflowService {
     async goto(name) {
         if (!this.process || !this.process.activities)
             return;
+        if (!this.ctx.validator.validate())
+            return;
         const actDef = this.process
             .activities
             .find(a => a.name == name);
@@ -187,6 +189,37 @@ class WorkflowService {
             .execute();
     }
 }
+
+class Validator {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+class RequiredValidator extends Validator {
+    validate(context, control, config) {
+        const value = context.model.getValue(control.id);
+        if (value == null || value == undefined || (value || '').length === 0) {
+            control.error = true;
+            control.errorMessage = config.message;
+            return false;
+        }
+        return true;
+    }
+}
+
+class ValidatorService {
+    constructor(ctx) {
+        this.ctx = ctx;
+    }
+    validate() {
+        console.dir(this.ctx.page);
+        return true;
+    }
+}
+ValidatorService.Validators = [
+    new RequiredValidator("Required")
+];
 
 const PolarisWorkflow = class {
     constructor(hostRef) {
@@ -196,13 +229,17 @@ const PolarisWorkflow = class {
         this.http = new HttpService(this);
         this.config = new ConfigService();
         this.wf = new WorkflowService(this);
+        this.validator = new ValidatorService(this);
         this._components = [];
     }
     processChangeHandler() {
         this._render();
     }
     get controls() { return this._components; }
-    set controls(val) { this._components = val; this._render(); }
+    set controls(val) {
+        this._components = val;
+        this._render();
+    }
     load(process, next = "start") {
         this.wf.setProcess(process, next);
     }
