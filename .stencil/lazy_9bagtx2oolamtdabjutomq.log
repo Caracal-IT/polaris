@@ -1,6 +1,0 @@
-import { registerInstance as __stencil_registerInstance } from "@stencil/core";
-export const PolarisAnalytics = class {
-    constructor(hostRef) {
-        __stencil_registerInstance(this, hostRef);
-    }
-};
