@@ -76,7 +76,7 @@ import { ValidatorService } from "../../services/validator.service";
         this.addErrorLabel(newEl);
     }
 
-    bind(newEl: HTMLElement & Control){
+    private bind(newEl: HTMLElement & Control){
         if(!newEl.id || newEl.value === undefined)
             return;
 
@@ -89,14 +89,14 @@ import { ValidatorService } from "../../services/validator.service";
         newEl.oninput = this.onInput.bind(this, newEl);
     }
 
-    onInput(newEl: HTMLElement & Control) {
+    private onInput(newEl: HTMLElement & Control) {
         this.model.setValue(newEl.id, newEl.value);
 
         if(newEl.hasAttribute('error'))
             this.validator.validate();
     }
 
-    addErrorLabel(newEl: HTMLElement & Control) {
+    private addErrorLabel(newEl: HTMLElement & Control) {
         if(!newEl.validators)
             return;
 
