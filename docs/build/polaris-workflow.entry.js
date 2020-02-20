@@ -211,7 +211,6 @@ class RequiredValidator extends Validator {
             control.el.setAttribute("error", control.error ? "true" : "false");
             control.el.setAttribute("errorMessage", control.errorMessage);
         }
-        console.dir(control);
         return !control.error;
     }
 }
@@ -234,18 +233,19 @@ class ValidatorService {
     validateControl(control) {
         if (!control)
             return true;
+        let isValid = true;
         for (const index in control.controls)
-            return this.validateControl(control.controls[index]);
+            isValid = this.validateControl(control.controls[index]) && isValid;
         if (control.validators && control.validators.length > 0) {
             for (const config of control.validators) {
                 const validator = this.validators.find(v => v.name === config.name);
                 if (!validator)
                     continue;
                 if (!validator.validate(this.ctx, control, config))
-                    return false;
+                    isValid = false;
             }
         }
-        return true;
+        return isValid;
     }
 }
 

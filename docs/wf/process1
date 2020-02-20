@@ -10,7 +10,7 @@
                     "url": "[WF]/user",
                     "method": "GET",
                     "mappings":[
-                        {"client": "process1.item2", "remote": "name", "direction": "in"}
+                        {"client": "register.firstName", "remote": "name", "direction": "in"}
                     ]
                 }
             ]
@@ -21,19 +21,27 @@
         "controls": [
             {
                 "tag": "moon-panel",
-                "caption": "Workflow Tester",
+                "caption": "Registration - Details",
                 "controls": [
+                    {"tag" : "moon-label", "caption": "First Name", "for": "register.firstName"},
                     {
                         "tag": "input", 
-                        "id": "process1.item1", 
+                        "id": "register.firstName", 
                         "value": "Input 20",
                         "validators": [
                             { "name": "Required", "message": "The field is required" }
                         ]
                     },
-                    {"tag": "input", "id": "process1.item2", "value": "Input 40"},
-                    {"tag": "input", "id": "process1.item3" },
-                    {"tag": "moon-button", "caption": "Next", "next": "details"}
+                    {"tag" : "moon-label", "caption": "Surname", "for": "register.lastName"},
+                    {
+                        "tag": "input", 
+                        "id": "register.lastName",
+                        "validators": [
+                            { "name": "Required", "message": "The field is required" }
+                        ]},
+                    {"tag" : "moon-label", "caption": "Nickname", "for": "register.nickName"},
+                    {"tag": "input", "id": "register.nickName" },
+                    {"tag": "moon-button", "caption": "Address Details", "next": "details"}
                 ]
             }
         ]
@@ -44,12 +52,19 @@
             "controls": [
                 {
                     "tag": "moon-panel",
-                    "caption": "Workflow Tester Page 2",
+                    "caption": "Registration - Address Details",
                     "controls": [
-                        {"tag": "input", "id": "process1.item1"},
-                        {"tag": "input", "id": "process1.item4", "value": "Input 32"},
-                        {"tag": "input", "id": "process1.item3", "value": "Input 34"},
-                        {"tag": "moon-button", "caption": "Start", "next": "landing"}
+                        {"tag" : "moon-label", "caption": "First Name", "for": "register.firstName"},
+                        {"tag": "input", "id": "register.firstName"},
+                        {"tag" : "moon-label", "caption": "Address Line 1", "for": "register.addressLine1"},
+                        {"tag": "input", "id": "register.addressLine1", "value": "2 Short Street" },
+                        {"tag" : "moon-label", "caption": "Address Line 2", "for": "register.addressLine2"},
+                        {"tag": "input", "id": "register.addressLine2"},
+                        {"tag" : "moon-label", "caption": "City", "for": "register.city"},
+                        {"tag": "input", "id": "register.city", "value": "Durban"},
+                        {"tag" : "moon-label", "caption": "Country", "for": "register.country"},
+                        {"tag": "input", "id": "register.country", "value": "South Africa"},
+                        {"tag": "moon-button", "caption": "Register Another", "next": "landing"}
                     ]
                 }
             ]

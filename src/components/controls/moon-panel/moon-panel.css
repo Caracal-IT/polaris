@@ -27,18 +27,19 @@ input {
     border-radius: 10px;
     border: 1px solid var(--primary-border-color, #757575);
 }
-  
+
 input:focus {
     outline: none;
     margin: 4px 0;
     border: 2px solid var(--primary-border-color, purple);
 }
 
-moon-button {
-    align-self: flex-end;
+input[error="true"]{
+    margin: 4px 0;
+    background-color: lightpink;
+    border: 2px solid red;
 }
 
-input[error="true"]{
-    background-color: lightpink;
-    border: 2px solid var(--primary-border-color, red);
+moon-button {
+    align-self: flex-end;
 }

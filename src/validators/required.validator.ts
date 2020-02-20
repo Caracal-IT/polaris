@@ -10,7 +10,7 @@ export interface RequiredValidatorConfig {
 export class RequiredValidator extends Validator {
     validate(context: Context, control: Control, config: RequiredValidatorConfig): boolean {
         const value = context.model.getValue(control.id);
-
+        
         control.error = false;
         delete control.errorMessage;
 
@@ -23,9 +23,7 @@ export class RequiredValidator extends Validator {
             control.el.setAttribute("error", control.error ? "true" : "false");
             control.el.setAttribute("errorMessage", control.errorMessage);
         }
-      
-        console.dir(control);
-
+              
         return !control.error;
     }
 }

@@ -10,7 +10,7 @@ export class ValidatorService {
     
     constructor(private ctx: Context){}  
     
-    validate(): boolean {
+    validate(): boolean {        
         if(!this.ctx.page || !this.ctx.page.controls)          
             return true;
         
@@ -18,17 +18,19 @@ export class ValidatorService {
 
         for(const ctrl of this.ctx.page.controls) 
             isValid = this.validateControl(ctrl) && isValid;
-        
+       
         return isValid;
     }  
     
-    private validateControl(control: Control): boolean {
+    private validateControl(control: Control): boolean { 
         if(!control)
             return true;
 
+        let isValid = true;
+            
         for(const index in control.controls)
-            return this.validateControl(control.controls[index]);
-
+            isValid =  this.validateControl(control.controls[index]) && isValid;
+       
         if(control.validators && control.validators.length > 0) {
             for(const config of control.validators) {
                 const validator = this.validators.find(v => v.name === config.name);
@@ -37,10 +39,10 @@ export class ValidatorService {
                     continue;
 
                 if(!validator.validate(this.ctx, control, config))                   
-                    return false;                
+                    isValid =  false;                
             }            
         }
             
-        return true;
+        return isValid;
     }
 }
