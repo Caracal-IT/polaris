@@ -69,25 +69,27 @@ import { ValidatorService } from "../../services/validator.service";
         const newEl = Object.assign(el, control, options);
         control.el = newEl;
         
-        if(newEl.id && newEl.value !== undefined) {
-            const newValue = this.model.getValue(newEl.id);
-
-            if(newValue !== undefined)
-                newEl.value = newValue;
-            
-            this.model.setValue(newEl.id, newEl.value);
-
-            newEl.oninput = (event: any) => {
-                this.model.setValue(event.target.id, event.target.value);
-
-                if(control.error !== undefined)                    
-                    this.validator.validate();
-            }
-        }
-
-        if(control.controls)
-            control.controls.forEach(this.renderComponent.bind(this, newEl));
+        this.bind(newEl);
+        control.controls?.forEach(this.renderComponent.bind(this, newEl));
 
         parent.appendChild(newEl);
+    }
+
+    bind(newEl: HTMLElement & Control){
+        if(!newEl.id || newEl.value === undefined)
+            return;
+
+        const newValue = this.model.getValue(newEl.id);
+
+        if(newValue !== undefined)
+            newEl.value = newValue;
+        
+        this.model.setValue(newEl.id, newEl.value);
+        newEl.oninput = this.onInput.bind(this, newEl);
+    }
+
+    onInput(newEl: Control) {
+        this.model.setValue(newEl.id, newEl.value);
+        this.validator.validate();
     }
   }

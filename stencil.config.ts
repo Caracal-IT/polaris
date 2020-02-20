@@ -15,7 +15,7 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
       copy: [
         { src: 'style.css', dest: 'style.css' },
-        { src: 'workflow/process1.wf.json', dest: 'wf/process1' },
+        { src: 'workflow/registration.wf.json', dest: 'wf/registration' },
         { src: 'workflow/process2.wf.json', dest: 'wf/process2' },
         { src: 'workflow/user.wf.json', dest: 'wf/user' },
         { src: 'redirect.html', dest: 'redirect.html' },

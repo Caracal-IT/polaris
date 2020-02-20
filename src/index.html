@@ -15,29 +15,29 @@
     <header><h1>Polaris Workflow</h1></header>
 
     <aside>
-      <nav><a href="#page1" class="active" id="process1">Process 1</a></nav>
+      <nav><a href="#registration" class="active" id="registration">Registration</a></nav>
       <nav><a href="#page2" id="process2">Process 2</a></nav>
     </aside>
 
     <main>
       <polaris-analytics></polaris-analytics>
-      <polaris-workflow id="wf" process="process1"></polaris-workflow>
+      <polaris-workflow id="wf" process="registration"></polaris-workflow>
     </main>
 
     <script>
       const wf = document.getElementById("wf");
-      const process1 = document.getElementById("process1");
+      const registration = document.getElementById("registration");
       const process2 = document.getElementById("process2");
 
-      process1.addEventListener('click', (event) => {
-        process1.className =  "active";
+      registration.addEventListener('click', (event) => {
+        registration.className =  "active";
         process2.className =  "";
 
-        wf.load('process1');
+        wf.load('registration');
       });
 
       process2.addEventListener('click', (event) => {
-        process1.className =  "";
+        registration.className =  "";
         process2.className =  "active";
 
         wf.load('process2');

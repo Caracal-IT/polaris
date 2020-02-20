@@ -38,7 +38,7 @@ export class ValidatorService {
                 if(!validator)
                     continue;
 
-                if(!validator.validate(this.ctx, control, config))                   
+                if(!validator.validate(this.ctx, control, config))                 
                     isValid =  false;                
             }            
         }
