@@ -40,6 +40,11 @@ input[error="true"]{
     border: 2px solid red;
 }
 
+[wf-error] {
+    color: red;
+    font-weight: bolder;
+}
+
 moon-button {
     align-self: flex-end;
 }

@@ -23,6 +23,10 @@ export class RequiredValidator extends Validator {
             control.el.setAttribute("error", control.error ? "true" : "false");
             control.el.setAttribute("errorMessage", control.errorMessage);
         }
+
+        if(control.el.nextSibling["attributes"]["wf-error"])
+            control.el.nextSibling.textContent = control.errorMessage;
+
               
         return !control.error;
     }

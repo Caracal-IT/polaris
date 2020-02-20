@@ -1,5 +1,5 @@
 {
-    "name" : "process1",
+    "name" : "registration",
     "activities": [
         {
             "name": "start",

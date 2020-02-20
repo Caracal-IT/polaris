@@ -73,6 +73,7 @@ import { ValidatorService } from "../../services/validator.service";
         control.controls?.forEach(this.renderComponent.bind(this, newEl));
 
         parent.appendChild(newEl);
+        this.addErrorLabel(newEl);
     }
 
     bind(newEl: HTMLElement & Control){
@@ -91,5 +92,15 @@ import { ValidatorService } from "../../services/validator.service";
     onInput(newEl: Control) {
         this.model.setValue(newEl.id, newEl.value);
         this.validator.validate();
+    }
+
+    addErrorLabel(newEl: HTMLElement & Control) {
+        if(!newEl.validators)
+            return;
+
+        const errLabel = document.createElement("span");
+        errLabel.setAttribute("wf-error", "error");
+
+        newEl.parentNode.appendChild(errLabel);
     }
   }

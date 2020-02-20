@@ -211,6 +211,8 @@ class RequiredValidator extends Validator {
             control.el.setAttribute("error", control.error ? "true" : "false");
             control.el.setAttribute("errorMessage", control.errorMessage);
         }
+        if (control.el.nextSibling["attributes"]["wf-error"])
+            control.el.nextSibling.textContent = control.errorMessage;
         return !control.error;
     }
 }
@@ -282,6 +284,7 @@ const PolarisWorkflow = class {
         this.controls.forEach(this.renderComponent.bind(this, this.el));
     }
     renderComponent(parent, control) {
+        var _a;
         const el = document.createElement(control.tag);
         const options = {
             "wf-Workflow": "",
@@ -289,21 +292,30 @@ const PolarisWorkflow = class {
         };
         const newEl = Object.assign(el, control, options);
         control.el = newEl;
-        if (newEl.id && newEl.value !== undefined) {
-            const newValue = this.model.getValue(newEl.id);
-            if (newValue !== undefined)
-                newEl.value = newValue;
-            this.model.setValue(newEl.id, newEl.value);
-            newEl.oninput = (event) => {
-                this.model.setValue(event.target.id, event.target.value);
-                if (control.error !== undefined) {
-                    this.validator.validate();
-                }
-            };
-        }
-        if (control.controls)
-            control.controls.forEach(this.renderComponent.bind(this, newEl));
+        this.bind(newEl);
+        (_a = control.controls) === null || _a === void 0 ? void 0 : _a.forEach(this.renderComponent.bind(this, newEl));
         parent.appendChild(newEl);
+        this.addErrorLabel(newEl);
+    }
+    bind(newEl) {
+        if (!newEl.id || newEl.value === undefined)
+            return;
+        const newValue = this.model.getValue(newEl.id);
+        if (newValue !== undefined)
+            newEl.value = newValue;
+        this.model.setValue(newEl.id, newEl.value);
+        newEl.oninput = this.onInput.bind(this, newEl);
+    }
+    onInput(newEl) {
+        this.model.setValue(newEl.id, newEl.value);
+        this.validator.validate();
+    }
+    addErrorLabel(newEl) {
+        if (!newEl.validators)
+            return;
+        const errLabel = document.createElement("span");
+        errLabel.setAttribute("wf-error", "error");
+        newEl.parentNode.appendChild(errLabel);
     }
     get el() { return getElement(this); }
     static get watchers() { return {
