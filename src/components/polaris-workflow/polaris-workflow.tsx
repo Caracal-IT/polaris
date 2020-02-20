@@ -80,9 +80,8 @@ import { ValidatorService } from "../../services/validator.service";
             newEl.oninput = (event: any) => {
                 this.model.setValue(event.target.id, event.target.value);
 
-                if(control.error !== undefined) {                    
+                if(control.error !== undefined)                    
                     this.validator.validate();
-                }
             }
         }
 
