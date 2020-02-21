@@ -19,10 +19,15 @@
                 {"tag" : "moon-label", "caption": "Amounts greater than $40.00 will need approval."},
                 {"tag": "div", 
                  "controls": [
-                    {"tag": "moon-button", "caption": "Next", "next": "checkApprovalNeeded"}
+                    {"tag": "moon-button", "caption": "Next", "next": "login"}
                  ] 
                 }                   
             ]           
+        },
+        {
+            "name": "login",
+            "type": "ipc-activity",
+            "next" : "checkApprovalNeeded"
         },
         {
             "name": "checkApprovalNeeded", 

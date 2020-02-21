@@ -32,14 +32,16 @@ export class WorkflowService {
 
     private async tryNext(name: string) {
         try {
+            this.ctx.page.sendMessage({type: "START_LOADING"});
             this.ctx.page.sendMessage({type: "WORKFLOW_CHANGING"});
             await this.next(name);
+            this.ctx.page.sendMessage({type: "WORKFLOW_CHANGED"});
         }
         catch(err) {
             this.ctx.page.sendMessage({type: "ERROR", description: err?.message, metadata: err});
         }
         finally {
-           this.ctx.page.sendMessage({type: "WORKFLOW_CHANGED"});
+            this.ctx.page.sendMessage({type: "END_LOADING"});
         }
     }
 
@@ -50,15 +52,17 @@ export class WorkflowService {
         if(this.ctx.wf.activity?.type === "page-activity" && !this.ctx.validator.validate())             
             return null;
                 
-        this.activity = this.process
+        let newActivity = this.process
                         .activities
-                        .find(a => a.name == name);        
+                        .find(a => a.name == name);    
+                        
+        if(!newActivity)
+            throw new Error(`Activity ${name} not found`);
 
-        this.ctx.page.sendMessage({type: "START_LOADING"});
-        const result = await ActivityFactory.create(this.activity, this.ctx)
-                                            .execute();
-        this.ctx.page.sendMessage({type: "END_LOADING"});
+        this.activity = newActivity;
 
-        return result;
+        
+        return await ActivityFactory.create(this.activity, this.ctx)
+                                    .execute();
     }
 }
