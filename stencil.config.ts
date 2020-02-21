@@ -16,7 +16,7 @@ export const config: Config = {
       copy: [
         { src: 'style.css', dest: 'style.css' },
         { src: 'workflow/registration.wf.json', dest: 'wf/registration' },
-        { src: 'workflow/process2.wf.json', dest: 'wf/process2' },
+        { src: 'workflow/deposit.wf.json', dest: 'wf/deposit' },
         { src: 'workflow/user.wf.json', dest: 'wf/user' },
         { src: 'redirect.html', dest: 'redirect.html' },
         { src: 'demo', dest: 'demo' }

@@ -1,5 +1,5 @@
 {
-    "name" : "process1",
+    "name" : "deposit",
     "activities": [
         {
             "name": "start",

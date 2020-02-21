@@ -16,7 +16,7 @@
 
     <aside>
       <nav><a href="#registration" class="active" id="registration">Registration</a></nav>
-      <nav><a href="#page2" id="process2">Process 2</a></nav>
+      <nav><a href="#deposit" id="deposit">Deposit</a></nav>
     </aside>
 
     <main>
@@ -27,20 +27,20 @@
     <script>
       const wf = document.getElementById("wf");
       const registration = document.getElementById("registration");
-      const process2 = document.getElementById("process2");
+      const deposit = document.getElementById("deposit");
 
       registration.addEventListener('click', (event) => {
         registration.className =  "active";
-        process2.className =  "";
+        deposit.className =  "";
 
         wf.load('registration');
       });
 
-      process2.addEventListener('click', (event) => {
+      deposit.addEventListener('click', (event) => {
         registration.className =  "";
-        process2.className =  "active";
+        deposit.className =  "active";
 
-        wf.load('process2');
+        wf.load('deposit');
       });
     </script>
   </body>

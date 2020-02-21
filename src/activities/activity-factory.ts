@@ -1,3 +1,6 @@
+import { RedirectActivity } from './redirect.activity';
+import { FinishActivity } from './complete.activity';
+import { IPCActivity } from './ipc.activity';
 import { CodeActivity } from './code.activity';
 import { Activity } from "./activity";
 import { PageActivity } from "./page.activity";
@@ -14,7 +17,10 @@ export class ActivityFactory {
         new ApiActivity(),
         new AssignActivity(),
         new CodeActivity(),
-        new DecisionActivity()
+        new DecisionActivity(),
+        new IPCActivity(),
+        new FinishActivity(),
+        new RedirectActivity()
     ];
 
     static create(config: any, ctx: Context): Activity {
