@@ -3,49 +3,74 @@
     "activities": [
         {
             "name": "start",
-            "type": "api-activity",
-            "next": "landing",
-            "endpoints": [
-                {
-                    "url": "[WF]/user",
-                    "method": "GET",
-                    "mappings":[
-                        {"client": "process1.item2", "remote": "name", "direction": "in"}
-                    ]
-                }
+            "type": "assign-activity",            
+            "key": "banking",
+            "value": null,
+            "next": "landing"
+        },
+        {
+            "name": "landing",
+            "type": "page-activity",        
+            "controls": [
+                {"tag" : "moon-label", "caption": "Account", "for": "banking.account"},
+                {"tag": "input", "id": "banking.account", "value": "Input 20"},                
+                {"tag" : "moon-label", "caption": "Amount", "for": "banking.depositAmount"},
+                {"tag": "input", "id": "banking.depositAmount", "type": "number", "value": "33.00" },
+                {"tag" : "moon-label", "caption": "Amounts greater than $40.00 will need approval."},
+                {"tag": "div", 
+                 "controls": [
+                    {"tag": "moon-button", "caption": "Next", "next": "checkApprovalNeeded"}
+                 ] 
+                }                   
+            ]           
+        },
+        {
+            "name": "checkApprovalNeeded", 
+            "type": "decision-activity",               
+            "trueAction": "approval",
+            "falseAction": "details",
+            "conditions" : [
+                {"left" : "{banking.depositAmount}", "equality": ">", "right": "40"}
             ]
         },
         {
-        "name": "landing",
-        "type": "page-activity",
-        "controls": [
-            {
-                "tag": "moon-panel",
-                "caption": "Workflow Tester Process 2",
-                "controls": [
-                    {"tag": "input", "id": "process1.item1", "value": "Input 20"},
-                    {"tag": "input", "id": "process1.item2", "value": "Input 40"},
-                    {"tag": "input", "id": "process1.item3" },
-                    {"tag": "moon-button", "caption": "Next", "next": "details"}
-                ]
-            }
-        ]
+            "name": "approval",
+            "type": "page-activity",
+            "controls": [
+                {"tag" : "moon-label", "caption": "Approve The transaction for $ {banking.depositAmount}}"},                
+                {"tag": "div", 
+                 "controls": [
+                    {"tag": "moon-button", "caption": "Approve", "next": "details"},
+                    {"tag": "moon-button", "caption": "Decline", "next": "declined"}
+                 ] 
+                }                
+            ]                
+        },
+        {
+            "name": "declined",
+            "type": "page-activity",
+            "controls": [
+                {"tag" : "moon-label", "caption": "Declined"},                
+                {"tag": "div", 
+                 "controls": [
+                    {"tag": "moon-button", "caption": "Start", "next": "details"}
+                 ] 
+                }                
+            ]                
         },
         {
             "name": "details",
             "type": "page-activity",
             "controls": [
-                {
-                    "tag": "moon-panel",
-                    "caption": "Workflow Tester Page 2",
-                    "controls": [
-                        {"tag": "input", "id": "process1.item1"},
-                        {"tag": "input", "id": "process1.item4", "value": "Input 32"},
-                        {"tag": "input", "id": "process1.item3", "value": "Input 34"},
-                        {"tag": "moon-button", "caption": "Start", "next": "landing"}
-                    ]
-                }
-            ]
+                {"tag" : "moon-label", "caption": "Successfull"},                
+                {"tag" : "moon-label", "caption": "Amount", "for": "banking.depositAmount"},
+                {"tag": "input", "id": "banking.depositAmount", "type": "number" },
+                {"tag": "div", 
+                 "controls": [
+                    {"tag": "moon-button", "caption": "Start", "next": "start"}
+                 ] 
+                }                
+            ]                
         }
     ]
 }

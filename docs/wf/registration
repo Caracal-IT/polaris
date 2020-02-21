@@ -3,6 +3,13 @@
     "activities": [
         {
             "name": "start",
+            "type": "assign-activity",
+            "key": "register.lastName",
+            "value": "Mare",
+            "next": "session"
+        },
+        {
+            "name": "session",
             "type": "api-activity",
             "next": "landing",
             "endpoints": [
