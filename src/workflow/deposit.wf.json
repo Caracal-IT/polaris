@@ -15,7 +15,7 @@
                 {"tag" : "moon-label", "caption": "Account", "for": "banking.account"},
                 {"tag": "input", "id": "banking.account", "value": "Input 20"},                
                 {"tag" : "moon-label", "caption": "Amount", "for": "banking.depositAmount"},
-                {"tag": "input", "id": "banking.depositAmount", "type": "number", "value": "33.00" },
+                {"tag": "input", "id": "banking.depositAmount", "type": "number", "value": "33" },
                 {"tag" : "moon-label", "caption": "Amounts greater than $40.00 will need approval."},
                 {"tag": "div", 
                  "controls": [
@@ -46,11 +46,17 @@
                 {"tag" : "moon-label", "caption": "Approve The transaction for $ {banking.depositAmount}}"},                
                 {"tag": "div", 
                  "controls": [
-                    {"tag": "moon-button", "caption": "Approve", "next": "details"},
+                    {"tag": "moon-button", "caption": "Approve", "next": "approve"},
                     {"tag": "moon-button", "caption": "Decline", "next": "declined"}
                  ] 
                 }                
             ]                
+        },
+        {
+            "name": "approve",
+            "type": "redirect-activity",
+            "location": "redirect.html",
+            "next": "details"
         },
         {
             "name": "declined",

@@ -15,13 +15,13 @@
     <header><h1>Polaris Workflow</h1></header>
 
     <aside>
-      <nav><a href="#registration" class="active" id="registration">Registration</a></nav>
+      <nav><a href="#registration" id="registration">Registration</a></nav>
       <nav><a href="#deposit" id="deposit">Deposit</a></nav>
     </aside>
 
     <main>
       <polaris-analytics></polaris-analytics>
-      <polaris-workflow id="wf" process="registration"></polaris-workflow>
+      <polaris-workflow id="wf"></polaris-workflow>
     </main>
 
     <script>
@@ -39,7 +39,10 @@
       customElements
         .whenDefined("polaris-workflow")
         .then(() => {
-          process = window.location.hash.replace('#', '');
+          const params = window.location.hash.replace('#', '').split('-');
+          const process = params[0];
+          const activity = params.length > 1 ? params[1] : 'start';
+          const session = params.length > 2 ? params[2] : null;
 
           const menu = document.getElementById(process);
           
@@ -50,7 +53,7 @@
           menu.className = 'active';
               
           if(process && process.length > 0 && process !== wf.process) 
-            wf.load(process);    
+            wf.load(process, activity, session);    
         });
 
         wf.addEventListener("wfMessage", wfHandler);

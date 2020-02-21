@@ -26,7 +26,7 @@ export namespace Components {
   interface PolarisAnalytics {}
   interface PolarisWorkflow {
     'ctx': Context;
-    'load': (process: any, next?: string) => Promise<void>;
+    'load': (process: any, next?: string, session?: any) => Promise<void>;
     'process': string|object;
     'tag': string;
     'value'?: any;
