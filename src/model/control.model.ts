@@ -6,6 +6,7 @@ export interface Control {
     id?: string;
     ctx: Context;
     value?: any;
+    caption?: string;
     el?: HTMLElement;
 
     error?: boolean;

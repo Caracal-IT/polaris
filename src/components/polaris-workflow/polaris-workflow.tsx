@@ -92,6 +92,7 @@ import { Message } from "../../model/message.model";
         control.el = newEl;
         
         this.bind(newEl);
+        this.bindCaption(newEl);
         control.controls?.forEach(this.renderComponent.bind(this, newEl));
 
         parent.appendChild(newEl);
@@ -109,6 +110,13 @@ import { Message } from "../../model/message.model";
         
         this.model.setValue(newEl.id, newEl.value);
         newEl.oninput = this.onInput.bind(this, newEl);
+    }
+
+    private bindCaption(newEl: HTMLElement & Control) {
+        if(!newEl.caption)
+            return;
+
+        newEl.caption = this.model.getInterpolatedValue(newEl.caption);
     }
 
     private onInput(newEl: HTMLElement & Control) {

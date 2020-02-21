@@ -7,6 +7,20 @@ export class ModelService {
         return val;
     }
 
+    getInterpolatedValue(value: string) {   
+      if(!value)
+        return value;
+  
+      const myRegexp = /\{\{(?:(\w|\.)+)\}\}/g;
+      const match = value.match(myRegexp);
+      
+      if(!match || match.length === 0)
+        return value;
+  
+      return match.reduce((prev, curr) => this.replaceAll(prev, curr), value);
+    }
+  
+
     setValue(key: string, val: any) {
         this.model = this.merge(this.model, key, val);
     }
@@ -51,4 +65,11 @@ export class ModelService {
         return v.toString(16);
       });
     }
+
+    private replaceAll(value: string, key: string) {
+      const newValue = this.getValue(key.substring(2, key.length - 2));
+  
+      return value.replace(key, newValue);
+    }
+  
 }
