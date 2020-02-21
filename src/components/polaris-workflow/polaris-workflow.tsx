@@ -1,4 +1,4 @@
-import { Component, Prop, Element, Watch, Method } from "@stencil/core";
+import { Component, Prop, Element, Watch, Method, Event, EventEmitter } from "@stencil/core";
 
 import { Control } from "../../model/control.model";
 
@@ -8,6 +8,7 @@ import { ModelService } from "../../services/model.service";
 import { ConfigService } from "../../services/config.service";
 import { WorkflowService } from "../../services/workflow.service";
 import { ValidatorService } from "../../services/validator.service";
+import { Message } from "../../model/message.model";
 
 @Component({
     tag: "polaris-workflow",
@@ -36,6 +37,9 @@ import { ValidatorService } from "../../services/validator.service";
         this._render();
     }
 
+    @Event()
+    wfMessage: EventEmitter;
+
     get controls(){return this._components; }
     set controls(val: any) { 
         this._components = val; 
@@ -45,6 +49,19 @@ import { ValidatorService } from "../../services/validator.service";
     @Method()
     async load(process: any, next = "start"){
         await this.wf.setProcess(process, next);       
+    }
+
+    sendMessage(message: Message): void {
+        const metaData = {
+            process: this.wf.process?.name,
+            activity: this.wf.activity?.name,
+            activityType: this.wf.activity?.type,
+            timestamp: Date.now()
+        };
+
+        const msg = {...message, ...metaData};
+
+        this.wfMessage.emit(msg);
     }
 
     componentWillLoad(){

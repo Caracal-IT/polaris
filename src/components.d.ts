@@ -89,6 +89,7 @@ declare namespace LocalJSX {
   interface PolarisAnalytics {}
   interface PolarisWorkflow {
     'ctx'?: Context;
+    'onWfMessage'?: (event: CustomEvent<any>) => void;
     'process'?: string|object;
     'tag'?: string;
     'value'?: any;

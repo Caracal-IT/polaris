@@ -18,25 +18,47 @@ export class WorkflowService {
             this.process = process; 
             this.activity = null;
 
-            await this.goto(next);
+            this.goto(next);
         }
-        catch(ex) {
-            console.error(ex);
+        catch(err) {
+            if(err)
+                this.ctx.page.sendMessage({type: "ERROR", description: err.message, metadata: err});
         }
     }
 
-    async goto(name: string) {
+    goto(name: string) {
+        setTimeout(this.tryNext.bind(this, name));    
+    }
+
+    private async tryNext(name: string) {
+        try {
+            this.ctx.page.sendMessage({type: "WORKFLOW_CHANGING"});
+            await this.next(name);
+        }
+        catch(err) {
+            this.ctx.page.sendMessage({type: "ERROR", description: err?.message, metadata: err});
+        }
+        finally {
+           this.ctx.page.sendMessage({type: "WORKFLOW_CHANGED"});
+        }
+    }
+
+    private async next(name: string) {
         if(!this.process || !this.process.activities)
-            return;
-        
+        return null;
+    
         if(this.ctx.wf.activity?.type === "page-activity" && !this.ctx.validator.validate())             
-            return;
+            return null;
                 
         this.activity = this.process
-                           .activities
-                           .find(a => a.name == name);        
+                        .activities
+                        .find(a => a.name == name);        
 
-        return ActivityFactory.create(this.activity, this.ctx)
-                              .execute();
+        this.ctx.page.sendMessage({type: "START_LOADING"});
+        const result = await ActivityFactory.create(this.activity, this.ctx)
+                                            .execute();
+        this.ctx.page.sendMessage({type: "END_LOADING"});
+
+        return result;
     }
 }

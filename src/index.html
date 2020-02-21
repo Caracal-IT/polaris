@@ -39,7 +39,6 @@
       customElements
         .whenDefined("polaris-workflow")
         .then(() => {
-          const urlParams = new URLSearchParams(window);
           process = window.location.hash.replace('#', '');
 
           const menu = document.getElementById(process);
@@ -50,9 +49,36 @@
           menus.forEach(i => i.className = '');
           menu.className = 'active';
               
-          if(process && process.length > 0) 
+          if(process && process.length > 0 && process !== wf.process) 
             wf.load(process);    
         });
+
+        wf.addEventListener("wfMessage", wfHandler);
+
+        function wfHandler(error) {
+          const msg = error.detail;
+
+          switch (msg.messageType) {
+            case "ERROR": return showMessage(msg);
+            case "VALIDATION_ERROR": return showMessage(msg);
+            case "START_LOADING": return showLoading(msg);
+            case "END_LOADING": return hideLoading(msg);
+            case "WORKFLOW_CHANGING": return showMessage(msg);
+            case "WORKFLOW_CHANGED": return showMessage(msg);
+          }  
+        }
+
+        function showMessage(msg) {
+
+        }
+
+        function showLoading(msg) {
+
+        }   
+        
+        function hideLoading(msg) {
+
+        }
     </script>
   </body>
 </html>

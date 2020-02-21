@@ -38,11 +38,24 @@ export class ValidatorService {
                 if(!validator)
                     continue;
 
-                if(!validator.validate(this.ctx, control, config))                 
-                    isValid =  false;                
+                if(!validator.validate(this.ctx, control, config)) {                
+                    isValid =  false;    
+                    this.sendErrorMsg(validator, control);
+                }
             }            
         }
             
         return isValid;
+    }
+
+    private sendErrorMsg(validator: Validator, control: Control) {
+        this.ctx.page.sendMessage({
+            type: "VALIDATION_ERROR",
+            description: control.errorMessage,
+            metadata: {
+                validator: validator.name,
+                control: control.id
+            }
+        });
     }
 }
