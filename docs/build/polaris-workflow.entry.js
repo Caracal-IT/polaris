@@ -26,13 +26,17 @@ class HttpService {
     }
 }
 
+function currencyFormat(value, [locale, currency]) {
+    var formatter = new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency: currency,
+    });
+    return formatter.format(+value);
+}
+
 class PipeFactory {
-    currencyFormat(value, [locale, currency]) {
-        var formatter = new Intl.NumberFormat(locale, {
-            style: 'currency',
-            currency: currency,
-        });
-        return formatter.format(+value);
+    constructor() {
+        this.currencyFormat = currencyFormat;
     }
 }
 
