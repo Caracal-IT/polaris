@@ -12,8 +12,9 @@
             "name": "landing",
             "type": "page-activity",        
             "controls": [
+                {"tag" : "moon-header", "caption": "Deposit" },
                 {"tag" : "moon-label", "caption": "Account", "for": "banking.account"},
-                {"tag": "input", "id": "banking.account", "value": "Input 20"},                
+                {"tag": "input", "id": "banking.account", "value": "445-56654-556t66-666"},                
                 {"tag" : "moon-label", "caption": "Amount", "for": "banking.depositAmount"},
                 {"tag": "input", "id": "banking.depositAmount", "type": "number", "value": "33" },
                 {"tag" : "moon-label", "caption": "Amounts greater than $40.00 will need approval."},
@@ -43,6 +44,7 @@
             "name": "approval",
             "type": "page-activity",
             "controls": [
+                {"tag" : "moon-header", "caption": "Approval" },
                 {"tag" : "moon-label", "caption": "Approve The transaction for $ {banking.depositAmount}}"},                
                 {"tag": "div", 
                  "controls": [
@@ -62,6 +64,7 @@
             "name": "declined",
             "type": "page-activity",
             "controls": [
+                {"tag" : "moon-header", "caption": "Declined" },
                 {"tag" : "moon-label", "caption": "Declined"},                
                 {"tag": "div", 
                  "controls": [
@@ -73,7 +76,8 @@
         {
             "name": "details",
             "type": "page-activity",
-            "controls": [             
+            "controls": [   
+                {"tag" : "moon-header", "caption": "Deposit - Success" },          
                 {"tag" : "moon-label", "caption": "Username", "for": "login.username"},
                 {"tag": "input", "id": "login.username"}, 
                 {"tag" : "moon-label", "caption": "Amount", "for": "banking.depositAmount"},

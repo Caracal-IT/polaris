@@ -17,11 +17,16 @@ export class ModelService {
 
     load(): object {        
       const value = sessionStorage.getItem(this.sessionId);  
+      this.clearCache();
       
       if(!value)
           return;
       
       this.model =  JSON.parse(value);
+    }
+
+    clearCache() {
+      sessionStorage.clear();
     }
 
     private merge(model: any, name: string, value: any) {

@@ -44,6 +44,8 @@
           const activity = params.length > 1 ? params[1] : 'start';
           const session = params.length > 2 ? params[2] : null;
 
+          window.location.hash = process;
+
           const menu = document.getElementById(process);
           
           if(!menu) 
