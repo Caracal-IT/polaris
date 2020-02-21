@@ -45,7 +45,7 @@
             "type": "page-activity",
             "controls": [
                 {"tag" : "moon-header", "caption": "Approval" },
-                {"tag" : "moon-label", "caption": "Approve The transaction for $ {banking.depositAmount}}"},                
+                {"tag" : "moon-label", "caption": "Approve The transaction for $ {{banking.depositAmount}}"},                
                 {"tag": "div", 
                  "controls": [
                     {"tag": "moon-button", "caption": "Approve", "next": "approve"},
