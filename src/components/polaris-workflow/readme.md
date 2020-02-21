@@ -15,9 +15,16 @@
 | `value`   | `value`   |             | `any`              | `undefined` |
 
 
+## Events
+
+| Event       | Description | Type               |
+| ----------- | ----------- | ------------------ |
+| `wfMessage` |             | `CustomEvent<any>` |
+
+
 ## Methods
 
-### `load(process: any, next?: string) => Promise<void>`
+### `load(process: any, next?: string, sessionId?: string) => Promise<void>`
 
 
 

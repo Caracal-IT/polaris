@@ -1,0 +1,25 @@
+{
+    "name" : "login",
+    "activities": [
+        {
+            "name": "start",
+            "type": "page-activity",            
+            "controls": [
+                {"tag" : "moon-header", "caption": "Login" },
+                {"tag" : "moon-label", "caption": "Username", "for": "login.username"},
+                {"tag": "input", "id": "login.username"},                
+                {"tag" : "moon-label", "caption": "Password", "for": "login.password"},
+                {"tag": "input", "id": "login.password", "type": "password" },
+                {"tag": "div", 
+                 "controls": [
+                    {"tag": "moon-button", "caption": "Login", "next": "login"}
+                 ] 
+                }                   
+            ]        
+        },
+        {
+            "name": "login",
+            "type": "finish-activity"
+        }
+    ]
+}

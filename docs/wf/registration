@@ -4,8 +4,8 @@
         {
             "name": "start",
             "type": "assign-activity",
-            "key": "register.lastName",
-            "value": "Mare",
+            "key": "register.nickName",
+            "value": "Lourens",
             "next": "session"
         },
         {
