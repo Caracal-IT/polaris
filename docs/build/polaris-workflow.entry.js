@@ -62,6 +62,51 @@ class ConfigService {
     }
 }
 
+class RedirectActivity {
+    constructor() {
+        this.name = "redirect";
+        this.type = "redirect-activity";
+    }
+    async execute() {
+        if (!this.ctx || !this.ctx.wf)
+            return false;
+        console.log("Redirect Activity");
+        if (this.next && this.next.length > 0)
+            this.ctx.wf.goto(this.next);
+        return true;
+    }
+}
+
+class FinishActivity {
+    constructor() {
+        this.name = "finish";
+        this.type = "finish-activity";
+    }
+    async execute() {
+        if (!this.ctx || !this.ctx.wf)
+            return false;
+        console.log("Finish Activity");
+        if (this.next && this.next.length > 0)
+            this.ctx.wf.goto(this.next);
+        return true;
+    }
+}
+
+class IPCActivity {
+    constructor() {
+        this.name = "ipc";
+        this.type = "ipc-activity";
+    }
+    async execute() {
+        if (!this.ctx || !this.ctx.wf)
+            return false;
+        console.log("IPC Activity");
+        if (this.next && this.next.length > 0)
+            this.ctx.wf.goto(this.next);
+        return true;
+    }
+}
+
 class CodeActivity {
     constructor() {
         this.name = "code";
@@ -235,7 +280,10 @@ ActivityFactory.activities = [
     new ApiActivity(),
     new AssignActivity(),
     new CodeActivity(),
-    new DecisionActivity()
+    new DecisionActivity(),
+    new IPCActivity(),
+    new FinishActivity(),
+    new RedirectActivity()
 ];
 
 class WorkflowService {
