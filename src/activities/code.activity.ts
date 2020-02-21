@@ -1,7 +1,7 @@
 import { Activity } from "./activity";
 import { Context } from "../model/context.model";
 
-export class DecisionActivity implements Activity {
+export class CodeActivity implements Activity {
     name = "code";
     type = "code-activity";
 

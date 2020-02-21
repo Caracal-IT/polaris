@@ -15,7 +15,7 @@
                 {"tag" : "moon-label", "caption": "Account", "for": "banking.account"},
                 {"tag": "input", "id": "banking.account", "value": "Input 20"},                
                 {"tag" : "moon-label", "caption": "Amount", "for": "banking.depositAmount"},
-                {"tag": "input", "id": "banking.depositAmount", "type": "number" },
+                {"tag": "input", "id": "banking.depositAmount", "type": "number", "value": "33.00" },
                 {"tag" : "moon-label", "caption": "Amounts greater than $40.00 will need approval."},
                 {"tag": "div", 
                  "controls": [
@@ -26,12 +26,11 @@
         },
         {
             "name": "checkApprovalNeeded", 
-            "type": "decision-activity",   
-            "next": "details",
+            "type": "decision-activity",               
             "trueAction": "approval",
             "falseAction": "details",
             "conditions" : [
-                {"left" : "banking.depositAmount", "equality": ">", "right": "40"}
+                {"left" : "{banking.depositAmount}", "equality": ">", "right": "40"}
             ]
         },
         {
@@ -63,6 +62,7 @@
             "name": "details",
             "type": "page-activity",
             "controls": [
+                {"tag" : "moon-label", "caption": "Successfull"},                
                 {"tag" : "moon-label", "caption": "Amount", "for": "banking.depositAmount"},
                 {"tag": "input", "id": "banking.depositAmount", "type": "number" },
                 {"tag": "div", 

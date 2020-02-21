@@ -1,3 +1,4 @@
+import { CodeActivity } from './code.activity';
 import { Activity } from "./activity";
 import { PageActivity } from "./page.activity";
 import { NullActivity } from "./null.activity";
@@ -12,6 +13,7 @@ export class ActivityFactory {
         new PageActivity(),
         new ApiActivity(),
         new AssignActivity(),
+        new CodeActivity(),
         new DecisionActivity()
     ];
 
