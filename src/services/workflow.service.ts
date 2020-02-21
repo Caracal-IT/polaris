@@ -4,9 +4,16 @@ import { Context } from "../model/context.model";
 import { Process } from "../model/process.model";
 import { Activity } from "../activities/activity";
 
+export interface WFStack {
+    process: string;
+    activity: string;
+}
+
 export class WorkflowService {
     process?:Process;
     activity: Activity;
+
+    stack: Array<WFStack> = [];
 
     constructor(private ctx: Context){}
     

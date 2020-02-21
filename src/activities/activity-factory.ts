@@ -1,5 +1,5 @@
 import { RedirectActivity } from './redirect.activity';
-import { FinishActivity } from './complete.activity';
+import { FinishActivity } from './finish.activity';
 import { IPCActivity } from './ipc.activity';
 import { CodeActivity } from './code.activity';
 import { Activity } from "./activity";
