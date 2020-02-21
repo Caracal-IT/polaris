@@ -16,7 +16,6 @@ import { Message } from "../../model/message.model";
   })
   export class PolarisWorkflow implements Control {    
     page = this;
-    session = '';
 
     model: ModelService = new ModelService();
     http: HttpService = new HttpService(this);
@@ -48,8 +47,11 @@ import { Message } from "../../model/message.model";
     }
     
     @Method()
-    async load(process: any, next = "start", session = null){
-        this.session = session||'EEEE';
+    async load(process: any, next = "start", sessionId = ''){
+        if(sessionId && sessionId.length > 0) {
+            this.ctx.model.sessionId = sessionId;
+            this.ctx.model.load();
+        }
         
         await this.wf.setProcess(process, next);       
     }

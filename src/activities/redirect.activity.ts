@@ -13,7 +13,10 @@ export class RedirectActivity implements Activity {
         if(!this.ctx || !this.ctx.wf)
             return false;
 
-        window.location.href = `${this.location}?returnUrl=${this.ctx.wf.process?.name}-${this.next}`;    
+        this.ctx.model.save();
+        
+        const params = `${this.ctx.wf.process?.name}-${this.next}-${this.ctx.model.sessionId}`;
+        window.location.href = `${this.location}?returnUrl=${params}`;    
         return true;
     }
 }
