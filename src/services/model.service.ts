@@ -1,6 +1,9 @@
+import { PipeFactory } from "../pipes/factory.pipe";
+
 export class ModelService {
     model = {};
     sessionId = this.UUID();
+    pipes = new PipeFactory();
 
     getValue(key: string, model: any = this.model) {
         const val = key.split(".").reduce((total, currentElement) => total ? total[currentElement]: undefined, {...model});
@@ -11,7 +14,7 @@ export class ModelService {
       if(!value)
         return value;
   
-      const myRegexp = /\{\{(?:(\w|\.)+)\}\}/g;
+      const myRegexp = /\{\{(?:(\w|\.|\||-)+)\}\}/g;
       const match = value.match(myRegexp);
       
       if(!match || match.length === 0)
@@ -67,8 +70,14 @@ export class ModelService {
     }
 
     private replaceAll(value: string, key: string) {
-      const newValue = this.getValue(key.substring(2, key.length - 2));
-  
+      const expr = key.substring(2, key.length - 2);
+      const values = expr.split('|');
+      const params = values.slice(2);
+      let newValue = this.getValue(values[0]);
+
+      if(values && values.length > 1 && this.pipes[values[1]])
+        newValue = this.pipes[values[1]](newValue, params);
+      
       return value.replace(key, newValue);
     }
   
