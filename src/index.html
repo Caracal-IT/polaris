@@ -45,14 +45,12 @@
           const session = params.length > 2 ? params[2] : null;
 
           window.location.hash = process;
-
           const menu = document.getElementById(process);
           
-          if(!menu) 
-            return;
-
-          menus.forEach(i => i.className = '');
-          menu.className = 'active';
+          if(menu) {
+            menus.forEach(i => i.className = '');
+            menu.className = 'active';
+          }
               
           if(process && process.length > 0 && process !== wf.process) 
             wf.load(process, activity, session);    
