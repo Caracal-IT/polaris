@@ -59,3 +59,36 @@ a.active {
     color: purple;
     background-color: rgb(238, 177, 238);
 }
+
+/* WF Controls */
+#wf {
+    display: inline-block;
+    width: 600px;
+}
+
+input {
+    font-size: 1rem;
+    padding: .8rem .8rem .8rem .4rem;
+    margin: 5px 1px;
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--primary-border-color, #757575);
+}
+
+input:focus {
+    outline: none;
+    margin: 4px 0;
+    border: 2px solid var(--primary-border-color, purple);
+}
+
+input[error="true"]{
+    margin: 4px 0;
+    background-color: lightpink;
+    border: 2px solid red;
+}
+
+[wf-error] {
+    color: red;
+    font-weight: bolder;
+}
