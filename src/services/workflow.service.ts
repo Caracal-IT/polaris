@@ -19,10 +19,8 @@ export class WorkflowService {
     
     async setProcess(process: any, next = "start") {
         try {
-            if(typeof process === "string") { 
-                this.ctx.page.sendMessage({type: "START_LOADING"});
+            if(typeof process === "string") 
                 process = await this.ctx.http.fetch({url: `[WF]/${process}`, method: 'get'});
-            }
 
             this.process = process; 
             this.activity = null;
