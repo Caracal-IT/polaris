@@ -48,7 +48,7 @@ export class WorkflowService {
             this.ctx.page.sendMessage({type: "ERROR", description: err?.message, metadata: err});
         }
         finally {
-            this.ctx.page.sendMessage({type: "END_LOADING"});
+            setTimeout(() => { this.ctx.page.sendMessage({type: "END_LOADING"})});
         }
     }
 
