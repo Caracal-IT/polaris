@@ -1,0 +1,1 @@
+import{r as t,h as r}from"./p-6eb4fc33.js";const s=class{constructor(r){t(this,r)}render(){return r("span",null,this.caption)}static get style(){return""}};export{s as moon_label};

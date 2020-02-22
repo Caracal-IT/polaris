@@ -27,10 +27,16 @@ export namespace Components {
     'caption': string;
   }
   interface PolarisAnalytics {}
+  interface PolarisApp {}
+  interface PolarisHeader {}
+  interface PolarisMain {}
+  interface PolarisMenu {}
   interface PolarisWorkflow {
+    'activity': string;
     'ctx': Context;
     'load': (process: any, next?: string, sessionId?: string) => Promise<void>;
     'process': string|object;
+    'sessionId': string;
     'tag': string;
     'value'?: any;
   }
@@ -69,6 +75,30 @@ declare global {
     new (): HTMLPolarisAnalyticsElement;
   };
 
+  interface HTMLPolarisAppElement extends Components.PolarisApp, HTMLStencilElement {}
+  var HTMLPolarisAppElement: {
+    prototype: HTMLPolarisAppElement;
+    new (): HTMLPolarisAppElement;
+  };
+
+  interface HTMLPolarisHeaderElement extends Components.PolarisHeader, HTMLStencilElement {}
+  var HTMLPolarisHeaderElement: {
+    prototype: HTMLPolarisHeaderElement;
+    new (): HTMLPolarisHeaderElement;
+  };
+
+  interface HTMLPolarisMainElement extends Components.PolarisMain, HTMLStencilElement {}
+  var HTMLPolarisMainElement: {
+    prototype: HTMLPolarisMainElement;
+    new (): HTMLPolarisMainElement;
+  };
+
+  interface HTMLPolarisMenuElement extends Components.PolarisMenu, HTMLStencilElement {}
+  var HTMLPolarisMenuElement: {
+    prototype: HTMLPolarisMenuElement;
+    new (): HTMLPolarisMenuElement;
+  };
+
   interface HTMLPolarisWorkflowElement extends Components.PolarisWorkflow, HTMLStencilElement {}
   var HTMLPolarisWorkflowElement: {
     prototype: HTMLPolarisWorkflowElement;
@@ -80,6 +110,10 @@ declare global {
     'moon-label': HTMLMoonLabelElement;
     'moon-panel': HTMLMoonPanelElement;
     'polaris-analytics': HTMLPolarisAnalyticsElement;
+    'polaris-app': HTMLPolarisAppElement;
+    'polaris-header': HTMLPolarisHeaderElement;
+    'polaris-main': HTMLPolarisMainElement;
+    'polaris-menu': HTMLPolarisMenuElement;
     'polaris-workflow': HTMLPolarisWorkflowElement;
   }
 }
@@ -100,10 +134,16 @@ declare namespace LocalJSX {
     'caption'?: string;
   }
   interface PolarisAnalytics {}
+  interface PolarisApp {}
+  interface PolarisHeader {}
+  interface PolarisMain {}
+  interface PolarisMenu {}
   interface PolarisWorkflow {
+    'activity'?: string;
     'ctx'?: Context;
     'onWfMessage'?: (event: CustomEvent<any>) => void;
     'process'?: string|object;
+    'sessionId'?: string;
     'tag'?: string;
     'value'?: any;
   }
@@ -114,6 +154,10 @@ declare namespace LocalJSX {
     'moon-label': MoonLabel;
     'moon-panel': MoonPanel;
     'polaris-analytics': PolarisAnalytics;
+    'polaris-app': PolarisApp;
+    'polaris-header': PolarisHeader;
+    'polaris-main': PolarisMain;
+    'polaris-menu': PolarisMenu;
     'polaris-workflow': PolarisWorkflow;
   }
 }
@@ -129,6 +173,10 @@ declare module "@stencil/core" {
       'moon-label': LocalJSX.MoonLabel & JSXBase.HTMLAttributes<HTMLMoonLabelElement>;
       'moon-panel': LocalJSX.MoonPanel & JSXBase.HTMLAttributes<HTMLMoonPanelElement>;
       'polaris-analytics': LocalJSX.PolarisAnalytics & JSXBase.HTMLAttributes<HTMLPolarisAnalyticsElement>;
+      'polaris-app': LocalJSX.PolarisApp & JSXBase.HTMLAttributes<HTMLPolarisAppElement>;
+      'polaris-header': LocalJSX.PolarisHeader & JSXBase.HTMLAttributes<HTMLPolarisHeaderElement>;
+      'polaris-main': LocalJSX.PolarisMain & JSXBase.HTMLAttributes<HTMLPolarisMainElement>;
+      'polaris-menu': LocalJSX.PolarisMenu & JSXBase.HTMLAttributes<HTMLPolarisMenuElement>;
       'polaris-workflow': LocalJSX.PolarisWorkflow & JSXBase.HTMLAttributes<HTMLPolarisWorkflowElement>;
     }
   }

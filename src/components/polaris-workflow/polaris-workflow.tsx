@@ -30,11 +30,14 @@ import { Message } from "../../model/message.model";
     @Prop() value?: any;  
 
     @Prop() process: string|object;
+    @Prop() activity: string;
+    @Prop() sessionId: string;
+    
     @Element() el: HTMLElement;
 
     @Watch("process")
-    processChangeHandler() {                       
-        this._render();
+    processChangeHandler() {       
+        this.load(this.process, this.activity, this.sessionId);
     }
 
     @Event()
@@ -71,7 +74,7 @@ import { Message } from "../../model/message.model";
 
     componentWillLoad(){
         if(this.process)
-            this.load(this.process);
+            this.load(this.process, this.activity, this.sessionId);
     }
 
     _render() {           

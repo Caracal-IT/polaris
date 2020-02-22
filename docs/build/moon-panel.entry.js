@@ -1,4 +1,4 @@
-import { r as registerInstance, c as getElement } from './core-63e25ceb.js';
+import { r as registerInstance, c as getElement } from './core-0e88e524.js';
 
 const MoonPanel = class {
     constructor(hostRef) {

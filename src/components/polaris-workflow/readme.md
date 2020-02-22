@@ -7,12 +7,14 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type               | Default     |
-| --------- | --------- | ----------- | ------------------ | ----------- |
-| `ctx`     | --        |             | `Context`          | `this`      |
-| `process` | `process` |             | `object \| string` | `undefined` |
-| `tag`     | `tag`     |             | `string`           | `undefined` |
-| `value`   | `value`   |             | `any`              | `undefined` |
+| Property    | Attribute    | Description | Type               | Default     |
+| ----------- | ------------ | ----------- | ------------------ | ----------- |
+| `activity`  | `activity`   |             | `string`           | `undefined` |
+| `ctx`       | --           |             | `Context`          | `this`      |
+| `process`   | `process`    |             | `object \| string` | `undefined` |
+| `sessionId` | `session-id` |             | `string`           | `undefined` |
+| `tag`       | `tag`        |             | `string`           | `undefined` |
+| `value`     | `value`      |             | `any`              | `undefined` |
 
 
 ## Events
@@ -34,6 +36,19 @@ Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Used by
+
+ - [polaris-main](../app/polaris-main)
+
+### Graph
+```mermaid
+graph TD;
+  polaris-main --> polaris-workflow
+  style polaris-workflow fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

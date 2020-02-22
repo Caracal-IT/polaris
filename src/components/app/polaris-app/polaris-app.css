@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+:host {
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: stretch;
+}
+
+div {
+    display: flex;
+    height: 100%;
+}
+
+polaris-header {
+    flex: 0 0 50px;
+}
+
+polaris-menu {
+    flex: 0 0 150px;
+}
+
+polaris-main {
+    flex: 1;
+}

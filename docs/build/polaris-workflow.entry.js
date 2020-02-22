@@ -1,4 +1,4 @@
-import { r as registerInstance, d as createEvent, c as getElement } from './core-63e25ceb.js';
+import { r as registerInstance, d as createEvent, c as getElement } from './core-0e88e524.js';
 
 class HttpService {
     constructor(ctx) {
@@ -27,7 +27,7 @@ class HttpService {
 }
 
 function currencyFormat(value, [locale, currency]) {
-    var formatter = new Intl.NumberFormat(locale, {
+    const formatter = new Intl.NumberFormat(locale, {
         style: 'currency',
         currency: currency,
     });
@@ -484,7 +484,7 @@ const PolarisWorkflow = class {
         this.wfMessage = createEvent(this, "wfMessage", 7);
     }
     processChangeHandler() {
-        this._render();
+        this.load(this.process, this.activity, this.sessionId);
     }
     get controls() { return this._components; }
     set controls(val) {
@@ -511,7 +511,7 @@ const PolarisWorkflow = class {
     }
     componentWillLoad() {
         if (this.process)
-            this.load(this.process);
+            this.load(this.process, this.activity, this.sessionId);
     }
     _render() {
         for (let i = this.el.childNodes.length - 1; i >= 0; i--)

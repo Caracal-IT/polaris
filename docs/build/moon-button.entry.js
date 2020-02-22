@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './core-63e25ceb.js';
+import { r as registerInstance, h } from './core-0e88e524.js';
 
 const MoonButton = class {
     constructor(hostRef) {
