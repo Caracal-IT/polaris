@@ -19,8 +19,10 @@ export class WorkflowService {
     
     async setProcess(process: any, next = "start") {
         try {
-            if(typeof process === "string")    
+            if(typeof process === "string") { 
+                this.ctx.page.sendMessage({type: "START_LOADING"});
                 process = await this.ctx.http.fetch({url: `[WF]/${process}`, method: 'get'});
+            }
 
             this.process = process; 
             this.activity = null;
@@ -39,7 +41,7 @@ export class WorkflowService {
 
     private async tryNext(name: string) {
         try {
-            //this.ctx.page.sendMessage({type: "START_LOADING"});
+            this.ctx.page.sendMessage({type: "START_LOADING"});
             this.ctx.page.sendMessage({type: "WORKFLOW_CHANGING"});
             await this.next(name);
             this.ctx.page.sendMessage({type: "WORKFLOW_CHANGED"});
@@ -48,7 +50,7 @@ export class WorkflowService {
             this.ctx.page.sendMessage({type: "ERROR", description: err?.message, metadata: err});
         }
         finally {
-            //this.ctx.page.sendMessage({type: "END_LOADING"});
+            setTimeout(() => this.ctx.page.sendMessage({type: "END_LOADING"}));
         }
     }
 
