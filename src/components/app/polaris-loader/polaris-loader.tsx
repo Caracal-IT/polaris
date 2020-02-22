@@ -6,23 +6,24 @@ import { Component, Listen, h, State } from "@stencil/core";
     shadow: true
   })
   export class PolarisLoader {  
-    @State() className = 'hidden';
+    @State() isVisible = false;
 
     @Listen('wfMessage', { target: 'document' })
     wfMessage(event: any){
         const msg = event.detail;
 
-        switch (msg.messageType) {
+        switch (msg.type) {
           //case "ERROR": return showMessage(msg);
           //case "VALIDATION_ERROR": return showMessage(msg);
-          case "START_LOADING": this.className = '';
-          case "END_LOADING": this.className = 'hidden';
+          case "START_LOADING": this.isVisible = true; break;
+          case "END_LOADING": this.isVisible = false; break;
          // case "WORKFLOW_CHANGING": return showMessage(msg);
           //case "WORKFLOW_CHANGED": return showMessage(msg);
-        }  
+        } 
     }
 
     render() {
-        return <div id="loadingPanel" class={this.className}></div>;
+        if(this.isVisible)
+            return <div id="loadingPanel"></div>;
     }
   }
