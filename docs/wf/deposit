@@ -17,7 +17,7 @@
                 {"tag": "input", "id": "banking.account", "value": "445-56654-55666-666"},                
                 {"tag" : "moon-label", "caption": "Amount", "for": "banking.depositAmount"},
                 {"tag": "input", "id": "banking.depositAmount", "type": "number", "value": "43" },
-                {"tag" : "div", "className": "text", "innerHTML": "Amounts greater than <b class='error'>$40.00</b> will need approval."},
+                {"tag" : "div", "className": "text", "innerHTML": "Amounts greater than <b class='error'>{{40.00|currencyFormat|en-ZA|ZAR}}</b> will need approval."},
                 {"tag": "div", 
                  "controls": [
                     {"tag": "moon-button", "caption": "Next", "next": "login"}
@@ -68,7 +68,7 @@
                 {"tag" : "moon-label", "caption": "Declined"},                
                 {"tag": "div", 
                  "controls": [
-                    {"tag": "moon-button", "caption": "Start", "next": "details"}
+                    {"tag": "moon-button", "caption": "Deposit", "next": "details"}
                  ] 
                 }                
             ]                
@@ -85,7 +85,7 @@
                 }, 
                 {"tag": "div", 
                  "controls": [
-                    {"tag": "moon-button", "caption": "Start", "next": "start"}
+                    {"tag": "moon-button", "caption": "Deposit", "next": "start"}
                  ] 
                 }                
             ]                
