@@ -65,10 +65,14 @@
             "type": "page-activity",
             "controls": [
                 {"tag" : "moon-header", "caption": "Declined" },
-                {"tag" : "moon-label", "caption": "Declined"},                
+                {
+                    "tag" : "div", 
+                    "className": "text",
+                    "innerHTML": "The transaction was <span class='error'>declined</span>.<br/>Please try again."
+                },                
                 {"tag": "div", 
                  "controls": [
-                    {"tag": "moon-button", "caption": "Deposit", "next": "details"}
+                    {"tag": "moon-button", "caption": "Deposit", "next": "start"}
                  ] 
                 }                
             ]                
