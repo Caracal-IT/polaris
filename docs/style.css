@@ -66,6 +66,24 @@ a.active {
     width: 600px;
 }
 
+h1 {
+    color: purple;
+}
+
+.text {
+    margin: 5px;
+    color: #757575;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: darkgreen;
+    font-weight: bolder;
+}
+
 input {
     font-size: 1rem;
     padding: .8rem .8rem .8rem .4rem;
