@@ -1,4 +1,4 @@
-import { Component, h, Listen, State } from "@stencil/core";
+import { Component, Element, Listen, h} from "@stencil/core";
 
 @Component({
     tag: "polaris-main",
@@ -6,10 +6,12 @@ import { Component, h, Listen, State } from "@stencil/core";
     shadow: true
   })
   export class PolarisMain {  
-    @State() process: string;
-    @State() activity: string
-    @State() sessionId: string|null|undefined
-   
+    @Element() el: HTMLPolarisMainElement;
+
+    process: string;
+    activity: string;
+    sessionId: string;
+
     @Listen('hashchange', {target:'window'})
     locationChangeHandler() {
         this.setProcess();
@@ -25,13 +27,17 @@ import { Component, h, Listen, State } from "@stencil/core";
 
     private setProcess() {
         const params = window.location.hash.replace('#', '').split('-');
-    
+  
         if(this.process === params[0])
             return;
 
+        this.process = params[0];
         this.activity = params.length > 1 ? params[1] : 'start';
         this.sessionId = params.length > 2 ? params[2] : null;
-        this.process = params[0]; 
+         
+        const wf = this.el.shadowRoot.querySelector("polaris-workflow");
+        if(wf)
+            wf.load(this.process, this.activity, this.sessionId);
 
         window.location.hash = this.process;
     }

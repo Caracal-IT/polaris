@@ -50,7 +50,7 @@ import { Message } from "../../model/message.model";
     }
     
     @Method()
-    async load(process: any, next = "start", sessionId = ''){
+    async load(process: any, next = "start", sessionId = '') {
         if(sessionId && sessionId.length > 0) {
             this.ctx.model.sessionId = sessionId;
             this.ctx.model.load();
