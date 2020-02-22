@@ -6,7 +6,11 @@ export class ModelService {
     pipes = new PipeFactory();
 
     getValue(key: string, model: any = this.model) {
-        const val = key.split(".").reduce((total, currentElement) => total ? total[currentElement]: key, {...model});
+        const val = key.split(".").reduce((total, currentElement) => total ? total[currentElement]: undefined, {...model});
+        
+       if(!key.match(/([a-z|A-Z]+\.[a-z|A-Z]+)+/g) && val === undefined) 
+          return key;
+
         return val;
     }
 
