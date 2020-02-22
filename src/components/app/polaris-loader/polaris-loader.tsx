@@ -11,7 +11,7 @@ import { Component, Listen, h, State } from "@stencil/core";
     @Listen('wfMessage', { target: 'document' })
     wfMessage(event: any){
         const msg = event.detail;
-
+console.log("LOADER", event);
         switch (msg.type) {
           //case "ERROR": return showMessage(msg);
           //case "VALIDATION_ERROR": return showMessage(msg);
