@@ -5,9 +5,15 @@ export class HttpService {
     constructor(private ctx: Context) { }
 
     async fetch(endpoint: Endpoint) {
-        const response = await fetch(this.resolveSetting(endpoint.url), this.getConfig(endpoint));
+        try {
+            this.ctx.page.sendMessage({type: "START_LOADING"}); 
+            const response = await fetch(this.resolveSetting(endpoint.url), this.getConfig(endpoint));
 
-        return response.json();
+            return response.json();
+        }
+        finally {
+            this.ctx.page.sendMessage({type: "END_LOADING"});
+        }
     }
 
     private getConfig(endpoint: Endpoint): object{
