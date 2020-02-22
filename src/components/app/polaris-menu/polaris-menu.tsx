@@ -27,5 +27,8 @@ import { Component, State, Listen, Host, h } from "@stencil/core";
     private setActiveMenuItem() {
         const params = window.location.hash.replace('#', '').split('-');
         this.process = params[0];  
+
+        if(!this.process)
+            window.location.hash = 'registration';
     }
   }
