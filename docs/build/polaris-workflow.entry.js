@@ -509,7 +509,7 @@ const PolarisWorkflow = class {
             timestamp: Date.now()
         };
         const msg = Object.assign(Object.assign({}, message), metaData);
-        this.wfMessage.emit(msg);
+        setTimeout(() => this.wfMessage.emit(msg));
     }
     componentWillLoad() {
         if (this.process)

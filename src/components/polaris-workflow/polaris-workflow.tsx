@@ -69,7 +69,7 @@ import { Message } from "../../model/message.model";
 
         const msg = {...message, ...metaData};
 
-        this.wfMessage.emit(msg);
+        setTimeout(() => this.wfMessage.emit(msg));
     }
 
     componentWillLoad(){
