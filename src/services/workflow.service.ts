@@ -17,8 +17,11 @@ export class WorkflowService {
 
     constructor(private ctx: Context){}
     
-    async setProcess(process: any, next = "start") {
+    async setProcess(process: any, next = "start", clearStack = true) {
         try {
+            if(clearStack)
+                this.stack = [];
+                
             if(typeof process === "string") 
                 process = await this.ctx.http.fetch({url: `[WF]/${process}`, method: 'get'});
 
@@ -26,6 +29,8 @@ export class WorkflowService {
             this.activity = null;
 
             this.goto(next);
+
+            this.ctx.page.sendMessage({type: "PROCESS_CHANGED", metadata: {stack: this.stack}});
         }
         catch(err) {
             if(err) {

@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type       | Default |
-| -------- | --------- | ----------- | ---------- | ------- |
-| `items`  | --        |             | `string[]` | `[]`    |
+| Property | Attribute | Description | Type       | Default     |
+| -------- | --------- | ----------- | ---------- | ----------- |
+| `ctx`    | --        |             | `Context`  | `undefined` |
+| `items`  | --        |             | `string[]` | `[]`        |
 
 
 ----------------------------------------------

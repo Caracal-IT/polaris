@@ -18,8 +18,8 @@ export class IPCActivity implements Activity {
                 process: this.ctx.wf.process?.name,
                 activity: this.next
             });
-            
-            this.ctx.wf.setProcess(this.process);
+          
+            this.ctx.wf.setProcess(this.process, 'start', this.next ? false : true);
         }
             
         return true;

@@ -1,5 +1,6 @@
 export interface Message {
-    type: 'START_LOADING' |
+    type: 'PROCESS_CHANGED' |
+          'START_LOADING' |
           'END_LOADING' |
           'ERROR' |
           'VALIDATION_ERROR' |

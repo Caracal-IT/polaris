@@ -26,7 +26,7 @@
             "name": "home",
             "type": "ipc-activity",
             "process" : "home",
-            "next": "checkApprovalNeeded"
+            "next": ""
         }
     ]
 }

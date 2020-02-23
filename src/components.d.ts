@@ -45,6 +45,7 @@ export namespace Components {
   interface PolarisLoader {}
   interface PolarisMain {}
   interface PolarisMenu {
+    'ctx'?: Context;
     'items': Array<string>;
   }
   interface PolarisWorkflow {
@@ -147,6 +148,7 @@ declare namespace LocalJSX {
   interface PolarisLoader {}
   interface PolarisMain {}
   interface PolarisMenu {
+    'ctx'?: Context;
     'items'?: Array<string>;
   }
   interface PolarisWorkflow {

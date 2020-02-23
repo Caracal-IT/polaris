@@ -1,4 +1,5 @@
 import { Component, Prop, State, Listen, h } from "@stencil/core";
+import { Context } from "../../../model/context.model";
 
 @Component({
     tag: "polaris-menu",
@@ -8,6 +9,8 @@ import { Component, Prop, State, Listen, h } from "@stencil/core";
   export class PolarisMenu {  
     @Prop() items: Array<string> = [];
     @State() process: string;
+
+    @Prop() ctx?: Context;
    
     @Listen('hashchange', {target:'window'})
     locationChangeHandler() {
@@ -16,8 +19,8 @@ import { Component, Prop, State, Listen, h } from "@stencil/core";
 
     @Listen('wfMessage', { target: 'document' })
     wfMessage(event: any){
-      if(this.shouldChangeLocation(event))
-        window.location.hash = event.detail.process;
+        if(this.shouldChangeLocation(event))
+            window.location.hash = event.detail.process;
     }
 
     componentWillLoad() {
@@ -30,8 +33,8 @@ import { Component, Prop, State, Listen, h } from "@stencil/core";
 
     private shouldChangeLocation(event: any): boolean{
         return event.detail.type 
-        && event.detail.type === 'WORKFLOW_CHANGED' 
-        && this.items.findIndex(i => i === event.detail.process) > -1;
+        && event.detail.type === 'PROCESS_CHANGED' 
+        && event.detail.metadata?.stack?.length === 0;
     }
 
     private setActiveMenuItem() {
