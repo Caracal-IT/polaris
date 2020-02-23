@@ -5,7 +5,7 @@
             "name": "start",
             "type": "page-activity",        
             "controls": [
-                {"tag": "moon-header", "id": "pageHeader", "caption": "Default" },
+                {"tag": "moon-header", "id": "pageHeader", "caption": "Polaris" },
                 {
                     "tag": "div",
                     "id": "content",
