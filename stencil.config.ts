@@ -12,11 +12,7 @@ export const config: Config = {
     },
     {
       type: "www",
-      serviceWorker: {
-        globPatterns: [
-          '**/*.{js,css,json,html,ico,png}'
-        ]
-      }, // disable service workers
+      serviceWorker: null, // disable service workers
       copy: [
         { src: 'style.css', dest: 'style.css' },
         { src: 'workflow/default.wf.json', dest: 'wf/registration' },
