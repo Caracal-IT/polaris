@@ -3,7 +3,7 @@ import { Component, Element, Listen, h} from "@stencil/core";
 @Component({
     tag: "polaris-main",
     styleUrl: "polaris-main.css",
-    shadow: true
+    shadow: false
   })
   export class PolarisMain {  
     @Element() el: HTMLPolarisMainElement;
@@ -22,7 +22,7 @@ import { Component, Element, Listen, h} from "@stencil/core";
     }
 
     render() {
-        return <polaris-workflow process={this.process} activity={this.activity} sessionId={this.sessionId}></polaris-workflow>;
+        return <div id="mainContent"><polaris-workflow id="mainWf" process={this.process} activity={this.activity} sessionId={this.sessionId}></polaris-workflow></div>;
     }
 
     private setProcess() {
@@ -35,7 +35,8 @@ import { Component, Element, Listen, h} from "@stencil/core";
         this.activity = params.length > 1 ? params[1] : 'start';
         this.sessionId = params.length > 2 ? params[2] : null;
          
-        const wf = this.el.shadowRoot.querySelector("polaris-workflow");
+        const wf = this.el.querySelector("#mainWf") as HTMLPolarisWorkflowElement;
+
         if(wf)
             wf.load(this.process, this.activity, this.sessionId);
 

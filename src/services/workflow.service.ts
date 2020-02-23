@@ -28,8 +28,10 @@ export class WorkflowService {
             this.goto(next);
         }
         catch(err) {
-            if(err)
+            if(err) {
+                console.error(err);
                 this.ctx.page.sendMessage({type: "ERROR", description: err.message, metadata: err});
+            }
         }
     }
 

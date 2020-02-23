@@ -7,10 +7,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [polaris-app](../polaris-app)
-
 ### Depends on
 
 - [polaris-workflow](../../polaris-workflow)
@@ -19,7 +15,6 @@
 ```mermaid
 graph TD;
   polaris-main --> polaris-workflow
-  polaris-app --> polaris-main
   style polaris-main fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

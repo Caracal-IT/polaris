@@ -10,6 +10,21 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   Context,
 } from './model/context.model';
+import {
+  ModelService,
+} from './services/model.service';
+import {
+  HttpService,
+} from './services/http.service';
+import {
+  ConfigService,
+} from './services/config.service';
+import {
+  WorkflowService,
+} from './services/workflow.service';
+import {
+  ValidatorService,
+} from './services/validator.service';
 
 export namespace Components {
   interface MoonButton {
@@ -27,8 +42,6 @@ export namespace Components {
     'caption': string;
   }
   interface PolarisAnalytics {}
-  interface PolarisApp {}
-  interface PolarisHeader {}
   interface PolarisLoader {}
   interface PolarisMain {}
   interface PolarisMenu {}
@@ -38,6 +51,7 @@ export namespace Components {
     'load': (process: any, next?: string, sessionId?: string) => Promise<void>;
     'process': string|object;
     'sessionId': string;
+    'setServices': (model: ModelService, http: HttpService, config: ConfigService, wf: WorkflowService, validator: ValidatorService) => Promise<void>;
     'tag': string;
     'value'?: any;
   }
@@ -76,18 +90,6 @@ declare global {
     new (): HTMLPolarisAnalyticsElement;
   };
 
-  interface HTMLPolarisAppElement extends Components.PolarisApp, HTMLStencilElement {}
-  var HTMLPolarisAppElement: {
-    prototype: HTMLPolarisAppElement;
-    new (): HTMLPolarisAppElement;
-  };
-
-  interface HTMLPolarisHeaderElement extends Components.PolarisHeader, HTMLStencilElement {}
-  var HTMLPolarisHeaderElement: {
-    prototype: HTMLPolarisHeaderElement;
-    new (): HTMLPolarisHeaderElement;
-  };
-
   interface HTMLPolarisLoaderElement extends Components.PolarisLoader, HTMLStencilElement {}
   var HTMLPolarisLoaderElement: {
     prototype: HTMLPolarisLoaderElement;
@@ -117,8 +119,6 @@ declare global {
     'moon-label': HTMLMoonLabelElement;
     'moon-panel': HTMLMoonPanelElement;
     'polaris-analytics': HTMLPolarisAnalyticsElement;
-    'polaris-app': HTMLPolarisAppElement;
-    'polaris-header': HTMLPolarisHeaderElement;
     'polaris-loader': HTMLPolarisLoaderElement;
     'polaris-main': HTMLPolarisMainElement;
     'polaris-menu': HTMLPolarisMenuElement;
@@ -142,8 +142,6 @@ declare namespace LocalJSX {
     'caption'?: string;
   }
   interface PolarisAnalytics {}
-  interface PolarisApp {}
-  interface PolarisHeader {}
   interface PolarisLoader {}
   interface PolarisMain {}
   interface PolarisMenu {}
@@ -163,8 +161,6 @@ declare namespace LocalJSX {
     'moon-label': MoonLabel;
     'moon-panel': MoonPanel;
     'polaris-analytics': PolarisAnalytics;
-    'polaris-app': PolarisApp;
-    'polaris-header': PolarisHeader;
     'polaris-loader': PolarisLoader;
     'polaris-main': PolarisMain;
     'polaris-menu': PolarisMenu;
@@ -183,8 +179,6 @@ declare module "@stencil/core" {
       'moon-label': LocalJSX.MoonLabel & JSXBase.HTMLAttributes<HTMLMoonLabelElement>;
       'moon-panel': LocalJSX.MoonPanel & JSXBase.HTMLAttributes<HTMLMoonPanelElement>;
       'polaris-analytics': LocalJSX.PolarisAnalytics & JSXBase.HTMLAttributes<HTMLPolarisAnalyticsElement>;
-      'polaris-app': LocalJSX.PolarisApp & JSXBase.HTMLAttributes<HTMLPolarisAppElement>;
-      'polaris-header': LocalJSX.PolarisHeader & JSXBase.HTMLAttributes<HTMLPolarisHeaderElement>;
       'polaris-loader': LocalJSX.PolarisLoader & JSXBase.HTMLAttributes<HTMLPolarisLoaderElement>;
       'polaris-main': LocalJSX.PolarisMain & JSXBase.HTMLAttributes<HTMLPolarisMainElement>;
       'polaris-menu': LocalJSX.PolarisMenu & JSXBase.HTMLAttributes<HTMLPolarisMenuElement>;

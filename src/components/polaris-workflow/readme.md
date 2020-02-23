@@ -36,6 +36,16 @@ Type: `Promise<void>`
 
 
 
+### `setServices(model: ModelService, http: HttpService, config: ConfigService, wf: WorkflowService, validator: ValidatorService) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 
 ## Dependencies
 
