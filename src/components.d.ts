@@ -44,7 +44,9 @@ export namespace Components {
   interface PolarisAnalytics {}
   interface PolarisLoader {}
   interface PolarisMain {}
-  interface PolarisMenu {}
+  interface PolarisMenu {
+    'items': Array<string>;
+  }
   interface PolarisWorkflow {
     'activity': string;
     'ctx': Context;
@@ -144,7 +146,9 @@ declare namespace LocalJSX {
   interface PolarisAnalytics {}
   interface PolarisLoader {}
   interface PolarisMain {}
-  interface PolarisMenu {}
+  interface PolarisMenu {
+    'items'?: Array<string>;
+  }
   interface PolarisWorkflow {
     'activity'?: string;
     'ctx'?: Context;

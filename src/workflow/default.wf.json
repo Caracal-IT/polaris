@@ -10,7 +10,15 @@
                     "tag": "div",
                     "id": "content",
                     "controls": [
-                        {"tag": "polaris-menu" },
+                        {
+                            "tag": "polaris-menu",
+                            "items": [
+                                "home",
+                                "login",
+                                "deposit",
+                                "registration"
+                            ]
+                        },
                         {"tag": "polaris-main"}
                     ]
                 }

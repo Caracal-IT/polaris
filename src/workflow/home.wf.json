@@ -1,0 +1,12 @@
+{
+    "name" : "home",
+    "activities": [
+        {
+            "name": "start",
+            "type": "page-activity",        
+            "controls": [
+                {"tag": "moon-header", "id": "pageHeader", "caption": "Polaris Workflow" }
+            ]
+        }
+    ]
+}

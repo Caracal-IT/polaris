@@ -19,7 +19,14 @@
         },
         {
             "name": "login",
-            "type": "finish-activity"
+            "type": "finish-activity",
+            "next": "home"
+        },
+        {
+            "name": "home",
+            "type": "ipc-activity",
+            "process" : "home",
+            "next": "checkApprovalNeeded"
         }
     ]
 }

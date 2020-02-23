@@ -20,6 +20,7 @@ export const config: Config = {
       copy: [
         { src: 'style.css', dest: 'style.css' },
         { src: 'workflow/default.wf.json', dest: 'wf/default' },
+        { src: 'workflow/home.wf.json', dest: 'wf/home' },
         { src: 'workflow/registration.wf.json', dest: 'wf/registration' },
         { src: 'workflow/deposit.wf.json', dest: 'wf/deposit' },
         { src: 'workflow/login.wf.json', dest: 'wf/login' },
