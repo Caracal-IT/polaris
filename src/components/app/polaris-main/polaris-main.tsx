@@ -13,7 +13,7 @@ import { Component, Element, Listen, h} from "@stencil/core";
     sessionId: string;
 
     @Listen('hashchange', {target:'window'})
-    locationChangeHandler() {
+    locationChangeHandler() {        
         this.setProcess();
     }
 
@@ -28,7 +28,7 @@ import { Component, Element, Listen, h} from "@stencil/core";
     private setProcess() {
         const params = window.location.hash.replace('#', '').split('-');
   
-        if(this.process === params[0])
+        if(this.process === params[0] || params[0] === "default")
             return;
 
         this.process = params[0];

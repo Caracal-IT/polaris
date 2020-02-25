@@ -36,4 +36,3 @@ export class HttpService {
         return matches.reduce((prev, next) => prev.replace(next, this.ctx.config.getSetting(next)), val);
     }
 }
-

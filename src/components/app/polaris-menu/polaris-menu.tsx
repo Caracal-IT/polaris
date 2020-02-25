@@ -13,7 +13,7 @@ import { Context } from "../../../model/context.model";
     @Prop() ctx?: Context;
    
     @Listen('hashchange', {target:'window'})
-    locationChangeHandler() {
+    locationChangeHandler() {        
         this.setActiveMenuItem();
     }
 
@@ -34,6 +34,7 @@ import { Context } from "../../../model/context.model";
     private shouldChangeLocation(event: any): boolean{
         return event.detail.type 
         && event.detail.type === 'PROCESS_CHANGED' 
+        && event.detail.process !== "default"
         && event.detail.metadata?.stack?.length === 0;
     }
 
