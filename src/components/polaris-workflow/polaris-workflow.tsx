@@ -112,6 +112,6 @@ import { PageBuilder } from "../../utilities/page-builder";
 
     _render() {   
         const builder = new PageBuilder(this);
-        builder.build(this.el, this.onInput);
+        builder.build(this.el, this.onInput.bind(this));
     }
   }
