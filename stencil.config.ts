@@ -30,8 +30,8 @@ export const config: Config = {
         { src: 'redirect.html', dest: 'redirect.html' },
         { src: 'demo', dest: 'demo' }
       ]
-    }/*
-    ,
+    }
+    ,/*
     {
       type: 'www',
       dir: 'docs',
@@ -40,7 +40,7 @@ export const config: Config = {
         { src: '../www', dest: '' },
         { src: 'demo', dest: 'demo' }
       ]
-    }
-*/
+    }*/
+
   ]
 };

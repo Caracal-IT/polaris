@@ -7,6 +7,7 @@ import { Component, Listen, h, State } from "@stencil/core";
   })
   export class PolarisLoader {  
     @State() isVisible = false;
+    showLoader: boolean = false;
 
     @Listen('wfMessage', { target: 'document' })
     wfMessage(event: any){
@@ -15,11 +16,17 @@ import { Component, Listen, h, State } from "@stencil/core";
         switch (msg.type) {
           //case "ERROR": return showMessage(msg);
           //case "VALIDATION_ERROR": return showMessage(msg);
-          case "START_LOADING": this.isVisible = true; break;
-          case "END_LOADING": this.isVisible = false; break;
+          case "START_LOADING": this.show(true); break;
+          case "END_LOADING": this.show(false); break;
          // case "WORKFLOW_CHANGING": return showMessage(msg);
           //case "WORKFLOW_CHANGED": return showMessage(msg);
         } 
+    }
+
+    show(isVisible: boolean) {
+      this.showLoader = isVisible;
+
+      setTimeout(() => this.isVisible = this.showLoader, 200);
     }
 
     render() {
