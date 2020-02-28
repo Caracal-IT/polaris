@@ -26,7 +26,7 @@ import { AnalyticsService } from "../../services/analytics.service";
         PolarisAnalytics.analyticsService.send("click", path);
     }    
 
-    @Listen('wfMessage1', { target: 'document' })
+    @Listen('wfMessage', { target: 'document' })
     wfMessage(event: any){
       PolarisAnalytics.analyticsService.sendMessage(event);
     }
