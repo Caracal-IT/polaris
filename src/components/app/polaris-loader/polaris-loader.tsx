@@ -26,7 +26,7 @@ import { Component, Listen, h, State } from "@stencil/core";
     show(isVisible: boolean) {
       this.showLoader = isVisible;
 
-      setTimeout(() => this.isVisible = this.showLoader, 200);
+      setTimeout(() => this.isVisible = this.showLoader, 300);
     }
 
     render() {
