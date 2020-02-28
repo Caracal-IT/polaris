@@ -45,18 +45,14 @@ export class WorkflowService {
     }
 
     private async tryNext(name: string) {
-        try {
-            this.ctx.page.sendMessage({type: "START_LOADING"});
+        try {        
             this.ctx.page.sendMessage({type: "WORKFLOW_CHANGING"});
             await this.next(name);
             this.ctx.page.sendMessage({type: "WORKFLOW_CHANGED"});
         }
         catch(err) {
             this.ctx.page.sendMessage({type: "ERROR", description: err?.message, metadata: err});
-        }
-        finally {
-            setTimeout(() => this.ctx.page.sendMessage({type: "END_LOADING"}));
-        }
+        }        
     }
 
     private async next(name: string) {

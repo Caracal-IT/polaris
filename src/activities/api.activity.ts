@@ -13,7 +13,7 @@ export class ApiActivity implements Activity {
 
     async execute(): Promise<boolean> {
         if(this.endpoints && this.endpoints.length > 0) 
-            this.callEndpoints();
+            setTimeout(this.callEndpoints.bind(this));
         else if(this.next && this.ctx)
             this.gotoNext();
 
