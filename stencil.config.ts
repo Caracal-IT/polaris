@@ -26,6 +26,7 @@ export const config: Config = {
         { src: 'workflow/login.wf.json', dest: 'wf/login' },
         { src: 'workflow/user.json', dest: 'wf/user' },
         { src: 'workflow/menu.json', dest: 'wf/menu' },
+        { src: 'workflow/settings.json', dest: 'wf/settings' },
         { src: 'redirect.html', dest: 'redirect.html' },
         { src: 'demo', dest: 'demo' }
       ]

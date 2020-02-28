@@ -1,11 +1,17 @@
 import { PipeFactory } from "../pipes/factory.pipe";
+import { ConfigService } from "./config.service";
 
 export class ModelService {
     model = {};
     sessionId = this.UUID();
     pipes = new PipeFactory();
 
-    getValue(key: string, model: any = this.model) {
+    constructor(private config: ConfigService) {}
+
+    getValue(key: string, model: any = this.model) {       
+        if(key.indexOf('[') === 0 || key.indexOf(']') === key.length - 1) 
+          return this.config.getSetting(key);
+
         const val = key.split(".").reduce((total, currentElement) => total ? total[currentElement]: undefined, {...model});
         
        if(!key.match(/([a-z|A-Z]+\.[a-z|A-Z]+)+/g) && val === undefined) 
@@ -28,8 +34,11 @@ export class ModelService {
     }
   
 
-    setValue(key: string, val: any) {
-        this.model = this.merge(this.model, key, val);
+    setValue(key: string, val: any) {       
+        if(key.indexOf('[') === 0 || key.indexOf(']') === key.length - 1) 
+          this.config.addSetting(key, val);
+        else
+          this.model = this.merge(this.model, key, val);
     }
 
     save() {        

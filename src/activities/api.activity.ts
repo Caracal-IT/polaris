@@ -76,9 +76,9 @@ export class ApiActivity implements Activity {
         const model = this.ctx.model;
         const mappings = endpoint.mappings;
 
-        if(!mappings || mappings.length === 0) 
+        if(!mappings || mappings.length === 0)             
             return Object.keys(data).forEach(k => model.setValue(k, data[k]));  
-
+        
         mappings
             .filter(m => m.direction === 'in' || m.direction === 'inout')
             .forEach(m => model.setValue(m.client, model.getValue(m.remote, data)));

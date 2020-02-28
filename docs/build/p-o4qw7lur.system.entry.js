@@ -1,0 +1,1 @@
+System.register(["./p-8547f30f.system.js"],(function(e){"use strict";var t,n;return{setters:[function(e){t=e.r;n=e.h}],execute:function(){var r=e("moon_label",function(){function e(e){t(this,e)}e.prototype.render=function(){return n("span",null,this.caption)};Object.defineProperty(e,"style",{get:function(){return""},enumerable:true,configurable:true});return e}())}}}));

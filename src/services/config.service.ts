@@ -1,9 +1,11 @@
 export class ConfigService {
-    private settings = {
-        "[WF]": "wf"
+    private settings = {};
+
+    getSetting(key: string) {
+        return this.settings[key];
     }
 
-    getSetting(setting: string) {
-        return this.settings[setting];
+    addSetting(key: string, setting: any) {
+        this.settings[key] = setting;
     }
 }

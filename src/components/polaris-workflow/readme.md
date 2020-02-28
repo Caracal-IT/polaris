@@ -11,9 +11,11 @@
 | ----------- | ------------ | ----------- | ------------------ | ----------- |
 | `activity`  | `activity`   |             | `string`           | `undefined` |
 | `ctx`       | --           |             | `Context`          | `this`      |
+| `parent`    | --           |             | `Context`          | `undefined` |
 | `process`   | `process`    |             | `object \| string` | `undefined` |
 | `sessionId` | `session-id` |             | `string`           | `undefined` |
 | `tag`       | `tag`        |             | `string`           | `undefined` |
+| `url`       | `url`        |             | `string`           | `undefined` |
 | `value`     | `value`      |             | `any`              | `undefined` |
 
 
@@ -36,7 +38,7 @@ Type: `Promise<void>`
 
 
 
-### `setServices(model: ModelService, http: HttpService, config: ConfigService, wf: WorkflowService, validator: ValidatorService) => Promise<void>`
+### `setServices(ctx: Context) => Promise<void>`
 
 
 

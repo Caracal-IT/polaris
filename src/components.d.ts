@@ -13,21 +13,6 @@ import {
 import {
   MenuItem,
 } from './model/menu-item.model';
-import {
-  ModelService,
-} from './services/model.service';
-import {
-  HttpService,
-} from './services/http.service';
-import {
-  ConfigService,
-} from './services/config.service';
-import {
-  WorkflowService,
-} from './services/workflow.service';
-import {
-  ValidatorService,
-} from './services/validator.service';
 
 export namespace Components {
   interface MoonButton {
@@ -46,7 +31,9 @@ export namespace Components {
   }
   interface PolarisAnalytics {}
   interface PolarisLoader {}
-  interface PolarisMain {}
+  interface PolarisMain {
+    'ctx': Context;
+  }
   interface PolarisMenu {
     'ctx'?: Context;
     'items': Array<MenuItem>|string;
@@ -55,10 +42,12 @@ export namespace Components {
     'activity': string;
     'ctx': Context;
     'load': (process: any, next?: string, sessionId?: string) => Promise<void>;
+    'parent': Context;
     'process': string|object;
     'sessionId': string;
-    'setServices': (model: ModelService, http: HttpService, config: ConfigService, wf: WorkflowService, validator: ValidatorService) => Promise<void>;
+    'setServices': (ctx: Context) => Promise<void>;
     'tag': string;
+    'url': string;
     'value'?: any;
   }
 }
@@ -149,7 +138,9 @@ declare namespace LocalJSX {
   }
   interface PolarisAnalytics {}
   interface PolarisLoader {}
-  interface PolarisMain {}
+  interface PolarisMain {
+    'ctx'?: Context;
+  }
   interface PolarisMenu {
     'ctx'?: Context;
     'items'?: Array<MenuItem>|string;
@@ -158,9 +149,11 @@ declare namespace LocalJSX {
     'activity'?: string;
     'ctx'?: Context;
     'onWfMessage'?: (event: CustomEvent<any>) => void;
+    'parent'?: Context;
     'process'?: string|object;
     'sessionId'?: string;
     'tag'?: string;
+    'url'?: string;
     'value'?: any;
   }
 

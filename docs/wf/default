@@ -4,8 +4,23 @@
         {
             "name": "start",
             "type": "api-activity",
+            "next": "init",
+            "endpoints": [
+                {
+                    "url": "[baseUrl]/settings",
+                    "method": "GET"
+                }
+            ]
+        },
+        {
+            "name": "init",
+            "type": "api-activity",
             "next": "landing",
             "endpoints": [
+                {
+                    "url": "[baseUrl]/settings",
+                    "method": "GET"
+                },
                 {
                     "url": "[WF]/menu",
                     "method": "GET",

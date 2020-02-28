@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property | Attribute | Description | Type      | Default     |
+| -------- | --------- | ----------- | --------- | ----------- |
+| `ctx`    | --        |             | `Context` | `undefined` |
+
+
 ## Dependencies
 
 ### Depends on

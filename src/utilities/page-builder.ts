@@ -34,10 +34,9 @@ export class PageBuilder {
 
     private createWorkflowElement(control: Control): HTMLElement & Control{
         const el = document.createElement(control.tag) as HTMLPolarisWorkflowElement;
-        const newEl = Object.assign(el, control);
+        const newEl = Object.assign(el, control);        
+        newEl.setServices(this.ctx);
         
-        newEl.setServices(this.ctx.model, this.ctx.http, this.ctx.config, this.ctx.wf, this.ctx.validator);
-
         return newEl;
     }
 
@@ -93,5 +92,4 @@ export class PageBuilder {
 
         newEl.parentNode.appendChild(errLabel);
     }
-    
 }

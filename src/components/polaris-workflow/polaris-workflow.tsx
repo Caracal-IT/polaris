@@ -18,24 +18,27 @@ import { PageBuilder } from "../../utilities/page-builder";
   export class PolarisWorkflow implements Control {    
     page = this;
 
-    model: ModelService;
-    http: HttpService;
-    config: ConfigService;
-    wf: WorkflowService;
-    validator: ValidatorService;
-
     private _components: Array<any> = [];
     
+    @Prop() parent: Context;
+
     @Prop() tag: string;
     @Prop() ctx: Context = this;
     @Prop() value?: any;  
 
+    @Prop() url: string;
     @Prop() process: string|object;
     @Prop() activity: string;
     @Prop() sessionId: string;
+
+    http = new HttpService(this.ctx);
+    config = new ConfigService();
+    model = new ModelService(this.ctx.config);
+    wf = new WorkflowService(this.ctx);
+    validator = new ValidatorService(this.ctx);
     
     @Element() el: HTMLElement;
-
+    
     @Watch("process")
     processChangeHandler() {              
         this.load(this.process, this.activity, this.sessionId);
@@ -51,20 +54,11 @@ import { PageBuilder } from "../../utilities/page-builder";
     }
 
     @Method()
-    async setServices(
-        model: ModelService,
-        http: HttpService,
-        config: ConfigService,
-        wf:WorkflowService,
-        validator: ValidatorService
-    ){
-        this.model = model;
-        this.http = http;
-        this.config = config;
-        this.wf = wf;
-        this.validator = validator;
-
-        this.initialize();
+    async setServices(ctx: Context) {               
+        this.model = ctx.model;
+        this.http = ctx.http;
+        this.config = ctx.config;        
+        this.validator = ctx.validator;                
     }
     
     @Method()
@@ -88,19 +82,15 @@ import { PageBuilder } from "../../utilities/page-builder";
         this.wfMessage.emit({...message, ...metaData});
     }
 
-    componentWillLoad(){
-        this.initialize();
+    componentWillLoad() { 
+        if(this.parent)
+            this.setServices(this.parent);
+
+        if(this.url)
+            this.config.addSetting("[baseUrl]", this.url);
 
         if(this.process)
             this.load(this.process, this.activity, this.sessionId);
-    }
-
-    initialize(){
-        if(!this.model) this.model = new ModelService();
-        if(!this.http) this.http = new HttpService(this);
-        if(!this.config) this.config = new ConfigService();
-        if(!this.wf) this.wf = new WorkflowService(this);
-        if(!this.validator) this.validator = new ValidatorService(this);
     }
 
     onInput(newEl: HTMLElement & Control) {
