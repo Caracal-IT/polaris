@@ -1,5 +1,6 @@
 import { Component, Prop, State, Listen, h } from "@stencil/core";
 import { Context } from "../../../model/context.model";
+import { MenuItem } from "../../../model/menu-item.model";
 
 @Component({
     tag: "polaris-menu",
@@ -7,7 +8,7 @@ import { Context } from "../../../model/context.model";
     shadow: true
   })
   export class PolarisMenu {  
-    @Prop() items: Array<string> = [];
+    @Prop() items: Array<MenuItem>|string = [];
     @State() process: string;
 
     @Prop() ctx?: Context;
@@ -28,7 +29,14 @@ import { Context } from "../../../model/context.model";
     }
 
     render() {
-        return this.items.map(i => <nav><a href={`#${i}`} class={this.process === i? 'active' : ''}>{i}</a></nav>);
+        if(typeof this.items === "string") 
+            return this.ctx
+                       .model
+                       .getValue(this.items)
+                       .map((i:MenuItem) => <nav><a href={`#${i.process}`} class={this.process === i.process? 'active' : ''}>{i.name}</a></nav>);
+                
+        else if(typeof this.items === "object")
+            return this.items.map(i => <nav><a href={`#${i.process}`} class={this.process === i.process? 'active' : ''}>{i.name}</a></nav>);
     }
 
     private shouldChangeLocation(event: any): boolean{

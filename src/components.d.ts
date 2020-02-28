@@ -11,6 +11,9 @@ import {
   Context,
 } from './model/context.model';
 import {
+  MenuItem,
+} from './model/menu-item.model';
+import {
   ModelService,
 } from './services/model.service';
 import {
@@ -46,7 +49,7 @@ export namespace Components {
   interface PolarisMain {}
   interface PolarisMenu {
     'ctx'?: Context;
-    'items': Array<string>;
+    'items': Array<MenuItem>|string;
   }
   interface PolarisWorkflow {
     'activity': string;
@@ -149,7 +152,7 @@ declare namespace LocalJSX {
   interface PolarisMain {}
   interface PolarisMenu {
     'ctx'?: Context;
-    'items'?: Array<string>;
+    'items'?: Array<MenuItem>|string;
   }
   interface PolarisWorkflow {
     'activity'?: string;

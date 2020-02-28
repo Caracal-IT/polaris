@@ -384,7 +384,6 @@ class WorkflowService {
         setTimeout(this.tryNext.bind(this, name));
     }
     async tryNext(name) {
-        var _a;
         try {
             this.ctx.page.sendMessage({ type: "START_LOADING" });
             this.ctx.page.sendMessage({ type: "WORKFLOW_CHANGING" });
@@ -392,7 +391,7 @@ class WorkflowService {
             this.ctx.page.sendMessage({ type: "WORKFLOW_CHANGED" });
         }
         catch (err) {
-            this.ctx.page.sendMessage({ type: "ERROR", description: (_a = err) === null || _a === void 0 ? void 0 : _a.message, metadata: err });
+            this.ctx.page.sendMessage({ type: "ERROR", description: err === null || err === void 0 ? void 0 : err.message, metadata: err });
         }
         finally {
             setTimeout(() => this.ctx.page.sendMessage({ type: "END_LOADING" }));

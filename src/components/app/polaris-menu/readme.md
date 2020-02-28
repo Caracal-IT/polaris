@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type       | Default     |
-| -------- | --------- | ----------- | ---------- | ----------- |
-| `ctx`    | --        |             | `Context`  | `undefined` |
-| `items`  | --        |             | `string[]` | `[]`        |
+| Property | Attribute | Description | Type                   | Default     |
+| -------- | --------- | ----------- | ---------------------- | ----------- |
+| `ctx`    | --        |             | `Context`              | `undefined` |
+| `items`  | `items`   |             | `MenuItem[] \| string` | `[]`        |
 
 
 ----------------------------------------------

@@ -1,0 +1,8 @@
+{
+    "items": [
+        {"name": "home", "process": "home"},
+        {"name": "login", "process": "login"},
+        {"name": "deposit", "process": "deposit"},
+        {"name": "registration", "process": "registration"}
+    ]
+}

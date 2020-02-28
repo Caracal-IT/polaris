@@ -3,6 +3,20 @@
     "activities": [
         {
             "name": "start",
+            "type": "api-activity",
+            "next": "landing",
+            "endpoints": [
+                {
+                    "url": "[WF]/menu",
+                    "method": "GET",
+                    "mappings":[
+                        {"client": "menu", "remote": "items", "direction": "in"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "landing",
             "type": "page-activity",        
             "controls": [
                 {"tag": "moon-header", "id": "pageHeader", "caption": "Default" },
@@ -12,12 +26,7 @@
                     "controls": [
                         {
                             "tag": "polaris-menu",
-                            "items": [
-                                "home",
-                                "login",
-                                "deposit",
-                                "registration"
-                            ]
+                            "items": "menu"
                         },
                         {"tag": "polaris-main"}
                     ]

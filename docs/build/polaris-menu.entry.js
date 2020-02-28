@@ -16,7 +16,13 @@ const PolarisMenu = class {
         this.setActiveMenuItem();
     }
     render() {
-        return this.items.map(i => h("nav", null, h("a", { href: `#${i}`, class: this.process === i ? 'active' : '' }, i)));
+        if (typeof this.items === "string")
+            return this.ctx
+                .model
+                .getValue(this.items)
+                .map((i) => h("nav", null, h("a", { href: `#${i.process}`, class: this.process === i.process ? 'active' : '' }, i.name)));
+        else if (typeof this.items === "object")
+            return this.items.map(i => h("nav", null, h("a", { href: `#${i.process}`, class: this.process === i.process ? 'active' : '' }, i.name)));
     }
     shouldChangeLocation(event) {
         var _a, _b;

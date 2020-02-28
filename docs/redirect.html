@@ -121,7 +121,8 @@
         function currencyFormat(value) {
           const formatter = new Intl.NumberFormat('en-ZA', {
             style: 'currency',
-            currency: 'ZAR',
+            currencyDisplay: 'symbol', // symbol code  es-MX MXN
+            currency: 'ZAR'
           });
       
           return formatter.format(+value);
