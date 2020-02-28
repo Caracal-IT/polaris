@@ -8,28 +8,28 @@ export class ValidatorService {
         new RequiredValidator("Required")
     ];
     
-    constructor(private ctx: Context){}  
+    constructor(){}  
     
-    validate(): boolean {        
-        if(!this.ctx.page || !this.ctx.page.controls)          
+    validate(ctx: Context): boolean {                            
+        if(!ctx.page || !ctx.page.controls)          
             return true;
         
         let isValid = true;
 
-        for(const ctrl of this.ctx.page.controls) 
-            isValid = this.validateControl(ctrl) && isValid;
+        for(const ctrl of ctx.page.controls) 
+            isValid = this.validateControl(ctx, ctrl) && isValid;
        
         return isValid;
     }  
     
-    private validateControl(control: Control): boolean { 
+    private validateControl(ctx: Context, control: Control): boolean { 
         if(!control)
             return true;
 
         let isValid = true;
             
         for(const index in control.controls)
-            isValid =  this.validateControl(control.controls[index]) && isValid;
+            isValid =  this.validateControl(ctx, control.controls[index]) && isValid;
        
         if(control.validators && control.validators.length > 0) {
             for(const config of control.validators) {
@@ -38,9 +38,9 @@ export class ValidatorService {
                 if(!validator)
                     continue;
 
-                if(!validator.validate(this.ctx, control, config)) {                
+                if(!validator.validate(ctx, control, config)) {                
                     isValid =  false;    
-                    this.sendErrorMsg(validator, control);
+                    this.sendErrorMsg(ctx, validator, control);
                 }
             }            
         }
@@ -48,8 +48,8 @@ export class ValidatorService {
         return isValid;
     }
 
-    private sendErrorMsg(validator: Validator, control: Control) {
-        this.ctx.page.sendMessage({
+    private sendErrorMsg(ctx, validator: Validator, control: Control) {
+        ctx.page.sendMessage({
             type: "VALIDATION_ERROR",
             description: control.errorMessage,
             metadata: {

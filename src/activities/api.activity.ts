@@ -11,7 +11,7 @@ export class ApiActivity implements Activity {
     endpoints?: Array<ApiEndpoint>;
     next?:string;
 
-    async execute(): Promise<boolean> {
+    async execute(): Promise<boolean> {        
         if(this.endpoints && this.endpoints.length > 0) 
             setTimeout(this.callEndpoints.bind(this));
         else if(this.next && this.ctx)
@@ -64,9 +64,9 @@ export class ApiActivity implements Activity {
         let body = {};
         mappings
             .filter(m => m.direction === 'out' || m.direction === 'inout')
-            .forEach(m => Object.assign(body, {[m.client]: model.getValue(m.client)}));
-
-        return JSON.stringify(body);
+            .forEach(m => Object.assign(body, {[m.remote]: model.getValue(m.client)}));
+        
+        return body;
     }
 
     private setModel(endpoint: ApiEndpoint, data: any) {

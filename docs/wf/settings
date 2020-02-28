@@ -1,3 +1,5 @@
 {
-    "[WF]": "wf"   
+    "[WF]": "wf",
+    "[Firebase]": "https://identitytoolkit.googleapis.com/v1/",
+    "[FBApiKey]": "AIzaSyDgbUf-PVUsNsUIsZvzgUTFuht907oc9LY" 
 }

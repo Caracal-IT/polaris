@@ -22,17 +22,17 @@ import { AnalyticsService } from "../../services/analytics.service";
         if(!wfElement) 
           return;
           
-        path[0].addEventListener("blur", this.onBlur);        
-        PolarisAnalytics.analyticsService.send("click", path);
+       // path[0].addEventListener("blur", this.onBlur);        
+       // PolarisAnalytics.analyticsService.send("click", path);
     }    
 
-    @Listen('wfMessage', { target: 'document' })
-    wfMessage(event: any){
-      PolarisAnalytics.analyticsService.sendMessage(event);
-    }
+    //@Listen('wfMessage', { target: 'document' })
+    //wfMessage(event: any){
+   //   PolarisAnalytics.analyticsService.sendMessage(event);
+   // }
 
-    onBlur(event: Event) {
-        PolarisAnalytics.analyticsService.send("blur", PolarisAnalytics.lastPath);
-        event.target.removeEventListener("blur", this.onBlur);
-    }
+   // onBlur(event: Event) {
+   //     PolarisAnalytics.analyticsService.send("blur", PolarisAnalytics.lastPath);
+   //     event.target.removeEventListener("blur", this.onBlur);
+   // }
   }

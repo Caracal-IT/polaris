@@ -57,9 +57,9 @@ export class WorkflowService {
 
     private async next(name: string) {
         if(!this.process || !this.process.activities)
-        return null;
+            return null;
     
-        if(this.ctx.wf.activity?.type === "page-activity" && !this.ctx.validator.validate())             
+        if(this.ctx.wf.activity?.type === "page-activity" && !this.ctx.validator.validate(this.ctx))             
             return null;
                 
         let newActivity = this.process

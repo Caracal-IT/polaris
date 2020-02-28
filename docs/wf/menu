@@ -1,8 +1,9 @@
 {
     "items": [
-        {"name": "home", "process": "home"},
-        {"name": "login", "process": "login"},
-        {"name": "deposit", "process": "deposit"},
-        {"name": "registration", "process": "registration"}
+        {"name": "Home", "process": "home"},
+        {"name": "Login", "process": "login"},
+        {"name": "FB Login", "process": "loginA"},
+        {"name": "Deposit", "process": "deposit"},
+        {"name": "Registration", "process": "registration"}
     ]
 }

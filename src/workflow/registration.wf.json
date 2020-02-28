@@ -33,8 +33,7 @@
                     {"tag" : "moon-label", "caption": "First Name", "for": "register.firstName"},
                     {
                         "tag": "input", 
-                        "id": "register.firstName", 
-                        "value": "Input 20",
+                        "id": "register.firstName",                        
                         "validators": [
                             { "name": "Required", "message": "The field is required" }
                         ]

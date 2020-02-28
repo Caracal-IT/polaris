@@ -35,7 +35,7 @@ import { PageBuilder } from "../../utilities/page-builder";
     config = new ConfigService();
     model = new ModelService(this.ctx.config);
     wf = new WorkflowService(this.ctx);
-    validator = new ValidatorService(this.ctx);
+    validator = new ValidatorService();
     
     @Element() el: HTMLElement;
     
@@ -58,7 +58,7 @@ import { PageBuilder } from "../../utilities/page-builder";
         this.model = ctx.model;
         this.http = ctx.http;
         this.config = ctx.config;        
-        this.validator = ctx.validator;                        
+        this.validator = ctx.validator; 
     }
     
     @Method()
@@ -100,7 +100,7 @@ import { PageBuilder } from "../../utilities/page-builder";
         this.model.setValue(newEl.id, newEl.value);
 
         if(newEl.hasAttribute('error'))
-            this.validator.validate();
+            this.validator.validate(this);
     }
 
     _render() {   

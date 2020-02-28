@@ -24,6 +24,8 @@ export const config: Config = {
         { src: 'workflow/registration.wf.json', dest: 'wf/registration' },
         { src: 'workflow/deposit.wf.json', dest: 'wf/deposit' },
         { src: 'workflow/login.wf.json', dest: 'wf/login' },
+        { src: 'workflow/loginA.wf.json', dest: 'wf/loginA' },
+        { src: 'workflow/clients.wf.json', dest: 'wf/clients' },
         { src: 'workflow/user.json', dest: 'wf/user' },
         { src: 'workflow/menu.json', dest: 'wf/menu' },
         { src: 'workflow/settings.json', dest: 'wf/settings' },
