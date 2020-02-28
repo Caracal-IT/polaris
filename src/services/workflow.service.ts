@@ -22,18 +22,9 @@ export class WorkflowService {
             if(clearStack)
                 this.stack = [];
                 
-            if(typeof process === "string") {
-                let baseUrl = this.ctx.config.getSetting("[WF]");
-                
-                if(!baseUrl)
-                    baseUrl = this.ctx.config.getSetting("[baseUrl]");
-                
-                if(!baseUrl)
-                    return;
-
-                process = await this.ctx.http.fetch({url: `${baseUrl}/${process}`, method: 'get'});
-            }
-
+            if(typeof process === "string")              
+                process = await this.ctx.http.fetch({url: `[WF]/${process}`, method: 'get'});
+            
             this.process = process; 
             this.activity = null;
 

@@ -58,7 +58,7 @@ import { PageBuilder } from "../../utilities/page-builder";
         this.model = ctx.model;
         this.http = ctx.http;
         this.config = ctx.config;        
-        this.validator = ctx.validator;                
+        this.validator = ctx.validator;                        
     }
     
     @Method()
@@ -82,13 +82,16 @@ import { PageBuilder } from "../../utilities/page-builder";
         this.wfMessage.emit({...message, ...metaData});
     }
 
-    componentWillLoad() { 
+    async componentWillLoad() { 
+        if(this.url) {
+            this.config.addSetting("[settingsUrl]", this.url);
+            const settings = await this.http.fetch({method: "GET", url: this.url});
+            Object.keys(settings).forEach(k => this.config.addSetting(k, settings[k]));
+        }
+
         if(this.parent)
             this.setServices(this.parent);
-
-        if(this.url)
-            this.config.addSetting("[baseUrl]", this.url);
-
+        
         if(this.process)
             this.load(this.process, this.activity, this.sessionId);
     }

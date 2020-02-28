@@ -1,26 +1,11 @@
 {
     "name" : "default",
-    "activities": [
+    "activities": [        
         {
             "name": "start",
             "type": "api-activity",
-            "next": "init",
-            "endpoints": [
-                {
-                    "url": "[baseUrl]/settings",
-                    "method": "GET"
-                }
-            ]
-        },
-        {
-            "name": "init",
-            "type": "api-activity",
             "next": "landing",
-            "endpoints": [
-                {
-                    "url": "[baseUrl]/settings",
-                    "method": "GET"
-                },
+            "endpoints": [                
                 {
                     "url": "[WF]/menu",
                     "method": "GET",
