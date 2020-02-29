@@ -8,6 +8,9 @@ jobs:
       name: node/default
     steps:
       - checkout
+      - run:
+          name: Workaround for GoogleChrome/puppeteer#290
+          command: 'sh .circleci/setup_puppeteer.sh'
       - node/with-cache:
           steps:
             - run: npm install
