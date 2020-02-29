@@ -11,34 +11,20 @@ export class ApiActivity implements Activity {
     endpoints?: Array<ApiEndpoint>;
     next?:string;
 
-    async execute(): Promise<boolean> {        
-        if(this.endpoints && this.endpoints.length > 0) 
-            setTimeout(this.callEndpoints.bind(this));
-        else if(this.next && this.ctx)
-            this.gotoNext();
-
+     async execute(): Promise<boolean> {  
+        await this.callEndpoints();
+        this.gotoNext();
         return true;
     }
 
-    private callEndpoints() {
-        if(!this.ctx || !this.ctx.http || !this.endpoints)
-            return;
+    private async callEndpoints(): Promise<boolean> {
+        for(const endpoint of this.endpoints) {
+            endpoint.body = this.getBody(endpoint);
+            
+            await this.callEndpoint(this.ctx.http, endpoint);
+        };
 
-        let counter = 0;
-
-        const fetch = this.callEndpoint.bind(this, this.ctx.http)
-        this.endpoints
-            .forEach(e => {
-                counter++;
-                e.body = this.getBody(e);
-
-                fetch(e).finally(() => {
-                    counter--;
-
-                    if(counter === 0)
-                        this.gotoNext()
-                });
-            });
+        return true;
     }
 
     private async callEndpoint(http: HttpService, endpoint: ApiEndpoint) {

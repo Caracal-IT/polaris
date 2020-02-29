@@ -8,8 +8,21 @@ export class HttpService {
         try {
             this.ctx.page.sendMessage({type: "START_LOADING"});
             const response = await fetch(this.resolveSetting(endpoint.url), this.getConfig(endpoint));
+            
+            if(response.status >= 400) {
+                const error = await response.json();
 
-            return response.json();
+                if(response.status >= 401)
+                    this.ctx.page.sendMessage({type: "UN_AUTHORIZED", metadata: { endpoint, error}});  
+
+                throw {
+                    code: response.status,
+                    message: response.statusText,
+                    error: error
+                };
+            }
+
+            return await response.json();
         }
         finally {
             setTimeout(() => this.ctx.page.sendMessage({type: "END_LOADING"}));
