@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node:latest-browsers
+  node: threetreeslight/puppeteer@0.1.2
 jobs:
   build-and-test:
     executor:
