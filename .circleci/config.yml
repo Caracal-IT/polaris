@@ -32,7 +32,6 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
-            - codecov -f coverage/*.json
 workflows:
     build-and-test:
       jobs:
