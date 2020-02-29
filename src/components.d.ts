@@ -21,7 +21,7 @@ export namespace Components {
     */
     'caption': string;
     /**
-    * @ignore The current context.
+    * The current context.
     */
     'ctx': Context;
     /**
@@ -137,7 +137,7 @@ declare namespace LocalJSX {
     */
     'caption'?: string;
     /**
-    * @ignore The current context.
+    * The current context.
     */
     'ctx'?: Context;
     /**
