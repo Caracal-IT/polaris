@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@1.1.6
-  codecov: codecov/codecov@1.0.2
+  codecov: codecov/codecov@1.0.5
 jobs:
   build-and-test:
     executor:
@@ -28,11 +28,16 @@ jobs:
             libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
             ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget --fix-missing
 
+      - codecov/upload:
+          flags: backend,unittest
+          
       - node/with-cache:
           steps:
             - run: npm install
             - run: npm test
-            - run: codecov -f coverage
+            - codecov/upload:
+              file: coverage/*.json
+              flags: frontend
 workflows:
     build-and-test:
       jobs:
