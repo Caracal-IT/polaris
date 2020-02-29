@@ -4,6 +4,7 @@
         {"name": "Login", "process": "login"},
         {"name": "FB Login", "process": "loginA"},
         {"name": "Deposit", "process": "deposit"},
-        {"name": "Registration", "process": "registration"}
+        {"name": "Registration", "process": "registration"},
+        {"name": "Clients", "process": "clients"}
     ]
 }

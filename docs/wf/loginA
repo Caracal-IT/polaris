@@ -29,7 +29,7 @@
                         {"client": "login.username", "remote": "email", "direction": "out"},
                         {"client": "login.password", "remote": "password", "direction": "out"},                    
                         {"client": "true", "remote": "returnSecureToken", "direction": "out"},
-                        {"client": "FBApiKey", "remote": "idToken", "direction": "in"}
+                        {"client": "[FBApiKey]", "remote": "idToken", "direction": "in"}
                     ]
                 }
             ]
