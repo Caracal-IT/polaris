@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type      | Default     |
-| --------- | --------- | ----------- | --------- | ----------- |
-| `caption` | `caption` |             | `string`  | `undefined` |
-| `ctx`     | --        |             | `Context` | `undefined` |
-| `next`    | `next`    |             | `string`  | `undefined` |
+| Property  | Attribute | Description                   | Type      | Default     |
+| --------- | --------- | ----------------------------- | --------- | ----------- |
+| `caption` | `caption` | The button text.              | `string`  | `undefined` |
+| `ctx`     | --        |                               | `Context` | `undefined` |
+| `next`    | `next`    | The next activity to execute. | `string`  | `undefined` |
 
 
 ----------------------------------------------
 
-*Built with [StencilJS](https://stenciljs.com/)*
+*Built with love!*

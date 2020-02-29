@@ -8,7 +8,12 @@ export const config: Config = {
       esmLoaderPath: "../loader"
     },
     {
-      type: "docs-readme"
+      type: "docs-readme",
+      footer: '*Built with love!*'
+    },
+    { 
+      type: "docs-json",
+      file: "dist/docs.json"
     },
     {
       type: "www",

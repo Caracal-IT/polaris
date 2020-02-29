@@ -16,8 +16,17 @@ import {
 
 export namespace Components {
   interface MoonButton {
+    /**
+    * The button text.
+    */
     'caption': string;
+    /**
+    * @ignore The current context.
+    */
     'ctx': Context;
+    /**
+    * The next activity to execute.
+    */
     'next': string;
   }
   interface MoonHeader {
@@ -123,8 +132,17 @@ declare global {
 
 declare namespace LocalJSX {
   interface MoonButton {
+    /**
+    * The button text.
+    */
     'caption'?: string;
+    /**
+    * @ignore The current context.
+    */
     'ctx'?: Context;
+    /**
+    * The next activity to execute.
+    */
     'next'?: string;
   }
   interface MoonHeader {
