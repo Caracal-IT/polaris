@@ -8,18 +8,15 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  Context,
-} from './model/context.model';
-import {
   MenuItem,
 } from './model/menu-item.model';
+import {
+  Context,
+} from './model/context.model';
 
 export namespace Components {
   interface PolarisAnalytics {}
   interface PolarisLoader {}
-  interface PolarisMain {
-    'ctx': Context;
-  }
   interface PolarisMenu {
     'ctx'?: Context;
     'items': Array<MenuItem>|string;
@@ -53,12 +50,6 @@ declare global {
     new (): HTMLPolarisLoaderElement;
   };
 
-  interface HTMLPolarisMainElement extends Components.PolarisMain, HTMLStencilElement {}
-  var HTMLPolarisMainElement: {
-    prototype: HTMLPolarisMainElement;
-    new (): HTMLPolarisMainElement;
-  };
-
   interface HTMLPolarisMenuElement extends Components.PolarisMenu, HTMLStencilElement {}
   var HTMLPolarisMenuElement: {
     prototype: HTMLPolarisMenuElement;
@@ -73,7 +64,6 @@ declare global {
   interface HTMLElementTagNameMap {
     'polaris-analytics': HTMLPolarisAnalyticsElement;
     'polaris-loader': HTMLPolarisLoaderElement;
-    'polaris-main': HTMLPolarisMainElement;
     'polaris-menu': HTMLPolarisMenuElement;
     'polaris-workflow': HTMLPolarisWorkflowElement;
   }
@@ -82,9 +72,6 @@ declare global {
 declare namespace LocalJSX {
   interface PolarisAnalytics {}
   interface PolarisLoader {}
-  interface PolarisMain {
-    'ctx'?: Context;
-  }
   interface PolarisMenu {
     'ctx'?: Context;
     'items'?: Array<MenuItem>|string;
@@ -104,7 +91,6 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'polaris-analytics': PolarisAnalytics;
     'polaris-loader': PolarisLoader;
-    'polaris-main': PolarisMain;
     'polaris-menu': PolarisMenu;
     'polaris-workflow': PolarisWorkflow;
   }
@@ -118,7 +104,6 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'polaris-analytics': LocalJSX.PolarisAnalytics & JSXBase.HTMLAttributes<HTMLPolarisAnalyticsElement>;
       'polaris-loader': LocalJSX.PolarisLoader & JSXBase.HTMLAttributes<HTMLPolarisLoaderElement>;
-      'polaris-main': LocalJSX.PolarisMain & JSXBase.HTMLAttributes<HTMLPolarisMainElement>;
       'polaris-menu': LocalJSX.PolarisMenu & JSXBase.HTMLAttributes<HTMLPolarisMenuElement>;
       'polaris-workflow': LocalJSX.PolarisWorkflow & JSXBase.HTMLAttributes<HTMLPolarisWorkflowElement>;
     }
