@@ -32,8 +32,8 @@ Add the scripts to your page.
   <title>Polaris Workflow</title>
 
   <link rel="stylesheet" href="style.css" />
-  <script type="module" src="build/polaris.esm.js"></script>
-  <script nomodule src="build/polaris.js"></script>
+  <script type="module" src="node_modules/caracal_polaris/dist/polaris/polaris.esm.js"></script>
+  <script nomodule src="node_modules/caracal_polaris/dist/polaris/polaris.js"></script>
 </head>
 ```
 
