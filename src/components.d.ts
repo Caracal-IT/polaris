@@ -15,20 +15,6 @@ import {
 } from './model/menu-item.model';
 
 export namespace Components {
-  interface MoonButton {
-    /**
-    * The button text.
-    */
-    'caption': string;
-    /**
-    * The current context.
-    */
-    'ctx': Context;
-    /**
-    * The next activity to execute.
-    */
-    'next': string;
-  }
   interface MoonHeader {
     'caption': string;
   }
@@ -63,12 +49,6 @@ export namespace Components {
 
 declare global {
 
-
-  interface HTMLMoonButtonElement extends Components.MoonButton, HTMLStencilElement {}
-  var HTMLMoonButtonElement: {
-    prototype: HTMLMoonButtonElement;
-    new (): HTMLMoonButtonElement;
-  };
 
   interface HTMLMoonHeaderElement extends Components.MoonHeader, HTMLStencilElement {}
   var HTMLMoonHeaderElement: {
@@ -118,7 +98,6 @@ declare global {
     new (): HTMLPolarisWorkflowElement;
   };
   interface HTMLElementTagNameMap {
-    'moon-button': HTMLMoonButtonElement;
     'moon-header': HTMLMoonHeaderElement;
     'moon-label': HTMLMoonLabelElement;
     'moon-panel': HTMLMoonPanelElement;
@@ -131,20 +110,6 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface MoonButton {
-    /**
-    * The button text.
-    */
-    'caption'?: string;
-    /**
-    * The current context.
-    */
-    'ctx'?: Context;
-    /**
-    * The next activity to execute.
-    */
-    'next'?: string;
-  }
   interface MoonHeader {
     'caption'?: string;
   }
@@ -176,7 +141,6 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
-    'moon-button': MoonButton;
     'moon-header': MoonHeader;
     'moon-label': MoonLabel;
     'moon-panel': MoonPanel;
@@ -194,7 +158,6 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'moon-button': LocalJSX.MoonButton & JSXBase.HTMLAttributes<HTMLMoonButtonElement>;
       'moon-header': LocalJSX.MoonHeader & JSXBase.HTMLAttributes<HTMLMoonHeaderElement>;
       'moon-label': LocalJSX.MoonLabel & JSXBase.HTMLAttributes<HTMLMoonLabelElement>;
       'moon-panel': LocalJSX.MoonPanel & JSXBase.HTMLAttributes<HTMLMoonPanelElement>;
