@@ -9,6 +9,10 @@
 # Polaris: A workflow engine to build web pages.
 
 ## Why Polaris?
+Why not write just the html page? Polaris will enable non programmers to build their own forms.
+You'll get dats binding, the ability to call api's and desissions out of the box. The GUI builder
+will enable the user to specify the flow of the page by settings. You will be able to give the audiences 
+different flows by using LaunchDarkly for example. Please refere to the Wiki for more information.
 
 ## Getting Started
 
@@ -43,7 +47,29 @@ Add the element to your page.
 Load the process
 
 ```javascript
+<script>
+  const process = {
+    "name" : "demo",
+    "activities": [
+      {
+        "name": "start",
+        "type": "page-activity",            
+        "controls": [
+            {"tag" : "h1", "innerHTML": "Polaris" },
+            {"tag" : "span", "innerHTML": "Welcome to polaris workflow" }                    
+        ]        
+      }
+    ]
+  };
 
+  customElements
+    .whenDefined("polaris-workflow")
+    .then(() => {
+
+      const wf = document.querySelector("polaris-workflow");
+      wf.load(process);
+    });
+</script>
 ```
 
 To start developing your new Polaris project, run:
