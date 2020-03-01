@@ -85,13 +85,13 @@ Listen to messages, refere to the wiki for a complete list of events.
     .whenDefined("polaris-workflow")
     .then(() => {
       const wf = document.querySelector("polaris-workflow");
-      wf.addEventListener('wfMessage', (event) => {
+      wf.addEventListener("wfMessage", (event) => {
         switch(event.detail.type) {
           case "ERROR": console.log(event); break;
           case "VALIDATION_ERROR": console.log(event); break;
           ...
           ...
-          default: console.log('Unknown Event'); break;
+          default: console.log("Unknown Event"); break;
         }
       });
     });
