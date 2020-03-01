@@ -1,0 +1,36 @@
+{
+    "name" : "clients",
+    "activities": [
+        {
+            "name": "start",
+            "type": "api-activity",
+            "next": "landing",
+            "endpoints": [                
+                {
+                    "url": "[FB]/client/1.json?auth=[FBApiKey]",
+                    "method": "GET",
+                    "mappings":[
+                        {"client": "client.firstName", "remote": "firstName", "direction": "in"},
+                        {"client": "client.lastName", "remote": "lastName", "direction": "in"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "landing",
+            "type": "page-activity",            
+            "controls": [
+                {"tag" : "moon-header", "caption": "Login" },
+                {"tag" : "moon-label", "caption": "First Name", "for": "client.firstName"},
+                {"tag": "input", "id": "client.firstName"},                
+                {"tag" : "moon-label", "caption": "Surname", "for": "client.lastName"},
+                {"tag": "input", "id": "client.lastName"},
+                {"tag": "div", 
+                 "controls": [
+                    {"tag": "moon-button", "caption": "Login", "next": "test"}
+                 ] 
+                }                   
+            ]        
+        }
+    ]
+}

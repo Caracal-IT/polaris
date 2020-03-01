@@ -1,5 +1,5 @@
 {
-    "[WF]": "example/wf",
+    "[WF]": "wf",
     "[Firebase]": "https://identitytoolkit.googleapis.com/v1/",
     "[FB]": "https://fusion-workflow.firebaseio.com",
     "[FBApiKey]": "AIzaSyDgbUf-PVUsNsUIsZvzgUTFuht907oc9LY" 

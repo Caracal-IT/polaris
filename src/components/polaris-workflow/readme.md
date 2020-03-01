@@ -49,19 +49,6 @@ Type: `Promise<void>`
 
 
 
-## Dependencies
-
-### Used by
-
- - [polaris-main](../app/polaris-main)
-
-### Graph
-```mermaid
-graph TD;
-  polaris-main --> polaris-workflow
-  style polaris-workflow fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with love!*

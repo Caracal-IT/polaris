@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      header, h2 {
+        padding: 6px;
+        display: block;
+        flex-basis: 90px;
+        background-color: lightpink;
+        color: hotpink;
+      }
+
+      main {
+        padding: 10px;
+        border: 2px solid #757575;
+        border-radius: 20px;
+        margin: 10px auto;
+      }
+
+      div, nav{
+        font-size: 1.2rem;
+        color: #757575;
+        margin: 10px;
+      }
+
+      label {
+        display: inline-block;
+        width: 100px;
+      }
+
+      label::after {
+        content: ': ';
+        text-align: end;
+      }
+
+      span {
+        color: darkslategray;
+      }
+
+      nav {
+        display: block;
+        text-align: center;
+      }
+
+      .button {
+          cursor: pointer;
+          color: var(--primary-color, white);
+          background-color: var(--primary-bg-color, HotPink);
+
+          min-width: 9rem;
+          
+          border: 1px solid var(--primary-border-color, #757575);
+          border-radius: 5px;
+          
+          padding: .5rem;
+          margin: 0 .1rem;
+
+          font: inherit;
+          font-size: 1rem;
+          text-decoration: none;
+      }
+
+      .button:hover {
+          color: var(--primary-alt-color, black);
+          background-color: var(--primary-alt-bg-color, lightpink);
+          box-shadow: 3px 4px 4px rgba(0, 0, 0, .5);
+      }
+
+      .button:active:hover {
+          box-shadow: 1px 2px 2px rgba(0, 0, 0, .5);
+      }
+
+      .button:focus {
+          outline: none;
+          box-shadow: 3px 4px 4px rgba(0, 0, 0, .5);
+      }
+  </style>
+</head>
+<body>
+    <header><h2>Fake Bank</h2></header>
+    <main>
+      <div><label>Name</label><span id="user"></span></div>
+      <div><label>Account</label><span id="account"></span></div>
+      <div><label>Amount</label><span id="amount"></span></div>
+      <nav><a id="backLink" class="button" href="">Approve</a></nav>
+    </main>
+
+    <script>
+        const user = document.getElementById("user");
+        const account = document.getElementById("account");
+        const amount = document.getElementById("amount");
+
+        const backLink = document.querySelector("#backLink");
+        const urlParams = new URLSearchParams(window.location.search);
+        const returnUrl = urlParams.get('returnUrl');
+        const redirectUrl = urlParams.get('redirectUrl')||"index.html";
+
+        const params = returnUrl.split('-');
+        const process = params[0];
+        const activity = params.length > 1 ? params[1] : 'start';
+        const sessionId = params.length > 2 ? params[2] : null;
+         
+        const data = JSON.parse(sessionStorage.getItem(sessionId));
+        user.textContent = data.login.username;
+        account.textContent = data.banking.account;
+        amount.textContent = currencyFormat(data.banking.depositAmount);
+
+        backLink.href = `${redirectUrl}#${returnUrl}`;
+
+        function currencyFormat(value) {
+          const formatter = new Intl.NumberFormat('en-ZA', {
+            style: 'currency',
+            currencyDisplay: 'symbol', // symbol code  es-MX MXN
+            currency: 'ZAR'
+          });
+      
+          return formatter.format(+value);
+        }
+    </script>
+</body>
+</html>
+

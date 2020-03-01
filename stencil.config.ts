@@ -58,10 +58,9 @@ export const config: Config = {
       dir: 'docs',
       serviceWorker: null,
       copy: [
-        { src: '../www', dest: '' },
-        { src: 'example', dest: 'example' }
+        { src: '../www', dest: '' }
       ]
-    }*/
-
+    }
+*/
   ]
 };

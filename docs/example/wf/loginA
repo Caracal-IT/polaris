@@ -1,0 +1,49 @@
+{
+    "name" : "loginA",
+    "activities": [
+        {
+            "name": "start",
+            "type": "page-activity",            
+            "controls": [
+                {"tag" : "moon-header", "caption": "Login" },
+                {"tag" : "moon-label", "caption": "Username", "for": "login.username"},
+                {"tag": "input", "id": "login.username"},                
+                {"tag" : "moon-label", "caption": "Password", "for": "login.password"},
+                {"tag": "input", "id": "login.password", "type": "password" },
+                {"tag": "div", 
+                 "controls": [
+                    {"tag": "moon-button", "caption": "Login", "next": "test"}
+                 ] 
+                }                   
+            ]        
+        },
+        {
+            "name": "test",
+            "type": "api-activity",
+            "next": "login",
+            "endpoints": [                
+                {
+                    "url": "[Firebase]accounts:signInWithPassword?key=[FBApiKey]",
+                    "method": "POST",
+                    "mappings":[
+                        {"client": "login.username", "remote": "email", "direction": "out"},
+                        {"client": "login.password", "remote": "password", "direction": "out"},                    
+                        {"client": "true", "remote": "returnSecureToken", "direction": "out"},
+                        {"client": "[FBApiKey]", "remote": "idToken", "direction": "in"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "login",
+            "type": "finish-activity",
+            "next": "home"
+        },
+        {
+            "name": "home",
+            "type": "ipc-activity",
+            "process" : "home",
+            "next": ""
+        }
+    ]
+}
