@@ -72,6 +72,27 @@ Load the process
 </script>
 ```
 
+Listen to messages, refere to the wiki for a complete list of events.
+
+```tsx
+<script>
+  customElements
+    .whenDefined("polaris-workflow")
+    .then(() => {
+      const wf = document.querySelector("polaris-workflow");
+      wf.addEventListener('wfMessage', (event) => {
+        switch(event.detail.type) {
+          case "ERROR": console.log(event); break;
+          case "VALIDATION_ERROR": console.log(event); break;
+          ...
+          ...
+          default: console.log('Unknown Event'); break;
+        }
+      });
+    });
+</script>
+```
+
 To start developing your new Polaris project, run:
 
 ```bash
