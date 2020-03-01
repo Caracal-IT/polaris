@@ -44,7 +44,7 @@ Add the element to your page.
 <polaris-loader></polaris-loader>
 <polaris-workflow></polaris-workflow>
 ```
-Load the process
+Load the process, refere to the wiki to setup the remote server to provide the process definitions.
 
 ```javascript
 <script>
