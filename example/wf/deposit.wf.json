@@ -57,7 +57,7 @@
         {
             "name": "approve",
             "type": "redirect-activity",
-            "location": "redirect.html?redirectUrl=example/index.html",
+            "location": "redirect.html",
             "next": "details"
         },
         {

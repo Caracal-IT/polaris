@@ -24,6 +24,20 @@ export const config: Config = {
       }, // disable service workers
       copy: [
         { src: 'style.css', dest: 'style.css' },
+        { src: '../example/index.html', dest: 'example/index.html' },
+        { src: '../example/redirect.html', dest: 'example/redirect.html' },
+        
+        { src: '../example/wf/default.wf.json', dest: 'example/wf/default' },
+        { src: '../example/wf/home.wf.json', dest: 'example/wf/home' },
+        { src: '../example/wf/registration.wf.json', dest: 'example/wf/registration' },
+        { src: '../example/wf/deposit.wf.json', dest: 'example/wf/deposit' },
+        { src: '../example/wf/login.wf.json', dest: 'example/wf/login' },
+        { src: '../example/wf/loginA.wf.json', dest: 'example/wf/loginA' },
+        { src: '../example/wf/clients.wf.json', dest: 'example/wf/clients' },
+        { src: '../example/wf/user.json', dest: 'example/wf/user' },
+        { src: '../example/wf/menu.json', dest: 'example/wf/menu' },
+        { src: '../example/wf/settings.json', dest: 'example/wf/settings' },
+
         { src: 'workflow/default.wf.json', dest: 'wf/default' },
         { src: 'workflow/home.wf.json', dest: 'wf/home' },
         { src: 'workflow/registration.wf.json', dest: 'wf/registration' },
@@ -44,7 +58,7 @@ export const config: Config = {
       serviceWorker: null,
       copy: [
         { src: '../www', dest: '' },
-        { src: 'demo', dest: 'demo' }
+        { src: 'example', dest: 'example' }
       ]
     }*/
 
