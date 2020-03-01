@@ -14,7 +14,7 @@ Polaris will enable non programmers to build their own forms using a GUI builder
 The GUI builder will enable the user to specify the flow of the page by settings. 
 You will be able to give the audiences different flows by using LaunchDarkly for example.
 
-You'll get data binding, the ability to call api's and the abitity for different codepaths based 
+You'll get data binding, form validation, the ability to call api's and the abitity for different codepaths based 
 on user interactions out of the box. 
  
 Please refere to the Wiki for more information.
