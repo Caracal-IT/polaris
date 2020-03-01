@@ -9,10 +9,15 @@
 # Polaris: A workflow engine to build web pages.
 
 ## Why Polaris?
-Why not write just the html page? Polaris will enable non programmers to build their own forms.
-You'll get dats binding, the ability to call api's and desissions out of the box. The GUI builder
-will enable the user to specify the flow of the page by settings. You will be able to give the audiences 
-different flows by using LaunchDarkly for example. Please refere to the Wiki for more information.
+Why not write just the html page? 
+Polaris will enable non programmers to build their own forms using a GUI builder.
+The GUI builder will enable the user to specify the flow of the page by settings. 
+You will be able to give the audiences different flows by using LaunchDarkly for example.
+
+You'll get data binding, the ability to call api's and the abitity for different codepaths based 
+on user interactions out of the box. 
+ 
+Please refere to the Wiki for more information.
 
 ## Getting Started
 
