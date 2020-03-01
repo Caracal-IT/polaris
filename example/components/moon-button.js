@@ -90,32 +90,3 @@ class MoonButton extends HTMLElement {
   }
 
   customElements.define('moon-button', MoonButton);
-
-  /*
-
-    @Prop()ctx: Context;
-
-
-    @Prop() caption: string;
-
-    @Prop() next: string;
-
-    buttonHandler() {
-        this.ctx?.wf?.goto(this.next);
-    }
-
-    render() {
-        return <button onClick={this.buttonHandler.bind(this)}>{this.caption}</button>
-    }
-
-
-
-
-
-        static get observedAttributes() { return ['c', 'l']; }
-
-        attributeChangedCallback(name, oldValue, newValue) {
-            console.log('Custom square element attributes changed.');
-            updateStyle(this);
-        }
-  */
