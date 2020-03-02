@@ -41,8 +41,8 @@ export const config: Config = {
         { src: '../example/wf/menu.json', dest: 'example/wf/menu' },
         { src: '../example/wf/settings.json', dest: 'example/wf/settings' }        
       ]
-    }
-    ,/*
+    }/*
+    ,
     {
       type: 'www',
       dir: 'docs',
@@ -50,7 +50,7 @@ export const config: Config = {
       copy: [
         { src: '../www', dest: '' }
       ]
-    }*/
-
+    }
+*/
   ]
 };
