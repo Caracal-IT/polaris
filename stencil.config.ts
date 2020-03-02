@@ -49,7 +49,7 @@ export const config: Config = {
       copy: [
         { src: '../www', dest: '' }
       ]
-    }*/
-
+    }
+*/
   ]
 };
