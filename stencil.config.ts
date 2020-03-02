@@ -24,6 +24,8 @@ export const config: Config = {
       }, // disable service workers
       copy: [
         { src: 'style.css', dest: 'style.css' },
+
+        { src: '../example/style.css', dest: 'example/style.css' },
         { src: '../example/index.html', dest: 'example/index.html' },
         { src: '../example/redirect.html', dest: 'example/redirect.html' },
         { src: '../example/components', dest: 'example/components' },

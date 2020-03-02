@@ -8,18 +8,11 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  MenuItem,
-} from './model/menu-item.model';
-import {
   Context,
 } from './model/context.model';
 
 export namespace Components {
   interface PolarisAnalytics {}
-  interface PolarisMenu {
-    'ctx'?: Context;
-    'items': Array<MenuItem>|string;
-  }
   interface PolarisWorkflow {
     'activity': string;
     'ctx': Context;
@@ -43,12 +36,6 @@ declare global {
     new (): HTMLPolarisAnalyticsElement;
   };
 
-  interface HTMLPolarisMenuElement extends Components.PolarisMenu, HTMLStencilElement {}
-  var HTMLPolarisMenuElement: {
-    prototype: HTMLPolarisMenuElement;
-    new (): HTMLPolarisMenuElement;
-  };
-
   interface HTMLPolarisWorkflowElement extends Components.PolarisWorkflow, HTMLStencilElement {}
   var HTMLPolarisWorkflowElement: {
     prototype: HTMLPolarisWorkflowElement;
@@ -56,17 +43,12 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'polaris-analytics': HTMLPolarisAnalyticsElement;
-    'polaris-menu': HTMLPolarisMenuElement;
     'polaris-workflow': HTMLPolarisWorkflowElement;
   }
 }
 
 declare namespace LocalJSX {
   interface PolarisAnalytics {}
-  interface PolarisMenu {
-    'ctx'?: Context;
-    'items'?: Array<MenuItem>|string;
-  }
   interface PolarisWorkflow {
     'activity'?: string;
     'ctx'?: Context;
@@ -81,7 +63,6 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'polaris-analytics': PolarisAnalytics;
-    'polaris-menu': PolarisMenu;
     'polaris-workflow': PolarisWorkflow;
   }
 }
@@ -93,7 +74,6 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'polaris-analytics': LocalJSX.PolarisAnalytics & JSXBase.HTMLAttributes<HTMLPolarisAnalyticsElement>;
-      'polaris-menu': LocalJSX.PolarisMenu & JSXBase.HTMLAttributes<HTMLPolarisMenuElement>;
       'polaris-workflow': LocalJSX.PolarisWorkflow & JSXBase.HTMLAttributes<HTMLPolarisWorkflowElement>;
     }
   }

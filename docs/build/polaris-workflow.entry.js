@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, d as getElement } from './core-bb218feb.js';
+import { r as registerInstance, c as createEvent, d as getElement } from './core-83258695.js';
 
 class HttpService {
     constructor(ctx) {
