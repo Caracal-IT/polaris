@@ -46,19 +46,19 @@ self.__precacheManifest = [
   },
   {
     "url": "example/components/moon-button.js",
-    "revision": "4982a1ec3a9d5a871814921833ab2a95"
+    "revision": "18be95673b61bd2b1adeda3e4a9ccf7f"
   },
   {
     "url": "example/components/moon-header.js",
-    "revision": "b4abf38d67fb2204db8154344432ec26"
+    "revision": "6fc9e74450b814bfe2e541e4643685c8"
   },
   {
     "url": "example/components/moon-label.js",
-    "revision": "d045a28dda2341b6bd1f8502485418cf"
+    "revision": "542bc3ecceb80dc81a6086ac1f0d6032"
   },
   {
     "url": "example/components/moon-panel.js",
-    "revision": "db50af738f7d594637ecdd02ff40272f"
+    "revision": "c6b5fceb039128d7acadff502265cdef"
   },
   {
     "url": "example/components/polaris-loader.js",
@@ -66,11 +66,11 @@ self.__precacheManifest = [
   },
   {
     "url": "example/components/polaris-main.js",
-    "revision": "a789655bd5f48714fd50a19ad74f90b6"
+    "revision": "1cd78ccdd981c8e8fc73f0dc294d2951"
   },
   {
     "url": "example/components/polaris-menu.js",
-    "revision": "b03839fada371af529fea971d63f4412"
+    "revision": "82fb05f30910ce728f1a3580614daee1"
   },
   {
     "url": "example/index.html",
@@ -86,11 +86,11 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "a7012867636b7195a820ef7a62b5599d"
+    "revision": "7bc7148932fa0350198d72943d12000f"
   },
   {
     "url": "style.css",
-    "revision": "24f739c71a5cdc0cd9ea4f0447b24faf"
+    "revision": "649a37c3ca60d06be850ba1292932689"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});

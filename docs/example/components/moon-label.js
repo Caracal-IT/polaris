@@ -38,7 +38,7 @@ class MoonLabel extends HTMLElement {
         const style = document.createElement('style');
         style.innerHTML = `
             span {
-                color: var(--primary-border-color, #757575);
+                color: #757575;
             }
         `;
 

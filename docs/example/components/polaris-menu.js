@@ -90,7 +90,9 @@ class PolarisMenu extends HTMLElement {
         return event.detail.type 
         && event.detail.type === 'PROCESS_CHANGED' 
         && event.detail.process !== "default"
-        && event.detail.metadata?.stack?.length === 0;
+        && event.detail.metadata
+        && event.detail.metadata.stack
+        && event.detail.metadata.stack.length === 0;
     }
 
     _setActiveMenuItem() {

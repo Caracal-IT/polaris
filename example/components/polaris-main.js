@@ -112,13 +112,13 @@ class PolarisMain extends HTMLElement {
                 display: block;
                 width: 100%;
                 border-radius: 10px;
-                border: 1px solid var(--primary-border-color, #757575);
+                border: 1px solid #757575;
             }
             
             input:focus {
                 outline: none;
                 margin: 4px 0;
-                border: 2px solid var(--primary-border-color, purple);
+                border: 2px solid purple;
             }
             
             input[error="true"]{

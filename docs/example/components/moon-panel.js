@@ -45,13 +45,13 @@ class MoonPanel extends HTMLElement {
                 width: 600px;
                 border: 1px solid black;
                 border-radius: 15px;
-                border: 2px solid var(--primary-border-color, #757575);
+                border: 2px solid #757575;
                 box-shadow: 3px 4px 3px rgba(0, 0, 0, .3);
                 padding: 5px;
             }
             
             h1 {
-                color: var(--primary-border-color, purple);
+                color: purple;
             }
             
             
@@ -62,13 +62,13 @@ class MoonPanel extends HTMLElement {
                 display: block;
                 width: 100%;
                 border-radius: 10px;
-                border: 1px solid var(--primary-border-color, #757575);
+                border: 1px solid #757575;
             }
             
             input:focus {
                 outline: none;
                 margin: 4px 0;
-                border: 2px solid var(--primary-border-color, purple);
+                border: 2px solid purple;
             }
             
             input[error="true"]{

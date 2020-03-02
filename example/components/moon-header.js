@@ -38,7 +38,7 @@ class MoonHeader extends HTMLElement {
         const style = document.createElement('style');
         style.innerHTML = `
             h1 {
-                color: var(--primary-border-color, purple);
+                color: purple;
             }
         `;
 

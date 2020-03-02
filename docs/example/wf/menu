@@ -1,10 +1,8 @@
 {
     "items": [
         {"name": "Home", "process": "home"},
-        {"name": "Login", "process": "login"},
-        {"name": "FB Login", "process": "loginA"},
+        {"name": "Login", "process": "login"},    
         {"name": "Deposit", "process": "deposit"},
-        {"name": "Registration", "process": "registration"},
-        {"name": "Clients", "process": "clients"}
+        {"name": "Registration", "process": "registration"}        
     ]
 }

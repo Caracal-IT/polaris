@@ -35,8 +35,7 @@ export const config: Config = {
         { src: '../example/wf/registration.wf.json', dest: 'example/wf/registration' },
         { src: '../example/wf/deposit.wf.json', dest: 'example/wf/deposit' },
         { src: '../example/wf/login.wf.json', dest: 'example/wf/login' },
-        { src: '../example/wf/loginA.wf.json', dest: 'example/wf/loginA' },
-        { src: '../example/wf/clients.wf.json', dest: 'example/wf/clients' },
+        
         { src: '../example/wf/user.json', dest: 'example/wf/user' },
         { src: '../example/wf/menu.json', dest: 'example/wf/menu' },
         { src: '../example/wf/settings.json', dest: 'example/wf/settings' }        
@@ -50,7 +49,7 @@ export const config: Config = {
       copy: [
         { src: '../www', dest: '' }
       ]
-    }
-*/
+    }*/
+
   ]
 };
