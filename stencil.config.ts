@@ -39,19 +39,7 @@ export const config: Config = {
         { src: '../example/wf/clients.wf.json', dest: 'example/wf/clients' },
         { src: '../example/wf/user.json', dest: 'example/wf/user' },
         { src: '../example/wf/menu.json', dest: 'example/wf/menu' },
-        { src: '../example/wf/settings.json', dest: 'example/wf/settings' },
-
-        { src: 'workflow/default.wf.json', dest: 'wf/default' },
-        { src: 'workflow/home.wf.json', dest: 'wf/home' },
-        { src: 'workflow/registration.wf.json', dest: 'wf/registration' },
-        { src: 'workflow/deposit.wf.json', dest: 'wf/deposit' },
-        { src: 'workflow/login.wf.json', dest: 'wf/login' },
-        { src: 'workflow/loginA.wf.json', dest: 'wf/loginA' },
-        { src: 'workflow/clients.wf.json', dest: 'wf/clients' },
-        { src: 'workflow/user.json', dest: 'wf/user' },
-        { src: 'workflow/menu.json', dest: 'wf/menu' },
-        { src: 'workflow/settings.json', dest: 'wf/settings' },
-        { src: 'redirect.html', dest: 'redirect.html' }
+        { src: '../example/wf/settings.json', dest: 'example/wf/settings' }        
       ]
     }
     ,/*
@@ -62,7 +50,7 @@ export const config: Config = {
       copy: [
         { src: '../www', dest: '' }
       ]
-    }
-*/
+    }*/
+
   ]
 };

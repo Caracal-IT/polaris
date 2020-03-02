@@ -7,28 +7,109 @@ html, body {
     margin:0px;
 }
 
-body {
-    display:flex;
-    flex-direction: column;
-    height: 100vh;
-    align-items: stretch;
+h1 {
+    color: purple;
 }
 
-#pageHeader {
-    flex: 0 0 50px;
+section {
+    display: block;
+    margin: 5px;
 }
 
-#content {
+button {
+    cursor: pointer;
+    color: var(--primary-color, white);
+    background-color: var(--primary-bg-color, purple);
+
+    min-width: 9rem;
+    
+    border: 1px solid var(--primary-border-color, #757575);
+    border-radius: 5px;
+    
+    padding: .5rem;
+    margin: 0 .1rem;
+
+    font: inherit;
+    font-size: 1rem;
+}
+
+button:hover {
+    color: var(--primary-alt-color, black);
+    background-color: var(--primary-alt-bg-color, plum);
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, .5);
+}
+
+button:active:hover {
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, .5);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, .5);
+}
+
+main {
+    padding: 2px 10px;
+}
+
+footer {
+    padding: 2px 10px;
+}
+
+#toolbox {
     display: flex;
-    flex: 1;
-    height: calc(100vh - 85px);
+    flex-wrap: wrap;    
+    height: 350px;
+    border: 1px solid black; 
+    border-radius: 15px;   
 }
 
-polaris-menu {
-    flex: 0 0 150px;
+#toolbox > aside {
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;    
+    flex-basis: 150px;   
+    padding: 10px;    
 }
 
-polaris-main {
-    flex: 1;
-    margin: 10px;
+#toolbox > div {
+    flex: 1 0 0;           
+}
+
+#processDef {     
+    resize: none;    
+    
+    padding: 15px;
+    
+    border: 1px solid black;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    width: 100%;
+    height: 100%;
+    
+    background-color: lightgrey;
+}
+
+#processDef:focus {
+    outline: none;
+}
+
+#console {
+    resize: none;        
+    padding: 1px 15px;    
+    width: 100%;
+    height: 150px;
+    color: yellow;
+    background-color: black;
+    border-radius: 15px;    
+    border: 1px solid black;
+    overflow: auto;
+}
+
+#console p{
+    margin-bottom: 1px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid lime;
 }
