@@ -7,6 +7,7 @@
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fcaracal-it.github.io%2Fpolaris)
 
 # Polaris: A workflow engine to build web pages.
+Building apps from without coding. We will be using configuration to build our apps.
 
 ## Why Polaris?
 Why not write just the html page? 
