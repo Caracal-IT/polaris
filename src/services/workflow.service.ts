@@ -3,6 +3,7 @@ import { ActivityFactory } from "../activities/activity-factory";
 import { Context } from "../model/context.model";
 import { Process } from "../model/process.model";
 import { Activity } from "../activities/activity";
+import { WorkflowLoader } from "../utilities/workflow-loader";
 
 export interface WFStack {
     process: string;
@@ -10,9 +11,11 @@ export interface WFStack {
 }
 
 export class WorkflowService {
+    loader: WorkflowLoader;
+
     process?:Process;
     activity: Activity;
-
+    
     stack: Array<WFStack> = [];
 
     constructor(private ctx: Context){}
@@ -22,8 +25,8 @@ export class WorkflowService {
             if(clearStack)
                 this.stack = [];
                 
-            if(typeof process === "string")              
-                process = await this.ctx.http.fetch({url: `[WF]/${process}`, method: 'get'});
+            if(typeof process === "string" && this.loader)              
+                process = await this.loader.load(process);
             
             this.process = process; 
             this.activity = null;
@@ -63,8 +66,8 @@ export class WorkflowService {
             return null;
                 
         let newActivity = this.process
-                        .activities
-                        .find(a => a.name == name);    
+                              .activities
+                              .find(a => a.name == name);    
                         
         if(!newActivity)
             throw new Error(`Activity ${name} not found`);

@@ -39,55 +39,55 @@ self.__precacheManifest = [
     "url": "build/p-6c48c477.js"
   },
   {
-    "url": "build/p-ztg1y2zo.entry.js"
+    "url": "build/p-i8kl8qon.entry.js"
   },
   {
     "url": "example/components/moon-button.js",
-    "revision": "18be95673b61bd2b1adeda3e4a9ccf7f"
+    "revision": "2d1ae01d49189c8c69169fe0afdf6fd5"
   },
   {
     "url": "example/components/moon-header.js",
-    "revision": "6fc9e74450b814bfe2e541e4643685c8"
+    "revision": "d03e4d1e092ee8843d8b77fa1ef60c76"
   },
   {
     "url": "example/components/moon-label.js",
-    "revision": "542bc3ecceb80dc81a6086ac1f0d6032"
+    "revision": "9b6433ac9c806f2db6edfe3470819eb7"
   },
   {
     "url": "example/components/moon-panel.js",
-    "revision": "c6b5fceb039128d7acadff502265cdef"
+    "revision": "91f74d42f101e4d06f999ca1c31b9512"
   },
   {
     "url": "example/components/polaris-loader.js",
-    "revision": "697e91c64310b2a59a9ec6a371d2d649"
+    "revision": "4f8de1b7a087b1aa48ba70b3d26efc1a"
   },
   {
     "url": "example/components/polaris-main.js",
-    "revision": "1cd78ccdd981c8e8fc73f0dc294d2951"
+    "revision": "8cc0f3bfe47e84c99c9be01c3207b82f"
   },
   {
     "url": "example/components/polaris-menu.js",
-    "revision": "82fb05f30910ce728f1a3580614daee1"
+    "revision": "4a28066a1a6b7255d004ee2462742034"
   },
   {
     "url": "example/index.html",
-    "revision": "b8152a41fef5b3a546bf41be009daf26"
+    "revision": "8a1d40e378e615539fd417988d24e73c"
   },
   {
     "url": "example/redirect.html",
-    "revision": "56de1f8894e5cfd1212e2f075c62d40a"
+    "revision": "4f5582469416905b535343b09de8f0f1"
   },
   {
     "url": "example/style.css",
-    "revision": "8caf3ce3e0d4c7d9895eafcafaccdc12"
+    "revision": "548de00623550812e61abc724f4aa251"
   },
   {
     "url": "index.html",
-    "revision": "b3b9d13a41a104edcb0e829be3707048"
+    "revision": "e9c7864d8c5ef50d25329e33835ba4c4"
   },
   {
     "url": "style.css",
-    "revision": "649a37c3ca60d06be850ba1292932689"
+    "revision": "e25abe0b5cfee4199799120a42a698ca"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});

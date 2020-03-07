@@ -10,6 +10,7 @@ import { WorkflowService } from "../../services/workflow.service";
 import { ValidatorService } from "../../services/validator.service";
 import { Message } from "../../model/message.model";
 import { PageBuilder } from "../../utilities/page-builder";
+import { WorkflowLoader, HttpWorkflowLoader } from "../../utilities/workflow-loader";
 
 @Component({
     tag: "polaris-workflow",
@@ -19,6 +20,7 @@ import { PageBuilder } from "../../utilities/page-builder";
     page = this;
 
     private _components: Array<any> = [];
+    private _loader: WorkflowLoader;
     
     @Prop() parent: Context;
 
@@ -87,6 +89,11 @@ import { PageBuilder } from "../../utilities/page-builder";
             this.config.addSetting("[settingsUrl]", this.url);
             const settings = await this.http.fetch({method: "GET", url: this.url});
             Object.keys(settings).forEach(k => this.config.addSetting(k, settings[k]));
+        }
+
+        if(!this._loader) {
+            this._loader = new HttpWorkflowLoader(this.http);
+            this.wf.loader = this._loader;
         }
 
         if(this.parent)

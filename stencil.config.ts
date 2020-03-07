@@ -40,14 +40,15 @@ export const config: Config = {
         { src: '../example/wf/menu.json', dest: 'example/wf/menu' },
         { src: '../example/wf/settings.json', dest: 'example/wf/settings' }        
       ]
-    }/*
-    ,
+    }
+    ,/*
     {
       type: 'www',
       dir: 'docs',
       serviceWorker: null,
       copy: [
-        { src: '../www', dest: '' }
+        { src: '../www', dest: '' },
+        { src: '../src/Polaris Workflow Design.png', dest: 'Polaris Workflow Design.png' }
       ]
     }
 */
