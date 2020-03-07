@@ -9,8 +9,8 @@ import { ConfigService } from "../../services/config.service";
 import { WorkflowService } from "../../services/workflow.service";
 import { ValidatorService } from "../../services/validator.service";
 import { Message } from "../../model/message.model";
-import { PageBuilder } from "../../utilities/page-builder";
-import { WorkflowLoader, HttpWorkflowLoader } from "../../utilities/workflow-loader";
+import { PageBuilder } from "../../utilities/page-builder.utility";
+import { WorkflowLoader, HttpWorkflowLoader } from "../../utilities/workflow-loader.utility";
 
 @Component({
     tag: "polaris-workflow",

@@ -3,7 +3,7 @@ import { ActivityFactory } from "../activities/activity-factory";
 import { Context } from "../model/context.model";
 import { Process } from "../model/process.model";
 import { Activity } from "../activities/activity";
-import { WorkflowLoader } from "../utilities/workflow-loader";
+import { WorkflowLoader } from "../utilities/workflow-loader.utility";
 
 export interface WFStack {
     process: string;
