@@ -71,7 +71,7 @@ self.__precacheManifest = [
   },
   {
     "url": "example/index.html",
-    "revision": "8a1d40e378e615539fd417988d24e73c"
+    "revision": "f5dbbe4b29eb9e2b1f71fdb5eb533bff"
   },
   {
     "url": "example/redirect.html",
@@ -83,7 +83,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "e9c7864d8c5ef50d25329e33835ba4c4"
+    "revision": "6fe1cbbd4c1513108e104c739db2ff13"
   },
   {
     "url": "style.css",
