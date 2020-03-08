@@ -35,7 +35,7 @@
                         "tag": "input", 
                         "id": "register.firstName",                        
                         "validators": [
-                            { "name": "Required", "message": "The field is required" }
+                            { "name": "required", "message": "The field is required" }
                         ]
                     },
                     {"tag" : "moon-label", "caption": "Surname", "for": "register.lastName"},
@@ -43,7 +43,7 @@
                         "tag": "input", 
                         "id": "register.lastName",
                         "validators": [
-                            { "name": "Required", "message": "The field is required" }
+                            { "name": "required", "message": "The field is required" }
                         ]},
                     {"tag" : "moon-label", "caption": "Nickname", "for": "register.nickName"},
                     {"tag": "input", "id": "register.nickName" },

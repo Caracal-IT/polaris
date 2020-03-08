@@ -39,7 +39,7 @@ self.__precacheManifest = [
     "url": "build/p-6c48c477.js"
   },
   {
-    "url": "build/p-i8kl8qon.entry.js"
+    "url": "build/p-owyhh260.entry.js"
   },
   {
     "url": "example/components/moon-button.js",
@@ -83,7 +83,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "6fe1cbbd4c1513108e104c739db2ff13"
+    "revision": "c87b23b0608cee7f4e3594fd99494de2"
   },
   {
     "url": "style.css",

@@ -5,7 +5,7 @@ import { Context } from "../model/context.model";
 
 export class ValidatorService {
     private validators: Array<Validator> = [
-        new RequiredValidator("Required")
+        new RequiredValidator("required")
     ];
     
     constructor(){}  
