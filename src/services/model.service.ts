@@ -45,7 +45,7 @@ export class ModelService {
       sessionStorage.setItem(this.sessionId, JSON.stringify(this.model));        
     }
 
-    load(): object {        
+    load() {        
       const value = sessionStorage.getItem(this.sessionId);  
       this.clearCache();
       
