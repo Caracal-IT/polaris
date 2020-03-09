@@ -5,14 +5,11 @@ export class CodeActivity implements Activity {
     name = "code";
     type = "code-activity";
 
-    ctx?: Context;
+    ctx: Context;
     expression: string;
     next: string;
        
     async execute(): Promise<boolean> {
-        if(!this.ctx || !this.ctx.model)
-            return false;
-
         this.eval(this.expression, this.ctx); 
         
         if(this.next && this.next.length > 0)

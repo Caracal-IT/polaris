@@ -5,15 +5,12 @@ export class AssignActivity implements Activity {
     name = "assign";
     type = "assign-activity";
 
-    ctx?: Context;
+    ctx: Context;
     key: string;
     value: string;
     next: string;
     
     async execute(): Promise<boolean> {
-        if(!this.ctx || !this.ctx.model)
-            return false;
-
         let value = this.value||"";
 
         if(this.value && this.value.startsWith("{") && this.value.endsWith("}"))            

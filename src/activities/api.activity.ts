@@ -28,9 +28,6 @@ export class ApiActivity implements Activity {
     }
 
     private async callEndpoint(http: HttpService, endpoint: ApiEndpoint) {
-        if(!this.ctx || !this.ctx.config)
-            return;
-            
         return http.fetch(endpoint)
                    .then(data => this.setModel(endpoint, data));
     }

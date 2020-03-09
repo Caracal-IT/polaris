@@ -5,11 +5,11 @@ export class PageActivity implements Activity {
     name = "start";
     type = "page-activity";
     
-    ctx?: Context;
+    ctx: Context;
     controls?: Comment[];
 
     async execute(): Promise<boolean> {
-        if (this.ctx && this.ctx.page && this.ctx.page.controls)
+        if (this.ctx.page.controls)
             this.ctx.page.controls = this.controls || [];
             
         return true;

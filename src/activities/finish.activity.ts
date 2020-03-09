@@ -6,12 +6,9 @@ export class FinishActivity implements Activity {
     type = "finish-activity";
     next?:string;
 
-    ctx?: Context;
+    ctx: Context;
        
     async execute(): Promise<boolean> {
-        if(!this.ctx || !this.ctx.wf)
-            return false;
-
         if(this.ctx.wf.stack.length === 0) {
             if(this.next)
                 this.ctx.wf.goto(this.next);

@@ -12,13 +12,13 @@ export class DecisionActivity extends CodeActivity {
     name = "assign";
     type = "decision-activity";
 
-    ctx?: Context;
+    ctx: Context;
     trueAction: string;
     falseAction: string;    
     conditions: Array<Condition>;
     
     async execute(): Promise<boolean> {
-        if(!this.ctx || !this.ctx.model || !this.conditions)
+        if(!this.conditions)
             return false;
 
         let isValid = true;
