@@ -70,10 +70,16 @@
                         {"tag": "input", "id": "register.city", "value": "Durban"},
                         {"tag" : "moon-label", "caption": "Country", "for": "register.country"},
                         {"tag": "input", "id": "register.country", "value": "South Africa"},
-                        {"tag": "moon-button", "caption": "Register Another", "next": "landing"}
+                        {"tag": "moon-button", "caption": "Register Another", "next": "alert"}
                     ]
                 }
             ]
+        },
+        {
+            "name": "alert",
+            "type": "code-activity",
+            "next": "landing",
+            "expression": "alert(`Hallo ${model.getValue('register.firstName')}`);"
         }
     ]
 }
