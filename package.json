@@ -1,6 +1,6 @@
 {
   "name": "caracal_polaris",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Polaris Workflow",
   "repository": "https://github.com/Caracal-IT/polaris",
   "main": "dist/index.js",
