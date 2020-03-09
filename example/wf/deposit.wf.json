@@ -37,7 +37,7 @@
             "trueAction": "approval",
             "falseAction": "details",
             "conditions" : [
-                {"left" : "{banking.depositAmount}", "equality": ">", "right": "40"}
+                {"left" : "{{banking.depositAmount}}", "equality": ">", "right": "40"}
             ]
         },
         {

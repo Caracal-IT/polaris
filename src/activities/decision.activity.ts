@@ -30,7 +30,6 @@ export class DecisionActivity extends CodeActivity {
                 isValid = isValid && this.validate(condition);            
         }
 
-       
         if(isValid)
             this.ctx.wf.goto(this.trueAction);
         else
@@ -41,11 +40,7 @@ export class DecisionActivity extends CodeActivity {
 
     private validate(condition: Condition) {
         try {
-            let left = condition.left;
-
-            if(condition.left && condition.left.startsWith('{') && condition.left.endsWith('}'))
-                left = this.ctx.model.getValue(condition.left.substring(1, condition.left.length - 1));
-
+            let left = this.ctx.model.getInterpolatedValue(condition.left);
             const expression = `return ${left} ${condition.equality} ${condition.right};`
             
             return super.eval(expression, this.ctx);
