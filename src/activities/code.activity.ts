@@ -22,7 +22,7 @@ export class CodeActivity implements Activity {
     }
 
     eval(expression: string, ctx: Context) {
-        const f =  new Function('ctx', 'model', expression);        
-        return f(ctx, ctx.model);                
+        const f =  new Function('ctx', expression);        
+        return f(ctx);                
     }
 }

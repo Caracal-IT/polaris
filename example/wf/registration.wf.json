@@ -79,7 +79,7 @@
             "name": "alert",
             "type": "code-activity",
             "next": "landing",
-            "expression": "alert(`Hallo ${model.getValue('register.firstName')}`);"
+            "expression": "alert(`Hallo ${ctx.model.getValue('register.firstName')}`);"
         }
     ]
 }
