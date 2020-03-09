@@ -24,7 +24,7 @@ export class DecisionActivity extends CodeActivity {
         let isValid: boolean;
 
         for(let condition of this.conditions) {
-            if(isValid == undefined) 
+            if(isValid === undefined) 
                 isValid = this.validate(condition);
             else if(condition.operator === 'or')
                 isValid = isValid || this.validate(condition);
