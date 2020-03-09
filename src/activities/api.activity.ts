@@ -7,7 +7,7 @@ export class ApiActivity implements Activity {
     name = "start";
     type = "api-activity";
 
-    ctx?: Context;
+    ctx: Context;
     endpoints?: Array<ApiEndpoint>;
     next?:string;
 
