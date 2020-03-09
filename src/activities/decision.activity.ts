@@ -21,10 +21,12 @@ export class DecisionActivity extends CodeActivity {
         if(!this.conditions)
             return false;
 
-        let isValid = true;
+        let isValid: boolean;
 
         for(let condition of this.conditions) {
-            if(condition.operator === 'or')
+            if(isValid == undefined) 
+                isValid = this.validate(condition);
+            else if(condition.operator === 'or')
                 isValid = isValid || this.validate(condition);
             else
                 isValid = isValid && this.validate(condition);            
