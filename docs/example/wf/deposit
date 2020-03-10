@@ -36,10 +36,7 @@
             "type": "decision-activity",               
             "trueAction": "approval",
             "falseAction": "details",
-            "conditions" : [
-                {"left" : "{{banking.depositAmount}}", "equality": ">", "right": "40"},
-                {"operator": "and", "left" : "{{banking.depositAmount}}", "equality": "<", "right": "100"}
-            ]
+            "expression" : "{{banking.depositAmount}} > 40 && {{banking.depositAmount}} < 100"
         },
         {
             "name": "approval",
