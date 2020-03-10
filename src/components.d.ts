@@ -6,11 +6,13 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Context, } from "./model/context.model";
+import { Activity, } from "./activities/activity";
 export namespace Components {
     interface PolarisAnalytics {
     }
     interface PolarisWorkflow {
         "activity": string;
+        "addActivity": (activity: Activity) => Promise<void>;
         "ctx": Context;
         "load": (process: any, next?: string, sessionId?: string) => Promise<void>;
         "parent": Context;

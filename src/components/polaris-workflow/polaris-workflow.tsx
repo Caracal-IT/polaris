@@ -11,6 +11,8 @@ import { ValidatorService } from "../../services/validator.service";
 import { Message } from "../../model/message.model";
 import { PageBuilder } from "../../utilities/page-builder.utility";
 import { WorkflowLoader, HttpWorkflowLoader } from "../../utilities/workflow-loader.utility";
+import { Activity } from "../../activities/activity";
+import { ActivityFactory } from "../../activities/activity-factory";
 
 @Component({
     tag: "polaris-workflow",
@@ -71,6 +73,11 @@ import { WorkflowLoader, HttpWorkflowLoader } from "../../utilities/workflow-loa
         }
         
         await this.wf.setProcess(process, next);       
+    }
+
+    @Method()
+    async addActivity(activity: Activity){
+        ActivityFactory.add(activity);
     }
 
     sendMessage(message: Message): void {

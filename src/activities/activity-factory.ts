@@ -36,4 +36,11 @@ export class ActivityFactory {
 
         return Object.assign(act, config, { ctx });
     }
+
+    static add(activity: Activity) {
+        let act = ActivityFactory.activities.find(a => a.type === activity.type);
+
+        if (!act)
+            ActivityFactory.activities.push(activity); 
+    }
 }

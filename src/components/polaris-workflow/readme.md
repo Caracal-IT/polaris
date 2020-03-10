@@ -28,6 +28,16 @@
 
 ## Methods
 
+### `addActivity(activity: Activity) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `load(process: any, next?: string, sessionId?: string) => Promise<void>`
 
 

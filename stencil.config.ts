@@ -29,6 +29,7 @@ export const config: Config = {
         { src: '../example/index.html', dest: 'example/index.html' },
         { src: '../example/redirect.html', dest: 'example/redirect.html' },
         { src: '../example/components', dest: 'example/components' },
+        { src: '../example/activities', dest: 'example/activities' },
 
         { src: '../example/wf/default.wf.json', dest: 'example/wf/default' },
         { src: '../example/wf/home.wf.json', dest: 'example/wf/home' },
