@@ -11,7 +11,7 @@ export class SwitchActivity extends CodeActivity {
     
     async execute(): Promise<boolean> {
        for(let rule of this.rules) {
-           const expression  = `return ${this.ctx.model.getInterpolatedValue(rule.expression)}`;
+           const expression  = `return ${this.ctx.model.getInterpolatedValue(rule.expression)};`;
            
            if(this.eval(expression, this.ctx)) {
               this.ctx.wf.goto(rule.next);
