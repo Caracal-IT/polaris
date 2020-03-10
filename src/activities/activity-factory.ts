@@ -9,6 +9,7 @@ import { Context } from "../model/context.model";
 import { ApiActivity } from "./api.activity";
 import { AssignActivity } from "./assign.activity";
 import { DecisionActivity } from "./decision.activity";
+import { SwitchActivity } from './switch.activity';
 
 export class ActivityFactory {
     private static activities: Array<Activity> = [
@@ -20,7 +21,8 @@ export class ActivityFactory {
         new DecisionActivity(),
         new IPCActivity(),
         new FinishActivity(),
-        new RedirectActivity()
+        new RedirectActivity(),
+        new SwitchActivity()
     ];
 
     static create(config: any, ctx: Context): Activity {

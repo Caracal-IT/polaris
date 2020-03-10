@@ -1,0 +1,43 @@
+{
+    "name" : "router",
+    "activities": [
+        {
+            "name": "start",
+            "type": "page-activity",            
+            "controls": [   
+                {"tag": "moon-header", "caption": "Switch Activity Demo" },           
+                {"tag": "div", "className": "text", "innerText": "The demo for the switch activity"},
+                {"tag": "div", 
+                 "controls": [
+                    {"tag": "moon-button", "caption": "Next", "next": "random-assign"}
+                 ] 
+                }                   
+            ]        
+        },
+        {
+            "name": "random-assign",
+            "type": "code-activity",
+            "expression": "ctx.model.setValue('httpCall.status', Math.floor(Math.random() * 200) + 400);",           
+            "next": "switch-act"
+        },
+        {
+            "name": "switch-act",
+            "type": "switch-activity",
+            "key": "{{httpCall.status}}",
+            "next": "finish"
+        },
+        {
+            "name": "finish",
+            "type": "page-activity",            
+            "controls": [        
+                {"tag": "moon-header", "caption": "Switch Activity Demo" },                 
+                {"tag": "div", "className": "text", "innerText": "Thas all fokes!! value: {{httpCall.status}}"},
+                {"tag": "div", 
+                 "controls": [
+                    {"tag": "moon-button", "caption": "Start Over", "next": "start"}
+                 ] 
+                }                   
+            ]        
+        }              
+    ]
+}
