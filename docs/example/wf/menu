@@ -3,6 +3,7 @@
         {"name": "Home", "process": "home"},
         {"name": "Login", "process": "login"},    
         {"name": "Deposit", "process": "deposit"},
-        {"name": "Registration", "process": "registration"}        
+        {"name": "Registration", "process": "registration"},
+        {"name": "Router", "process": "router"}        
     ]
 }

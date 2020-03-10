@@ -1,39 +1,24 @@
-import { Activity } from "./activity";
+import { CodeActivity } from "./code.activity";
 import { Context } from "../model/context.model";
+import { Rule } from "../model/rule.model";
 
-export class SwitchActivity implements Activity {
+export class SwitchActivity extends CodeActivity {
     name = "assign";
     type = "switch-activity";
 
     ctx: Context;
-    next: string;
-
-    key: string;
-   
-    cases: any;
+    rules: Array<Rule>;
     
     async execute(): Promise<boolean> {
-       this.cases = [
-           {"value":4, "next": "clientError" },
-           {"value":5, "next": "serverError" }
-       ];
-
-       let value: any = this.ctx.model.getInterpolatedValue(this.key);
-
-       value = Math.floor(parseInt(value) / 100);
-
-       for(let expression of this.cases) {
-           if(value === expression.value) {
-               console.log('FOUND', expression);
+       for(let rule of this.rules) {
+           const expression  = `return ${this.ctx.model.getInterpolatedValue(rule.expression)}`;
+           
+           if(this.eval(expression, this.ctx)) {
+              this.ctx.wf.goto(rule.next);
+              return true;
            }
        }
 
-       console.log('VALUE', value, this.cases);
-                
-        //this.ctx.model.setValue(this.key, value);         
-        //this.ctx.wf.goto(this.next);
-        this.ctx.wf.goto(this.next);
-
-        return true;
+        throw new Error(`No valid rule in ${this.name} found !!`);
     }
 }
