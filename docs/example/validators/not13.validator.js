@@ -1,4 +1,4 @@
-import {Validator} from '../../polaris/validators/validator.js';
+import {Validator} from './validator.js';
 
 export class Not13Validator extends Validator {
     validate(context, control, config) {

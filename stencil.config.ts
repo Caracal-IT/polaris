@@ -33,7 +33,6 @@ export const config: Config = {
         { src: '../example/components', dest: 'example/components' },
         { src: '../example/activities', dest: 'example/activities' },
         { src: '../example/validators', dest: 'example/validators' },
-        { src: '../dist/collection/', dest: 'polaris' },
 
         { src: '../example/wf/default.wf.json', dest: 'example/wf/default' },
         { src: '../example/wf/home.wf.json', dest: 'example/wf/home' },
