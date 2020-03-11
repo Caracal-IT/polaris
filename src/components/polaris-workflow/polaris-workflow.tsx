@@ -13,6 +13,7 @@ import { PageBuilder } from "../../utilities/page-builder.utility";
 import { WorkflowLoader, HttpWorkflowLoader } from "../../utilities/workflow-loader.utility";
 import { Activity } from "../../activities/activity";
 import { ActivityFactory } from "../../activities/activity-factory";
+import { Validator } from "../../validators/validator";
 
 @Component({
     tag: "polaris-workflow",
@@ -78,6 +79,11 @@ import { ActivityFactory } from "../../activities/activity-factory";
     @Method()
     async addActivity(activity: Activity){
         ActivityFactory.add(activity);
+    }
+
+    @Method()
+    async addValidator(validator: Validator) {
+        this.validator.addValidator(validator);
     }
 
     sendMessage(message: Message): void {

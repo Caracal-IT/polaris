@@ -13,12 +13,16 @@ import {
 import {
   Activity,
 } from './activities/activity';
+import {
+  Validator,
+} from './validators/validator';
 
 export namespace Components {
   interface PolarisAnalytics {}
   interface PolarisWorkflow {
     'activity': string;
     'addActivity': (activity: Activity) => Promise<void>;
+    'addValidator': (validator: Validator) => Promise<void>;
     'ctx': Context;
     'load': (process: any, next?: string, sessionId?: string) => Promise<void>;
     'parent': Context;

@@ -38,6 +38,16 @@ Type: `Promise<void>`
 
 
 
+### `addValidator(validator: Validator) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `load(process: any, next?: string, sessionId?: string) => Promise<void>`
 
 

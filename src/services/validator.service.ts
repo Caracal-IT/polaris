@@ -25,6 +25,13 @@ export class ValidatorService {
        
         return isValid;
     }  
+
+    addValidator(validator: Validator) {
+        const val = this.validators.find(v => v.name === validator.name);
+
+        if(!val)
+            this.validators.push(validator);
+    }
     
     private validateControl(ctx: Context, control: Control): boolean {         
         if(!control)

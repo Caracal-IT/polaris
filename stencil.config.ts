@@ -30,6 +30,8 @@ export const config: Config = {
         { src: '../example/redirect.html', dest: 'example/redirect.html' },
         { src: '../example/components', dest: 'example/components' },
         { src: '../example/activities', dest: 'example/activities' },
+        { src: '../example/validators', dest: 'example/validators' },
+        { src: '../dist/collection/', dest: 'polaris' },
 
         { src: '../example/wf/default.wf.json', dest: 'example/wf/default' },
         { src: '../example/wf/home.wf.json', dest: 'example/wf/home' },
@@ -40,7 +42,7 @@ export const config: Config = {
                 
         { src: '../example/wf/user.json', dest: 'example/wf/user' },
         { src: '../example/wf/menu.json', dest: 'example/wf/menu' },
-        { src: '../example/wf/settings.json', dest: 'example/wf/settings' }        
+        { src: '../example/wf/settings.json', dest: 'example/wf/settings' }
       ]
     }
     ,/*

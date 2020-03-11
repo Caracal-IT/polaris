@@ -28,11 +28,17 @@
     <polaris-loader></polaris-loader>
     <polaris-workflow url="wf/settings" process="default"></polaris-workflow>
     
-    <script>
+    <script type="module">
+      import {Not13Validator} from "./validators/not13.validator.js";
+
       const wf = document.querySelector("polaris-workflow");
 
       customElements.whenDefined('polaris-workflow')
-                    .then(() => wf.addActivity(new CustomActivity()));      
+                    .then(() => wf.addActivity(new CustomActivity()));   
+                    
+      customElements.whenDefined('polaris-workflow')
+                    .then(() => wf.addValidator(new Not13Validator("custom-not13")));   
+       
     </script>   
   </body>
 </html>
