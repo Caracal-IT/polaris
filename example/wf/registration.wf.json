@@ -35,7 +35,8 @@
                         "tag": "input", 
                         "id": "register.firstName",                        
                         "validators": [
-                            { "name": "required", "message": "The field is required" }
+                            { "name": "required", "message": "The field is required" },
+                            { "name": "regex", "message": "Enter a valid name", "expression": "^[A-Z][a-z]*$" }
                         ]
                     },
                     {"tag" : "moon-label", "caption": "Surname", "for": "register.lastName"},

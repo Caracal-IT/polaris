@@ -28,9 +28,11 @@
     <polaris-loader></polaris-loader>
     <polaris-workflow url="wf/settings" process="default"></polaris-workflow>
     
-    <script type="module">
-      import {ActivityFactory} from '../build/polaris';
-      ActivityFactory.addActivity(new CustomActivity());
-    </script>
+    <script>
+      const wf = document.querySelector("polaris-workflow");
+
+      customElements.whenDefined('polaris-workflow')
+                    .then(() => wf.addActivity(new CustomActivity()));      
+    </script>   
   </body>
 </html>
