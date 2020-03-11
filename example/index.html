@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,11 +27,10 @@
     <polaris-analytics></polaris-analytics>
     <polaris-loader></polaris-loader>
     <polaris-workflow url="wf/settings" process="default"></polaris-workflow>
-    <script>
-      const wf = document.querySelector("polaris-workflow");
-
-      customElements.whenDefined('polaris-workflow')
-                    .then(() => wf.addActivity(new CustomActivity()));
+    
+    <script type="module">
+      import {ActivityFactory} from '../build/polaris';
+      ActivityFactory.addActivity(new CustomActivity());
     </script>
   </body>
 </html>
