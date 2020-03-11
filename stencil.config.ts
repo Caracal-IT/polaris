@@ -24,6 +24,8 @@ export const config: Config = {
       }, // disable service workers
       copy: [
         { src: 'style.css', dest: 'style.css' },
+        { src: 'assets/favicon.ico', dest: 'favicon.ico' },
+        { src: 'assets/favicon.ico', dest: 'example/favicon.ico' },
 
         { src: '../example/style.css', dest: 'example/style.css' },
         { src: '../example/index.html', dest: 'example/index.html' },
