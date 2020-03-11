@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +17,8 @@
     <script src="components/moon-label.js"></script>
     <script src="components/moon-panel.js"></script>
 
+    <script src="activities/custom.activity.js"></script>
+
     <script type="module" src="../build/polaris.esm.js"></script>
     <script nomodule src="../build/polaris.js"></script>
   </head>
@@ -24,5 +27,12 @@
     <polaris-analytics></polaris-analytics>
     <polaris-loader></polaris-loader>
     <polaris-workflow url="wf/settings" process="default"></polaris-workflow>
+    
+    <script>
+      const wf = document.querySelector("polaris-workflow");
+
+      customElements.whenDefined('polaris-workflow')
+                    .then(() => wf.addActivity(new CustomActivity()));      
+    </script>   
   </body>
 </html>

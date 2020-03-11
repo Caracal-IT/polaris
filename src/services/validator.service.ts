@@ -3,11 +3,13 @@ import { Validator } from "../validators/validator";
 import { RequiredValidator } from "../validators/required.validator";
 import { Context } from "../model/context.model";
 import { RegexValidator } from '../validators/regex.validator';
+import { RangeValidator } from '../validators/range.validator';
 
 export class ValidatorService {
     private validators: Array<Validator> = [
         new RequiredValidator("required"),
-        new RegexValidator("regex")
+        new RegexValidator("regex"),
+        new RangeValidator("range")
     ];
     
     constructor(){}  

@@ -35,7 +35,8 @@
                         "tag": "input", 
                         "id": "register.firstName",                        
                         "validators": [
-                            { "name": "required", "message": "The field is required" }
+                            { "name": "required", "message": "The field is required" },
+                            { "name": "regex", "message": "Enter a valid name", "expression": "^[A-Z][a-z]*$" }
                         ]
                     },
                     {"tag" : "moon-label", "caption": "Surname", "for": "register.lastName"},
@@ -44,7 +45,17 @@
                         "id": "register.lastName",
                         "validators": [
                             { "name": "required", "message": "The field is required" }
-                        ]},
+                        ]
+                    },
+                    {"tag" : "moon-label", "caption": "Age", "for": "register.age"},
+                    {
+                        "tag": "input", 
+                        "type": "number",
+                        "id": "register.age",
+                        "validators": [
+                            { "name": "range", "message": "Enter a value between 1 and 50", "min": 1, "max": 50 }
+                        ]
+                    },
                     {"tag" : "moon-label", "caption": "Nickname", "for": "register.nickName"},
                     {"tag": "input", "id": "register.nickName" },
                     {"tag": "moon-button", "caption": "Address Details", "next": "details"}

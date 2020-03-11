@@ -9,10 +9,15 @@
                 {"tag": "div", "className": "text", "innerText": "The demo for the switch activity"},
                 {"tag": "div", 
                  "controls": [
-                    {"tag": "moon-button", "caption": "Next", "next": "random-assign"}
+                    {"tag": "moon-button", "caption": "Next", "next": "my-custom-activity"}
                  ] 
                 }                   
             ]        
+        },
+        {
+            "name": "my-custom-activity",
+            "type": "custom-activity",  
+            "next": "random-assign"
         },
         {
             "name": "random-assign",
