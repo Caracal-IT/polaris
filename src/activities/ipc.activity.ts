@@ -6,13 +6,13 @@ export class IPCActivity implements Activity {
     type = "ipc-activity";
 
     ctx: Context;
-    process?: string; 
-    next?: string;
+    process: string; 
+    next: string;
        
     async execute(): Promise<boolean> {
         if(this.process && this.process.length > 0) {
             this.ctx.wf.stack.push({
-                process: this.ctx.wf.process?.name,
+                process: this.ctx.wf.process.name,
                 activity: this.next
             });
           
