@@ -29,7 +29,7 @@ describe('activities/ipc-activity', () => {
         expect(new IPCActivity().name).toBe('ipc');
     });
 
-    it('should have a ipc activity type', () => {
+    it('should have an ipc activity type', () => {
         expect(new IPCActivity().type).toBe('ipc-activity');
     });
 
@@ -42,7 +42,6 @@ describe('activities/ipc-activity', () => {
         await expect(act.execute()).resolves.toEqual(true);
         expect(context.wf.stack.length).toBe(1);
         expect(context.wf.stack[0]).toStrictEqual({process: 'process1', activity: 'myNext'});
-        
     });
 
     it('should navigate to new process', async () => {

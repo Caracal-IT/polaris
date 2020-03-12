@@ -4,7 +4,7 @@ import { Context } from "../model/context.model";
 export class FinishActivity implements Activity {
     name = "finish";
     type = "finish-activity";
-    next?:string;
+    next:string;
 
     ctx: Context;
        
