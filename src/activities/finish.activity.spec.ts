@@ -37,18 +37,14 @@ describe('activities/finish-activity', () => {
         act.ctx = context;
         act.next = 'myNext'
 
-        expect.assertions(2);
-
         await expect(act.execute()).resolves.toEqual(true);
-        expect(context.wf.goto).toBeCalledWith('myNext');
+        expect(context.wf.goto).toBeCalledWith('myNext');        
     });
 
     it('should go to the previous activity if the stack is not empty', async () => {
         const act = new FinishActivity();
         act.ctx = context;
         context.wf.stack.push({process: 'myProcess', activity: 'myAct'})
-
-        expect.assertions(2);
 
         await expect(act.execute()).resolves.toEqual(true);
         expect(context.wf.setProcess).toBeCalledWith('myProcess', 'myAct');

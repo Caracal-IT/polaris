@@ -51,8 +51,6 @@ describe('activities/decision-activity', () => {
         act.falseAction = 'myFalseAction';
         act.expression = '23 == 25';
 
-        expect.assertions(2);
-
         await expect(act.execute()).resolves.toEqual(true);
         expect(context.wf.goto).toBeCalledWith('myFalseAction');
     });

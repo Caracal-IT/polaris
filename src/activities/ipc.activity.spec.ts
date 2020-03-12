@@ -50,8 +50,6 @@ describe('activities/ipc-activity', () => {
         act.process = 'myProcess';
         act.next = 'myNext';
 
-        expect.assertions(2);  
-
         await expect(act.execute()).resolves.toEqual(true);
         expect(context.wf.setProcess).toBeCalledWith('myProcess', 'start', false);
     });
@@ -60,8 +58,6 @@ describe('activities/ipc-activity', () => {
         const act = new IPCActivity();
         act.ctx = context;
         act.process = 'myProcess';
-
-        expect.assertions(2);  
 
         await expect(act.execute()).resolves.toEqual(true);
         expect(context.wf.setProcess).toBeCalledWith('myProcess', 'start', true);

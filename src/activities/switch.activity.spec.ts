@@ -31,9 +31,7 @@ describe('activities/switch-activity', () => {
     });
 
     it('should throw exception if no rule was not specified', async () => {
-        const act = new SwitchActivity();    
-        
-        expect.assertions(1);        
+        const act = new SwitchActivity();          
 
         await expect(act.execute()).rejects.toEqual(new Error('No valid rule in switch found !!'));
     });
@@ -42,9 +40,7 @@ describe('activities/switch-activity', () => {
         const act = new SwitchActivity();  
         act.ctx = context;
 
-        act.rules = [{expression:"3 === 4", next: "next1"}];
-        
-        expect.assertions(1);        
+        act.rules = [{expression:"3 === 4", next: "next1"}];    
 
         await expect(act.execute()).rejects.toEqual(new Error('No valid rule in switch found !!'));
     });
@@ -54,9 +50,7 @@ describe('activities/switch-activity', () => {
         act.ctx = context;
 
         act.rules = [{expression:"3 === 4", next: "next1"}];
-        act.rules = [{expression:"4 === 4", next: "next2"}];
-        
-        expect.assertions(2);        
+        act.rules = [{expression:"4 === 4", next: "next2"}];    
 
         act.ctx.wf["goto"] = (next) => {expect(next).toBe("next2")};
         await expect(act.execute()).resolves.toEqual(true);

@@ -35,9 +35,7 @@ describe('activities/redirect-activity', () => {
 
     it('should save state before redirect', async () => {
         const act = new RedirectActivity();                
-        act.ctx = context;
-                
-        expect.assertions(2);        
+        act.ctx = context;  
 
         await expect(act.execute()).resolves.toEqual(true);
         expect(act.ctx.model.save).toHaveBeenCalled();                
