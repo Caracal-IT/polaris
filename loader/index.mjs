@@ -20,4 +20,4 @@
 })();
 
 export * from '../dist/esm/polyfills/index.js';
-export * from '../dist/esm-es5/loader.mjs';
+export * from '../dist/esm/loader.mjs';

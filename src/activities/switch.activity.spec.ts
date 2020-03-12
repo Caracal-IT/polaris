@@ -46,7 +46,7 @@ describe('activities/switch-activity', () => {
 
     it('should navigate to the correct path', async () => {
         const act = new SwitchActivity();  
-        const wf = new WorkflowService(null)        
+        const wf = new WorkflowService(null);       
         act.ctx = { ...context, wf: wf};
 
         act.rules = [{expression:"3 === 4", next: "next1"}];
