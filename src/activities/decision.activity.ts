@@ -2,7 +2,7 @@ import { CodeActivity } from './code.activity';
 import { Context } from "../model/context.model";
 
 export class DecisionActivity extends CodeActivity {
-    name = "assign";
+    name = "decision";
     type = "decision-activity";
 
     ctx: Context;
