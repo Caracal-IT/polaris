@@ -8,8 +8,8 @@ export class ApiActivity implements Activity {
     type = "api-activity";
 
     ctx: Context;
-    endpoints?: Array<ApiEndpoint>;
-    next?:string;
+    endpoints: Array<ApiEndpoint>;
+    next:string;
 
      async execute(): Promise<boolean> {  
         await this.callEndpoints();
