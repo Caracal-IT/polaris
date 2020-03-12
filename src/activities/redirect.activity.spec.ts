@@ -15,7 +15,7 @@ describe('activities/redirect-activity', () => {
             wf: new WorkflowService(null),
             config: null,
             validator: null
-        }
+        };
 
         context.model.save = jest.fn(); 
         win.location = {};         
@@ -29,7 +29,7 @@ describe('activities/redirect-activity', () => {
         expect(new RedirectActivity().name).toBe('redirect');
     });
 
-    it('should have a switch redirect type', () => {
+    it('should have a redirect activity type', () => {
         expect(new RedirectActivity().type).toBe('redirect-activity');
     });
 

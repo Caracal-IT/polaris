@@ -1,17 +1,22 @@
 import { WorkflowService } from './../services/workflow.service';
 import { SwitchActivity } from "./switch.activity";
 import { ModelService } from "../services/model.service";
+import { Context } from '../model/context.model';
 
 
 describe('activities/switch-activity', () => {
-    const context = {
-        page: null,
-        http: null,
-        model: new ModelService(null),
-        wf: null,
-        config: null,
-        validator: null
-    };
+    let context: Context;
+
+    beforeEach(() => {
+        context = {
+            page: null,
+            http: null,
+            model: new ModelService(null),
+            wf: new WorkflowService(null),
+            config: null,
+            validator: null
+        };      
+    });
 
     it('builds', () => {
       expect(new SwitchActivity()).toBeTruthy();
@@ -35,7 +40,7 @@ describe('activities/switch-activity', () => {
 
     it('should throw exception if no rule was evaluated', async () => {
         const act = new SwitchActivity();  
-        act.ctx = {...context};
+        act.ctx = context;
 
         act.rules = [{expression:"3 === 4", next: "next1"}];
         
@@ -45,16 +50,15 @@ describe('activities/switch-activity', () => {
     });
 
     it('should navigate to the correct path', async () => {
-        const act = new SwitchActivity();  
-        const wf = new WorkflowService(null);       
-        act.ctx = { ...context, wf: wf};
+        const act = new SwitchActivity();       
+        act.ctx = context;
 
         act.rules = [{expression:"3 === 4", next: "next1"}];
         act.rules = [{expression:"4 === 4", next: "next2"}];
         
         expect.assertions(2);        
 
-        wf["goto"] = (next) => {expect(next).toBe("next2")};
+        act.ctx.wf["goto"] = (next) => {expect(next).toBe("next2")};
         await expect(act.execute()).resolves.toEqual(true);
     });
 });
