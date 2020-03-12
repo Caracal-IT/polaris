@@ -3,7 +3,7 @@ import { ModelService } from "../services/model.service";
 import { WorkflowService } from "../services/workflow.service";
 import { PageActivity } from "./page.activity";
 
-describe('activities/redirect-activity', () => {
+describe('activities/page-activity', () => {
     let context: Context;
 
     beforeEach(() => {

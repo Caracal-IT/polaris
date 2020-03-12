@@ -5,6 +5,6 @@ export class NullActivity implements Activity {
     type = "null-activity";
 
     execute(): Promise<boolean> {
-        return new Promise((_resolve, reject) => reject());
+        return new Promise((_resolve, reject) => reject("NULL Activity"));
     }
 }
