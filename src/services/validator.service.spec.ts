@@ -33,7 +33,7 @@ describe('services/validator-service', () => {
         expect(new ValidatorService()).toBeTruthy();
     });
 
-    it('should return i the page hasnt any controls', () => {
+    it('should return i the page hasn\'t any controls', () => {
         const validator = new ValidatorService();
         
         const result = validator.validate(context);
@@ -41,7 +41,7 @@ describe('services/validator-service', () => {
         expect(result).toBeTruthy();
     });
 
-    it('shoult return true if all the controls is valid', () =>{
+    it('should return true if all the controls is valid', () =>{
         context.page
                .controls
                .push({tag: "my-control", ctx: context, validators: [{name: 'always-true'}]});
