@@ -1,6 +1,6 @@
 import { PolarisWorkflow } from "./polaris-workflow";
 
-describe('app-profile', () => {
+describe('components/polaris-workflow', () => {
     it('builds', () => {
       expect(new PolarisWorkflow()).toBeTruthy();
     });
