@@ -13,7 +13,7 @@ export interface WFStack {
 export class WorkflowService {
     loader: WorkflowLoader;
 
-    process?:Process;
+    process:Process;
     activity: Activity;
     
     stack: Array<WFStack> = [];
@@ -47,7 +47,7 @@ export class WorkflowService {
         setTimeout(this.tryNext.bind(this, name));    
     }
 
-    private async tryNext(name: string) {
+    private async tryNext(name: string) {       
         try {        
             this.ctx.page.sendMessage({type: "WORKFLOW_CHANGING"});
             await this.next(name);
@@ -61,14 +61,14 @@ export class WorkflowService {
     private async next(name: string) {
         if(!this.process || !this.process.activities)
             return null;
-    
+            
         if(this.ctx.wf.activity?.type === "page-activity" && !this.ctx.validator.validate(this.ctx))             
             return null;
-                
+            
         let newActivity = this.process
                               .activities
-                              .find(a => a.name == name);    
-                        
+                              .find(a => a.name == name);                
+                            
         if(!newActivity)
             throw new Error(`Activity ${name} not found`);
 
