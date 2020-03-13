@@ -12,8 +12,6 @@ export class ValidatorService {
         new RangeValidator("range")
     ];
     
-    constructor(){}  
-    
     validate(ctx: Context): boolean {                                 
         if(!ctx.page || !ctx.page.controls)          
             return true;
