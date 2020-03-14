@@ -14,7 +14,7 @@
             "next": "landing",
             "endpoints": [
                 {
-                    "url": "[WF]/user",
+                    "url": "[DATA]/user",
                     "method": "GET",
                     "mappings":[
                         {"client": "register.firstName", "remote": "name", "direction": "in"}

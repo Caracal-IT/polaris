@@ -52,7 +52,7 @@ export class HttpService {
     private replace(prev: string, next: string): string {
         let replacement:string = this.ctx.config.getSetting(next);
         
-        if(replacement.indexOf('[SELF]') > -1)
+        if(replacement && replacement.indexOf('[SELF]') > -1)
            return replacement.replace('[SELF]', prev.replace(next, ''));
 
         return prev.replace(next, replacement);

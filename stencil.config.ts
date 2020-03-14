@@ -33,17 +33,8 @@ export const config: Config = {
         { src: '../example/components', dest: 'example/components' },
         { src: '../example/activities', dest: 'example/activities' },
         { src: '../example/validators', dest: 'example/validators' },
-
-        { src: '../example/wf/default.wf.json', dest: 'example/wf/default' },
-        { src: '../example/wf/home.wf.json', dest: 'example/wf/home' },
-        { src: '../example/wf/registration.wf.json', dest: 'example/wf/registration' },
-        { src: '../example/wf/deposit.wf.json', dest: 'example/wf/deposit' },
-        { src: '../example/wf/login.wf.json', dest: 'example/wf/login' },
-        { src: '../example/wf/router.wf.json', dest: 'example/wf/router' },
-                
-        { src: '../example/wf/user.json', dest: 'example/wf/user' },
-        { src: '../example/wf/menu.json', dest: 'example/wf/menu' },
-        { src: '../example/wf/settings.json', dest: 'example/wf/settings' }
+        { src: '../example/data', dest: 'example/data' },
+        { src: '../example/wf', dest: 'example/wf' }
       ]
     }
     ,/*
@@ -55,7 +46,6 @@ export const config: Config = {
         { src: '../www', dest: '' },
         { src: '../src/Polaris Workflow Design.png', dest: 'Polaris Workflow Design.png' }
       ]
-    }
-*/
+    }*/
   ]
 };
