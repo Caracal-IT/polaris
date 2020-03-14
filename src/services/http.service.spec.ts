@@ -88,4 +88,17 @@ describe('services/http-service', () => {
 
         return expect(http.fetch(endpoint)).rejects.toStrictEqual(expected);
     });
+
+    it('should resolve config templates', async () => {
+        context.config.addSetting('[WF]', 'http://wf2.com[SELF].json');
+       
+        endpoint.url = '[WF]/mockUrl';
+        endpoint.body.status = 200;
+
+        const http = new HttpService(context);
+        jest.runOnlyPendingTimers();
+        await http.fetch(endpoint);
+
+        expect(request).toBe('http://wf2.com/mockUrl.json');
+    });
 });

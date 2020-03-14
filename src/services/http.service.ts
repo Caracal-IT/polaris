@@ -46,6 +46,15 @@ export class HttpService {
         if(!matches)
             return val;
 
-        return matches.reduce((prev, next) => prev.replace(next, this.ctx.config.getSetting(next)), val);
+        return matches.reduce(this.replace.bind(this) , val);
+    }
+
+    private replace(prev: string, next: string): string {
+        let replacement:string = this.ctx.config.getSetting(next);
+        
+        if(replacement.indexOf('[SELF]') > -1)
+           return replacement.replace('[SELF]', prev.replace(next, ''));
+
+        return prev.replace(next, replacement);
     }
 }
