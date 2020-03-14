@@ -12,7 +12,7 @@ import { DecisionActivity } from "./decision.activity";
 import { SwitchActivity } from './switch.activity';
 
 export class ActivityFactory {
-    private static activities: Array<Activity> = [
+    static activities: Array<Activity> = [
         new NullActivity(),
         new PageActivity(),
         new ApiActivity(),
