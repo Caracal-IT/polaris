@@ -6,6 +6,9 @@ export class ConfigService {
     }
 
     addSetting(key: string, setting: any) {
+        if(key.indexOf('[') === -1)
+            key = `[${key}]`;
+
         this.settings[key] = setting;
     }
 }
