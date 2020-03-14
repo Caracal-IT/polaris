@@ -49,5 +49,4 @@ describe('components/polaris-workflow', () => {
         expect(polaris.model.sessionId).toBe('mockSession');
         expect(polaris.controls.length).toBe(1);
     }); 
-
 });
