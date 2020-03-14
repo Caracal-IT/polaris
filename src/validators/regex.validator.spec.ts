@@ -4,7 +4,7 @@ import { Message } from "../model/message.model";
 import { RegexValidatorConfig, RegexValidator } from "./regex.validator";
 import { ModelService } from "../services/model.service";
 
-describe('validators/required-validator', () => {
+describe('validators/regex-validator', () => {
     let context: Context;
     let error: string;
     let ctrl: Control;
