@@ -24,7 +24,7 @@ export class ModelService {
       if(!value)
         return value;
   
-      const myRegexp = /\{\{(?:(\w|\.|\||-)+)\}\}/g;
+      const myRegexp = /\{\{\[*(?:(\w|\.|\||-)+)\]*\}\}/g;
       const match = value.match(myRegexp);
       
       if(!match || match.length === 0)
@@ -34,7 +34,9 @@ export class ModelService {
     }
   
 
-    setValue(key: string, val: any) {       
+    setValue(key: string, val: any) {   
+      console.log(key);
+
         if(key.indexOf('[') === 0 || key.indexOf(']') === key.length - 1) 
           this.config.addSetting(key, val);
         else
