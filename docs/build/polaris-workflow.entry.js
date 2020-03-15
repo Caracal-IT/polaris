@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement } from './index-53d6a676.js';
+import { r as registerInstance, c as createEvent, g as getElement } from './index-bd40820a.js';
 
 class HttpService {
     constructor(ctx) {
@@ -34,11 +34,16 @@ class HttpService {
             body: endpoint.body ? JSON.stringify(endpoint.body) : null
         };
     }
-    resolveSetting(val) {
+    resolveSetting(val, counter = 0) {
+        if (counter > 2)
+            return val;
         const matches = val.match(/\[[\w|_]+\]/g);
         if (!matches)
             return val;
-        return matches.reduce(this.replace.bind(this), val);
+        let result = matches.reduce(this.replace.bind(this), val);
+        if (result.indexOf('[') > -1)
+            result = this.resolveSetting(result, counter++);
+        return result;
     }
     replace(prev, next) {
         let replacement = this.ctx.config.getSetting(next);
@@ -142,6 +147,8 @@ class ConfigService {
         return this.settings[key];
     }
     addSetting(key, setting) {
+        if (key.indexOf('[') === -1)
+            key = `[${key}]`;
         this.settings[key] = setting;
     }
 }

@@ -90,7 +90,8 @@ describe('services/http-service', () => {
     });
 
     it('should resolve config templates', async () => {
-        context.config.addSetting('[WF]', 'http://wf2.com[SELF].json');
+        context.config.addSetting('[AUTH_KEY]', 'KEY_WEST');
+        context.config.addSetting('[WF]', 'http://wf2.com[SELF].json?Auth=[AUTH_KEY]');
        
         endpoint.url = '[WF]/mockUrl';
         endpoint.body.status = 200;
@@ -99,6 +100,6 @@ describe('services/http-service', () => {
         jest.runOnlyPendingTimers();
         await http.fetch(endpoint);
 
-        expect(request).toBe('http://wf2.com/mockUrl.json');
+        expect(request).toBe('http://wf2.com/mockUrl.json?Auth=KEY_WEST');
     });
 });

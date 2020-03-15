@@ -40,19 +40,27 @@ export class HttpService {
         };
     }
 
-    private resolveSetting(val: string) {
+    private resolveSetting(val: string, counter = 0) {
+        if(counter > 2)
+            return val;
+            
         const matches = val.match(/\[[\w|_]+\]/g);
 
         if(!matches)
             return val;
 
-        return matches.reduce(this.replace.bind(this) , val);
+        let result = matches.reduce(this.replace.bind(this) , val);
+
+        if(result.indexOf('[') > -1)
+          result = this.resolveSetting(result, counter++);
+
+        return result;
     }
 
     private replace(prev: string, next: string): string {
         let replacement:string = this.ctx.config.getSetting(next);
         
-        if(replacement && replacement.indexOf('[SELF]') > -1)
+        if(replacement && replacement.indexOf('[SELF]') > -1) 
            return replacement.replace('[SELF]', prev.replace(next, ''));
 
         return prev.replace(next, replacement);
