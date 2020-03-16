@@ -23,6 +23,11 @@ Please refere to the Wiki for more information.
 
 ## Getting Started
 
+### Stackblitz
+
+https://stackblitz.com/edit/typescript-polaris-wf?embed=1&file=index.html
+
+### Local
 Add polaris to your application
 
 ```bash
@@ -104,5 +109,3 @@ To start developing your new Polaris project, run:
 ```bash
 npm start
 ```
-### Editor
-https://stackblitz.com/edit/typescript-polaris-wf?embed=1&file=index.html
