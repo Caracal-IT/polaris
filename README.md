@@ -23,9 +23,7 @@ Please refere to the Wiki for more information.
 
 ## Getting Started
 
-### Cloud
-
-[Stackblits](https://stackblitz.com/edit/typescript-polaris-wf?file=index.html)
+You can try **_Polaris Workflow_** online at **_[Stackblits](https://stackblitz.com/edit/typescript-polaris-wf?file=index.html)_**
 
 ### Local
 Add polaris to your application
