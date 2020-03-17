@@ -45,7 +45,7 @@ import { Validator } from "../../validators/validator";
     @Element() el: HTMLElement;
     
     @Watch("process")
-    processChangeHandler() {              
+    processChangeHandler() {        
         this.load(this.process, this.activity, this.sessionId);
     }
 
