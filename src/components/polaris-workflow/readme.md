@@ -12,7 +12,7 @@
 | `activity`  | `activity`   |             | `string`           | `undefined` |
 | `ctx`       | --           |             | `Context`          | `this`      |
 | `parent`    | --           |             | `Context`          | `undefined` |
-| `process`   | `process`    |             | `object or string` | `undefined` |
+| `process`   | `process`    |             | `object \| string` | `undefined` |
 | `sessionId` | `session-id` |             | `string`           | `undefined` |
 | `tag`       | `tag`        |             | `string`           | `undefined` |
 | `url`       | `url`        |             | `string`           | `undefined` |
