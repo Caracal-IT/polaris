@@ -9,7 +9,8 @@ describe('polaris-workflow', () => {
             type: "page-activity",            
             controls: [
                 {tag : "h1", innerHTML: "Polaris" },
-                {tag : "span", innerHTML: "Welcome to polaris workflow" }                    
+                {tag : "span", innerHTML: "Welcome to polaris workflow" },
+                {tag : "polaris-workflow", id: "wf" }
             ]        
           }
         ]
@@ -32,9 +33,11 @@ describe('polaris-workflow', () => {
 
         const header =  await wf.find('h1');
         const body =  await wf.find('span');
+        const wf2 =  await wf.find('polaris-workflow');
 
         expect(wf).toHaveClasses(['hydrated']);
         expect(header.innerText).toBe('Polaris');
         expect(body.innerText).toBe('Welcome to polaris workflow');
+        expect(wf2.outerHTML).toBe('<polaris-workflow id="wf" class="hydrated"></polaris-workflow>');
     });
 });

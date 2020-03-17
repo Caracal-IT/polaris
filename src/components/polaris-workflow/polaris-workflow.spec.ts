@@ -11,7 +11,8 @@ describe('components/polaris-workflow', () => {
             type: "page-activity",            
             controls: [
                 {tag : "h1", innerHTML: "Polaris" },
-                {tag : "span", innerHTML: "Welcome to polaris workflow" }                    
+                {tag : "span", innerHTML: "Welcome to polaris workflow" },
+                {tag : "polaris-workflow", id: "wf" }                 
             ]        
           },
           {
