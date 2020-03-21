@@ -1,5 +1,5 @@
 const NAMESPACE = 'polaris';
-const BUILD = /* polaris */ { allRenderFn: false, appendChildSlotFix: false, asyncLoading: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: true, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: true, cssAnnotations: true, cssVarShim: true, devTools: false, disconnectedCallback: false, dynamicImportShim: true, element: false, event: true, hasRenderFn: false, hostListener: true, hostListenerTarget: true, hostListenerTargetBody: false, hostListenerTargetDocument: true, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, initializeNextTick: true, isDebug: false, isDev: true, isTesting: true, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: true, member: true, method: true, mode: false, observeAttribute: true, profile: true, prop: true, propBoolean: false, propMutable: false, propNumber: false, propString: true, reflect: false, safari10: true, scoped: false, scriptDataOpts: false, shadowDelegatesFocus: false, shadowDom: false, shadowDomShim: true, slot: false, slotChildNodesFix: false, slotRelocation: false, state: false, style: false, svg: false, taskQueue: true, updatable: true, vdomAttribute: false, vdomClass: false, vdomFunctional: false, vdomKey: false, vdomListener: false, vdomPropOrAttr: false, vdomRef: false, vdomRender: false, vdomStyle: false, vdomText: false, vdomXlink: false, watchCallback: true };
+const BUILD = /* polaris */ { allRenderFn: false, appendChildSlotFix: false, asyncLoading: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: true, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: false, cssAnnotations: true, cssVarShim: true, devTools: true, disconnectedCallback: false, dynamicImportShim: true, element: false, event: true, hasRenderFn: false, hostListener: true, hostListenerTarget: true, hostListenerTargetBody: false, hostListenerTargetDocument: true, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: true, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, isDebug: false, isDev: true, isTesting: false, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: false, member: true, method: true, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: false, propMutable: false, propNumber: false, propString: true, reflect: false, safari10: true, scoped: false, scriptDataOpts: true, shadowDelegatesFocus: false, shadowDom: false, shadowDomShim: true, slot: false, slotChildNodesFix: false, slotRelocation: false, state: false, style: false, svg: false, taskQueue: true, updatable: true, vdomAttribute: false, vdomClass: false, vdomFunctional: false, vdomKey: false, vdomListener: false, vdomPropOrAttr: false, vdomRef: false, vdomRender: false, vdomStyle: false, vdomText: false, vdomXlink: false, watchCallback: true };
 
 let scopeId;
 let contentRef;
@@ -1979,7 +1979,7 @@ const initializeComponent = async (elm, hostRef, cmpMeta, hmrVersionId, Cstr) =>
                 style = style[hostRef.$modeName$];
             }
             if (!BUILD.hydrateServerSide && BUILD.shadowDom && BUILD.shadowDomShim && cmpMeta.$flags$ & 8 /* needsShadowDomShim */) {
-                style = await __sc_import_polaris('./shadow-css-4570d82f.js').then(m => m.scopeCss(style, scopeId, false));
+                style = await __sc_import_polaris('./shadow-css-c3def868.js').then(m => m.scopeCss(style, scopeId, false));
             }
             registerStyle(scopeId, style, !!(cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */));
             endRegisterStyles();
@@ -2163,9 +2163,6 @@ const proxyCustomElement = (Cstr, compactMeta) => {
             if (BUILD.disconnectedCallback && originalDisconnectedCallback) {
                 originalDisconnectedCallback.call(this);
             }
-        },
-        forceUpdate() {
-            forceUpdate(this);
         }
     });
     return proxyComponent(Cstr, cmpMeta, 1 /* isElementConstructor */ | 2 /* proxyState */);
@@ -2416,6 +2413,14 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
                 plt.jmp(() => disconnectedCallback(this));
             }
             forceUpdate() {
+                if (BUILD.isDev) {
+                    consoleDevWarn(`element.forceUpdate() is deprecated, use the "forceUpdate" function from "@stencil/core" instead:
+
+  import { forceUpdate } from ‘@stencil/core’;
+
+  forceUpdate(this);
+  forceUpdate(element);`);
+                }
                 forceUpdate(this);
             }
             componentOnReady() {
@@ -2686,7 +2691,9 @@ const registerHost = (elm, cmpMeta) => {
     return hostRefs.set(elm, hostRef);
 };
 const isMemberInElement = (elm, memberName) => memberName in elm;
-const STENCIL_DEV_MODE = ['%cstencil', 'color: white;background:#4c47ff;font-weight: bold; font-size:10px; padding:2px 6px; border-radius: 5px'];
+const STENCIL_DEV_MODE = BUILD.isTesting
+    ? ['STENCIL:'] // E2E testing
+    : ['%cstencil', 'color: white;background:#4c47ff;font-weight: bold; font-size:10px; padding:2px 6px; border-radius: 5px'];
 const consoleDevError = (...m) => console.error(...STENCIL_DEV_MODE, ...m);
 const consoleDevWarn = (...m) => console.warn(...STENCIL_DEV_MODE, ...m);
 const consoleDevInfo = (...m) => console.info(...STENCIL_DEV_MODE, ...m);
@@ -2801,7 +2808,7 @@ const patchEsm = () => {
     // @ts-ignore
     if (BUILD.cssVarShim && !(CSS && CSS.supports && CSS.supports('color', 'var(--c)'))) {
         // @ts-ignore
-        return __sc_import_polaris(/* webpackChunkName: "stencil-polyfills-css-shim" */ './css-shim-05915db0.js').then(() => {
+        return __sc_import_polaris(/* webpackChunkName: "stencil-polyfills-css-shim" */ './css-shim-bba60d02.js').then(() => {
             if (plt.$cssShim$ = win.__cssshim) {
                 return plt.$cssShim$.i();
             }
@@ -2858,7 +2865,7 @@ const patchBrowser = () => {
         if (BUILD.dynamicImportShim && !win.customElements) {
             // module support, but no custom elements support (Old Edge)
             // @ts-ignore
-            return __sc_import_polaris(/* webpackChunkName: "stencil-polyfills-dom" */ './dom-dc551e3d.js').then(() => opts);
+            return __sc_import_polaris(/* webpackChunkName: "stencil-polyfills-dom" */ './dom-d7379deb.js').then(() => opts);
         }
     }
     return promiseResolve(opts);

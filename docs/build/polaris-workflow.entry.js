@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, g as getElement } from './index-bd40820a.js';
+import { r as registerInstance, c as createEvent, g as getElement } from './index-5186ebba.js';
 
 class HttpService {
     constructor(ctx) {
