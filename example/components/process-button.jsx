@@ -1,11 +1,9 @@
-'use strict';
-
 class ProcessButton extends React.Component {
+  props;
     get ctx() { return this.props.ctx; }
   
     constructor(props) {
       super(props);
-      this.state = { liked: false };
     }
   
     clickHandler() {
@@ -26,12 +24,6 @@ class ProcessButton extends React.Component {
         fontSize: "1rem"
       };
 
-      const element = React.createElement(
-        'button',
-        { style: style, onClick: () => this.clickHandler()},
-        this.props.caption
-      );
-
-      return element;
+      return <button style={style} onClick={this.clickHandler.bind(this)}>{this.props.caption}</button>;
     }
   }
