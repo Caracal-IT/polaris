@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Context, } from "./model/context.model";
+import { Page, } from "./model/page.model";
 import { Activity, } from "./activities/activity";
 import { Validator, } from "./validators/validator";
 export namespace Components {
@@ -17,6 +18,7 @@ export namespace Components {
         "addValidator": (validator: Validator) => Promise<void>;
         "ctx": Context;
         "load": (process: any, next?: string, sessionId?: string) => Promise<void>;
+        "page": Page;
         "parent": Context;
         "process": string | object;
         "sessionId": string;
@@ -51,6 +53,7 @@ declare namespace LocalJSX {
         "activity"?: string;
         "ctx"?: Context;
         "onWfMessage"?: (event: CustomEvent<any>) => void;
+        "page"?: Page;
         "parent"?: Context;
         "process"?: string | object;
         "sessionId"?: string;

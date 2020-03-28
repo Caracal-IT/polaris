@@ -11,6 +11,7 @@
 | ----------- | ------------ | ----------- | ------------------ | ----------- |
 | `activity`  | `activity`   |             | `string`           | `undefined` |
 | `ctx`       | --           |             | `Context`          | `this`      |
+| `page`      | --           |             | `Page`             | `this`      |
 | `parent`    | --           |             | `Context`          | `undefined` |
 | `process`   | `process`    |             | `object \| string` | `undefined` |
 | `sessionId` | `session-id` |             | `string`           | `undefined` |

@@ -2,6 +2,7 @@ import { Component, Prop, Element, Watch, Method, Event, EventEmitter } from "@s
 
 import { Control } from "../../model/control.model";
 
+import { Page } from "../../model/page.model";
 import { Context } from "../../model/context.model";
 import { HttpService } from "../../services/http.service";
 import { ModelService } from "../../services/model.service";
@@ -20,14 +21,13 @@ import { Validator } from "../../validators/validator";
     shadow: false
   })
   export class PolarisWorkflow implements Control {    
-    page = this;
-
     private _components: Array<any> = [];
     private _loader: WorkflowLoader;
     
     @Prop() parent: Context;
 
     @Prop() tag: string;
+    @Prop() page: Page = this;
     @Prop() ctx: Context = this;
     @Prop() value?: any;  
 
