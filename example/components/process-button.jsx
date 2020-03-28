@@ -24,6 +24,12 @@ class ProcessButton extends React.Component {
         fontSize: "1rem"
       };
 
-      return <button style={style} onClick={this.clickHandler.bind(this)}>{this.props.caption}</button>;
+      const element = React.createElement(
+        'button',
+        { style: style, onClick: () => this.clickHandler()},
+        this.props.caption
+      );
+
+      return element;
     }
   }
