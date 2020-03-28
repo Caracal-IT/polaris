@@ -4,6 +4,7 @@
         {"name": "Login", "process": "login"},    
         {"name": "Deposit", "process": "deposit"},
         {"name": "Registration", "process": "registration"},
-        {"name": "Router", "process": "router"}        
+        {"name": "Router", "process": "router"},
+        {"name": "React", "process": "react"}     
     ]
 }

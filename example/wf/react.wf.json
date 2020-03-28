@@ -1,0 +1,13 @@
+{
+    "name" : "react",
+    "activities": [
+        {
+            "name": "start",
+            "type": "page-activity",        
+            "controls": [
+                {"tag": "moon-header", "id": "pageHeader", "caption": "React Components" },
+                {"tag": "polaris-react", "component": "ProcessButton", "caption": "Login", "process": "login"}
+            ]
+        }
+    ]
+}
