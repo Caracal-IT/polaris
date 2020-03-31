@@ -5,6 +5,7 @@ class PolarisReact extends HTMLElement {
 
         this.components = {
             "ProcessButton": ProcessButton,
+            "ProcessButton2": ProcessButton2
         };
     }
 

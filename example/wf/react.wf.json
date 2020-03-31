@@ -6,7 +6,8 @@
             "type": "page-activity",        
             "controls": [
                 {"tag": "moon-header", "id": "pageHeader", "caption": "React Components" },
-                {"tag": "polaris-react", "component": "ProcessButton", "caption": "Login", "process": "login"}
+                {"tag": "polaris-react", "component": "ProcessButton", "caption": "Login", "process": "login"},
+                {"tag": "polaris-react", "component": "ProcessButton2", "caption": "Login - 2", "process": "login"}
             ]
         }
     ]
