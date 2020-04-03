@@ -11,7 +11,6 @@ describe('validators/required-validator', () => {
     let config: RequiredValidatorConfig;
     let message: Message;
 
-
     beforeEach(() => {
         message = null;
         config = {name: 'required', message:'Required control'};

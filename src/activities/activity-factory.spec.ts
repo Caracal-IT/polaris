@@ -1,6 +1,5 @@
 import { ActivityFactory } from "./activity-factory";
 import { NullActivity } from "./null.activity";
-import { Activity } from "./activity";
 
 describe('activities/activity-factory', () => {
     it('should return NULL activity for null config', () => {
