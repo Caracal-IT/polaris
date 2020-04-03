@@ -36,8 +36,8 @@ export const config: Config = {
         { src: '../example/data', dest: 'example/data' },
         { src: '../example/wf', dest: 'example/wf' }
       ]
-    }
-    ,/*
+    }/*
+    ,
     {
       type: 'www',
       dir: 'docs',

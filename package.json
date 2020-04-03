@@ -1,6 +1,6 @@
 {
   "name": "caracal_polaris",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Polaris Workflow",
   "repository": "https://github.com/Caracal-IT/polaris",
   "main": "dist/index.js",
@@ -25,11 +25,11 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@stencil/core": "^1.11.2",
+    "@stencil/core": "^1.12.1",
     "@types/jest": "24.0.25",
     "@types/puppeteer": "^2.0.1",
-    "jest": "24.9.0",
-    "jest-cli": "24.9.0",
+    "jest": "^25.2.7",
+    "jest-cli": "^25.2.7",
     "puppeteer": "^2.1.1",
     "workbox-build": "^5.0.0"
   },

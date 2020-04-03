@@ -1,5 +1,5 @@
 const NAMESPACE = 'polaris';
-const BUILD = /* polaris */ { allRenderFn: false, appendChildSlotFix: false, asyncLoading: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: true, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: false, cssAnnotations: true, cssVarShim: true, devTools: true, disconnectedCallback: false, dynamicImportShim: true, element: false, event: true, hasRenderFn: false, hostListener: true, hostListenerTarget: true, hostListenerTargetBody: false, hostListenerTargetDocument: true, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: true, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, initializeNextTick: false, isDebug: false, isDev: true, isTesting: false, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: false, member: true, method: true, mode: false, observeAttribute: true, profile: true, prop: true, propBoolean: false, propMutable: false, propNumber: false, propString: true, reflect: false, safari10: true, scoped: false, scriptDataOpts: true, shadowDelegatesFocus: false, shadowDom: false, shadowDomShim: true, slot: false, slotChildNodesFix: false, slotRelocation: false, state: false, style: false, svg: false, taskQueue: true, updatable: true, vdomAttribute: false, vdomClass: false, vdomFunctional: false, vdomKey: false, vdomListener: false, vdomPropOrAttr: false, vdomRef: false, vdomRender: false, vdomStyle: false, vdomText: false, vdomXlink: false, watchCallback: true };
+const BUILD = /* polaris */ { allRenderFn: false, appendChildSlotFix: false, asyncLoading: true, asyncQueue: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: true, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: false, cssAnnotations: true, cssVarShim: true, devTools: true, disconnectedCallback: false, dynamicImportShim: true, element: false, event: true, hasRenderFn: false, hostListener: true, hostListenerTarget: true, hostListenerTargetBody: false, hostListenerTargetDocument: true, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: true, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, initializeNextTick: false, isDebug: false, isDev: true, isTesting: false, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: false, member: true, method: true, mode: false, observeAttribute: true, profile: true, prop: true, propBoolean: false, propMutable: false, propNumber: false, propString: true, reflect: false, safari10: true, scoped: false, scriptDataOpts: true, shadowDelegatesFocus: false, shadowDom: false, shadowDomShim: true, slot: false, slotChildNodesFix: false, slotRelocation: false, state: false, style: false, svg: false, taskQueue: true, updatable: true, vdomAttribute: false, vdomClass: false, vdomFunctional: false, vdomKey: false, vdomListener: false, vdomPropOrAttr: false, vdomRef: false, vdomRender: false, vdomStyle: false, vdomText: false, vdomXlink: false, watchCallback: true };
 
 let scopeId;
 let contentRef;
@@ -1164,10 +1164,10 @@ render() {
     // synchronous patch
     patch(oldVNode, rootVnode);
     if (BUILD.slotRelocation) {
+        // while we're moving nodes around existing nodes, temporarily disable
+        // the disconnectCallback from working
+        plt.$flags$ |= 1 /* isTmpDisconnected */;
         if (checkSlotRelocate) {
-            // while we're moving nodes around existing nodes, temporarily disable
-            // the disconnectCallback from working
-            plt.$flags$ |= 1 /* isTmpDisconnected */;
             relocateSlotContent(rootVnode.$elm$);
             let relocateData;
             let nodeToRelocate;
@@ -1227,13 +1227,13 @@ render() {
                     }
                 }
             }
-            // done moving nodes around
-            // allow the disconnect callback to work again
-            plt.$flags$ &= ~1 /* isTmpDisconnected */;
         }
         if (checkSlotFallbackVisibility) {
             updateFallbackSlotVisibility(rootVnode.$elm$);
         }
+        // done moving nodes around
+        // allow the disconnect callback to work again
+        plt.$flags$ &= ~1 /* isTmpDisconnected */;
         // always reset
         relocateNodes.length = 0;
     }
@@ -1502,7 +1502,7 @@ const appDidLoad = (who) => {
     if (BUILD.cssAnnotations) {
         addHydratedFlag(doc.documentElement);
     }
-    if (!BUILD.hydrateServerSide) {
+    if (BUILD.asyncQueue) {
         plt.$flags$ |= 2 /* appLoaded */;
     }
     nextTick(() => emitEvent(win, 'appload', { detail: { namespace: NAMESPACE } }));
@@ -1974,7 +1974,7 @@ const initializeComponent = async (elm, hostRef, cmpMeta, hmrVersionId, Cstr) =>
                 style = style[hostRef.$modeName$];
             }
             if (!BUILD.hydrateServerSide && BUILD.shadowDom && BUILD.shadowDomShim && cmpMeta.$flags$ & 8 /* needsShadowDomShim */) {
-                style = await __sc_import_polaris('./shadow-css-c018471d.js').then(m => m.scopeCss(style, scopeId, false));
+                style = await __sc_import_polaris('./shadow-css-9c5aea91.js').then(m => m.scopeCss(style, scopeId, false));
             }
             registerStyle(scopeId, style, !!(cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */));
             endRegisterStyles();
@@ -2156,6 +2156,7 @@ const proxyCustomElement = (Cstr, compactMeta) => {
             }
         },
     });
+    Cstr.is = cmpMeta.$tagName$;
     return proxyComponent(Cstr, cmpMeta, 1 /* isElementConstructor */ | 2 /* proxyState */);
 };
 const forceModeUpdate = (elm) => {
@@ -2319,8 +2320,10 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
     let i = 0;
     Object.assign(plt, options);
     plt.$resourcesUrl$ = new URL(options.resourcesUrl || './', doc.baseURI).href;
-    if (options.syncQueue) {
-        plt.$flags$ |= 4 /* queueSync */;
+    if (BUILD.asyncQueue) {
+        if (options.syncQueue) {
+            plt.$flags$ |= 4 /* queueSync */;
+        }
     }
     if (BUILD.hydrateClientSide) {
         // If the app is already hydrated there is not point to disable the
@@ -2738,26 +2741,38 @@ const consumeTimeout = (queue, timeout) => {
     }
 };
 const flush = () => {
-    queueCongestion++;
+    if (BUILD.asyncQueue) {
+        queueCongestion++;
+    }
     // always force a bunch of medium callbacks to run, but still have
     // a throttle on how many can run in a certain time
     // DOM READS!!!
     consume(queueDomReads);
-    const timeout = (plt.$flags$ & 6 /* queueMask */) === 2 /* appLoaded */ ? performance.now() + 10 * Math.ceil(queueCongestion * (1.0 / 22.0)) : Infinity;
     // DOM WRITES!!!
-    consumeTimeout(queueDomWrites, timeout);
-    consumeTimeout(queueDomWritesLow, timeout);
-    if (queueDomWrites.length > 0) {
-        queueDomWritesLow.push(...queueDomWrites);
-        queueDomWrites.length = 0;
-    }
-    if ((queuePending = queueDomReads.length + queueDomWrites.length + queueDomWritesLow.length > 0)) {
-        // still more to do yet, but we've run out of time
-        // let's let this thing cool off and try again in the next tick
-        plt.raf(flush);
+    if (BUILD.asyncQueue) {
+        const timeout = (plt.$flags$ & 6 /* queueMask */) === 2 /* appLoaded */ ? performance.now() + 14 * Math.ceil(queueCongestion * (1.0 / 10.0)) : Infinity;
+        consumeTimeout(queueDomWrites, timeout);
+        consumeTimeout(queueDomWritesLow, timeout);
+        if (queueDomWrites.length > 0) {
+            queueDomWritesLow.push(...queueDomWrites);
+            queueDomWrites.length = 0;
+        }
+        if ((queuePending = queueDomReads.length + queueDomWrites.length + queueDomWritesLow.length > 0)) {
+            // still more to do yet, but we've run out of time
+            // let's let this thing cool off and try again in the next tick
+            plt.raf(flush);
+        }
+        else {
+            queueCongestion = 0;
+        }
     }
     else {
-        queueCongestion = 0;
+        consume(queueDomWrites);
+        if ((queuePending = queueDomReads.length > 0)) {
+            // still more to do yet, but we've run out of time
+            // let's let this thing cool off and try again in the next tick
+            plt.raf(flush);
+        }
     }
 };
 const nextTick = /*@__PURE__*/ (cb) => promiseResolve().then(cb);
@@ -2773,7 +2788,7 @@ const patchEsm = () => {
     // @ts-ignore
     if (BUILD.cssVarShim && !(CSS && CSS.supports && CSS.supports('color', 'var(--c)'))) {
         // @ts-ignore
-        return __sc_import_polaris(/* webpackChunkName: "stencil-polyfills-css-shim" */ './css-shim-c6f94a39.js').then(() => {
+        return __sc_import_polaris(/* webpackChunkName: "stencil-polyfills-css-shim" */ './css-shim-10057437.js').then(() => {
             if ((plt.$cssShim$ = win.__cssshim)) {
                 return plt.$cssShim$.i();
             }
@@ -2836,7 +2851,7 @@ const patchBrowser = () => {
         if (BUILD.dynamicImportShim && !win.customElements) {
             // module support, but no custom elements support (Old Edge)
             // @ts-ignore
-            return __sc_import_polaris(/* webpackChunkName: "stencil-polyfills-dom" */ './dom-17330dd2.js').then(() => opts);
+            return __sc_import_polaris(/* webpackChunkName: "stencil-polyfills-dom" */ './dom-1ef1399b.js').then(() => opts);
         }
     }
     return promiseResolve(opts);
