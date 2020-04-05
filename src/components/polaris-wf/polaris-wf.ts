@@ -104,7 +104,7 @@ export class PolarisWF extends HTMLElement implements Control {
             timestamp: Date.now()
         };
 
-        this.dispatchEvent(new CustomEvent('wfMessage', {bubbles: true, detail: {...message, ...metaData}}));
+        document.dispatchEvent(new CustomEvent('wfMessage', {bubbles: true, detail: {...message, ...metaData}}));
     }
 
     onInput(newEl: HTMLElement & Control) {
