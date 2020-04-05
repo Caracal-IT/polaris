@@ -6,7 +6,7 @@ export const config: Config = {
     {
       type: "dist",
       copy: [
-        { src: '../dist_new', dest: 'wp_dist' }
+        { src: '../dist_webcomponents', dest: 'web-components' }
       ],
       esmLoaderPath: "../loader"
     },
@@ -38,10 +38,10 @@ export const config: Config = {
         { src: '../example/validators', dest: 'example/validators' },
         { src: '../example/data', dest: 'example/data' },
         { src: '../example/wf', dest: 'example/wf' },
-        { src: '../dist_new', dest: 'dist_new' }
+        { src: '../dist_webcomponents', dest: 'web-components' }
       ]
-    }
-    ,/*
+    }/*
+    ,
     {
       type: 'www',
       dir: 'docs',

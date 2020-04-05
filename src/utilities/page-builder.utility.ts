@@ -93,5 +93,3 @@ export class PageBuilder {
         newEl.parentNode.appendChild(errLabel);
     }
 }
-
-export * from "../components/polaris-wf/polaris-wf"; 

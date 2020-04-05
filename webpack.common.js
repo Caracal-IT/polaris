@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    components: './src/components/index.ts'
+    workflow: './src/web-components/index.ts'
   },
   plugins: [    
     new CleanWebpackPlugin(),
@@ -19,8 +19,8 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"]
   },
   output: {
-    filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist_new'),
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist_webcomponents'),
   },  
   optimization: {
     splitChunks: {

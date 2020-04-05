@@ -35,7 +35,6 @@
       <hr>   
       <polaris-analytics></polaris-analytics>    
       <polaris-workflow></polaris-workflow>
-      <polaris-wf></polaris-wf>
       <hr>
     </main>
 
@@ -65,17 +64,9 @@
             const wf = document.querySelector("polaris-workflow");
             wf.load(process);
         });
-
-        customElements
-        .whenDefined("polaris-wf")
-        .then(() => {
-            const wf = document.querySelector("polaris-wf");
-            wf.load(process);
-        });
     </script>
     <script>
       const wf = document.querySelector("polaris-workflow");
-      const wf2 = document.querySelector("polaris-wf");
       const loadButton = document.getElementById("loadButton");
       const processDef = document.getElementById("processDef");
       processDef.textContent = JSON.stringify(process, null, 2);
@@ -84,7 +75,6 @@
 
       function loadWorkflow() {
         wf.load(JSON.parse(processDef.value));
-        wf2.load(JSON.parse(processDef.value));
       }
     </script>
     <script>

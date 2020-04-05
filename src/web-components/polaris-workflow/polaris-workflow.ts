@@ -14,7 +14,7 @@ import { Activity } from "../../activities/activity";
 import { ActivityFactory } from "../../activities/activity-factory";
 import { Validator } from "../../validators/validator";
 
-export class PolarisWF extends HTMLElement implements Control {
+export class PolarisWorkflow extends HTMLElement implements Control {
     static get observedAttributes() { return ['process', 'url']; }
 
     private _components: Array<any> = [];
@@ -120,4 +120,4 @@ export class PolarisWF extends HTMLElement implements Control {
     }
 }
 
-customElements.define('polaris-wf', PolarisWF);
+customElements.define('polaris-workflow', PolarisWorkflow);
