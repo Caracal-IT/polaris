@@ -72,7 +72,7 @@ export class PolarisWF extends HTMLElement implements Control {
             this.load(this.process, this.activity, this.sessionId);
     }
 
-    setServices(ctx: Context) {               
+    setServices(ctx: Context) {             
         this.model = ctx.model;
         this.http = ctx.http;
         this.config = ctx.config;        

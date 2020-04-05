@@ -1,6 +1,6 @@
 {
   "name": "caracal_polaris",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Polaris Workflow",
   "repository": "https://github.com/Caracal-IT/polaris",
   "main": "dist/index.js",
@@ -29,7 +29,7 @@
     "wp_build": "webpack --config webpack.prod.js"
   },
   "devDependencies": {
-    "@stencil/core": "^1.12.1",
+    "@stencil/core": "^1.12.2",
     "@types/jest": "24.0.25",
     "@types/puppeteer": "^2.0.1",
     "jest": "24.9.0",
