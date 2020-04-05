@@ -33,17 +33,18 @@
   <body>
     <polaris-analytics></polaris-analytics>
     <polaris-loader></polaris-loader>
-    <polaris-workflow url="data/settings.json" process="default"></polaris-workflow>
+    <polaris-analytic></polaris-analytic>
+    <polaris-wf url="data/settings.json" process="default"></polaris-wf>
     
     <script type="module">
       import {Not13Validator} from "./validators/not13.validator.js";
 
-      const wf = document.querySelector("polaris-workflow");
+      const wf = document.querySelector("polaris-wf");
 
-      customElements.whenDefined('polaris-workflow')
+      customElements.whenDefined('polaris-wf')
                     .then(() => wf.addActivity(new CustomActivity()));   
                     
-      customElements.whenDefined('polaris-workflow')
+      customElements.whenDefined('polaris-wf')
                     .then(() => wf.addValidator(new Not13Validator("custom-not13")));   
        
     </script>   

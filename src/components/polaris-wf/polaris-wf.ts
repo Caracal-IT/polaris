@@ -15,7 +15,7 @@ import { ActivityFactory } from "../../activities/activity-factory";
 import { Validator } from "../../validators/validator";
 
 export class PolarisWF extends HTMLElement implements Control {
-    static get observedAttributes() { return ['process']; }
+    static get observedAttributes() { return ['process', 'url']; }
 
     private _components: Array<any> = [];
     private _loader: WorkflowLoader;
@@ -44,12 +44,13 @@ export class PolarisWF extends HTMLElement implements Control {
     wf = new WorkflowService(this.ctx);
     validator = new ValidatorService();
 
-    attributeChangedCallback(name, _oldValue, newValue) {
-        if(name !== 'process')
-            return;
-
-        this.process = newValue;
-        this.load(this.process, this.activity, this.sessionId);
+    attributeChangedCallback(name: string, _oldValue: string, newValue: string) {
+        if(name === 'url') 
+            this.url = newValue;
+        else if(name === 'process') {
+           this.process = newValue;
+           this.load(this.process, this.activity, this.sessionId);
+        }
     }
 
     async connectedCallback() { 

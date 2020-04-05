@@ -11,5 +11,3 @@ export class HttpWorkflowLoader implements WorkflowLoader {
         return await this.http.fetch({url: `[WF]/${processName}`, method: 'get'});
     }
 }
-
-export * from "../components/polaris-wf/polaris-wf"; 
