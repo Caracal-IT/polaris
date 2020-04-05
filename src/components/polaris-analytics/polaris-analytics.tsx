@@ -1,9 +1,6 @@
 import { Component, Listen } from "@stencil/core";
 import { AnalyticsService } from "../../services/analytics.service";
 
-import "../polaris-wf/polaris-wf";
-import "../polaris-analytic/polaris-analytic";
-
 @Component({
     tag: "polaris-analytics"
   })
