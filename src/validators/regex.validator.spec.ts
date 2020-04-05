@@ -65,7 +65,7 @@ describe('validators/regex-validator', () => {
         const result = validator.validate(context, ctrl, config);
 
         expect(result).toBeFalsy();
-        expect(message).not.toBe(null);
+        expect(message).toBe(null);
         expect(error).toBe('errorMessage-Invalid Regex');
     });
     it('should return true if control has a valid value', () => {
