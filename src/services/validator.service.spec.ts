@@ -51,6 +51,7 @@ describe('services/validator-service', () => {
                .push({tag: "my-control2", ctx: context, validators: [{name: 'always-true'}]});
 
         const result = context.validator.validate(context);
+        expect(message).not.toBe(null);
         expect(result).toBeTruthy();
     });
 

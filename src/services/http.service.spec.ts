@@ -65,6 +65,7 @@ describe('services/http-service', () => {
 
         const response = await http.fetch(endpoint);
 
+        expect(message).not.toBe(null);
         expect(response).toStrictEqual(endpoint.body.response);
         expect(request).toBe('http://wf.com/mockUrl');
         expect(settings).toStrictEqual({

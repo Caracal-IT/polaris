@@ -5,6 +5,9 @@ export const config: Config = {
   outputTargets: [
     {
       type: "dist",
+      copy: [
+        { src: '../dist_new', dest: 'wp_dist' }
+      ],
       esmLoaderPath: "../loader"
     },
     {
@@ -13,7 +16,7 @@ export const config: Config = {
     },
     { 
       type: "docs-json",
-      file: "dist/docs.json"
+      file: "dist/docs.json",
     },
     {
       type: "www",
@@ -34,10 +37,11 @@ export const config: Config = {
         { src: '../example/activities', dest: 'example/activities' },
         { src: '../example/validators', dest: 'example/validators' },
         { src: '../example/data', dest: 'example/data' },
-        { src: '../example/wf', dest: 'example/wf' }
+        { src: '../example/wf', dest: 'example/wf' },
+        { src: '../dist_new', dest: 'dist_new' }
       ]
-    }/*
-    ,
+    }
+    ,/*
     {
       type: 'www',
       dir: 'docs',

@@ -1,6 +1,6 @@
 {
   "name": "caracal_polaris",
-  "version": "0.1.9",
+  "version": "1.0.0",
   "description": "Polaris Workflow",
   "repository": "https://github.com/Caracal-IT/polaris",
   "main": "dist/index.js",
@@ -22,7 +22,11 @@
     "coverage": "stencil test --spec --e2e --coverage",
     "test.e2e": "stencil test --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "wp_start": "webpack-dev-server --open --config webpack.dev.js",
+    "wp_hot": "webpack-dev-server --hotOnly",
+    "wp_watch": "webpack --watch",
+    "wp_build": "webpack --config webpack.prod.js"
   },
   "devDependencies": {
     "@stencil/core": "^1.12.1",
@@ -31,7 +35,17 @@
     "jest": "24.9.0",
     "jest-cli": "24.9.0",
     "puppeteer": "^2.1.1",
-    "workbox-build": "^5.0.0"
+    "workbox-build": "^5.0.0",
+    "@webcomponents/webcomponentsjs": "^2.4.3",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "html-webpack-plugin": "^4.0.4",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
   },
   "license": "MIT"
 }

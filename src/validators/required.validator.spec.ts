@@ -55,6 +55,7 @@ describe('validators/required-validator', () => {
         const result = validator.validate(context, ctrl, config);
 
         expect(result).toBeFalsy();
+        expect(message).not.toBe(null);
         expect(error).toBe('errorMessage-Required control');
     });
 
