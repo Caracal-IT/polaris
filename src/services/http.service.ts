@@ -30,7 +30,7 @@ export class HttpService {
     }
 
     private getConfig(endpoint: Endpoint): object{
-        return  {
+        const config =  {
             method: endpoint.method,
             mode: 'cors',
             headers: Object.apply({"Content-Type": "application/json"}, endpoint.headers),
@@ -38,6 +38,8 @@ export class HttpService {
             referrer: 'no-referrer',
             body: endpoint.body ? JSON.stringify(endpoint.body) : null
         };
+        
+        return config;
     }
 
     private resolveSetting(val: string, counter = 0) {
