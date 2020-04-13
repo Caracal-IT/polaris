@@ -11,12 +11,14 @@ export class IPCActivity implements Activity {
        
     async execute(): Promise<boolean> {
         if(this.process && this.process.length > 0) {
+            let proc = this.process.indexOf('{{') === 0 ? this.ctx.model.getValue(this.process) : this.process;
+
             this.ctx.wf.stack.push({
                 process: this.ctx.wf.process.name,
                 activity: this.next
             });
           
-            this.ctx.wf.setProcess(this.process, 'start', this.next ? false : true);
+            this.ctx.wf.setProcess(proc, 'start', this.next ? false : true);
         }
             
         return true;
