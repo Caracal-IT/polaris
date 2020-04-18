@@ -6,7 +6,8 @@ export interface Message {
           'VALIDATION_ERROR' |
           'WORKFLOW_CHANGING' |
           'WORKFLOW_CHANGED' |
-          'UN_AUTHORIZED';
+          'UN_AUTHORIZED'|
+          string;
     description?: string;
     metadata?: any;
 }
