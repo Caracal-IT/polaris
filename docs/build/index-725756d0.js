@@ -1,5 +1,5 @@
 const NAMESPACE = 'polaris';
-const BUILD = /* polaris */ { allRenderFn: false, appendChildSlotFix: false, asyncLoading: true, asyncQueue: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: true, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: true, cssAnnotations: true, cssVarShim: true, devTools: false, disconnectedCallback: false, dynamicImportShim: true, element: false, event: true, hasRenderFn: false, hostListener: true, hostListenerTarget: true, hostListenerTargetBody: false, hostListenerTargetDocument: true, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, initializeNextTick: false, isDebug: false, isDev: true, isTesting: true, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: true, member: true, method: true, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: false, propMutable: false, propNumber: false, propString: true, reflect: false, safari10: true, scoped: false, scriptDataOpts: true, shadowDelegatesFocus: false, shadowDom: false, shadowDomShim: true, slot: false, slotChildNodesFix: false, slotRelocation: false, state: false, style: false, svg: false, taskQueue: true, updatable: true, vdomAttribute: false, vdomClass: false, vdomFunctional: false, vdomKey: false, vdomListener: false, vdomPropOrAttr: false, vdomRef: false, vdomRender: false, vdomStyle: false, vdomText: false, vdomXlink: false, watchCallback: true };
+const BUILD = /* polaris */ { allRenderFn: false, appendChildSlotFix: false, asyncLoading: true, asyncQueue: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: true, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: true, cssAnnotations: true, cssVarShim: true, devTools: false, disconnectedCallback: false, dynamicImportShim: true, element: false, event: true, hasRenderFn: false, hostListener: true, hostListenerTarget: true, hostListenerTargetBody: false, hostListenerTargetDocument: true, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, initializeNextTick: true, isDebug: false, isDev: true, isTesting: true, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: true, member: true, method: true, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: false, propMutable: false, propNumber: false, propString: true, reflect: false, safari10: true, scoped: false, scriptDataOpts: true, shadowDelegatesFocus: false, shadowDom: false, shadowDomShim: true, slot: false, slotChildNodesFix: false, slotRelocation: false, state: false, style: false, svg: false, taskQueue: true, transformTagName: false, updatable: true, vdomAttribute: false, vdomClass: false, vdomFunctional: false, vdomKey: false, vdomListener: false, vdomPropOrAttr: false, vdomRef: false, vdomRender: false, vdomStyle: false, vdomText: false, vdomXlink: false, watchCallback: true };
 
 let scopeId;
 let contentRef;
@@ -1974,7 +1974,7 @@ const initializeComponent = async (elm, hostRef, cmpMeta, hmrVersionId, Cstr) =>
                 style = style[hostRef.$modeName$];
             }
             if (!BUILD.hydrateServerSide && BUILD.shadowDom && BUILD.shadowDomShim && cmpMeta.$flags$ & 8 /* needsShadowDomShim */) {
-                style = await __sc_import_polaris('./shadow-css-f98d74ec.js').then(m => m.scopeCss(style, scopeId, false));
+                style = await __sc_import_polaris('./shadow-css-39662fcc.js').then(m => m.scopeCss(style, scopeId, false));
             }
             registerStyle(scopeId, style, !!(cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */));
             endRegisterStyles();
@@ -2357,7 +2357,7 @@ const bootstrapLazy = (lazyBundles, options = {}) => {
         if (BUILD.shadowDom && !supportsShadow && cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */) {
             cmpMeta.$flags$ |= 8 /* needsShadowDomShim */;
         }
-        const tagName = cmpMeta.$tagName$;
+        const tagName = BUILD.transformTagName && options.transformTagName ? options.transformTagName(cmpMeta.$tagName$) : cmpMeta.$tagName$;
         const HostElement = class extends HTMLElement {
             // StencilLazyHost
             constructor(self) {
@@ -2686,7 +2686,6 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
     /* webpackInclude: /\.entry\.js$/ */
     /* webpackExclude: /\.system\.entry\.js$/ */
     /* webpackMode: "lazy" */
-    /* webpackChunkName: "stencil-[request]" */
     `./${bundleId}.entry.js${BUILD.hotModuleReplacement && hmrVersionId ? '?s-hmr=' + hmrVersionId : ''}`).then(importedModule => {
         if (!BUILD.hotModuleReplacement) {
             cmpModules.set(bundleId, importedModule);
@@ -2788,7 +2787,7 @@ const patchEsm = () => {
     // @ts-ignore
     if (BUILD.cssVarShim && !(CSS && CSS.supports && CSS.supports('color', 'var(--c)'))) {
         // @ts-ignore
-        return __sc_import_polaris(/* webpackChunkName: "stencil-polyfills-css-shim" */ './css-shim-d61c58a9.js').then(() => {
+        return __sc_import_polaris(/* webpackChunkName: "polyfills-css-shim" */ './css-shim-b422e966.js').then(() => {
             if ((plt.$cssShim$ = win.__cssshim)) {
                 return plt.$cssShim$.i();
             }
@@ -2851,7 +2850,7 @@ const patchBrowser = () => {
         if (BUILD.dynamicImportShim && !win.customElements) {
             // module support, but no custom elements support (Old Edge)
             // @ts-ignore
-            return __sc_import_polaris(/* webpackChunkName: "stencil-polyfills-dom" */ './dom-e7fe74ef.js').then(() => opts);
+            return __sc_import_polaris(/* webpackChunkName: "polyfills-dom" */ './dom-f6a35186.js').then(() => opts);
         }
     }
     return promiseResolve(opts);

@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-System.register(['./index-85f2877b.system.js'], function (exports) {
+System.register(['./index-c230ee00.system.js'], function (exports) {
     'use strict';
     var registerInstance, createEvent, getElement;
     return {

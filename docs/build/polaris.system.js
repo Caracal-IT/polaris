@@ -1,4 +1,4 @@
-System.register(['./index-85f2877b.system.js', './app-globals-497eb362.system.js'], function () {
+System.register(['./index-c230ee00.system.js', './app-globals-497eb362.system.js'], function () {
     'use strict';
     var patchBrowser, bootstrapLazy, globalScripts;
     return {

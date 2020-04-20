@@ -10,7 +10,7 @@ System.register([], function (exports) {
     return {
         execute: function () {
             /*
-             Stencil Client Platform v1.12.2 | MIT Licensed | https://stenciljs.com
+             Stencil Client Platform v1.12.5 | MIT Licensed | https://stenciljs.com
              */
             /**
              * @license

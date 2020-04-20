@@ -1,4 +1,4 @@
-import { r as registerInstance } from './index-1a470b71.js';
+import { r as registerInstance } from './index-725756d0.js';
 
 class AnalyticsService {
     sendMessage(event) {

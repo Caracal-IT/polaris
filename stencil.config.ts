@@ -40,7 +40,7 @@ export const config: Config = {
         { src: '../example/wf', dest: 'example/wf' },
         { src: '../dist_webcomponents', dest: 'web-components' }
       ]
-    }/*
+    }
     ,
     {
       type: 'www',
@@ -50,6 +50,6 @@ export const config: Config = {
         { src: '../www', dest: '' },
         { src: '../src/Polaris Workflow Design.png', dest: 'Polaris Workflow Design.png' }
       ]
-    }*/
+    }
   ]
 };
