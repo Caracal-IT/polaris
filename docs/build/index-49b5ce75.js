@@ -1,5 +1,5 @@
 const NAMESPACE = 'polaris';
-const BUILD = /* polaris */ { allRenderFn: false, appendChildSlotFix: false, asyncLoading: true, asyncQueue: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: true, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: true, cssAnnotations: true, cssVarShim: true, devTools: false, disconnectedCallback: false, dynamicImportShim: true, element: false, event: true, hasRenderFn: false, hostListener: true, hostListenerTarget: true, hostListenerTargetBody: false, hostListenerTargetDocument: true, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: false, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, initializeNextTick: true, isDebug: false, isDev: true, isTesting: true, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: true, member: true, method: true, mode: false, observeAttribute: true, profile: false, prop: true, propBoolean: false, propMutable: false, propNumber: false, propString: true, reflect: false, safari10: true, scoped: false, scriptDataOpts: true, shadowDelegatesFocus: false, shadowDom: false, shadowDomShim: true, slot: false, slotChildNodesFix: false, slotRelocation: false, state: false, style: false, svg: false, taskQueue: true, transformTagName: false, updatable: true, vdomAttribute: false, vdomClass: false, vdomFunctional: false, vdomKey: false, vdomListener: false, vdomPropOrAttr: false, vdomRef: false, vdomRender: false, vdomStyle: false, vdomText: false, vdomXlink: false, watchCallback: true };
+const BUILD = /* polaris */ { allRenderFn: false, appendChildSlotFix: false, asyncLoading: true, asyncQueue: true, cloneNodeFix: false, cmpDidLoad: false, cmpDidRender: false, cmpDidUnload: false, cmpDidUpdate: false, cmpShouldUpdate: false, cmpWillLoad: true, cmpWillRender: false, cmpWillUpdate: false, connectedCallback: false, constructableCSS: false, cssAnnotations: true, cssVarShim: true, devTools: true, disconnectedCallback: false, dynamicImportShim: true, element: false, event: true, hasRenderFn: false, hostListener: true, hostListenerTarget: true, hostListenerTargetBody: false, hostListenerTargetDocument: true, hostListenerTargetParent: false, hostListenerTargetWindow: false, hotModuleReplacement: true, hydrateClientSide: false, hydrateServerSide: false, hydratedAttribute: false, hydratedClass: true, initializeNextTick: true, isDebug: false, isDev: true, isTesting: false, lazyLoad: true, lifecycle: true, lifecycleDOMEvents: false, member: true, method: true, mode: false, observeAttribute: true, profile: true, prop: true, propBoolean: false, propMutable: false, propNumber: false, propString: true, reflect: false, safari10: true, scoped: false, scriptDataOpts: true, shadowDelegatesFocus: false, shadowDom: false, shadowDomShim: true, slot: false, slotChildNodesFix: false, slotRelocation: false, state: false, style: false, svg: false, taskQueue: true, transformTagName: false, updatable: true, vdomAttribute: false, vdomClass: false, vdomFunctional: false, vdomKey: false, vdomListener: false, vdomPropOrAttr: false, vdomRef: false, vdomRender: false, vdomStyle: false, vdomText: false, vdomXlink: false, watchCallback: true };
 
 let scopeId;
 let contentRef;
@@ -1265,7 +1265,7 @@ const emitEvent = (elm, name, opts) => {
     return ev;
 };
 const attachToAncestor = (hostRef, ancestorComponent) => {
-    if (BUILD.asyncLoading && ancestorComponent && !hostRef.$onRenderResolve$) {
+    if (BUILD.asyncLoading && ancestorComponent && !hostRef.$onRenderResolve$ && ancestorComponent['s-p']) {
         ancestorComponent['s-p'].push(new Promise(r => (hostRef.$onRenderResolve$ = r)));
     }
 };
@@ -1277,12 +1277,17 @@ const scheduleUpdate = (hostRef, isInitialLoad) => {
         hostRef.$flags$ |= 512 /* needsRerender */;
         return;
     }
+    attachToAncestor(hostRef, hostRef.$ancestorComponent$);
+    // there is no ancestorc omponent or the ancestor component
+    // has already fired off its lifecycle update then
+    // fire off the initial update
+    const dispatch = () => dispatchHooks(hostRef, isInitialLoad);
+    return BUILD.taskQueue ? writeTask(dispatch) : dispatch;
+};
+const dispatchHooks = (hostRef, isInitialLoad) => {
     const elm = hostRef.$hostElement$;
     const endSchedule = createTime('scheduleUpdate', hostRef.$cmpMeta$.$tagName$);
-    const ancestorComponent = hostRef.$ancestorComponent$;
     const instance = BUILD.lazyLoad ? hostRef.$lazyInstance$ : elm;
-    const update = () => updateComponent(hostRef, instance, isInitialLoad);
-    attachToAncestor(hostRef, ancestorComponent);
     let promise;
     if (isInitialLoad) {
         if (BUILD.lazyLoad && BUILD.hostListener) {
@@ -1308,10 +1313,7 @@ const scheduleUpdate = (hostRef, isInitialLoad) => {
         promise = then(promise, () => safeCall(instance, 'componentWillRender'));
     }
     endSchedule();
-    // there is no ancestorc omponent or the ancestor component
-    // has already fired off its lifecycle update then
-    // fire off the initial update
-    return then(promise, BUILD.taskQueue ? () => writeTask(update) : update);
+    return then(promise, () => (updateComponent(hostRef, instance, isInitialLoad)));
 };
 const updateComponent = (hostRef, instance, isInitialLoad) => {
     // updateComponent
@@ -1974,7 +1976,7 @@ const initializeComponent = async (elm, hostRef, cmpMeta, hmrVersionId, Cstr) =>
                 style = style[hostRef.$modeName$];
             }
             if (!BUILD.hydrateServerSide && BUILD.shadowDom && BUILD.shadowDomShim && cmpMeta.$flags$ & 8 /* needsShadowDomShim */) {
-                style = await __sc_import_polaris('./shadow-css-39662fcc.js').then(m => m.scopeCss(style, scopeId, false));
+                style = await __sc_import_polaris('./shadow-css-b85eee6e.js').then(m => m.scopeCss(style, scopeId, false));
             }
             registerStyle(scopeId, style, !!(cmpMeta.$flags$ & 1 /* shadowDomEncapsulation */));
             endRegisterStyles();
@@ -2040,7 +2042,8 @@ const connectedCallback = (elm) => {
                 while ((ancestorComponent = ancestorComponent.parentNode || ancestorComponent.host)) {
                     // climb up the ancestors looking for the first
                     // component that hasn't finished its lifecycle update yet
-                    if ((BUILD.hydrateClientSide && ancestorComponent.nodeType === 1 /* ElementNode */ && ancestorComponent.hasAttribute('s-id')) || ancestorComponent['s-p']) {
+                    if ((BUILD.hydrateClientSide && ancestorComponent.nodeType === 1 /* ElementNode */ && ancestorComponent.hasAttribute('s-id') && ancestorComponent['s-p']) ||
+                        ancestorComponent['s-p']) {
                         // we found this components first ancestor component
                         // keep a reference to this component's ancestor component
                         attachToAncestor(hostRef, (hostRef.$ancestorComponent$ = ancestorComponent));
@@ -2244,19 +2247,16 @@ const patchSlotAppendChild = (HostElementPrototype) => {
     };
 };
 const patchChildSlotNodes = (elm, cmpMeta) => {
+    class FakeNodeList extends Array {
+        item(n) {
+            return this[n];
+        }
+    }
     if (cmpMeta.$flags$ & 8 /* needsShadowDomShim */) {
-        const childrenFn = elm.__lookupGetter__('children');
         const childNodesFn = elm.__lookupGetter__('childNodes');
         Object.defineProperty(elm, 'children', {
             get() {
-                const children = childrenFn.call(this);
-                if ((plt.$flags$ & 1 /* isTmpDisconnected */) === 0) {
-                    const slotNode = getHostSlotNode(children, '');
-                    if (slotNode && slotNode.parentNode) {
-                        return slotNode.parentNode.children;
-                    }
-                }
-                return children;
+                return this.childNodes.map((n) => n.nodeType === 1);
             },
         });
         Object.defineProperty(elm, 'childElementCount', {
@@ -2267,13 +2267,17 @@ const patchChildSlotNodes = (elm, cmpMeta) => {
         Object.defineProperty(elm, 'childNodes', {
             get() {
                 const childNodes = childNodesFn.call(this);
-                if ((plt.$flags$ & 1 /* isTmpDisconnected */) === 0) {
-                    const slotNode = getHostSlotNode(childNodes, '');
-                    if (slotNode && slotNode.parentNode) {
-                        return slotNode.parentNode.childNodes;
+                if ((plt.$flags$ & 1 /* isTmpDisconnected */) === 0 && getHostRef(this).$flags$ & 2 /* hasRendered */) {
+                    const result = new FakeNodeList();
+                    for (let i = 0; i < childNodes.length; i++) {
+                        const slot = childNodes[i]['s-nr'];
+                        if (slot) {
+                            result.push(slot);
+                        }
                     }
+                    return result;
                 }
-                return childNodes;
+                return FakeNodeList.from(childNodes);
             },
         });
     }
@@ -2511,15 +2515,16 @@ const getContext = (_elm, context) => {
     }
     return undefined;
 };
-const insertVdomAnnotations = (doc) => {
+const insertVdomAnnotations = (doc, staticComponents) => {
     if (doc != null) {
         const docData = {
             hostIds: 0,
             rootLevelIds: 0,
+            staticComponents: new Set(staticComponents),
         };
         const orgLocationNodes = [];
         parseVNodeAnnotations(doc, doc.body, docData, orgLocationNodes);
-        orgLocationNodes.map(orgLocationNode => {
+        orgLocationNodes.forEach(orgLocationNode => {
             if (orgLocationNode != null) {
                 const nodeRef = orgLocationNode['s-nr'];
                 let hostId = nodeRef['s-host-id'];
@@ -2578,7 +2583,7 @@ const parseVNodeAnnotations = (doc, node, docData, orgLocationNodes) => {
     if (node.nodeType === 1 /* ElementNode */) {
         node.childNodes.forEach(childNode => {
             const hostRef = getHostRef(childNode);
-            if (hostRef != null) {
+            if (hostRef != null && !docData.staticComponents.has(childNode.nodeName.toLowerCase())) {
                 const cmpData = {
                     nodeIds: 0,
                 };
@@ -2597,7 +2602,7 @@ const insertVNodeAnnotations = (doc, hostElm, vnode, docData, cmpData) => {
         }
         if (vnode.$children$ != null) {
             const depth = 0;
-            vnode.$children$.map((vnodeChild, index) => {
+            vnode.$children$.forEach((vnodeChild, index) => {
                 insertChildVNodeAnnotations(doc, vnodeChild, cmpData, hostId, depth, index);
             });
         }
@@ -2632,7 +2637,7 @@ const insertChildVNodeAnnotations = (doc, vnodeChild, cmpData, hostId, depth, in
     }
     if (vnodeChild.$children$ != null) {
         const childDepth = depth + 1;
-        vnodeChild.$children$.map((vnode, index) => {
+        vnodeChild.$children$.forEach((vnode, index) => {
             insertChildVNodeAnnotations(doc, vnode, cmpData, hostId, childDepth, index);
         });
     }
@@ -2787,7 +2792,7 @@ const patchEsm = () => {
     // @ts-ignore
     if (BUILD.cssVarShim && !(CSS && CSS.supports && CSS.supports('color', 'var(--c)'))) {
         // @ts-ignore
-        return __sc_import_polaris(/* webpackChunkName: "polyfills-css-shim" */ './css-shim-b422e966.js').then(() => {
+        return __sc_import_polaris(/* webpackChunkName: "polyfills-css-shim" */ './css-shim-3333ed1f.js').then(() => {
             if ((plt.$cssShim$ = win.__cssshim)) {
                 return plt.$cssShim$.i();
             }
@@ -2850,7 +2855,7 @@ const patchBrowser = () => {
         if (BUILD.dynamicImportShim && !win.customElements) {
             // module support, but no custom elements support (Old Edge)
             // @ts-ignore
-            return __sc_import_polaris(/* webpackChunkName: "polyfills-dom" */ './dom-f6a35186.js').then(() => opts);
+            return __sc_import_polaris(/* webpackChunkName: "polyfills-dom" */ './dom-f87898ff.js').then(() => opts);
         }
     }
     return promiseResolve(opts);

@@ -41,7 +41,7 @@ export const config: Config = {
         { src: '../dist_webcomponents', dest: 'web-components' }
       ]
     }
-    ,/*
+    ,
     {
       type: 'www',
       dir: 'docs',
@@ -50,6 +50,6 @@ export const config: Config = {
         { src: '../www', dest: '' },
         { src: '../src/Polaris Workflow Design.png', dest: 'Polaris Workflow Design.png' }
       ]
-    }*/
+    }
   ]
 };
