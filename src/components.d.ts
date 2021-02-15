@@ -5,10 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Context, } from "./model/context.model";
-import { Page, } from "./model/page.model";
-import { Activity, } from "./activities/activity";
-import { Validator, } from "./validators/validator";
+import { Context } from "./model/context.model";
+import { Page } from "./model/page.model";
+import { Activity } from "./activities/activity";
+import { Validator } from "./validators/validator";
 export namespace Components {
     interface PolarisAnalytics {
     }
@@ -20,7 +20,7 @@ export namespace Components {
         "load": (process: any, next?: string, sessionId?: string) => Promise<void>;
         "page": Page;
         "parent": Context;
-        "process": string | object;
+        "process": string|object;
         "sessionId": string;
         "setServices": (ctx: Context) => Promise<void>;
         "tag": string;
@@ -55,7 +55,7 @@ declare namespace LocalJSX {
         "onWfMessage"?: (event: CustomEvent<any>) => void;
         "page"?: Page;
         "parent"?: Context;
-        "process"?: string | object;
+        "process"?: string|object;
         "sessionId"?: string;
         "tag"?: string;
         "url"?: string;
