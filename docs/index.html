@@ -1,4 +1,5 @@
-<!doctype html><html><head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta http-equiv="X-UA-Compatible" content="ie=edge"> <title>Polaris Workflow</title> <link rel="stylesheet" href="style.css"> <script type="module" src="build/polaris.esm.js"></script> <script nomodule="" src="build/polaris.js"></script> </head> <body> <header> <h1>Polaris workflow</h1> <a href="example/index.html">Example Application</a> </header> <section> Welcome to Polaris Workflow playground. </section> <section id="toolbox"> <aside> <button id="loadButton">Load Workflow</button> <button id="clearConsoleButton">Clear Console</button> </aside> <div><textarea id="processDef"></textarea></div> </section> <main> <h3>Result</h3> <hr> <polaris-analytics></polaris-analytics> <polaris-workflow></polaris-workflow> <hr> </main> <footer> <h3>Console</h3> <div id="console"></div> </footer> <script>const process = {
+<!doctype html><html><head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta http-equiv="X-UA-Compatible" content="ie=edge"> <title>Polaris Workflow</title> <link rel="stylesheet" href="style.css"> <script type="module" src="build/polaris.esm.js"></script> <script nomodule="" src="build/polaris.js"></script> </head> <body> <header> <h1>Polaris workflow</h1> <a href="example/index.html">Example Application</a> </header> <section> Welcome to Polaris Workflow playground. </section> <section id="toolbox"> <aside> <button id="loadButton">Load Workflow</button> <button id="clearConsoleButton">Clear Console</button> </aside> <div><textarea id="processDef"></textarea></div> </section> <main> <h3>Result</h3> <hr> <polaris-analytics></polaris-analytics> <polaris-workflow></polaris-workflow> <hr> </main> <footer> <h3>Console</h3> <div id="console"></div> </footer> <script>
+      const process = {
         "name" : "demo",
         "activities": [
           {
@@ -17,7 +18,9 @@
         .then(() => {
             const wf = document.querySelector("polaris-workflow");
             wf.load(process);
-        });</script> <script>const wf = document.querySelector("polaris-workflow");
+        });
+    </script> <script>
+      const wf = document.querySelector("polaris-workflow");
       const loadButton = document.getElementById("loadButton");
       const processDef = document.getElementById("processDef");
       processDef.textContent = JSON.stringify(process, null, 2);
@@ -26,7 +29,9 @@
 
       function loadWorkflow() {
         wf.load(JSON.parse(processDef.value));
-      }</script> <script>const clearConsoleButton = document.getElementById("clearConsoleButton");
+      }
+    </script> <script>
+      const clearConsoleButton = document.getElementById("clearConsoleButton");
       const con = document.getElementById("console");
 
       clearConsoleButton.addEventListener('click', () => {
@@ -44,11 +49,5 @@
             con.appendChild(entry);
             con.scrollTo(0, con.scrollHeight);        
         });
-      });</script> <script>if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-  // auto-unregister service worker during dev mode
-  navigator.serviceWorker.getRegistration().then(function(registration) {
-  if (registration) {
-    registration.unregister().then(function() { location.reload(true) });
-  }
-  });
-}</script></body></html>
+      });
+    </script> </body></html>
