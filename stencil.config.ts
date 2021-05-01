@@ -12,6 +12,9 @@ export const config: Config = {
       file: "dist/docs.json",
     },
     {
+      type: 'dist'
+    },
+    {
       type: "www",
       serviceWorker: {
         globPatterns: [
@@ -32,8 +35,8 @@ export const config: Config = {
         { src: '../example/data', dest: 'example/data' },
         { src: '../example/wf', dest: 'example/wf' }
       ]
-    }
-    ,/*
+    }/*
+    ,
     {
       type: 'www',
       dir: 'docs',
