@@ -4,13 +4,6 @@ export const config: Config = {
   namespace: "polaris",
   outputTargets: [
     {
-      type: "dist",
-      copy: [
-        { src: '../dist_webcomponents', dest: 'web-components' }
-      ],
-      esmLoaderPath: "../loader"
-    },
-    {
       type: "docs-readme",
       footer: '*Built with love!*'
     },
@@ -37,8 +30,7 @@ export const config: Config = {
         { src: '../example/activities', dest: 'example/activities' },
         { src: '../example/validators', dest: 'example/validators' },
         { src: '../example/data', dest: 'example/data' },
-        { src: '../example/wf', dest: 'example/wf' },
-        { src: '../dist_webcomponents', dest: 'web-components' }
+        { src: '../example/wf', dest: 'example/wf' }
       ]
     }
     ,/*
