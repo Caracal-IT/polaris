@@ -29,9 +29,9 @@
     "@types/puppeteer": "^5.4.3",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
+    "protractor-retry": "^2.0.1",
     "puppeteer": "^9.0.0",
-    "workbox-build": "^4.3.1",
-    "protractor-retry": "^2.0.1"
+    "workbox-build": "^4.3.1"
   },
   "license": "MIT"
 }

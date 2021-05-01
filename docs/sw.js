@@ -89,7 +89,7 @@ self.__precacheManifest = [
   },
   {
     "url": "example/index.html",
-    "revision": "ed462b8c4945fff5d83845f1d54d06e4"
+    "revision": "9e8dad953204def2171e9f8e56e615d2"
   },
   {
     "url": "example/redirect.html",
@@ -124,10 +124,6 @@ self.__precacheManifest = [
     "revision": "f91cf97b7941b6c6bd5cb89659c23fe1"
   },
   {
-    "url": "example/wf/react.wf.json",
-    "revision": "86bd0c86f4923968a5f9fd6098d78dd8"
-  },
-  {
     "url": "example/wf/registration.wf.json",
     "revision": "7190dcb6c0c635612688c9d426c0888d"
   },
@@ -141,7 +137,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "672471e406a368a6b0c6e012a3ab9130"
+    "revision": "07860a71ab21a80d0f161f91025388a1"
   },
   {
     "url": "style.css",
