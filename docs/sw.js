@@ -72,12 +72,8 @@ self.__precacheManifest = [
     "revision": "4a28066a1a6b7255d004ee2462742034"
   },
   {
-    "url": "example/components/polaris-react.component.js",
-    "revision": "04bcaec636698dce81db53abb3193e73"
-  },
-  {
     "url": "example/data/menu.json",
-    "revision": "f21e16763c240bacab4c78833db8eb38"
+    "revision": "d3a58881f9fb79ebe504363ef8cf2772"
   },
   {
     "url": "example/data/settings.json",
@@ -93,7 +89,7 @@ self.__precacheManifest = [
   },
   {
     "url": "example/index.html",
-    "revision": "2104603c3969ee899bf1592e64e56cb1"
+    "revision": "ed462b8c4945fff5d83845f1d54d06e4"
   },
   {
     "url": "example/redirect.html",
@@ -145,7 +141,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "2382d41ead32a4c787ba830a41dbf9fd"
+    "revision": "59d5bafb3ecc4dfb8fe1b9346bad23dc"
   },
   {
     "url": "style.css",

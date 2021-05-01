@@ -33,7 +33,7 @@ export const config: Config = {
         { src: '../example/wf', dest: 'example/wf' }
       ]
     }
-    ,/*
+    ,
     {
       type: 'www',
       dir: 'docs',
@@ -42,6 +42,6 @@ export const config: Config = {
         { src: '../www', dest: '' },
         { src: '../src/Polaris Workflow Design.png', dest: 'Polaris Workflow Design.png' }
       ]
-    }*/
+    }
   ]
 };
