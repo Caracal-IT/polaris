@@ -37,10 +37,15 @@ export class ActivityFactory {
         return Object.assign(act, config, { ctx });
     }
 
-    static add(activity: Activity) {
-        let act = ActivityFactory.activities.find(a => a.type === activity.type);
+    static add(activity: Activity, replace = false) {
+        let index = ActivityFactory.activities.findIndex(a => a.type === activity.type);
 
-        if (!act)
-            ActivityFactory.activities.push(activity); 
+        if (index > -1 && !replace)
+            return;
+
+        if (index > -1)
+            ActivityFactory.activities.splice(index, 1);
+        
+        ActivityFactory.activities.push(activity); 
     }
 }
