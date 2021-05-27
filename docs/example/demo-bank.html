@@ -104,7 +104,6 @@
         const backLink = document.querySelector("#backLink");
         const urlParams = new URLSearchParams(window.location.search);
         const returnUrl = urlParams.get('returnUrl');
-        const originalUrl = urlParams.get('originalUrl')||"index.html";
 
         const params = returnUrl.split('-');
         const process = params[0];
@@ -116,7 +115,7 @@
         account.textContent = data.banking.account;
         amount.textContent = currencyFormat(data.banking.depositAmount);
 
-        backLink.href = `${originalUrl}#${returnUrl}`;
+        backLink.href = `index.html#${returnUrl}`;
 
         function currencyFormat(value) {
           const formatter = new Intl.NumberFormat('en-ZA', {
