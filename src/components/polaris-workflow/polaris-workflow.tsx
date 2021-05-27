@@ -77,8 +77,8 @@ import { Validator } from "../../validators/validator";
     }
 
     @Method()
-    async addActivity(activity: Activity){
-        ActivityFactory.add(activity);
+    async addActivity(activity: Activity, replace = false){
+        ActivityFactory.add(activity, replace);
     }
 
     @Method()

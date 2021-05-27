@@ -14,7 +14,7 @@ export namespace Components {
     }
     interface PolarisWorkflow {
         "activity": string;
-        "addActivity": (activity: Activity) => Promise<void>;
+        "addActivity": (activity: Activity, replace?: boolean) => Promise<void>;
         "addValidator": (validator: Validator) => Promise<void>;
         "ctx": Context;
         "load": (process: any, next?: string, sessionId?: string) => Promise<void>;

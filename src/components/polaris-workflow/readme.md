@@ -29,7 +29,7 @@
 
 ## Methods
 
-### `addActivity(activity: Activity) => Promise<void>`
+### `addActivity(activity: Activity, replace?: boolean) => Promise<void>`
 
 
 
