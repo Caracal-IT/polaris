@@ -28,7 +28,7 @@ export const config: Config = {
 
         { src: '../example/style.css', dest: 'example/style.css' },
         { src: '../example/index.html', dest: 'example/index.html' },
-        { src: '../example/redirect.html', dest: 'example/redirect.html' },
+        { src: '../example/demo-bank.html', dest: 'example/demo-bank.html' },
         { src: '../example/components', dest: 'example/components' },
         { src: '../example/activities', dest: 'example/activities' },
         { src: '../example/validators', dest: 'example/validators' },

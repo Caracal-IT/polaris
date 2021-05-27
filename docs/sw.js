@@ -92,7 +92,7 @@ self.__precacheManifest = [
     "revision": "9e8dad953204def2171e9f8e56e615d2"
   },
   {
-    "url": "example/redirect.html",
+    "url": "example/demo-bank.html",
     "revision": "4f5582469416905b535343b09de8f0f1"
   },
   {
