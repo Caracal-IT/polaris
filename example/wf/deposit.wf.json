@@ -55,7 +55,7 @@
         {
             "name": "approve",
             "type": "redirect-activity",
-            "location": "redirect.html",
+            "location": "demo-bank.html",
             "next": "details"
         },
         {
