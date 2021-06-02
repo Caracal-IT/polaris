@@ -27,8 +27,8 @@
     "@stencil/core": "^2.6.0",
     "@types/jest": "^26.0.23",
     "@types/puppeteer": "^5.4.3",
-    "jest": "^27.0.3",
-    "jest-cli": "^27.0.3",
+    "jest": "^26.0.23",
+    "jest-cli": "^26.0.23",
     "protractor-retry": "^2.0.1",
     "puppeteer": "^10.0.0",
     "workbox-build": "^6.1.5"
