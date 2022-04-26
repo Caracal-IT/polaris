@@ -30,7 +30,7 @@
     "jest": "^26.0.23",
     "jest-cli": "^26.0.23",
     "protractor-retry": "^2.0.1",
-    "puppeteer": "^10.0.0",
+    "puppeteer": "^13.6.0",
     "workbox-build": "^6.5.3"
   },
   "license": "MIT"
