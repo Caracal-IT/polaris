@@ -1,5 +1,5 @@
 ![node](https://img.shields.io/node/v/@stencil/core)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/Caracal-IT/polaris)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/Caracal-IT/polaris/master)
 ![GitHub](https://img.shields.io/github/license/Caracal-IT/polaris)
 ![GitHub issues](https://img.shields.io/github/issues/Caracal-IT/polaris)
 [![CodeQL](https://github.com/Caracal-IT/polaris/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Caracal-IT/polaris/actions/workflows/codeql-analysis.yml)
