@@ -1,7 +1,6 @@
 ![node](https://img.shields.io/node/v/@stencil/core)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/Caracal-IT/polaris/master)
 ![GitHub](https://img.shields.io/github/license/Caracal-IT/polaris)
-![GitHub issues](https://img.shields.io/github/issues/Caracal-IT/polaris)
 [![CodeQL](https://github.com/Caracal-IT/polaris/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Caracal-IT/polaris/actions/workflows/codeql-analysis.yml)
 ![CircleCI](https://img.shields.io/circleci/build/github/Caracal-IT/polaris)
 [![codecov](https://codecov.io/gh/Caracal-IT/polaris/branch/master/graph/badge.svg)](https://codecov.io/gh/Caracal-IT/polaris)
