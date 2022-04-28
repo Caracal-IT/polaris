@@ -18,7 +18,9 @@ You will be able to give the audiences different flows by using LaunchDarkly for
 
 You'll get data binding, form validation, the ability to call api's and the abitity for different codepaths based 
 on user interactions out of the box. 
- 
+
+An demo can be seen on our [Demo](https://polaris-9sn.pages.dev/example/#home) page
+
 Please refere to the Wiki for more information.
 
 ## Getting Started
