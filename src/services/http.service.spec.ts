@@ -19,7 +19,7 @@ describe('services/http-service', () => {
         body: {
             status: 200,
             response: {
-                firstName: 'Kate',
+                firstName: 'Ettiene',
                 surname: 'Mare'
             }
         }
@@ -74,7 +74,7 @@ describe('services/http-service', () => {
             headers: {},
             redirect: 'follow',
             referrer: 'no-referrer',
-            body: '{"status":200,"response":{"firstName":"Kate","surname":"Mare"}}'
+            body: '{"status":200,"response":{"firstName":"Ettiene","surname":"Mare"}}'
           });
     });
 

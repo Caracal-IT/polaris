@@ -59,11 +59,11 @@ describe('activities/api-activity', () => {
             }
         ];
 
-        context.model.setValue('user.firstName', 'Kate');
+        context.model.setValue('user.firstName', 'Ettiene');
         context.model.setValue('user.surname', 'Mare');
         
         await expect(act.execute()).resolves.toEqual(true);
-        expect(context.model.getValue('user.firstName')).toBe('Kate');
+        expect(context.model.getValue('user.firstName')).toBe('Ettiene');
         expect(context.model.getValue('user.surname')).toBe('Mare');
         expect(context.model.getValue('user.surname2')).toBe('Mare');
         expect(context.model.getValue('req.method')).toBe('POST');

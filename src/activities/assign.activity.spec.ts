@@ -36,10 +36,10 @@ describe('activities/assign-activity', () => {
         act.ctx = context;
         act.next = 'myNextAction';
         act.key = 'user.firstName';
-        act.value = 'Kate';
+        act.value = 'Ettiene';
 
         await expect(act.execute()).resolves.toEqual(true);
-        expect(context.model.getValue('user.firstName')).toBe('Kate');
+        expect(context.model.getValue('user.firstName')).toBe('Ettiene');
         expect(context.wf.goto).toBeCalledWith('myNextAction');
     });
 });

@@ -35,10 +35,10 @@ describe('activities/code-activity', () => {
         const act = new CodeActivity();
         act.ctx = context;
         act.next = 'myNextAction';
-        act.expression = 'ctx.model.setValue("user.firstName", "Kate");';
+        act.expression = 'ctx.model.setValue("user.firstName", "Ettiene");';
 
         await expect(act.execute()).resolves.toEqual(true);
-        expect(context.model.getValue('user.firstName')).toBe('Kate');
+        expect(context.model.getValue('user.firstName')).toBe('Ettiene');
         expect(context.wf.goto).toBeCalledWith('myNextAction');
     });
 });

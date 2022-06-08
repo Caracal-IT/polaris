@@ -6,7 +6,7 @@ describe('services/validator-service', () => {
 
     beforeEach(() => {
         config = new ConfigService();  
-        config.addSetting('[NAME]', 'Kate');
+        config.addSetting('[NAME]', 'Ettiene');
     });
 
     it('builds', () => {
@@ -19,6 +19,6 @@ describe('services/validator-service', () => {
 
         const result = model.getInterpolatedValue("I owe {{[NAME]}} {{banking.deposit|currencyFormat|en-US|USD}}");
 
-        expect(result).toBe('I owe Kate $300.00');
+        expect(result).toBe('I owe Ettiene $300.00');
     });
 });

@@ -8,12 +8,12 @@ describe('utilities/workflow-loader', () => {
 
     it('should load from web', async () => {
         const http = new HttpService(null);
-        http.fetch = jest.fn(async () => {return {name: 'Kate'};});
+        http.fetch = jest.fn(async () => {return {name: 'Ettiene'};});
 
         const loader = new HttpWorkflowLoader(http);
         const result = await loader.load('login');
 
-        expect(result).toStrictEqual({name: 'Kate'});
+        expect(result).toStrictEqual({name: 'Ettiene'});
         expect(http.fetch).toBeCalledWith({method: 'get', url: '[WF]/login'});
     }); 
 });

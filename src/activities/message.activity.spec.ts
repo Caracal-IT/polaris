@@ -38,13 +38,13 @@ describe('activities/ipc-activity', () => {
         const act = new MessageActivity();
         act.ctx = context;
         act.messageType = "ALERT-USER";
-        act.description = 'Kate';
-        act.message = "This is a message to Kate";
+        act.description = 'Ettiene';
+        act.message = "This is a message to Ettiene";
 
         await expect(act.execute()).resolves.toEqual(true);
         expect(message.type).toBe("ALERT-USER");
-        expect(message.description).toBe("Kate");
-        expect(message.metadata.message).toBe("This is a message to Kate");
+        expect(message.description).toBe("Ettiene");
+        expect(message.metadata.message).toBe("This is a message to Ettiene");
     });
 
     it('should go to the next activity after executing', async () => {
