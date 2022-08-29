@@ -28,6 +28,10 @@ export namespace Components {
         "value"?: any;
     }
 }
+export interface PolarisWorkflowCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPolarisWorkflowElement;
+}
 declare global {
     interface HTMLPolarisAnalyticsElement extends Components.PolarisAnalytics, HTMLStencilElement {
     }
@@ -52,7 +56,7 @@ declare namespace LocalJSX {
     interface PolarisWorkflow {
         "activity"?: string;
         "ctx"?: Context;
-        "onWfMessage"?: (event: CustomEvent<any>) => void;
+        "onWfMessage"?: (event: PolarisWorkflowCustomEvent<any>) => void;
         "page"?: Page;
         "parent"?: Context;
         "process"?: string|object;
