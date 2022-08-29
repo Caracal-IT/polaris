@@ -35,7 +35,10 @@ jobs:
           steps:
             - run: npm install
             - run: npm test --coverage
-            - codecov/upload
+            - codecov/upload: null
+              file: coverage/*.json
+              flags: frontend
+
 
       - store_artifacts:
           path: coverage

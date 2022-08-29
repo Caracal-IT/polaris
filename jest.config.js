@@ -1,6 +1,7 @@
 module.exports = {
 	preset: 'jest-puppeteer',
 	testMatch: ["src/**/?(*.)+(spec|e2e).[t]s"],
+	collectCoverage:true,
 	testPathIgnorePatterns: ['/node_modules/', 'dist'], // 
 	setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 	transform: {
