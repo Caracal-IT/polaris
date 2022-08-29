@@ -28,16 +28,22 @@ jobs:
             libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
             ca-certificates fonts-liberation libnss3 lsb-release xdg-utils wget --fix-missing 
 
+      - codecov/upload:
+          flags: backend,unittest
+
       - node/with-cache:
           steps:
             - run: npm install
             - run: npm test --coverage
-            - codecov/upload
+            - codecov/upload: null
+              file: coverage/*.json
+              flags: frontend
+
 
       - store_artifacts:
           path: coverage
       - store_test_results:
-          path: test
+          path: unittest
         
     # The resource_class feature allows configuring CPU and RAM resources for each job. Different resource classes are available for different executors. https://circleci.com/docs/2.0/configuration-reference/#resourceclass
     resource_class: large
