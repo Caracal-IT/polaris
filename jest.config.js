@@ -9,4 +9,8 @@ module.exports = {
 	globalSetup: './jest.global-setup.ts', // will be called once before all tests are executed
 	//globalTeardown: './jest.global-teardown.ts' // will be called once after all tests are executed
 	collectCoverage: true,
+    coverageReporters: [
+      "text",
+      "cobertura"
+    ]
 };
