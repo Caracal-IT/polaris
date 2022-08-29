@@ -12,8 +12,8 @@ describe('services/validator-service', () => {
         message = null;
         
         const validator = new ValidatorService();
-        validator.addValidator(new AlwayTrueValidator('always-true'));
-        validator.addValidator(new AlwayFalseValidator('always-false'));
+        validator.addValidator(new AlwaysTrueValidator('always-true'));
+        validator.addValidator(new AlwaysFalseValidator('always-false'));
 
 
         context = {
@@ -69,14 +69,14 @@ describe('services/validator-service', () => {
     });
     
 
-    class AlwayTrueValidator extends Validator{
+    class AlwaysTrueValidator extends Validator{
         validate(_ctx: Context, _ctrl: Control): boolean {
             return true;
         }
 
     }
 
-    class AlwayFalseValidator extends Validator{
+    class AlwaysFalseValidator extends Validator{
         validate(_ctx: Context, _ctrl: Control): boolean {
             return false;
         }
