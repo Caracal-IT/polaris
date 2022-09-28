@@ -28,20 +28,21 @@ describe('services/workflow-service', () => {
         expect(new WorkflowService(context)).toBeTruthy();
     });
 
-    it('should set process', () => {
+    it('should set process', async () => {
         const wf = new WorkflowService(context);
         wf.stack.push({ process: 'myProcess', activity: 'act1' });
         const process: Process = {name: 'myProcess', activities: []};
         wf.goto = jest.fn();
 
-        wf.setProcess(process);
+        await wf.setProcess(process);
+
         expect(wf.process).toBe(process);
         expect(wf.activity).toBeNull();
         expect(wf.goto).toBeCalledWith("start");
         expect(message).toStrictEqual({type: 'PROCESS_CHANGED', metadata:{"stack": []}});
     });
 
-    it('should set process and next activity', () => {
+    it('should set process and next activity', async () => {
         const wf = new WorkflowService(context);
         wf.stack.push({ process: 'myProcess', activity: 'act1' });
         const process: Process = {name: 'myProcess', activities: []};
@@ -49,14 +50,15 @@ describe('services/workflow-service', () => {
 
         wf.goto = jest.fn();
 
-        wf.setProcess(process, next);
+        await wf.setProcess(process, next);
+
         expect(wf.process).toBe(process);
         expect(wf.activity).toBeNull();
         expect(wf.goto).toBeCalledWith(next);
         expect(message).toStrictEqual({type: 'PROCESS_CHANGED', metadata:{"stack": []}});
     });
 
-    it('should set process and next activity and not clear stack', () => {
+    it('should set process and next activity and not clear stack', async () => {
         const wf = new WorkflowService(context);
         wf.stack.push({ process: 'process', activity: 'act1' });
         const process: Process = {name: 'myProcess', activities: []};
@@ -64,7 +66,8 @@ describe('services/workflow-service', () => {
 
         wf.goto = jest.fn();
 
-        wf.setProcess(process, next, false);        
+        await wf.setProcess(process, next, false);   
+
         expect(message).toStrictEqual({type: 'PROCESS_CHANGED', metadata:{"stack": [{process: "process", activity: 'act1' }]}});
     });
 
