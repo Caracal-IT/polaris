@@ -12,7 +12,7 @@ export class ModelService {
         if(key.indexOf('[') === 0 || key.indexOf(']') === key.length - 1) 
           return this.config.getSetting(key);
 
-        const val = key.split(".").reduce((total, currentElement) => total ? total[currentElement]: undefined, {...model});
+        const val = key.split(".").reduce((total, currentElement) => total != null ? total[currentElement]: undefined, {...model});
         
        if(key.match(/([a-z|A-Z]+\.[a-z|A-Z]+)+/g) === null && val === undefined) 
           return key;
@@ -79,7 +79,7 @@ export class ModelService {
       const uuidLength = 16;
 
       return 'xxxxxxxxRxxxxR4xxxRyxxxRxxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-        var r = Math.random() * uuidLength | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        var r = Math.random() * uuidLength | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(uuidLength);
       });
     }
