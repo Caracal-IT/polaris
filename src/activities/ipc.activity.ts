@@ -16,7 +16,7 @@ export class IPCActivity implements Activity {
                 activity: this.next
             });
           
-            this.ctx.wf.setProcess(this.ctx.model.getInterpolatedValue(this.process), 'start', this.next ? false : true);
+            await this.ctx.wf.setProcess(this.ctx.model.getInterpolatedValue(this.process), 'start', this.next ? false : true);
         }
             
         return true;
