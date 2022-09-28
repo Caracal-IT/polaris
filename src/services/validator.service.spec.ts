@@ -1,8 +1,8 @@
 import { Context } from "../model/context.model";
 import { Message } from "../model/message.model";
+import { AlwaysFalseValidator } from "../validators/always-false.validator";
+import { AlwaysTrueValidator } from "../validators/always-true.validator";
 import { ValidatorService } from "./validator.service";
-import { Validator } from "../validators/validator";
-import { Control } from "../model/control.model";
 
 describe('services/validator-service', () => {
     let context: Context;
@@ -67,20 +67,5 @@ describe('services/validator-service', () => {
         const result = context.validator.validate(context);
         expect(result).toBeFalsy();
     });
-    
-
-    class AlwaysTrueValidator extends Validator{
-        validate(_ctx: Context, _ctrl: Control): boolean {
-            return true;
-        }
-
-    }
-
-    class AlwaysFalseValidator extends Validator{
-        validate(_ctx: Context, _ctrl: Control): boolean {
-            return false;
-        }
-
-    }
 
 });
