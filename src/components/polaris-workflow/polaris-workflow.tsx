@@ -23,6 +23,7 @@ import { Validator } from "../../validators/validator";
   export class PolarisWorkflow implements Control {    
     private _components: Array<Control> = [];
     private _loader: WorkflowLoader;
+    private _isConnected: boolean;
     
     @Prop() parent: Context;
 
@@ -96,7 +97,16 @@ import { Validator } from "../../validators/validator";
             timestamp: Date.now()
         };
 
-        this.wfMessage.emit({...message, ...metaData});
+        if(this._isConnected === true) 
+            this.wfMessage.emit({...message, ...metaData});
+    }
+
+    disconnectedCallback() {
+        this._isConnected = false;
+    }
+
+    connectedCallback() {
+        this._isConnected = true;
     }
 
     async componentWillLoad() { 
