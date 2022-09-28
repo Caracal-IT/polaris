@@ -1,13 +1,9 @@
-import { Activity } from "./activity";
-import { Context } from "../model/context.model";
+import { BaseActivity } from "./base.activity";
 
-export class RedirectActivity implements Activity {
+export class RedirectActivity extends BaseActivity {
     name = "redirect";
     type = "redirect-activity";
-
-    ctx: Context;
     location?: string;
-    next: string;
        
     async execute(): Promise<boolean> {
         this.ctx.model.save();

@@ -1,15 +1,12 @@
-import { Activity } from "./activity";
-import { Context } from "../model/context.model";
+import { BaseActivity } from "./base.activity";
 
-export class MessageActivity implements Activity {
+export class MessageActivity extends BaseActivity {
     name = "message";
     type = "message-activity";
 
-    ctx: Context;
     messageType: string;
     description: string;
     message: string;
-    next: string;
        
     async execute(): Promise<boolean> {
         this.ctx.page.sendMessage({
@@ -20,8 +17,7 @@ export class MessageActivity implements Activity {
             }
         })
 
-        if(this.next && this.next.length > 0)
-            this.ctx.wf.goto(this.next);
+        this.gotoNext();
             
         return true;
     }

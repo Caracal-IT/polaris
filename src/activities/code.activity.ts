@@ -1,24 +1,19 @@
-import { Activity } from "./activity";
 import { Context } from "../model/context.model";
+import { BaseActivity } from "./base.activity";
 
-export class CodeActivity implements Activity {
+export class CodeActivity extends BaseActivity {
     name = "code";
     type = "code-activity";
-
-    ctx: Context;
     expression: string;
-    next: string;
        
     async execute(): Promise<boolean> {
-        this.eval(this.expression, this.ctx); 
-        
-        if(this.next && this.next.length > 0)
-            this.ctx.wf.goto(this.next);
+        this.evaluate(this.expression, this.ctx); 
+        this.gotoNext();
             
         return true;
     }
 
-    eval(expression: string, ctx: Context) {
+    evaluate(expression: string, ctx: Context) {
         const f =  new Function('ctx', expression);        
         return f(ctx);                
     }

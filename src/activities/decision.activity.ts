@@ -13,7 +13,7 @@ export class DecisionActivity extends CodeActivity {
     async execute(): Promise<boolean> {
         const exp  = `return ${this.ctx.model.getInterpolatedValue(this.expression)};`;
            
-        if(this.eval(exp, this.ctx)) 
+        if(this.evaluate(exp, this.ctx)) 
             this.ctx.wf.goto(this.trueAction);
         else
             this.ctx.wf.goto(this.falseAction);

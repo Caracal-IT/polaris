@@ -20,7 +20,7 @@ export class WorkflowService {
 
     constructor(private ctx: Context){}
     
-    async setProcess(process: string | Process, next: string = "start", clearStack: boolean = true): Promise<void> {
+    async setProcess(process: string | Process, next = "start", clearStack = true): Promise<void> {
         try {
             if(clearStack)
                 this.stack = [];
@@ -62,7 +62,7 @@ export class WorkflowService {
     }
 
     private async next(name: string) {
-        if(typeof this.process == "string" ||  !this.process || !this.process.activities)
+        if(typeof this.process === "string" ||  !this.process || !this.process.activities)
             return null;
             
         if(this.ctx.wf.activity?.type === "page-activity" && !this.ctx.validator.validate(this.ctx))             
@@ -70,7 +70,7 @@ export class WorkflowService {
             
         let newActivity = this.process
                               .activities
-                              .find(a => a.name == name);                
+                              .find(a => a.name === name);                
                             
         if(!newActivity)
             throw new Error(`Activity ${name} not found`);
@@ -78,7 +78,7 @@ export class WorkflowService {
         this.activity = newActivity;
 
         
-        return await ActivityFactory.create(this.activity, this.ctx)
+        return ActivityFactory.create(this.activity, this.ctx)
                                     .execute();
     }
 }

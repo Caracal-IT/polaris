@@ -1,15 +1,11 @@
-import { Activity } from "./activity";
-import { Context } from "../model/context.model";
 import { HttpService } from "../services/http.service";
 import { ApiEndpoint } from "../model/api-endpoint.model";
+import { BaseActivity } from "./base.activity";
 
-export class ApiActivity implements Activity {
+export class ApiActivity extends BaseActivity {
     name = "start";
     type = "api-activity";
-
-    ctx: Context;
     endpoints: Array<ApiEndpoint>;
-    next:string;
 
      async execute(): Promise<boolean> {  
         await this.callEndpoints();
@@ -30,11 +26,6 @@ export class ApiActivity implements Activity {
     private async callEndpoint(http: HttpService, endpoint: ApiEndpoint) {
         return http.fetch(endpoint)
                    .then(data => this.setModel(endpoint, data));
-    }
-
-    private gotoNext() {
-        if(this.next && this.ctx)
-            this.ctx.wf.goto(this.next);
     }
 
     private getBody(endpoint: ApiEndpoint) {

@@ -1,17 +1,12 @@
-import { Activity } from "./activity";
-import { Context } from "../model/context.model";
+import { BaseActivity } from "./base.activity";
 
-export class FinishActivity implements Activity {
+export class FinishActivity extends BaseActivity {
     name: string = "finish";
     type: string = "finish-activity";
-    next: string;
-
-    ctx: Context;
        
     async execute(): Promise<boolean> {
         if(this.ctx.wf.stack.length === 0) {
-            if(this.next)
-                this.ctx.wf.goto(this.next);
+            this.gotoNext();
 
             return true;
         }

@@ -13,8 +13,8 @@ export class SwitchActivity extends CodeActivity {
        for(let rule of this.rules||[]) {
            const expression  = `return ${this.ctx.model.getInterpolatedValue(rule.expression)};`;
            
-           if(this.eval(expression, this.ctx)) {
-              this.ctx.wf.goto(rule.next);
+           if(this.evaluate(expression, this.ctx)) {
+              this.gotoNext();
               return true;
            }
        }

@@ -1,13 +1,9 @@
-import { Activity } from "./activity";
-import { Context } from "../model/context.model";
+import { BaseActivity } from "./base.activity";
 
-export class IPCActivity implements Activity {
+export class IPCActivity extends BaseActivity {
     name = "ipc";
     type = "ipc-activity";
-
-    ctx: Context;
     process: string; 
-    next: string;
        
     async execute(): Promise<boolean> {
         if(this.process && this.process.length > 0) {
