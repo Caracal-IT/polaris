@@ -3,9 +3,9 @@ import { ApiEndpoint } from "../model/api-endpoint.model";
 import { BaseActivity } from "./base.activity";
 
 export class ApiActivity extends BaseActivity {
-    name = "start";
-    type = "api-activity";
-    endpoints: Array<ApiEndpoint>;
+    name: string = "start";
+    type: string = "api-activity";
+    endpoints: ApiEndpoint[];
 
      async execute(): Promise<boolean> {  
         await this.callEndpoints();
@@ -18,7 +18,7 @@ export class ApiActivity extends BaseActivity {
             endpoint.body = this.getBody(endpoint);
             
             await this.callEndpoint(this.ctx.http, endpoint);
-        };
+        }
 
         return true;
     }
@@ -29,7 +29,7 @@ export class ApiActivity extends BaseActivity {
     }
 
     private getBody(endpoint: ApiEndpoint) {
-        if(!this.ctx || !this.ctx.model || endpoint.method.toUpperCase() === "GET" || endpoint.method.toUpperCase() === "DELETE")
+        if(!this.hasModel() || endpoint.method.toUpperCase() === "GET" || endpoint.method.toUpperCase() === "DELETE")
             return null;
 
         const model = this.ctx.model;
@@ -43,19 +43,26 @@ export class ApiActivity extends BaseActivity {
         return body;
     }
 
-    private setModel(endpoint: ApiEndpoint, data: any) {
-        if(!this.ctx || !this.ctx.model)
+    private setModel(endpoint: ApiEndpoint, data: object) {
+        if(!this.hasModel())
             return;
 
         const model = this.ctx.model;
         const mappings = endpoint.mappings;
 
-        if(!mappings || mappings.length === 0)             
+        if(mappings !== null || mappings.length === 0)             
             return Object.keys(data).forEach(k => model.setValue(k, data[k]));  
         
         mappings
             .filter(m => m.direction === 'in' || m.direction === 'inout')
             .forEach(m => model.setValue(m.client, model.getValue(m.remote, data)));
+    }
+
+    private hasModel(): boolean {
+        return this.ctx !== undefined 
+            && this.ctx !== null 
+            && this.ctx.model !== undefined
+            && this.ctx.model !== null;
     }
 }
 
