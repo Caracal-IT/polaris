@@ -4,7 +4,7 @@ export class AssignActivity extends BaseActivity {
     name = "assign";
     type = "assign-activity";
     key: string;
-    value: string;
+    value: string | null | undefined;
     
     async execute(): Promise<boolean> {
         const value = this.ctx.model.getInterpolatedValue(this.value);            
