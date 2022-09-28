@@ -21,7 +21,7 @@ import { Validator } from "../../validators/validator";
     shadow: false
   })
   export class PolarisWorkflow implements Control {    
-    private _components: Array<any> = [];
+    private _components: Array<Control> = [];
     private _loader: WorkflowLoader;
     
     @Prop() parent: Context;
@@ -29,31 +29,31 @@ import { Validator } from "../../validators/validator";
     @Prop() tag: string;
     @Prop() page: Page = this;
     @Prop() ctx: Context = this;
-    @Prop() value?: any;  
+    @Prop() value?: string|object|null|undefined;  
 
     @Prop() url: string;
     @Prop() process: string|object;
     @Prop() activity: string;
     @Prop() sessionId: string;
 
-    http = new HttpService(this.ctx);
-    config = new ConfigService();
-    model = new ModelService(this.ctx.config);
-    wf = new WorkflowService(this.ctx);
-    validator = new ValidatorService();
+    http: HttpService = new HttpService(this.ctx);
+    config: ConfigService = new ConfigService();
+    model: ModelService = new ModelService(this.ctx.config);
+    wf: WorkflowService = new WorkflowService(this.ctx);
+    validator: ValidatorService = new ValidatorService();
     
     @Element() el: HTMLElement;
     
     @Watch("process")
-    processChangeHandler() {        
-        this.load(this.process, this.activity, this.sessionId);
+    async processChangeHandler() {        
+        await this.load(this.process, this.activity, this.sessionId);
     }
 
     @Event()
     wfMessage: EventEmitter;
 
     get controls(){return this._components; }
-    set controls(val: any) { 
+    set controls(val: Array<Control>) { 
         this._components = val; 
         this._render(); 
     }
@@ -67,8 +67,8 @@ import { Validator } from "../../validators/validator";
     }
     
     @Method()
-    async load(process: any, next = "start", sessionId = '') {
-        if(sessionId && sessionId.length > 0) {
+    async load(process: any, next = "start", sessionId = ''): Promise<void> {
+        if(sessionId != null && sessionId.length > 0) {
             this.ctx.model.sessionId = sessionId;
             this.ctx.model.load();
         }
@@ -77,8 +77,10 @@ import { Validator } from "../../validators/validator";
     }
 
     @Method()
-    async addActivity(activity: Activity, replace = false){
+    async addActivity(activity: Activity, replace: boolean = false): Promise<void> {
         ActivityFactory.add(activity, replace);
+
+        return Promise.resolve();
     }
 
     @Method()
@@ -98,7 +100,7 @@ import { Validator } from "../../validators/validator";
     }
 
     async componentWillLoad() { 
-        if(this.url) {
+        if(this.url != null) {
             this.config.addSetting("[settingsUrl]", this.url);
             const settings = await this.http.fetch({method: "GET", url: this.url});
             Object.keys(settings).forEach(k => this.config.addSetting(k, settings[k]));
@@ -110,10 +112,10 @@ import { Validator } from "../../validators/validator";
         }
 
         if(this.parent)
-            this.setServices(this.parent);
+            await this.setServices(this.parent);
         
         if(this.process)
-            this.load(this.process, this.activity, this.sessionId);
+            await this.load(this.process, this.activity, this.sessionId);
     }
 
     onInput(newEl: HTMLElement & Control) {

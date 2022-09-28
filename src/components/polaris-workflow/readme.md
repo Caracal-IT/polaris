@@ -17,7 +17,7 @@
 | `sessionId` | `session-id` |             | `string`           | `undefined` |
 | `tag`       | `tag`        |             | `string`           | `undefined` |
 | `url`       | `url`        |             | `string`           | `undefined` |
-| `value`     | `value`      |             | `any`              | `undefined` |
+| `value`     | `value`      |             | `object \| string` | `undefined` |
 
 
 ## Events

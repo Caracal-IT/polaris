@@ -25,7 +25,7 @@ export namespace Components {
         "setServices": (ctx: Context) => Promise<void>;
         "tag": string;
         "url": string;
-        "value"?: any;
+        "value"?: string|object|null|undefined;
     }
 }
 export interface PolarisWorkflowCustomEvent<T> extends CustomEvent<T> {
@@ -63,7 +63,7 @@ declare namespace LocalJSX {
         "sessionId"?: string;
         "tag"?: string;
         "url"?: string;
-        "value"?: any;
+        "value"?: string|object|null|undefined;
     }
     interface IntrinsicElements {
         "polaris-analytics": PolarisAnalytics;
