@@ -50,7 +50,7 @@ export class ApiActivity extends BaseActivity {
         const model = this.ctx.model;
         const mappings = endpoint.mappings;
 
-        if(mappings !== null || mappings.length === 0)             
+        if(mappings === null || mappings.length === 0)             
             return Object.keys(data).forEach(k => model.setValue(k, data[k]));  
         
         mappings
