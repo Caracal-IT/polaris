@@ -13,21 +13,24 @@ export interface WFStack {
 export class WorkflowService {
     loader: WorkflowLoader;
 
-    process:Process;
+    process: Process | null;
     activity: Activity;
     
-    stack: Array<WFStack> = [];
+    stack: WFStack[] = [];
 
     constructor(private ctx: Context){}
     
-    async setProcess(process: any, next = "start", clearStack = true) {
+    async setProcess(process: string | Process, next: string = "start", clearStack: boolean = true): Promise<void> {
         try {
             if(clearStack)
                 this.stack = [];
                 
-            if(typeof process === "string" && this.loader)              
+            if(typeof process === "string" && this.loader != null)              
                 process = await this.loader.load(process);
             
+            if(typeof process === "string")
+                return Promise.reject("Workflow not found");
+
             this.process = process; 
             this.activity = null;
 
@@ -59,7 +62,7 @@ export class WorkflowService {
     }
 
     private async next(name: string) {
-        if(!this.process || !this.process.activities)
+        if(typeof this.process == "string" ||  !this.process || !this.process.activities)
             return null;
             
         if(this.ctx.wf.activity?.type === "page-activity" && !this.ctx.validator.validate(this.ctx))             

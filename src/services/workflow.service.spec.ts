@@ -1,6 +1,7 @@
 import { Message } from './../model/message.model';
 import { Context } from "../model/context.model";
 import { WorkflowService } from "./workflow.service";
+import { Process } from '../model/process.model';
 
 describe('services/workflow-service', () => {
     let context: Context;
@@ -8,7 +9,6 @@ describe('services/workflow-service', () => {
 
     beforeEach(() => {
         jest.useFakeTimers();
-
         message = null;
 
         context = {
@@ -28,43 +28,43 @@ describe('services/workflow-service', () => {
         expect(new WorkflowService(context)).toBeTruthy();
     });
 
-    it('should set process', async () => {
+    it('should set process', () => {
         const wf = new WorkflowService(context);
-        wf.stack.push({ process: 'process', activity: 'act1' });
-        const process = 'myProcess';
+        wf.stack.push({ process: 'myProcess', activity: 'act1' });
+        const process: Process = {name: 'myProcess', activities: []};
         wf.goto = jest.fn();
 
-        await wf.setProcess(process);
+        wf.setProcess(process);
         expect(wf.process).toBe(process);
         expect(wf.activity).toBeNull();
         expect(wf.goto).toBeCalledWith("start");
         expect(message).toStrictEqual({type: 'PROCESS_CHANGED', metadata:{"stack": []}});
     });
 
-    it('should set process and next activity', async () => {
+    it('should set process and next activity', () => {
         const wf = new WorkflowService(context);
-        wf.stack.push({ process: 'process', activity: 'act1' });
-        const process = 'myProcess';
+        wf.stack.push({ process: 'myProcess', activity: 'act1' });
+        const process: Process = {name: 'myProcess', activities: []};
         const next = 'myNextActivity';
 
         wf.goto = jest.fn();
 
-        await wf.setProcess(process, next);
+        wf.setProcess(process, next);
         expect(wf.process).toBe(process);
         expect(wf.activity).toBeNull();
         expect(wf.goto).toBeCalledWith(next);
         expect(message).toStrictEqual({type: 'PROCESS_CHANGED', metadata:{"stack": []}});
     });
 
-    it('should set process and next activity and not clear stack', async () => {
+    it('should set process and next activity and not clear stack', () => {
         const wf = new WorkflowService(context);
         wf.stack.push({ process: 'process', activity: 'act1' });
-        const process = 'myProcess';
+        const process: Process = {name: 'myProcess', activities: []};
         const next = 'myNextActivity';
 
         wf.goto = jest.fn();
 
-        await wf.setProcess(process, next, false);        
+        wf.setProcess(process, next, false);        
         expect(message).toStrictEqual({type: 'PROCESS_CHANGED', metadata:{"stack": [{process: "process", activity: 'act1' }]}});
     });
 
@@ -90,5 +90,4 @@ describe('services/workflow-service', () => {
         expect(execute).toBeCalledTimes(1);
         expect(wf.activity.name).toBe(activity);
     });
-
 });
