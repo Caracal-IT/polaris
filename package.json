@@ -1,17 +1,10 @@
 {
   "name": "caracal_polaris",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "description": "Polaris Workflow",
   "repository": "https://github.com/Caracal-IT/polaris",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
-  "jest": {
-    "collectCoverage": true,
-    "coverageReporters": [
-      "text",
-      "cobertura"
-    ]
-  },
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
   "types": "dist/types/components.d.ts",
@@ -31,15 +24,15 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@stencil/core": "^2.17.4",
+    "@stencil/core": "^2.18.0",
     "@types/jest": "^27.0.3",
     "@types/puppeteer": "^5.4.6",
+    "codecov": "^3.8.3",
     "jest": "^27.0.3",
     "jest-cli": "^27.4.5",
     "protractor-retry": "^2.0.1",
     "puppeteer": "^17.0.0",
-    "workbox-build": "^6.5.4",
-    "codecov": "^3.8.3"
+    "workbox-build": "^6.5.4"
   },
   "license": "MIT"
 }

@@ -2,6 +2,8 @@ import { Config } from "@stencil/core";
 
 export const config: Config = {
   namespace: "polaris",
+  sourceMap: true,
+  srcDir: 'src',
   outputTargets: [
     {
       type: "docs-readme",
