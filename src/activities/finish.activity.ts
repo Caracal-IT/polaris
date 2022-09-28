@@ -2,9 +2,9 @@ import { Activity } from "./activity";
 import { Context } from "../model/context.model";
 
 export class FinishActivity implements Activity {
-    name = "finish";
-    type = "finish-activity";
-    next:string;
+    name: string = "finish";
+    type: string = "finish-activity";
+    next: string;
 
     ctx: Context;
        
@@ -17,7 +17,7 @@ export class FinishActivity implements Activity {
         }
 
         const ipc = this.ctx.wf.stack.pop();
-        this.ctx.wf.setProcess(ipc.process, ipc.activity);
+        await this.ctx.wf.setProcess(ipc.process, ipc.activity);
             
         return true;
     }

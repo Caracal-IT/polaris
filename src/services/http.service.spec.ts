@@ -2,18 +2,20 @@ import { Context } from "../model/context.model";
 import { Message } from "../model/message.model";
 import { HttpService } from "./http.service";
 import { ConfigService } from "./config.service";
+import { Endpoint } from "../model/endpoint.model";
 
 describe('services/http-service', () => {
-    jest.useFakeTimers();
+    const clientError: number = 400;
+    const okResult: number = 200;
 
-    let win: any = global;
-    let request: any;
-    let settings: any;
+    let win: NodeJS.Global = global;
+    let request: object;
+    let settings: object;
 
     let context: Context;
     let message: Message;
 
-    let endpoint: any = {
+    let endpoint: Endpoint = {
         url:'[WF]/mockUrl',
         method: 'POST',
         body: {
@@ -26,9 +28,11 @@ describe('services/http-service', () => {
     };
 
     beforeEach(() => {
+        jest.useFakeTimers();
+
         message = null;
 
-        win.fetch = async (input: any, init: any) => {
+        win["fetch"] = async (input: object, init: {body: string}) => {
             request = input;
             settings = {...init};
             const body = JSON.parse(init.body);
@@ -51,7 +55,7 @@ describe('services/http-service', () => {
             validator: null
         }; 
         
-        context.config.addSetting('[WF]', 'http://wf.com');
+        context.config.addSetting('[WF]', 'url://wf.com');
     });
 
     it('builds', () => {
@@ -67,7 +71,7 @@ describe('services/http-service', () => {
 
         expect(message).not.toBe(null);
         expect(response).toStrictEqual(endpoint.body.response);
-        expect(request).toBe('http://wf.com/mockUrl');
+        expect(request).toBe('url://wf.com/mockUrl');
         expect(settings).toStrictEqual({
             method: 'POST',
             mode: 'cors',
@@ -79,28 +83,28 @@ describe('services/http-service', () => {
     });
 
     it('should return error for 400', () => {
-        endpoint.body.status = 400;
+        endpoint.body.status = clientError;
         endpoint.body.response = 'Mock Error';
 
         const http = new HttpService(context);
         
         jest.runOnlyPendingTimers();
-        const expected = {"code": 400, "error": "Mock Error", "message": undefined };
+        const expected = {"code": clientError, "error": "Mock Error", "message": undefined };
 
         return expect(http.fetch(endpoint)).rejects.toStrictEqual(expected);
     });
 
     it('should resolve config templates', async () => {
         context.config.addSetting('[AUTH_KEY]', 'KEY_WEST');
-        context.config.addSetting('[WF]', 'http://wf2.com[SELF].json?Auth=[AUTH_KEY]');
+        context.config.addSetting('[WF]', 'url://wf2.com[SELF].json?Auth=[AUTH_KEY]');
        
         endpoint.url = '[WF]/mockUrl';
-        endpoint.body.status = 200;
+        endpoint.body.status = okResult;
 
         const http = new HttpService(context);
         jest.runOnlyPendingTimers();
         await http.fetch(endpoint);
 
-        expect(request).toBe('http://wf2.com/mockUrl.json?Auth=KEY_WEST');
+        expect(request).toBe('url://wf2.com/mockUrl.json?Auth=KEY_WEST');
     });
 });
