@@ -2,6 +2,12 @@ import { Endpoint } from "../model/endpoint.model";
 import { Context } from "../model/context.model";
 
 export class HttpService {
+    private notFound = -1;
+    private startIndex = 0;
+    private settingOffset = 2;
+    private clientError = 400;
+    private unAuthorizedError = 401;
+
     constructor(private ctx: Context) { }
 
     async fetch(endpoint: Endpoint) {
@@ -9,10 +15,10 @@ export class HttpService {
             this.ctx.page.sendMessage({type: "START_LOADING"});
             const response = await fetch(this.resolveSetting(endpoint.url), this.getConfig(endpoint));
             
-            if(response.status >= 400) {
+            if(response.status >= this.clientError) {
                 const error = await response.json();
 
-                if(response.status >= 401)
+                if(response.status >= this.unAuthorizedError)
                     this.ctx.page.sendMessage({type: "UN_AUTHORIZED", metadata: { endpoint, error}});  
 
                 throw {
@@ -42,18 +48,18 @@ export class HttpService {
         return config;
     }
 
-    private resolveSetting(val: string, counter = 0) {
-        if(counter > 2)
+    private resolveSetting(val: string, counter = this.startIndex) {
+        if(counter > this.settingOffset)
             return val;
             
         const matches = val.match(/\[[\w|_]+\]/g);
 
-        if(!matches)
+        if(matches === null)
             return val;
 
         let result = matches.reduce(this.replace.bind(this) , val);
 
-        if(result.indexOf('[') > -1)
+        if(result.indexOf('[') > this.notFound)
           result = this.resolveSetting(result, counter++);
 
         return result;
@@ -62,7 +68,7 @@ export class HttpService {
     private replace(prev: string, next: string): string {
         let replacement:string = this.ctx.config.getSetting(next);
         
-        if(replacement && replacement.indexOf('[SELF]') > -1) 
+        if(replacement && replacement.indexOf('[SELF]') > this.notFound) 
            return replacement.replace('[SELF]', prev.replace(next, ''));
 
         return prev.replace(next, replacement);

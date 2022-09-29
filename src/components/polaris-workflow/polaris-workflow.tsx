@@ -116,15 +116,15 @@ import { Validator } from "../../validators/validator";
             Object.keys(settings).forEach(k => this.config.addSetting(k, settings[k]));
         }
 
-        if(!this._loader) {
+        if(this._loader === null || this._loader === undefined) {
             this._loader = new HttpWorkflowLoader(this.http);
             this.wf.loader = this._loader;
         }
 
-        if(this.parent)
+        if(this.parent != null)
             await this.setServices(this.parent);
         
-        if(this.process)
+        if(this.process != null)
             await this.load(this.process, this.activity, this.sessionId);
     }
 

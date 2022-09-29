@@ -9,7 +9,7 @@ import { AnalyticsService } from "../../services/analytics.service";
     static analyticsService: AnalyticsService = new AnalyticsService();
 
     @Listen('click', { target: 'document' })
-    async analyticsHandler(event: any) {
+    async analyticsHandler(event: Event) {
         const path = PolarisAnalytics.analyticsService.getPath(event);
 
         if(PolarisAnalytics.lastPath[0] === path[0])
@@ -27,7 +27,7 @@ import { AnalyticsService } from "../../services/analytics.service";
     }    
 
     @Listen('wfMessage', { target: 'document' })
-    wfMessage(event: any){
+    wfMessage(event: Event){
       PolarisAnalytics.analyticsService.sendMessage(event);
     }
 
