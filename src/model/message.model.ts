@@ -1,5 +1,5 @@
 export interface Message {
-    type: 'PROCESS_CHANGED' |
+    "type": 'PROCESS_CHANGED' |
           'START_LOADING' |
           'END_LOADING' |
           'ERROR' |
