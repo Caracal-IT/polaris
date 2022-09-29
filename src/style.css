@@ -66,9 +66,9 @@ footer {
 
 #toolbox > aside {
     display: flex; 
+    flex-flow: wrap;  
     flex-direction: column;
-    justify-content: space-evenly;
-    flex-flow: wrap;    
+    justify-content: space-evenly;  
     flex-basis: 150px;   
     padding: 10px;    
 }
