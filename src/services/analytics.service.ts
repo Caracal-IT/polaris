@@ -44,20 +44,24 @@ export class AnalyticsService {
         return "";
     }
 
-    private createPayload(actType: string, wfElement: HTMLElement, path: Array<HTMLElement>){
-        const p = path.filter(i => i.nodeName && i.nodeName.indexOf("document-fragment") === -1);
-        const wfPage = p.find(i => i.localName === "polaris-workflow") as HTMLPolarisWorkflowElement;
+    private createPayload(actType: string, wfElement: HTMLElement, path: HTMLElement[]){
+        const notFound = -1;
 
-        if(!wfPage)
+        const p = path.filter(i => i.nodeName && i.nodeName.indexOf("document-fragment") === notFound);
+        const wfPage = p.find(i => i.localName === "polaris-workflow");
+
+        if(wfPage === null)
             return null;
+
+        const wfPageElement = <HTMLPolarisWorkflowElement> wfPage;
             
-        const activity = wfPage.ctx.wf.activity; 
+        const activity = wfPageElement.ctx.wf.activity; 
         const wfPath = p.slice(0, p.indexOf(wfPage) + 1)
 
-        if(!activity.name)
+        if(activity.name === undefined || activity.name === null)
             return null;
 
-        const process = wfPage.ctx.wf.process.name;
+        const process = wfPageElement.ctx.wf.process.name;
     
         const act = activity.name;
         const control = wfElement.id;
@@ -67,9 +71,12 @@ export class AnalyticsService {
     }
 
     private getHashCode(str: string): number {
-        let hash = 0
-        for (let i = 0; i < str.length; ++i)
-            hash = Math.imul(31, hash) + str.charCodeAt(i)
+        const startIndex = 0;
+        const hashLength = 31;
+
+        let hash = startIndex
+        for (let i = startIndex; i < str.length; ++i)
+            hash = Math.imul(hashLength, hash) + str.charCodeAt(i)
 
         return hash;
     }
