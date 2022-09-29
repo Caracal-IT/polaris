@@ -12,7 +12,7 @@ import { DecisionActivity } from "./decision.activity";
 import { SwitchActivity } from './switch.activity';
 
 export class ActivityFactory {
-    static activities: Array<Activity> = [
+    static activities: Activity[] = [
         new NullActivity(),
         new PageActivity(),
         new ApiActivity(),
@@ -25,26 +25,29 @@ export class ActivityFactory {
         new SwitchActivity()
     ];
 
-    static create(config: any, ctx: Context): Activity {
-        if (!config || !config.type)
+    static create(config: object, ctx: Context): Activity {
+        if (config === null || config === undefined || config["type"] === undefined || config["type"] === null)
             return new NullActivity();
 
-        let act = ActivityFactory.activities.find(a => a.type === config.type);
+        let act = ActivityFactory.activities.find(a => a["type"] === config["type"]);
 
-        if (!act)
+        if (act == null)
             return new NullActivity();
 
         return Object.assign(act, config, { ctx });
     }
 
     static add(activity: Activity, replace = false) {
+        const notFound = -1;
+        const deleteCount = 1;
+
         let index = ActivityFactory.activities.findIndex(a => a.type === activity.type);
 
-        if (index > -1 && !replace)
+        if (index > notFound && !replace)
             return;
 
-        if (index > -1)
-            ActivityFactory.activities.splice(index, 1);
+        if (index > notFound)
+            ActivityFactory.activities.splice(index, deleteCount);
         
         ActivityFactory.activities.push(activity); 
     }

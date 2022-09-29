@@ -3,14 +3,17 @@ import { Context } from "../model/context.model";
 import { Rule } from "../model/rule.model";
 
 export class SwitchActivity extends CodeActivity {
-    name = "switch";
-    "type" = "switch-activity";
+    name: string = "switch";
+    "type": string = "switch-activity";
 
     ctx: Context;
-    rules: Array<Rule>;
+    rules: Rule[];
     
     async execute(): Promise<boolean> {
-       for(let rule of this.rules||[]) {
+       if(this.rules === null || this.rules == undefined)
+            throw new Error(`No valid rule in ${this.name} found !!`);
+
+       for(let rule of this.rules) {
            const expression  = `return ${this.ctx.model.getInterpolatedValue(rule.expression)};`;
            
            if(this.evaluate(expression, this.ctx)) {
@@ -19,6 +22,6 @@ export class SwitchActivity extends CodeActivity {
            }
        }
 
-        throw new Error(`No valid rule in ${this.name} found !!`);
+       throw new Error(`No valid rule in ${this.name} found !!`);
     }
 }

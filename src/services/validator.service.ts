@@ -32,7 +32,7 @@ export class ValidatorService {
     }
     
     private validateControl(ctx: Context, control: Control): boolean {         
-        if(control == undefined || control == null)
+        if(control === undefined || control === null)
             return true;
 
         let isValid = true;
@@ -40,7 +40,7 @@ export class ValidatorService {
         for(const index in control.controls)
             isValid =  this.validateControl(ctx, control.controls[index]) && isValid;
        
-        if(control.validators != null && control.validators.length > 0) {
+        if(control.validators !== null && control.validators !== undefined && control.validators.length > 0) {
             for(const config of control.validators) {                
                 const validator = this.validators.find(v => v.name === config.name);
 
