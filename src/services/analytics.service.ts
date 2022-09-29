@@ -3,13 +3,13 @@ export class AnalyticsService {
         this.sendPostMessage(event.detail);
     }
 
-    send(type: string, path: Array<HTMLElement>) {
+    send(actType: string, path: Array<HTMLElement>) {
         const wfElement = path.find(i => i["wf-Workflow"] !== undefined);
         
         if(!wfElement)
             return;
 
-        const payload = this.createPayload(type, wfElement, path);
+        const payload = this.createPayload(actType, wfElement, path);
 
         if(payload) {
             this.sendPostMessage({
@@ -44,7 +44,7 @@ export class AnalyticsService {
         return "";
     }
 
-    private createPayload(type: string, wfElement: any, path: Array<HTMLElement>){
+    private createPayload(actType: string, wfElement: HTMLElement, path: Array<HTMLElement>){
         const p = path.filter(i => i.nodeName && i.nodeName.indexOf("document-fragment") === -1);
         const wfPage = p.find(i => i.localName === "polaris-workflow") as HTMLPolarisWorkflowElement;
 
@@ -61,8 +61,16 @@ export class AnalyticsService {
     
         const act = activity.name;
         const control = wfElement.id;
-        const valueHash = wfElement.value.hashCode();
+        const valueHash = this.getHashCode(wfElement["value"]);
 
-        return { type, process, activity: act, control, valueHash, wfPath};        
+        return { "type": actType, process, activity: act, control, valueHash, wfPath};        
+    }
+
+    private getHashCode(str: string): number {
+        let hash = 0
+        for (let i = 0; i < str.length; ++i)
+            hash = Math.imul(31, hash) + str.charCodeAt(i)
+
+        return hash;
     }
 }
