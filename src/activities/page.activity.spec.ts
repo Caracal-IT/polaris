@@ -33,6 +33,7 @@ describe('activities/page-activity', () => {
     });
 
     it('should map controls to the page', async () => {
+        const numOfControls = 2;
         const act = new PageActivity();
         act.ctx = context;
         act.controls = [
@@ -41,7 +42,7 @@ describe('activities/page-activity', () => {
         ];
 
         await expect(act.execute()).resolves.toEqual(true);
-        expect(context.page.controls.length).toBe(2);
+        expect(context.page.controls.length).toBe(numOfControls);
         expect(context.page.controls[0].tag).toBe('control1');
         expect(context.page.controls[1].tag).toBe('control2');
     });

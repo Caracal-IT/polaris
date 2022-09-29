@@ -4,7 +4,7 @@ import { Rule } from "../model/rule.model";
 
 export class SwitchActivity extends CodeActivity {
     name = "switch";
-    type = "switch-activity";
+    "type" = "switch-activity";
 
     ctx: Context;
     rules: Array<Rule>;

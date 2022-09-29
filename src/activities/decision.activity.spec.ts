@@ -32,13 +32,14 @@ describe('activities/decision-activity', () => {
     });
 
     it('should go to the true activity if the expression is true', async () => {
+        const numOfActions = 2;
         const act = new DecisionActivity();
         act.ctx = context;
         act.trueAction = 'myTrueAction';
         act.falseAction = 'myFalseAction';
         act.expression = '23 == 23';
 
-        expect.assertions(2);
+        expect.assertions(numOfActions);
 
         await expect(act.execute()).resolves.toEqual(true);
         expect(context.wf.goto).toBeCalledWith('myTrueAction');
