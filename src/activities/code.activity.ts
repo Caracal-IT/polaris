@@ -3,7 +3,7 @@ import { BaseActivity } from "./base.activity";
 
 export class CodeActivity extends BaseActivity {
     name = "code";
-    type = "code-activity";
+    "type" = "code-activity";
     expression: string;
        
     async execute(): Promise<boolean> {

@@ -1,5 +1,5 @@
 export interface Activity {
     name: string;
-    type: string;
+    "type": string;
     execute(): Promise<boolean>;
 }

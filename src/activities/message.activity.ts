@@ -2,7 +2,7 @@ import { BaseActivity } from "./base.activity";
 
 export class MessageActivity extends BaseActivity {
     name = "message";
-    type = "message-activity";
+    "type" = "message-activity";
 
     messageType: string;
     description: string;
@@ -18,7 +18,7 @@ export class MessageActivity extends BaseActivity {
         })
 
         this.gotoNext();
-            
+
         return true;
     }
 }

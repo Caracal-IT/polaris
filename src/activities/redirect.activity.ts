@@ -2,7 +2,7 @@ import { BaseActivity } from "./base.activity";
 
 export class RedirectActivity extends BaseActivity {
     name = "redirect";
-    type = "redirect-activity";
+    "type" = "redirect-activity";
     location?: string;
        
     async execute(): Promise<boolean> {

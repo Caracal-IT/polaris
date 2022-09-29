@@ -4,7 +4,7 @@ import { Control } from "../model/control.model";
 
 export class PageActivity implements Activity {
     name = "start";
-    type = "page-activity";
+    "type" = "page-activity";
     
     ctx: Context;
     controls: Control[];

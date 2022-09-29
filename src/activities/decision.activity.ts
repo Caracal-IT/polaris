@@ -3,7 +3,7 @@ import { Context } from "../model/context.model";
 
 export class DecisionActivity extends CodeActivity {
     name = "decision";
-    type = "decision-activity";
+    "type" = "decision-activity";
 
     ctx: Context;
     expression: string;

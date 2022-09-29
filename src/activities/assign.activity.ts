@@ -2,7 +2,7 @@ import { BaseActivity } from "./base.activity";
 
 export class AssignActivity extends BaseActivity {
     name = "assign";
-    type = "assign-activity";
+    "type" = "assign-activity";
     key: string;
     value: string | null | undefined;
     

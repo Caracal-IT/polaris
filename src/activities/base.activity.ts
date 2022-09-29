@@ -3,7 +3,7 @@ import { Activity } from "./activity";
 
 export abstract class BaseActivity implements Activity {
     name: string;
-    type: string;
+    "type": string;
     next:string;
     ctx: Context;
 

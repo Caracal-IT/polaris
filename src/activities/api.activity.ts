@@ -4,7 +4,7 @@ import { BaseActivity } from "./base.activity";
 
 export class ApiActivity extends BaseActivity {
     name: string = "start";
-    type: string = "api-activity";
+    "type": string = "api-activity";
     endpoints: ApiEndpoint[];
 
      async execute(): Promise<boolean> {  
