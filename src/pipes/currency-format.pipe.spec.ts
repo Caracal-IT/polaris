@@ -6,7 +6,7 @@ describe('pipes/currency-format', () => {
         const locale = 'en-US';
         const currency = 'USD';
 
-        var currencyString = currencyFormat(numberValue, [locale, currency]);
+        const currencyString = currencyFormat(numberValue, [locale, currency]);
         expect(currencyString).toBe(`$${numberValue}`);
     }); 
 });

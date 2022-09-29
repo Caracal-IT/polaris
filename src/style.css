@@ -4,7 +4,7 @@
 
 html, body {
     padding: 0;
-    margin:0px;
+    margin: 0;
 }
 
 h1 {
@@ -68,7 +68,7 @@ footer {
     display: flex; 
     flex-direction: column;
     justify-content: space-evenly;
-    flex-wrap: wrap;    
+    flex-flow: wrap;    
     flex-basis: 150px;   
     padding: 10px;    
 }

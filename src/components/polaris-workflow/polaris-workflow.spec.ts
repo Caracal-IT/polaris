@@ -8,16 +8,20 @@ import { ActivityFactory } from "../../activities/activity-factory";
 import { RangeValidator } from "../../validators/range.validator";
 
 describe('components/polaris-workflow', () => {
-    jest.useFakeTimers();
+  let context: Context;
 
-    let context: Context = {
-            page: null,
-            http: new HttpService(null),
-            model: new ModelService(null),
-            wf: null,
-            config: new ConfigService(),
-            validator: new ValidatorService()
-    };    
+    beforeEach(() => {
+      jest.useFakeTimers();
+
+      context = {
+        page: null,
+        http: new HttpService(null),
+        model: new ModelService(null),
+        wf: null,
+        config: new ConfigService(),
+        validator: new ValidatorService()
+      };
+    });
 
     const process = {
         name : "demo",
