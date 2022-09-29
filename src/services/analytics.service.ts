@@ -79,5 +79,5 @@ export class AnalyticsService {
         }
 
         return hash;
-      };
+      }
 }
