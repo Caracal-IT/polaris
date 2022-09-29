@@ -6,14 +6,14 @@ import { RegexValidator } from '../validators/regex.validator';
 import { RangeValidator } from '../validators/range.validator';
 
 export class ValidatorService {
-    private validators: Array<Validator> = [
+    private validators: Validator[] = [
         new RequiredValidator("required"),
         new RegexValidator("regex"),
         new RangeValidator("range")
     ];
     
     validate(ctx: Context): boolean {                                 
-        if(!ctx.page || !ctx.page.controls)          
+        if(ctx.page === undefined || ctx.page === null || ctx.page.controls === undefined || ctx.page.controls === null)          
             return true;
         
         let isValid = true;
@@ -32,7 +32,7 @@ export class ValidatorService {
     }
     
     private validateControl(ctx: Context, control: Control): boolean {         
-        if(!control)
+        if(control == undefined || control == null)
             return true;
 
         let isValid = true;
@@ -40,7 +40,7 @@ export class ValidatorService {
         for(const index in control.controls)
             isValid =  this.validateControl(ctx, control.controls[index]) && isValid;
        
-        if(control.validators && control.validators.length > 0) {
+        if(control.validators != null && control.validators.length > 0) {
             for(const config of control.validators) {                
                 const validator = this.validators.find(v => v.name === config.name);
 
@@ -58,7 +58,7 @@ export class ValidatorService {
         return isValid;
     }
 
-    private sendErrorMsg(ctx, validator: Validator, control: Control) {
+    private sendErrorMsg(ctx: Context, validator: Validator, control: Control) {
         ctx.page.sendMessage({
             type: "VALIDATION_ERROR",
             description: control.errorMessage,

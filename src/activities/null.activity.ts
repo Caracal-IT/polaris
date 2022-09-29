@@ -1,10 +1,10 @@
 import { Activity } from "./activity";
 
 export class NullActivity implements Activity {
-    name = "undefined";
-    "type" = "null-activity";
+    name: string = "undefined";
+    "type": string = "null-activity";
 
-    execute(): Promise<boolean> {
+    async execute(): Promise<boolean> {
         return new Promise((_resolve, reject) => reject("NULL Activity"));
     }
 }

@@ -11,7 +11,7 @@ export interface Control {
 
     error?: boolean;
     errorMessage?: string;
-    validators?: Array<Validator>;
+    validators?: Validator[];
     
     controls?: Control[];
 }
