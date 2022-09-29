@@ -34,5 +34,8 @@
     "puppeteer": "^17.0.0",
     "workbox-build": "^6.5.4"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^9.0.0"
+  }
 }

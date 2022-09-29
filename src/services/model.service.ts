@@ -1,9 +1,10 @@
 import { PipeFactory } from "../pipes/factory.pipe";
 import { ConfigService } from "./config.service";
+import {v4 as uuidv4} from "uuid";
 
 export class ModelService {
     model: object = {};
-    sessionId: string = this.UUID();
+    sessionId: string = uuidv4().replaceAll('-', 'R');
     pipes: PipeFactory = new PipeFactory();
 
     constructor(private config: ConfigService) {}
@@ -73,15 +74,6 @@ export class ModelService {
           }, newModel);
       
         return newModel;
-    }
-
-    private UUID() {
-      const uuidLength = 16;
-
-      return 'xxxxxxxxRxxxxR4xxxRyxxxRxxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-        var r = Math.random() * uuidLength | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(uuidLength);
-      });
     }
 
     private replaceAll(value: string, key: string) {
