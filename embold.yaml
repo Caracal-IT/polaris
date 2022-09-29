@@ -8,6 +8,7 @@ sources:
     - 'test'
     - 'docs'
     - 'example'
+    - 'jest*.js'
     - 'generated'
     - 'mock'
     - 'thirdparty'
