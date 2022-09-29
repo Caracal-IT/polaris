@@ -9,6 +9,7 @@ sources:
     - 'docs'
     - 'example'
     - 'jest*.js'
+    - 'jest*.ts'
     - 'generated'
     - 'mock'
     - 'thirdparty'
