@@ -61,23 +61,8 @@ export class AnalyticsService {
     
         const act = activity.name;
         const control = wfElement.id;
-        const valueHash = this.getHashCode(wfElement.value);
+        const valueHash = wfElement.value.hashCode();
 
         return { type, process, activity: act, control, valueHash, wfPath};        
     }
-
-    private getHashCode(value: string) {
-        let hash = 0; 
-        let chr: number;
-
-        if (!value || value.length === 0) return hash;
-
-        for (let i = 0; i < value.length; i++) {
-          chr   = value.charCodeAt(i);
-          hash  = ((hash << 5) - hash) + chr;
-          hash |= 0; // Convert to 32bit integer
-        }
-
-        return hash;
-      }
 }

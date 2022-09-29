@@ -32,11 +32,12 @@ describe('activities/activity-factory', () => {
         const actCount = ActivityFactory.activities.length;
         const act = {name: 'my-act', type:'mock-act', execute: null};
         const act2 = {name: 'my-act2', type:'mock-act-2', execute: null};
+        const newActAdded = 2;
 
         ActivityFactory.add(act);
         ActivityFactory.add(act2);
 
-        expect(ActivityFactory.activities.length).toBe(actCount + 2);
+        expect(ActivityFactory.activities.length).toBe(actCount + newActAdded);
         expect(ActivityFactory.activities.pop()).toBe(act2);
         expect(ActivityFactory.activities.pop()).toBe(act);
     });
