@@ -15,13 +15,14 @@ import { WorkflowLoader, HttpWorkflowLoader } from "../../utilities/workflow-loa
 import { Activity } from "../../activities/activity";
 import { ActivityFactory } from "../../activities/activity-factory";
 import { Validator } from "../../validators/validator";
+import { Process } from "../../model/process.model";
 
 @Component({
     tag: "polaris-workflow",
     shadow: false
   })
   export class PolarisWorkflow implements Control {    
-    private _components: Array<Control> = [];
+    private _components: Control[] = [];
     private _loader: WorkflowLoader;
     private _isConnected: boolean;
     
@@ -54,7 +55,7 @@ import { Validator } from "../../validators/validator";
     wfMessage: EventEmitter;
 
     get controls(){return this._components; }
-    set controls(val: Array<Control>) { 
+    set controls(val: Control[]) { 
         this._components = val; 
         this._render(); 
     }
@@ -68,7 +69,7 @@ import { Validator } from "../../validators/validator";
     }
     
     @Method()
-    async load(process: any, next = "start", sessionId = ''): Promise<void> {
+    async load(process: string | Process, next: string = "start", sessionId: string = ''): Promise<void> {
         if(sessionId != null && sessionId.length > 0) {
             this.ctx.model.sessionId = sessionId;
             this.ctx.model.load();
@@ -78,7 +79,7 @@ import { Validator } from "../../validators/validator";
     }
 
     @Method()
-    async addActivity(activity: Activity, replace: boolean = false): Promise<void> {
+    async addActivity(activity: Activity, replace = false): Promise<void> {
         ActivityFactory.add(activity, replace);
 
         return Promise.resolve();

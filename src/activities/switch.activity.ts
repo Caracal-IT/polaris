@@ -10,7 +10,7 @@ export class SwitchActivity extends CodeActivity {
     rules: Rule[];
     
     async execute(): Promise<boolean> {
-       if(this.rules === null || this.rules == undefined)
+       if(this.rules === null || this.rules === undefined)
             throw new Error(`No valid rule in ${this.name} found !!`);
 
        for(let rule of this.rules) {
