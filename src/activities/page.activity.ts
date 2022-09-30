@@ -10,7 +10,7 @@ export class PageActivity implements Activity {
     controls: Control[];
 
     async execute(): Promise<boolean> {
-        this.ctx.page.controls = this.controls || [];    
+        this.ctx.page.controls = this.controls;    
         return true;
     }
 }

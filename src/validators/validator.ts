@@ -9,7 +9,7 @@ export abstract class Validator {
         control.error = error;
         control.errorMessage = error ? message : null;
 
-        if(control.el) {
+        if(control.el !== null) {
             control.el.setAttribute("error", control.error === true  ? "true" : "false");
             control.el.setAttribute("errorMessage", control.errorMessage);
         }

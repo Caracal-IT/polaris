@@ -10,7 +10,7 @@ export abstract class BaseActivity implements Activity {
     abstract execute(): Promise<boolean>;
 
     gotoNext() {
-        if(this.next && this.ctx)
+        if(this.next !== undefined && this.ctx !== undefined)
             this.ctx.wf.goto(this.next);
     }
 }
