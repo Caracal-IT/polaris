@@ -6,7 +6,7 @@ export class IPCActivity extends BaseActivity {
     process: string; 
        
     async execute(): Promise<boolean> {
-        if(this.process && this.process.length > 0) {
+        if(this.process !== null && this.process.length > 0) {
             this.ctx.wf.stack.push({
                 process: this.ctx.wf.process.name,
                 activity: this.next
