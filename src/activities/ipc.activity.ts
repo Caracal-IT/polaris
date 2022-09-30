@@ -1,8 +1,8 @@
 import { BaseActivity } from "./base.activity";
 
 export class IPCActivity extends BaseActivity {
-    name: string = "ipc";
-    "type": string = "ipc-activity";
+    name = "ipc";
+    "type" = "ipc-activity";
     process: string; 
        
     async execute(): Promise<boolean> {
@@ -12,7 +12,7 @@ export class IPCActivity extends BaseActivity {
                 activity: this.next
             });
           
-            await this.ctx.wf.setProcess(this.ctx.model.getInterpolatedValue(this.process), 'start', this.next ? false : true);
+            await this.ctx.wf.setProcess(this.ctx.model.getInterpolatedValue(this.process), 'start', this.next !== undefined ? false : true);
         }
             
         return true;
