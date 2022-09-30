@@ -62,7 +62,7 @@ export class WorkflowService {
     }
 
     private async next(name: string) {
-        if(typeof this.process === "string" ||  this.process == undefined || this.process == null || this.process.activities == undefined || this.process.activities == null)
+        if(!this.isValidProcess())
             return null;
             
         if(this.ctx.wf.activity?.type === "page-activity" && !this.ctx.validator.validate(this.ctx))             
@@ -80,5 +80,13 @@ export class WorkflowService {
         
         return ActivityFactory.create(this.activity, this.ctx)
                                     .execute();
+    }
+
+    private isValidProcess(): boolean{
+        return typeof this.process !== "string" 
+            &&  this.process !== undefined 
+            && this.process !== null 
+            && this.process.activities !== undefined 
+            && this.process.activities !== null;
     }
 }
