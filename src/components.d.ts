@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Context } from "./model/context.model";
 import { Page } from "./model/page.model";
+import { Process } from "./model/process.model";
 import { Activity } from "./activities/activity";
 import { Validator } from "./validators/validator";
 export namespace Components {
@@ -17,10 +18,10 @@ export namespace Components {
         "addActivity": (activity: Activity, replace?: boolean) => Promise<void>;
         "addValidator": (validator: Validator) => Promise<void>;
         "ctx": Context;
-        "load": (process: any, next?: string, sessionId?: string) => Promise<void>;
+        "load": (process: string | Process, next?: string, sessionId?: string) => Promise<void>;
         "page": Page;
         "parent": Context;
-        "process": string|object;
+        "process": string|Process;
         "sessionId": string;
         "setServices": (ctx: Context) => Promise<void>;
         "tag": string;
@@ -59,7 +60,7 @@ declare namespace LocalJSX {
         "onWfMessage"?: (event: PolarisWorkflowCustomEvent<any>) => void;
         "page"?: Page;
         "parent"?: Context;
-        "process"?: string|object;
+        "process"?: string|Process;
         "sessionId"?: string;
         "tag"?: string;
         "url"?: string;

@@ -1,9 +1,9 @@
 export class AnalyticsService {
-    sendMessage(event: any) {
-        this.sendPostMessage(event.detail);
+    sendMessage(event: object) {
+        this.sendPostMessage(event["detail"]);
     }
 
-    send(actType: string, path: Array<HTMLElement>) {
+    send(actType: string, path: HTMLElement[]) {
         const wfElement = path.find(i => i["wf-Workflow"] !== undefined);
         
         if(!wfElement)
@@ -11,7 +11,7 @@ export class AnalyticsService {
 
         const payload = this.createPayload(actType, wfElement, path);
 
-        if(payload) {
+        if(payload !== undefined && payload !== null) {
             this.sendPostMessage({
                 type: payload.type, 
                 process: payload.process,
@@ -23,7 +23,7 @@ export class AnalyticsService {
         }
     }
 
-    getPath(event: any) {
+    getPath(event: {composedPath(event: object)}) {
         return event.composedPath(event);
     }
 

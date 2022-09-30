@@ -34,7 +34,7 @@ import { Process } from "../../model/process.model";
     @Prop() value?: string|object|null|undefined;  
 
     @Prop() url: string;
-    @Prop() process: string|object;
+    @Prop() process: string|Process;
     @Prop() activity: string;
     @Prop() sessionId: string;
 
