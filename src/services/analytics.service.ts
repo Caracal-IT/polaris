@@ -28,13 +28,13 @@ export class AnalyticsService {
     }
 
     private sendPostMessage(message: any) {
-        const msg = {...message, timestamp:Date.now()};
+        const msg: object = {...message, timestamp:Date.now()};
 
         console.log("ANALYTICS", msg);
         window.postMessage(msg, "*");
     }
 
-    private getName(item: any): string {
+    private getName(item: HTMLElement & {id: string, page: {name: string}}): string {
         if(item.id)
             return item.id;
 

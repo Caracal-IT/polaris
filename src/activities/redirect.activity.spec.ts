@@ -4,7 +4,7 @@ import { WorkflowService } from "../services/workflow.service";
 import { Context } from "../model/context.model";
 
 describe('activities/redirect-activity', () => {
-    let win: any = window;
+    let win: object = window;
     let context: Context;
 
     beforeEach(() => {
@@ -18,7 +18,7 @@ describe('activities/redirect-activity', () => {
         };
 
         context.model.save = jest.fn(); 
-        win.location = {};         
+        win["location"] = {};         
     });
     
     it('builds', () => {
@@ -52,6 +52,6 @@ describe('activities/redirect-activity', () => {
         act.ctx.wf.process = {name: 'myProcess', activities: []};
 
         await expect(act.execute()).resolves.toEqual(true);
-        expect(win.location.href).toBe('myLocation?returnUrl=myProcess-myNextAct-mySession');              
+        expect(win["location"]["href"]).toBe('myLocation?returnUrl=myProcess-myNextAct-mySession');              
     });
 });

@@ -1,8 +1,8 @@
 import { BaseActivity } from "./base.activity";
 
 export class IPCActivity extends BaseActivity {
-    name = "ipc";
-    "type" = "ipc-activity";
+    name: string = "ipc";
+    "type": string = "ipc-activity";
     process: string; 
        
     async execute(): Promise<boolean> {

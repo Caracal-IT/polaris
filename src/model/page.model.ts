@@ -1,6 +1,7 @@
+import { Control } from "./control.model";
 import { Message } from "./message.model";
 
 export interface Page {
-    controls: any[];
+    controls: Control[];
     sendMessage(message: Message): void;
 }

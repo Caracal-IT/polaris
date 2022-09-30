@@ -5,7 +5,7 @@ export interface Control {
     tag: string;
     id?: string;
     ctx: Context;
-    value?: any;
+    value?: string|object|null|undefined;
     caption?: string;
     el?: HTMLElement;
 
