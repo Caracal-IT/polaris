@@ -129,14 +129,14 @@ import { Process } from "../../model/process.model";
             await this.load(this.process, this.activity, this.sessionId);
     }
 
-    onInput(newEl: HTMLElement & Control) {
+    private onInput(newEl: HTMLElement & Control) {
         this.model.setValue(newEl.id, newEl.value);
 
         if(newEl.hasAttribute('error'))
             this.validator.validate(this);
     }
 
-    _render() {   
+    private _render() {   
         const builder = new PageBuilder(this);
         builder.build(this.el, this.onInput.bind(this));
     }
