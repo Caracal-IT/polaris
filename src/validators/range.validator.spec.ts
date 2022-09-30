@@ -17,15 +17,14 @@ describe('validators/range-validator', () => {
         config = {name: 'range', min: 5, max: 9, message: 'Outside Range'};
         ctrl = {tag: 'control', id: 'user.age', ctx:context, error: false};
         
-        const control: any = ctrl;
-        control.el = {
+        ctrl = Object.assign(ctrl, {el : {
             nextSibling: {
                 attributes: {
                     'wf-error': null
                 }
             },
             setAttribute: (key: string, val: string) => error = `${key}-${val}`
-        }
+        }});
         
         context = {
             page: {

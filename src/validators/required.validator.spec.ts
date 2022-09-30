@@ -23,7 +23,7 @@ describe('validators/required-validator', () => {
                 }
             },
             setAttribute: (key: string, val: string) => error = `${key}-${val}`
-        }})
+        }});
 
         context = {
             page: {

@@ -35,7 +35,7 @@ export class ModelService {
     }
   
 
-    setValue(key: string, val: string | object) {   
+    setValue(key: string, val: string | number | object) {   
         if(key.indexOf('[') === 0 || key.indexOf(']') === key.length - 1) 
           this.config.addSetting(key, val);
         else
@@ -60,7 +60,7 @@ export class ModelService {
       sessionStorage.clear();
     }
 
-    private merge(model: object, name: string, value: string | object) {
+    private merge(model: object, name: string, value: string | number | object) {
         if(name === null)
           return;
           
