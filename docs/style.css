@@ -4,7 +4,7 @@
 
 html, body {
     padding: 0;
-    margin:0px;
+    margin: 0;
 }
 
 h1 {
@@ -66,9 +66,9 @@ footer {
 
 #toolbox > aside {
     display: flex; 
+    flex-flow: wrap;  
     flex-direction: column;
-    justify-content: space-evenly;
-    flex-wrap: wrap;    
+    justify-content: space-evenly;  
     flex-basis: 150px;   
     padding: 10px;    
 }

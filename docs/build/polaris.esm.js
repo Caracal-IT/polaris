@@ -1,0 +1,2 @@
+import{p as s,b as a}from"./p-08a47141.js";const i=()=>{const a=import.meta.url;const i={};if(a!==""){i.resourcesUrl=new URL(".",a).href}return s(i)};i().then((s=>a([["p-3a6500d5",[[0,"polaris-analytics",null,[[4,"click","analyticsHandler"],[4,"wfMessage","wfMessage"]]],[0,"polaris-workflow",{parent:[16],tag:[1],page:[16],ctx:[16],value:[1],url:[1],process:[1],activity:[1],sessionId:[1,"session-id"],setServices:[64],load:[64],addActivity:[64],addValidator:[64]}]]]],s)));
+//# sourceMappingURL=polaris.esm.js.map
