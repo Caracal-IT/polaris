@@ -7,17 +7,17 @@
 
 ## Properties
 
-| Property    | Attribute    | Description | Type               | Default     |
-| ----------- | ------------ | ----------- | ------------------ | ----------- |
-| `activity`  | `activity`   |             | `string`           | `undefined` |
-| `ctx`       | --           |             | `Context`          | `this`      |
-| `page`      | --           |             | `Page`             | `this`      |
-| `parent`    | --           |             | `Context`          | `undefined` |
-| `process`   | `process`    |             | `object \| string` | `undefined` |
-| `sessionId` | `session-id` |             | `string`           | `undefined` |
-| `tag`       | `tag`        |             | `string`           | `undefined` |
-| `url`       | `url`        |             | `string`           | `undefined` |
-| `value`     | `value`      |             | `object \| string` | `undefined` |
+| Property    | Attribute    | Description | Type                | Default     |
+| ----------- | ------------ | ----------- | ------------------- | ----------- |
+| `activity`  | `activity`   |             | `string`            | `undefined` |
+| `ctx`       | --           |             | `Context`           | `this`      |
+| `page`      | --           |             | `Page`              | `this`      |
+| `parent`    | --           |             | `Context`           | `undefined` |
+| `process`   | `process`    |             | `Process \| string` | `undefined` |
+| `sessionId` | `session-id` |             | `string`            | `undefined` |
+| `tag`       | `tag`        |             | `string`            | `undefined` |
+| `url`       | `url`        |             | `string`            | `undefined` |
+| `value`     | `value`      |             | `object \| string`  | `undefined` |
 
 
 ## Events
@@ -49,7 +49,7 @@ Type: `Promise<void>`
 
 
 
-### `load(process: any, next?: string, sessionId?: string) => Promise<void>`
+### `load(process: string | Process, next?: string, sessionId?: string) => Promise<void>`
 
 
 
