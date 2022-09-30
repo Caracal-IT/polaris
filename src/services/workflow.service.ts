@@ -20,7 +20,7 @@ export class WorkflowService {
 
     constructor(private ctx: Context){}
     
-    async setProcess(process: string | Process, next = "start", clearStack = true): Promise<void> {
+    async setProcess(process: string | Process, next: string = "start", clearStack = true): Promise<void> {
         try {
             if(clearStack)
                 this.stack = [];

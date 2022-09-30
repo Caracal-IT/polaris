@@ -69,7 +69,7 @@ import { Process } from "../../model/process.model";
     }
     
     @Method()
-    async load(process: string | Process, next = "start", sessionId = ''): Promise<void> {
+    async load(process: string | Process, next: string = "start", sessionId: string = ''): Promise<void> {
         if(sessionId != null && sessionId.length > 0) {
             this.ctx.model.sessionId = sessionId;
             this.ctx.model.load();
@@ -79,7 +79,7 @@ import { Process } from "../../model/process.model";
     }
 
     @Method()
-    async addActivity(activity: Activity, replace = false): Promise<void> {
+    async addActivity(activity: Activity, replace: boolean = false): Promise<void> {
         ActivityFactory.add(activity, replace);
 
         return Promise.resolve();

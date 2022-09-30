@@ -59,10 +59,8 @@ export class HttpService {
 
         let result = matches.reduce(this.replace.bind(this) , val);
 
-        if(result.indexOf('[') > this.notFound) {
-            counter++;
-            result = this.resolveSetting(result, counter);
-        }
+        if(result.indexOf('[') > this.notFound) 
+            result = this.resolveSetting(result, counter + 1);
 
         return result;
     }

@@ -5,7 +5,7 @@ export class ConfigService {
         return this.settings[key];
     }
 
-    addSetting(key: string, setting: object) {
+    addSetting(key: string, setting: object | string | number) {
         if(key.indexOf('[') === -1)
             key = `[${key}]`;
 
