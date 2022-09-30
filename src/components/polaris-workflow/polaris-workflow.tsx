@@ -69,7 +69,7 @@ import { Process } from "../../model/process.model";
     }
     
     @Method()
-    async load(process: string | Process, next: string = "start", sessionId: string = ''): Promise<void> {
+    async load(process: string | Process, next = "start", sessionId = ''): Promise<void> {
         if(sessionId != null && sessionId.length > 0) {
             this.ctx.model.sessionId = sessionId;
             this.ctx.model.load();
