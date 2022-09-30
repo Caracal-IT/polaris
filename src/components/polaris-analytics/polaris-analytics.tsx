@@ -5,7 +5,7 @@ import { AnalyticsService } from "../../services/analytics.service";
     tag: "polaris-analytics"
   })
   export class PolarisAnalytics {   
-    static lastPath: any = [null];
+    static lastPath: string[] = [null];
     static analyticsService: AnalyticsService = new AnalyticsService();
 
     @Listen('click', { target: 'document' })

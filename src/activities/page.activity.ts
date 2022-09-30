@@ -3,8 +3,8 @@ import { Context } from "../model/context.model";
 import { Control } from "../model/control.model";
 
 export class PageActivity implements Activity {
-    name = "start";
-    "type" = "page-activity";
+    name: string = "start";
+    "type": string = "page-activity";
     
     ctx: Context;
     controls: Control[];

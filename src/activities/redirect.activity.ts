@@ -1,8 +1,8 @@
 import { BaseActivity } from "./base.activity";
 
 export class RedirectActivity extends BaseActivity {
-    name = "redirect";
-    "type" = "redirect-activity";
+    name: string = "redirect";
+    "type": string = "redirect-activity";
     location?: string;
        
     async execute(): Promise<boolean> {

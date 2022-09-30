@@ -2,8 +2,8 @@ import { CodeActivity } from './code.activity';
 import { Context } from "../model/context.model";
 
 export class DecisionActivity extends CodeActivity {
-    name = "decision";
-    "type" = "decision-activity";
+    name: string = "decision";
+    "type": string = "decision-activity";
 
     ctx: Context;
     expression: string;

@@ -2,8 +2,8 @@ import { Context } from "../model/context.model";
 import { BaseActivity } from "./base.activity";
 
 export class CodeActivity extends BaseActivity {
-    name = "code";
-    "type" = "code-activity";
+    name: string = "code";
+    "type": string = "code-activity";
     expression: string;
        
     async execute(): Promise<boolean> {

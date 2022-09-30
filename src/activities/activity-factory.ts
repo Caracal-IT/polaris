@@ -37,7 +37,7 @@ export class ActivityFactory {
         return Object.assign(act, config, { ctx });
     }
 
-    static add(activity: Activity, replace = false) {
+    static add(activity: Activity, replace: boolean = false) {
         const notFound = -1;
         const deleteCount = 1;
 
