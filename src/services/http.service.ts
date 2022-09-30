@@ -48,7 +48,7 @@ export class HttpService {
         return config;
     }
 
-    private resolveSetting(val: string, counter = this.startIndex) {
+    private resolveSetting(val: string, counter: number = this.startIndex) {
         if(counter > this.settingOffset)
             return val;
             
@@ -59,8 +59,10 @@ export class HttpService {
 
         let result = matches.reduce(this.replace.bind(this) , val);
 
-        if(result.indexOf('[') > this.notFound)
-          result = this.resolveSetting(result, counter++);
+        if(result.indexOf('[') > this.notFound) {
+            counter++;
+            result = this.resolveSetting(result, counter);
+        }
 
         return result;
     }
@@ -68,7 +70,7 @@ export class HttpService {
     private replace(prev: string, next: string): string {
         let replacement:string = this.ctx.config.getSetting(next);
         
-        if(replacement && replacement.indexOf('[SELF]') > this.notFound) 
+        if(replacement !== null && replacement.indexOf('[SELF]') > this.notFound) 
            return replacement.replace('[SELF]', prev.replace(next, ''));
 
         return prev.replace(next, replacement);
