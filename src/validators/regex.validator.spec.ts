@@ -16,15 +16,14 @@ describe('validators/regex-validator', () => {
         config = {name: 'regex', expression: '^\\d+$',  message:'Invalid Regex'};
         ctrl = {tag: 'control', id: 'user.firstName', ctx:context, error: false};
         
-        const control: any = ctrl;
-        control.el = {
+        ctrl = Object.assign(ctrl, {el : {
             nextSibling: {
                 attributes: {
                     'wf-error': null
                 }
             },
             setAttribute: (key: string, val: string) => error = `${key}-${val}`
-        }
+        }})
         
         context = {
             page: {

@@ -42,7 +42,7 @@ export class HttpService {
             headers: Object.apply({"Content-Type": "application/json"}, endpoint.headers),
             redirect: 'follow',
             referrer: 'no-referrer',
-            body: endpoint.body ? JSON.stringify(endpoint.body) : null
+            body: endpoint.body !== null ? JSON.stringify(endpoint.body) : null
         };
         
         return config;

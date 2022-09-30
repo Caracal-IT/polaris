@@ -9,5 +9,5 @@ export interface Message {
           'UN_AUTHORIZED'|
           string;
     description?: string;
-    metadata?: any;
+    metadata?: object;
 }

@@ -27,7 +27,7 @@ export class AnalyticsService {
         return event.composedPath(event);
     }
 
-    private sendPostMessage(message: any) {
+    private sendPostMessage(message: object) {
         const msg: object = {...message, timestamp:Date.now()};
 
         console.log("ANALYTICS", msg);
@@ -35,10 +35,10 @@ export class AnalyticsService {
     }
 
     private getName(item: HTMLElement & {id: string, page: {name: string}}): string {
-        if(item.id)
+        if(item.id != null)
             return item.id;
 
-        if(item.page && item.page.name)
+        if(item.page !== null && item.page.name !== null)
             return item.page.name;
 
         return "";
