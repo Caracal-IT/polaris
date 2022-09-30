@@ -1,6 +1,6 @@
 import { PipeFactory } from "../pipes/factory.pipe";
 import { ConfigService } from "./config.service";
-import {v4 as uuidv4} from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 export class ModelService {
     model: object = {};

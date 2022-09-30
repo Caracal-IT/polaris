@@ -3,14 +3,14 @@ import { Control } from "../model/control.model";
 
 export abstract class Validator {
     constructor(public name: string) { }
-    abstract validate(context: Context, control: Control, config: any): boolean;
+    abstract validate(context: Context, control: Control, config: object): boolean;
 
     setError(control: Control, error: boolean, message?: string) {
         control.error = error;
         control.errorMessage = error ? message : null;
 
         if(control.el) {
-            control.el.setAttribute("error", control.error ? "true" : "false");
+            control.el.setAttribute("error", control.error === true  ? "true" : "false");
             control.el.setAttribute("errorMessage", control.errorMessage);
         }
 

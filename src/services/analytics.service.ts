@@ -75,7 +75,7 @@ export class AnalyticsService {
         const hashLength = 31;
 
         let hash = startIndex
-        for (let i = startIndex; i < str.length; i++)
+        for (let i = startIndex; i < str.length; i = i + 1)
             hash = Math.imul(hashLength, hash) + str.charCodeAt(i)
 
         return hash;

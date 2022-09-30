@@ -13,7 +13,7 @@ export class RegexValidator extends Validator {
         const value = context.model.getValue(control.id);
         const regex = new RegExp(config.expression, 'g');       
         const result = regex.exec(value);       
-        const isValid = result ? true : false;
+        const isValid = result != null ? true : false;
 
         super.setError(control, !isValid, config.message);
               
