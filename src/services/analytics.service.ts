@@ -47,7 +47,7 @@ export class AnalyticsService {
     private createPayload(actType: string, wfElement: HTMLElement, path: HTMLElement[]){
         const notFound = -1;
 
-        const p = path.filter(i => i.nodeName && i.nodeName.indexOf("document-fragment") === notFound);
+        const p = path.filter(i => i.nodeName !== null && i.nodeName.indexOf("document-fragment") === notFound);
         const wfPage = p.find(i => i.localName === "polaris-workflow");
 
         if(wfPage === null)
@@ -75,7 +75,7 @@ export class AnalyticsService {
         const hashLength = 31;
 
         let hash = startIndex
-        for (let i = startIndex; i < str.length; ++i)
+        for (let i = startIndex; i < str.length; i++)
             hash = Math.imul(hashLength, hash) + str.charCodeAt(i)
 
         return hash;
