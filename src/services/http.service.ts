@@ -2,11 +2,11 @@ import { Endpoint } from "../model/endpoint.model";
 import { Context } from "../model/context.model";
 
 export class HttpService {
-    private notFound = -1;
-    private startIndex = 0;
-    private settingOffset = 2;
-    private clientError = 400;
-    private unAuthorizedError = 401;
+    private notFound: number = -1;
+    private startIndex: number = 0;
+    private settingOffset: number = 2;
+    private clientError: number = 400;
+    private unAuthorizedError: number = 401;
 
     constructor(private ctx: Context) { }
 

@@ -1,8 +1,8 @@
 import { BaseActivity } from "./base.activity";
 
 export class MessageActivity extends BaseActivity {
-    name = "message";
-    "type" = "message-activity";
+    name: string = "message";
+    "type": string = "message-activity";
 
     messageType: string;
     description: string;

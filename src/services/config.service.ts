@@ -1,11 +1,11 @@
 export class ConfigService {
-    private settings = {};
+    private settings: object = {};
 
     getSetting(key: string) {
         return this.settings[key];
     }
 
-    addSetting(key: string, setting: any) {
+    addSetting(key: string, setting: object) {
         if(key.indexOf('[') === -1)
             key = `[${key}]`;
 

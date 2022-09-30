@@ -1,4 +1,4 @@
-export function currencyFormat(value: any, [locale, currency]) {
+export function currencyFormat(value: number, [locale, currency]) {
     const formatter = new Intl.NumberFormat(locale, {
         style: 'currency',
         currency: currency,
