@@ -20,7 +20,7 @@ export class WorkflowService {
 
     constructor(private ctx: Context){}
     
-    async setProcess(process: string | Process, next: string = "start", clearStack = true): Promise<void> {
+    async setProcess(process: string | Process, next = "start", clearStack = true): Promise<void> {
         try {
             if(clearStack)
                 this.stack = [];
@@ -62,7 +62,7 @@ export class WorkflowService {
     }
 
     private async next(name: string) {
-        if(typeof this.process === "string" ||  !this.process || !this.process.activities)
+        if(typeof this.process === "string" ||  this.process == undefined || this.process == null || this.process.activities == undefined || this.process.activities == null)
             return null;
             
         if(this.ctx.wf.activity?.type === "page-activity" && !this.ctx.validator.validate(this.ctx))             

@@ -14,18 +14,17 @@ describe('validators/required-validator', () => {
     beforeEach(() => {
         message = null;
         config = {name: 'required', message:'Required control'};
-        ctrl = {tag: 'control', id: 'user.firstName', ctx:context, error: false};
+        ctrl = {tag: 'control', id: 'user.firstName', ctx:context, error: false, el: null};
         
-        const control: any = ctrl;
-        control.el = {
+        ctrl = Object.assign(ctrl, {el : {
             nextSibling: {
                 attributes: {
                     'wf-error': null
                 }
             },
             setAttribute: (key: string, val: string) => error = `${key}-${val}`
-        }
-        
+        }})
+
         context = {
             page: {
                 controls: [],
