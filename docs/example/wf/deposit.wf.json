@@ -13,9 +13,9 @@
             "type": "page-activity",        
             "controls": [
                 {"tag" : "moon-header", "caption": "Deposit" },
-                {"tag" : "moon-label", "caption": "Account", "for": "banking.account"},
+                {"tag" : "moon-label", "caption": "Account", "htmlFor": "banking.account"},
                 {"tag": "input", "id": "banking.account", "value": "445-56654-55666-666"},                
-                {"tag" : "moon-label", "caption": "Amount", "for": "banking.depositAmount"},
+                {"tag" : "moon-label", "caption": "Amount", "htmlFor": "banking.depositAmount"},
                 {"tag": "input", "id": "banking.depositAmount", "type": "number", "value": "43" },
                 {"tag" : "div", "className": "text", "innerHTML": "Amounts greater than <b class='error'>{{40.00|currencyFormat|en-ZA|ZAR}}</b> will need approval."},
                 {"tag": "div", 

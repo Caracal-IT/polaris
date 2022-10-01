@@ -30,7 +30,7 @@
                 "tag": "moon-panel",
                 "caption": "Registration - Details",
                 "controls": [
-                    {"tag" : "moon-label", "caption": "First Name", "for": "register.firstName"},
+                    {"tag" : "moon-label", "caption": "First Name", "htmlFor": "register.firstName"},
                     {
                         "tag": "input", 
                         "id": "register.firstName",                        
@@ -39,7 +39,7 @@
                             { "name": "regex", "message": "Enter a valid name", "expression": "^[A-Z][a-z]*$" }
                         ]
                     },
-                    {"tag" : "moon-label", "caption": "Surname", "for": "register.lastName"},
+                    {"tag" : "moon-label", "caption": "Surname", "htmlFor": "register.lastName"},
                     {
                         "tag": "input", 
                         "id": "register.lastName",
@@ -57,7 +57,7 @@
                             { "name": "custom-not13", "message": "13 is an unlucky number" }
                         ]
                     },
-                    {"tag" : "moon-label", "caption": "Nickname", "for": "register.nickName"},
+                    {"tag" : "moon-label", "caption": "Nickname", "htmlFor": "register.nickName"},
                     {"tag": "input", "id": "register.nickName" },
                     {"tag": "moon-button", "caption": "Address Details", "next": "details"}
                 ]
@@ -72,15 +72,15 @@
                     "tag": "moon-panel",
                     "caption": "Registration - Address Details",
                     "controls": [
-                        {"tag" : "moon-label", "caption": "First Name", "for": "register.firstName"},
+                        {"tag" : "moon-label", "caption": "First Name", "htmlFor": "register.firstName"},
                         {"tag": "input", "id": "register.firstName"},
-                        {"tag" : "moon-label", "caption": "Address Line 1", "for": "register.addressLine1"},
+                        {"tag" : "moon-label", "caption": "Address Line 1", "htmlFor": "register.addressLine1"},
                         {"tag": "input", "id": "register.addressLine1", "value": "2 Short Street" },
-                        {"tag" : "moon-label", "caption": "Address Line 2", "for": "register.addressLine2"},
+                        {"tag" : "moon-label", "caption": "Address Line 2", "htmlFor": "register.addressLine2"},
                         {"tag": "input", "id": "register.addressLine2"},
-                        {"tag" : "moon-label", "caption": "City", "for": "register.city"},
+                        {"tag" : "moon-label", "caption": "City", "htmlFor": "register.city"},
                         {"tag": "input", "id": "register.city", "value": "Durban"},
-                        {"tag" : "moon-label", "caption": "Country", "for": "register.country"},
+                        {"tag" : "moon-label", "caption": "Country", "htmlFor": "register.country"},
                         {"tag": "input", "id": "register.country", "value": "South Africa"},
                         {"tag": "moon-button", "caption": "Register Another", "next": "alert"}
                     ]
