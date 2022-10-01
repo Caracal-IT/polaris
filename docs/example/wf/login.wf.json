@@ -6,9 +6,9 @@
             "type": "page-activity",            
             "controls": [
                 {"tag" : "moon-header", "caption": "Login" },
-                {"tag" : "moon-label", "caption": "Username", "htmlFor": "login.username"},
+                {"tag" : "moon-label", "caption": "Username", "forInput": "login.username"},
                 {"tag": "input", "id": "login.username"},                
-                {"tag" : "moon-label", "caption": "Password", "htmlFor": "login.password"},
+                {"tag" : "moon-label", "caption": "Password", "forInput": "login.password"},
                 {"tag": "input", "id": "login.password", "type": "password" },
                 {"tag": "div", 
                  "controls": [

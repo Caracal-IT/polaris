@@ -1,14 +1,17 @@
 class MoonLabel extends HTMLElement {
-    static get observedAttributes() { return ['caption']; }
+    static get observedAttributes() { return ['caption', 'forInput']; }
 
     constructor() {
       super();
 
-      this.shadow = this.attachShadow({mode: 'open'});
+      this.shadow = this;
     }
 
     get caption() { return this._caption; }
     set caption(value) { this._caption = value; }
+
+    get forInput() { return this._forInput; }
+    set forInput(value) { this._forInput = value; }
 
     attributeChangedCallback(name, oldValue, newValue) {
         if(name === 'caption') {
@@ -17,6 +20,9 @@ class MoonLabel extends HTMLElement {
             if(this.button)
                 this.header.textContent = value;
         }
+
+        if(name === 'forInput') 
+            this.htmlFor = newValue;
     }
 
     connectedCallback() {
@@ -25,19 +31,18 @@ class MoonLabel extends HTMLElement {
         this.shadow.appendChild(this._render());
     }
 
-    
-
     _render() {
-        this.header = document.createElement('span');
-        this.header.textContent = this.caption;
+        this.label = document.createElement('label');
+        this.label.textContent = this.caption;
+        this.label.htmlFor = this.forInput;
 
-        return this.header;
+        return this.label;
     }
 
     _css() {
         const style = document.createElement('style');
         style.innerHTML = `
-            span {
+            label {
                 color: #757575;
             }
         `;
