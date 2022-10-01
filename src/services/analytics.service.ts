@@ -47,16 +47,19 @@ export class AnalyticsService {
     private createPayload(actType: string, wfElement: HTMLElement, path: HTMLElement[]){
         const notFound = -1;
 
-        const p = path.filter(i => i.nodeName !== null && i.nodeName.indexOf("document-fragment") === notFound);
+        if(path == null || path == undefined)
+            return null;
+
+        const p = path.filter(i => i.nodeName !== undefined && i.nodeName !== null && i.nodeName.indexOf("document-fragment") === notFound);
         const wfPage = p.find(i => i.localName === "polaris-workflow");
 
         if(wfPage === null)
             return null;
 
         const wfPageElement = <HTMLPolarisWorkflowElement> wfPage;
-            
+
         const activity = wfPageElement.ctx.wf.activity; 
-        const wfPath = p.slice(0, p.indexOf(wfPage) + 1)
+        const wfPath = p.slice(0, p.indexOf(wfPage) + 1);
 
         if(activity.name === undefined || activity.name === null)
             return null;
@@ -71,6 +74,9 @@ export class AnalyticsService {
     }
 
     private getHashCode(str: string): number {
+        if(str === undefined || str === null)
+            return 0;
+            
         const startIndex = 0;
         const hashLength = 31;
 
