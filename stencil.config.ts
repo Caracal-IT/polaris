@@ -26,6 +26,7 @@ export const config: Config = {
       copy: [
         { src: 'style.css', dest: 'style.css' },
         { src: 'assets/favicon.ico', dest: 'favicon.ico' },
+        { src: 'assets/robots.txt', dest: 'robots.txt' },
         { src: 'assets/favicon.ico', dest: 'example/favicon.ico' },
 
         { src: '../example/style.css', dest: 'example/style.css' },
