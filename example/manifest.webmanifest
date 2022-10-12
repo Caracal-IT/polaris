@@ -1,0 +1,13 @@
+{
+    "lang": "en",
+    "dir": "ltr",
+    "name": "Polaris Workflow",
+    "short_name": "Polaris",
+    "scope": "/",
+    "id": "polaris",
+    "start_url": "/example/#home",
+    "display": "fullscreen",
+    "orientation": "landscape",
+    "theme_color": "aliceblue",
+    "background_color": "red"
+  }
