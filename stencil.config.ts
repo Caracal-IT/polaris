@@ -43,7 +43,11 @@ export const config: Config = {
     {
       type: 'www',
       dir: 'docs',
-      serviceWorker: null,
+      serviceWorker: {
+        globPatterns: [
+          '** /*.{js,css,json,html,ico,png}'
+        ]
+      },
       copy: [
         { src: '../www', dest: '' },
         { src: '../src/Polaris Workflow Design.png', dest: 'Polaris Workflow Design.png' }
