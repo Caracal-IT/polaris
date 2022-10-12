@@ -8,6 +8,6 @@
     "start_url": "/example/#home",
     "display": "fullscreen",
     "orientation": "landscape",
-    "theme_color": "aliceblue",
-    "background_color": "red"
+    "theme_color": "purple",
+    "background_color": "white"
   }
