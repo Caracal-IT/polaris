@@ -1,6 +1,6 @@
 {
   "name": "caracal_polaris",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Polaris Workflow",
   "repository": "https://github.com/Caracal-IT/polaris",
   "main": "dist/index.cjs.js",
@@ -24,7 +24,7 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@stencil/core": "^2.18.0",
+    "@stencil/core": "^2.18.1",
     "@types/jest": "^27.0.3",
     "@types/puppeteer": "^5.4.6",
     "codecov": "^3.8.3",
