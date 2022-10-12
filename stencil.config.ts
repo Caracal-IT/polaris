@@ -39,7 +39,9 @@ export const config: Config = {
         { src: '../example/wf', dest: 'example/wf' },
 
         { src: '../example/assets/manifest.webmanifest', dest: 'manifest.webmanifest' },
+        { src: '../example/assets/manifest.webmanifest', dest: 'example/manifest.webmanifest' },
         { src: '../example/assets/*.png', dest: 'assets' },
+        { src: '../example/assets/*.png', dest: 'example/assets' },
       ]
     }
     ,/*
