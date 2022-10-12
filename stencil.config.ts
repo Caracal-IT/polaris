@@ -36,10 +36,13 @@ export const config: Config = {
         { src: '../example/activities', dest: 'example/activities' },
         { src: '../example/validators', dest: 'example/validators' },
         { src: '../example/data', dest: 'example/data' },
-        { src: '../example/wf', dest: 'example/wf' }
+        { src: '../example/wf', dest: 'example/wf' },
+
+        { src: '../example/assets/manifest.webmanifest', dest: 'manifest.webmanifest' },
+        { src: '../example/assets/*.png', dest: 'assets' },
       ]
-    }/*
-    ,
+    }
+    ,/*
     {
       type: 'www',
       dir: 'docs',
