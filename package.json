@@ -24,14 +24,13 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@stencil/core": "^2.18.1",
+    "@stencil/core": "^3.1.0",
     "@types/jest": "^27.0.3",
-    "@types/puppeteer": "^5.4.6",
     "codecov": "^3.8.3",
     "jest": "^27.0.3",
     "jest-cli": "^27.4.5",
     "protractor-retry": "^2.0.1",
-    "puppeteer": "^17.0.0",
+    "puppeteer": "^19.7.2",
     "workbox-build": "^6.5.4"
   },
   "license": "MIT",

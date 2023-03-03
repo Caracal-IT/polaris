@@ -10,6 +10,11 @@ import { Page } from "./model/page.model";
 import { Process } from "./model/process.model";
 import { Activity } from "./activities/activity";
 import { Validator } from "./validators/validator";
+export { Context } from "./model/context.model";
+export { Page } from "./model/page.model";
+export { Process } from "./model/process.model";
+export { Activity } from "./activities/activity";
+export { Validator } from "./validators/validator";
 export namespace Components {
     interface PolarisAnalytics {
     }

@@ -38,13 +38,24 @@ import { Process } from "../../model/process.model";
     @Prop() activity: string;
     @Prop() sessionId: string;
 
-    http: HttpService = new HttpService(this.ctx);
-    config: ConfigService = new ConfigService();
-    model: ModelService = new ModelService(this.ctx.config);
-    wf: WorkflowService = new WorkflowService(this.ctx);
-    validator: ValidatorService = new ValidatorService();
+    http: HttpService;
+    config: ConfigService;
+
+    model: ModelService;
+    wf: WorkflowService;
+    validator: ValidatorService;
     
     @Element() el: HTMLElement;
+
+    constructor() {
+        console.dir(this);
+        this.http = new HttpService(this.ctx);
+        this.config = new ConfigService();
+
+        this.model = new ModelService(this.ctx.config);
+        this.wf = new WorkflowService(this.ctx);
+        this.validator = new ValidatorService();
+    }
     
     @Watch("process")
     async processChangeHandler() {        
