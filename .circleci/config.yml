@@ -4,8 +4,8 @@ orbs:
   codecov: codecov/codecov@3.2.2
 jobs:
   build-and-test:
-    executor:
-      name: node/default
+    docker:
+      - image: 'cimg/base:stable'
     steps:
       - checkout
       - run:
