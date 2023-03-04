@@ -31,7 +31,7 @@ jobs:
           name: Install npm
           working_directory: /
           command: |
-            sudo apt-get install install -y npm build-essential
+            sudo apt-get install -y npm build-essential
       - run:
           name: Run tests
           command: npm run test --coverage
