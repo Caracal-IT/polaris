@@ -1,11 +1,11 @@
 version: 2.1
 orbs:
-  node: circleci/node@19.7.0
+  node: circleci/node@5.1.0
   codecov: codecov/codecov@3.2.2
 jobs:
   build-and-test:
     docker:
-      - image: 'cimg/base:stable'
+      - image: 'cimg/node:19.7.0'
     steps:
       - checkout
       - run:
