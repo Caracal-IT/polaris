@@ -51,7 +51,7 @@ jobs:
       - store_artifacts:
           path: ~/project/dist
       - store_test_results:
-          path: ~/project/coverage
+          path: ~/project/coverage/coverage-final.json
    
 resource_class: large
        

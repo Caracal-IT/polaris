@@ -1,4 +1,5 @@
 module.exports = {
+	coverageReporters: ['clover', 'json', 'lcov', ['text', {skipFull: true}]],
 	preset: 'jest-puppeteer',
 	testMatch: ["src/**/?(*.)+(spec|e2e).[t]s"],
 	testPathIgnorePatterns: ['/node_modules/', 'dist'], // 
