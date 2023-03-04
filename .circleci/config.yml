@@ -31,7 +31,7 @@ jobs:
           name: Install npm
           working_directory: /
           command: |
-            sudo apt-get install -y i npm@latest build-essential
+            sudo apt-get install -y i npm@7.0.0 build-essential
       - run:
           name: Install packages
           command: npm install
