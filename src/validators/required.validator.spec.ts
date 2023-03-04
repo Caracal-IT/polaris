@@ -1,5 +1,5 @@
 import { RequiredValidator, RequiredValidatorConfig } from './required.validator';
-import { Context } from '../model/Context.model';
+import { Context } from '../model/context.model';
 import { Message } from '../model/message.model';
 import { Control } from '../model/control.model';
 import { ModelService } from '../services/model.service';

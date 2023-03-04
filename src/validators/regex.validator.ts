@@ -1,4 +1,4 @@
-import { Context } from '../model/Context.model';
+import { Context } from '../model/context.model';
 import { Validator } from './validator';
 import { Control } from '../model/control.model';
 
