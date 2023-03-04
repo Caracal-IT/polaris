@@ -42,10 +42,7 @@ jobs:
           command: npm install
       - run:
           name: Run tests
-          command: npm run coverage
-      - run:
-          name: Copy test results
-          command: cp $RESULTS_DIR/coverage polaris/coverage
+          command: npm run test --coverage
       - codecov/upload:
           flags: backend,unittest
       - store_artifacts:
