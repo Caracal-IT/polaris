@@ -43,7 +43,9 @@ jobs:
       - run:
           name: Run tests
           command: npm run coverage
-            cp $RESULTS_DIR/coverage coverage
+      - run:
+          name: Copy test results
+          command: cp $RESULTS_DIR/coverage coverage
       - codecov/upload:
           flags: backend,unittest
       - store_artifacts:
