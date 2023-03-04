@@ -53,7 +53,7 @@ jobs:
       - store_artifacts:
           path: ~/project/coverage
       - store_test_results:
-          path: ~/project/coverage/clover.xml
+          path: ~/project/coverage/lcov-report
    
 resource_class: large
        
