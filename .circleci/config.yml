@@ -41,17 +41,14 @@ jobs:
           name: Install packages
           command: npm install
       - run:
-          name: Run tests
-          command: npm run test
-      - run:
           name: Run coverage
           command: npm run coverage
       - codecov/upload:
           flags: backend,unittest
       - store_artifacts:
-          path: coverage
+          path: ~/coverage
       - store_test_results:
-          path: coverage
+          path: ~/coverage
    
 resource_class: large
        
