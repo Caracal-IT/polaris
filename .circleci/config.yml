@@ -28,8 +28,9 @@ jobs:
             libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
             ca-certificates fonts-liberation libnss3 lsb-release xdg-utils wget --fix-missing 
 
-      - node/run:
-          npm-run: test --coverage
+      - run:
+          name: Run tests
+          command: npm run test --coverage
       - codecov/upload:
           flags: backend,unittest
       - store_artifacts:
