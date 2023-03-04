@@ -45,7 +45,7 @@ jobs:
           command: npm run coverage
       - run:
           name: Copy test results
-          command: cp $RESULTS_DIR/coverage coverage
+          command: cp $RESULTS_DIR/coverage polaris/coverage
       - codecov/upload:
           flags: backend,unittest
       - store_artifacts:
