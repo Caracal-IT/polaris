@@ -42,7 +42,7 @@ jobs:
           command: npm install
       - run:
           name: Run tests
-          command: npm run test --coverage
+          command: npm run coverage
       - codecov/upload:
           flags: backend,unittest
       - store_artifacts:
