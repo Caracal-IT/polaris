@@ -36,7 +36,7 @@ jobs:
           name: Update npm
           working_directory: /
           command: |
-            sudo npm update npm
+            sudo npm install npm -g
       - run:
           name: Install packages
           command: npm install
