@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@5.1.0
-  codecov: codecov/codecov@3.2.2
+  codecov: codecov/codecov@3.8.3
 jobs:
   build-and-test:
     docker:
@@ -42,7 +42,8 @@ jobs:
           command: npm install
       - run:
           name: Run tests
-          command: npm run test --coverage
+          command: npm run coverage
+            cp $RESULTS_DIR/coverage coverage
       - codecov/upload:
           flags: backend,unittest
       - store_artifacts:
