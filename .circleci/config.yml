@@ -50,8 +50,11 @@ jobs:
           flags: backend,unittest
       - store_artifacts:
           path: ~/project/dist
+      - store_artifacts:
+          path:  ~/project/coverage
+          destination: /test-results
       - store_test_results:
-          path: ~/project/coverage/coverage-final.json
+          path: /test-results
    
 resource_class: large
        
