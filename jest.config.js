@@ -1,6 +1,6 @@
 module.exports = {
-	reporters: ['jest-silent-reporter', 'summary'],
-	coverageReporters: ['clover', 'json', 'lcov', ['text', {skipFull: true}]],
+	reporters: [ "default", [ "jest-junit", { suiteName: "jest tests" } ]],
+	coverageReporters: ['jest-junit', 'clover', 'json', 'lcov', ['text', {skipFull: true}]],
 	preset: 'jest-puppeteer',
 	testMatch: ["src/**/?(*.)+(spec|e2e).[t]s"],
 	testPathIgnorePatterns: ['/node_modules/', 'dist'], // 

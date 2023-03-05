@@ -46,6 +46,8 @@ jobs:
       - run:
           name: Run coverage
           command: npm run coverage
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./reports/
       - codecov/upload:
           flags: backend,unittest
       - store_artifacts:
@@ -53,7 +55,7 @@ jobs:
       - store_artifacts:
           path: ~/project/coverage
       - store_test_results:
-          path: ~/project/coverage/lcov-report
+          path: ./reports/
    
 resource_class: large
        

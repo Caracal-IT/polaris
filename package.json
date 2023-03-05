@@ -31,7 +31,8 @@
     "jest-cli": "^27.4.5",
     "protractor-retry": "^2.0.1",
     "puppeteer": "^19.7.2",
-    "workbox-build": "^6.5.4"
+    "workbox-build": "^6.5.4",
+    "jest-junit": "^15.0.0"
   },
   "license": "MIT",
   "dependencies": {
