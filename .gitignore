@@ -6,3 +6,4 @@ coverage
 .idea
 www
 loader
+junit.xml
