@@ -54,7 +54,7 @@ jobs:
           path: ~/project/junit.xml
    
     resource_class: large
-    parallelism: 4     
+    parallelism: 1     
 workflows:
   build-and-test:
     jobs:
