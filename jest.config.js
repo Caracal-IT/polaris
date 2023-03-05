@@ -1,4 +1,5 @@
 module.exports = {
+	reporters: ['jest-silent-reporter', 'summary'],
 	coverageReporters: ['clover', 'json', 'lcov', ['text', {skipFull: true}]],
 	preset: 'jest-puppeteer',
 	testMatch: ["src/**/?(*.)+(spec|e2e).[t]s"],
