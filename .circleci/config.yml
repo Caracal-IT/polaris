@@ -53,7 +53,7 @@ jobs:
       - store_test_results:
           path: ~/project/junit.xml
    
-resource_class: large
+    resource_class: large
        
 workflows:
   build-and-test:
